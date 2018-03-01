@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- Pano2VR project file  -->
+<pano2vrconfig>
+  <panorama>
+    <input>
+      <patch/>
+      <type>cubefaces</type>
+      <filenamefront>Sky_J_Front.jpg</filenamefront>
+      <filenameright>Sky_J_Right.jpg</filenameright>
+      <filenameback>Sky_J_Back.jpg</filenameback>
+      <filenameleft>Sky_J_Left.jpg</filenameleft>
+      <filenametop>Sky_J_Down.jpg</filenametop>
+      <filenamebottom>Sky_J_Down.jpg</filenamebottom>
+      <hfov>360</hfov>
+    </input>
+    <viewingparameter>
+      <pan/>
+      <tilt/>
+      <fov/>
+    </viewingparameter>
+    <userdata/>
+    <hotspots/>
+    <output>
+      <thumb>
+        <html>
+          <filename>Sky_J_Front.html</filename>
+          <enabled>0</enabled>
+          <template>SPi-V.ggt</template>
+          <values>
+            <value id="bgcolor" >#ffffff</value>
+            <value id="fullscreen" >false</value>
+            <value id="showuserdata" >true</value>
+            <value id="tablebgcolor" >#dddddd</value>
+            <value id="tablebordercolor" >#777777</value>
+            <value id="tabletextcolor" >#000000</value>
+            <value id="textcolor" >#000000</value>
+            <value id="windowheight" >480</value>
+            <value id="windowwidth" >640</value>
+          </values>
+        </html>
+        <facequality/>
+        <filename>pano.jpg</filename>
+        <backgroundColor>#000000,0</backgroundColor>
+        <nooversampling>0</nooversampling>
+        <type>equirectangular</type>
+        <quality>90</quality>
+        <width>1000</width>
+        <height>500</height>
+        <defaultview>1</defaultview>
+        <pan>0</pan>
+        <tilt>0</tilt>
+        <roll>0</roll>
+        <fov>70</fov>
+        <cubefacenaming>_5</cubefacenaming>
+      </thumb>
+    </output>
+    <sounds/>
+    <basepath>.</basepath>
+  </panorama>
+</pano2vrconfig>

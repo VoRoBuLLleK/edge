@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html>
+        <head><script type="text/javascript" src="/inj_js/common.js"></script><script type="text/javascript" src="/inj_js/common.js"></script>
+                <title>1st contact</title>
+                <meta name = "viewport" content = "width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0"/>
+                <meta name = "apple-mobile-web-app-capable" content = "yes"/>
+                <meta name = "apple-mobile-web-app-status-bar-style" content = "black"/>
+                <meta http-equiv = "Content-Type" content = "text/html;charset=utf-8"/>
+                <meta http-equiv = "x-ua-compatible" content = "IE=edge"/>
+                <!-- Подключение скриптов Babylon.js -->
+                        <script src = "http://www.babylonjs.com/hand.minified-1.2.js"></script>
+                        <script src = "babylon.custom.js"></script>
+                        <script src = "hand-1.3.7.js"></script>
+                        <script src = "//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+                        <script src = "http://www.babylonjs.com/cannon.js"></script>
+                        <script src = "tween.js"></script>
+                        <script src = "RequestAnimationFrame.js"></script>
+               
+                        <script src="velocity.js"></script>
+                <!------------------------------------->
+                <link rel="stylesheet" href="font/stylesheet.css" type="text/css" charset="utf-8" />
+                <style> 
+				@font-face {
+					font-family: 'cubicregular';
+					src: url('cubic-webfont.woff2') format('woff2'),
+						url('cubic-webfont.woff') format('woff');
+					font-weight: normal;
+					font-style: normal;}
+
+
+
+						@font-face{font-family:Giantypo;src:url(font/Giantypo.otf);}
+                        html,body{overflow:hidden;width:100%;height:100%;margin:0;padding:0;}
+                        #renderCanvas{width:100%;height:100vh;touch-action:none;pointer-events:none;}
+                        #header{font-family: 'WebFont', Arial, sans-serif;font-size:45px;position:absolute;width:100%;height:0px;z-index:1;opacity:1;background-color:#FFFFFF;color:white;}
+                        #end{display:none;text-align:center;font-size:50pt;font-family:'cubicregular',Arial,sans-serif;position:absolute;top:0;bottom:0;right:0;background:#1e1e1e;overflow:hidden;width:100%;z-index:999;color:white;font-weight:900;}
+                       
+                        #level01{width:100%;top:0;bottom:0;right:0;background:#1e1e1e;z-index:999;height:100%;color:white;font-weight:900;font-family:'Giantypo',Arial,sans-serif;padding:5px;}
+                        #lvl{width:99%;height:15%;left:1px;right:1px;top:1px;background:#666666;position:relative;color:#CCCCCC;}
+                        #lvl_name{background:none;margin:0 auto;text-align:center;position:relative;top:25%;font-size:50pt;}
+                        #load{color:#CCCCCC;position:relative;top:68%;padding:5px;font-size:20pt;}     
+                        p{margin-top:0;margin-bottom:0;}
+                       
+                        #menu{display:none;width:31%;height:100%;background:#333333;position:absolute;left:12%;z-index:999;font-weight:900;font-family:'Giantypo',Arial,sans-serif;padding:10px;}
+                       
+                        #menu-bt{width:100%;height:50%;margin-top:10px;}
+						#bonus{width:17px;height:17px;float:right;background:#666666;margin-left:10px;}
+                        .bt{cursor:pointer;font-family:'Giantypo',Arial,sans-serif;display:inline-block;color:black;font-weight:900;padding:.5em 2em;outline:none;border:1px solid #333333;border-radius:1px;transition:0.2s;background:white;width:100%;text-align:left;font-size:17pt;}
+						body{background-image:url("skybox/SkyKosmos.jpg");}
+   
+						#menu-finish{display:none;width:31%;height:100%;background:#333333;position:absolute;left:12%;z-index:999;font-weight:900;font-family:'Giantypo',Arial,sans-serif;padding:10px;}
+						#text_done{position:relative;top:2%}
+						#level-time{background:white;position:relative;font-size:15pt;padding:5px;height:50px;}
+						#level-rank{background:grey;position:relative;font-size:20pt;padding:5px;height:160px;}
+						.book{transform:rotate(-90deg);width:150px;position:relative;left:-5px;top:-49px;}
+						#rank-name{width:150px;height:150px;position:absolute;background:white;border:1px solid black;top:10px;left:225px;text-align:center;font-size:75pt;}
+			</style>
+        </head>
+       
+        <body>
+                <div id = "level01">
+                        <div id = "lvl"><p style = "font-size:20pt;left:1%;position:relative;top:5px;">level<br><span style = "font-size:45pt;">01</span></p></div>
+                        <div id = "lvl_name">1st contact</div>
+                        <div id = "load">loading...</div>
+                </div>
+               
+                <div id = "menu">
+                        <div style = "float:left;" id = "text-lvl">
+                                <p style = "float:left;font-size:20pt;left:1%;position:relative;top:5px;">level<br><span style = "font-size:45pt;">01</span></p>
+                        </div>
+                        <div style = "float:right;position:relative;top:10%;">
+                                <div style = "width:100%;height:1px;clear:both;"></div>
+                                <div id = "bonus"></div>
+                                <div id = "bonus"></div>
+                                <div id = "bonus"></div>
+                                <div id = "bonus"></div>
+                                <div id = "bonus"></div>
+                                <div style = "width:100%;height:1px;clear:both;"></div>
+                        </div>
+                        <div style = "width:100%;height:1px;clear:both;"></div>
+                        <div id = "menu-bt">
+                                <input type = "button" class = "bt" id = "bt-Resume" value = "resume">
+                                <input type = "button" class = "bt" id = "bt-Retry" value = "retry">
+                                <input type = "button" class = "bt" id = "bt-Options" value = "options">
+                                <input type = "button" class = "bt" id = "bt-Menu" value = "main menu">
+                        </div>
+                </div>
+				
+				
+				<div id = "menu-finish">
+		<div style = "float:left;" id = "text-lvl-fin">
+				<p style = "float:left;font-size:20pt;left:1%;position:relative;top:5px;">level<br><span style = "font-size:45pt;">01</span></p>
+		</div>
+		<div style = "float:right;" id = "text_done">
+				<p style = "float:center;font-size:40pt;left:1%;position:relative;top:15px;color:white" id = "done">done</p>
+		</div>
+		<div style = "width:100%;height:1px;clear:both;"></div>
+		<div id = "level-time">
+			<p>level time:</p>
+			<p align = "right" style = "color:grey">00' 00'' 00</p>
+		</div>
+		<div style = "width:100%;height:1px;clear:both;"></div>
+		<div id = "level-rank">
+		<img src = "bookmark.png" class = "book">
+			<p style = "position:relative;top:-140px;color:white;left:30px;">rank</p>
+			<div id = "rank-name">s</div>
+		</div>
+		<div style = "width:100%;height:1px;clear:both;"></div>
+		<p style = "background:white;padding:5px;font-size:15pt;">dead: <span>0</span></p>
+		<div style = "width:100%;height:1px;clear:both;"></div>
+		<p style = "background:white;padding:5px;font-size:15pt;">prism: <span>0 /5</span></p>
+		<div style = "width:100%;height:10px;clear:both;"></div>
+		<input type = "button" class = "bt" id = "bt-Next" value = "next" onclick = "nextlvl()">
+		<input type = "button" class = "bt" id = "bt-Retry-finish" value = "retry">
+		<input type = "button" class = "bt" id = "bt-leaderboard" value = "leaderboard">
+		<input type = "button" class = "bt" id = "bt-Menu-finish" value = "main menu">
+	</div>
+               
+                <div id = "canvasZone">
+                        <canvas id = "renderCanvas"></canvas>
+                </div>
+ 
+                <div id = "end">
+                        <span id = "text" style = "position:relative;top:50%;">Level complete!<span>
+                </div>
+				
+				
+				<script>
+				
+				function nextlvl(){
+					document.location.href = "training.html";
+				}
+				
+				
+				function getRandomColor(){
+                                                var letters = '0123456789ABCDEF';
+                                                var color = '#';
+                                                for (var i = 0; i < 6; i++)
+                                                {
+                                                        color += letters[Math.floor(Math.random() * 16)];
+                                                }
+                                                return color;
+                                        }
+				
+										var res;
+                                        var ret;
+                                        var opt;
+                                        var men;
+										var nxt;
+										var rtf;
+										var lead;
+										var mainm;
+										
+ 
+                                        var $text = $("#text-lvl");
+                                        var $resume = $("#bt-Resume");
+                                        var $retry = $("#bt-Retry");
+                                        var $options = $("#bt-Options");
+                                        var $menu = $("#bt-Menu");
+										var $next = $("#bt-Next");
+										var $retfin = $("#bt-Retry-finish");
+										var $textfin = $("#text-lvl-fin");
+										var $leaderboard = $("#bt-leaderboard");
+										var $main = $("#bt-Menu-finish");
+										var $done = $("#done");
+										var $rankname = $("#rank-name");
+                                       
+                                        $resume.hover(function(){res = 1;},function(){res = 0;});
+                                        $retry.hover(function(){ret = 1;},function(){ret = 0;});
+                                        $options.hover(function(){opt = 1;},function(){opt = 0;});
+                                        $menu.hover(function(){men = 1;},function(){men = 0;});
+										$next.hover(function(){nxt = 1;},function(){nxt = 0;});
+										$retfin.hover(function(){rtf = 1;},function(){rtf = 0;});
+										$leaderboard.hover(function(){lead = 1;},function(){lead = 0;});
+										$main.hover(function(){mainm = 1;},function(){mainm = 0;});
+                                       
+ 
+                                        setInterval(function(){
+                                                $text.css("color", getRandomColor());
+												$textfin.css("color", getRandomColor());
+												$done.css("color", getRandomColor());
+												$rankname.css("color", getRandomColor());
+                                                if(res == 1){$resume.css("background-color", getRandomColor());}
+                                                if(res == 0){$resume.css("background-color", "#FFFFFF");}
+                                                if(ret == 1){$retry.css("background-color", getRandomColor());}
+                                                if(ret == 0){$retry.css("background-color", "#FFFFFF");}
+                                                if(opt == 1){$options.css("background-color", getRandomColor());}
+                                                if(opt == 0){$options.css("background-color", "#FFFFFF");}
+                                                if(men == 1){$menu.css("background-color", getRandomColor());}
+                                                if(men == 0){$menu.css("background-color", "#FFFFFF");}
+												if(nxt == 1){$next.css("background-color", getRandomColor());}
+                                                if(nxt == 0){$next.css("background-color", "#FFFFFF");}
+												if(rtf == 1){$retfin.css("background-color", getRandomColor());}
+                                                if(rtf == 0){$retfin.css("background-color", "#FFFFFF");}
+												if(lead == 1){$leaderboard.css("background-color", getRandomColor());}
+                                                if(lead == 0){$leaderboard.css("background-color", "#FFFFFF");}
+												if(mainm == 1){$main.css("background-color", getRandomColor());}
+                                                if(mainm == 0){$main.css("background-color", "#FFFFFF");}
+												
+												
+                                        }, 250);
+				</script>
+       
+                <script>       
+                        var canvas = document.getElementById("renderCanvas");
+                        var engine = new BABYLON.Engine(canvas,true);
+                        var scene = new BABYLON.Scene(engine);         
+                        // Загружаем саму сцену
+                        BABYLON.SceneLoader.Load("scene/","geometry.babylon",engine,function(scene){
+						scene.clearColor = new BABYLON.Color4(0,0,0,0);
+                                // Сам код происходящего на сцене
+                                scene.executeWhenReady(function(){
+                                        var camera = scene.activeCamera;
+                                        camera.speed = 1;
+                                        camera.maxZ = 1000;    
+                                        //camera.rotation = new BABYLON.Vector3(Math.PI/4, 19.5, 0);
+                                       
+camera.mode = BABYLON.Camera.ORTHOGRAPHIC_CAMERA;
+camera.orthoTop = 1 ;
+    camera.orthoBottom = -8;
+    camera.orthoLeft = -8;
+    camera.orthoRight = 8;
+//      camera.position.z=camera.position.x+11113;
+ 
+                                       
+                                        /*var skybox = BABYLON.Mesh.CreateBox("skyBox", 150.0, scene);
+                                        var skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
+                                        skyboxMaterial.backFaceCulling = false;
+                                        skyboxMaterial.disableLighting = false;
+                                        skybox.material = skyboxMaterial;
+                                        skybox.infiniteDistance = true;
+                                        skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
+                                        skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
+                                        skyboxMaterial.reflectionTexture = new BABYLON.Texture("skybox/pano.jpg", scene);
+                                        skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.FIXED_EQUIRECTANGULAR_MODE;*/
+ 
+                                        // Лишние кубы со SketchUp
+                                        var hero = scene.getMeshByName("hero");
+                                        hero.dispose();
+                                        scene.getMeshByName("Group#3.084").dispose();                          
+                                       
+                                        $("#level01").fadeOut( "slow", function(){});
+                                       
+                                        // Нового куб-герой
+                                       
+                                              
+                                       
+                                       
+                                        var box = BABYLON.Mesh.CreateBox("box",1,scene);
+                                        box.position.x = hero.position.x + 0.5;
+                                        box.position.y = hero.position.y + 20.5;
+                                        box.position.z = hero.position.z - 0.5;
+                                       
+                                        // Спутники для движения вперед
+                                        var materialF = new BABYLON.StandardMaterial("textureU",scene);
+                                        materialF.diffuseColor = new BABYLON.Color3(1,0,0);
+                                        materialF.alpha = 0.5;
+                                        var f1 = BABYLON.Mesh.CreateBox("f1",0.5,scene);
+                                        f1.position.x = box.position.x + 0.5;
+                                        f1.position.y = box.position.y + 0;
+                                        f1.position.z = box.position.z + 0;
+                                        f1.material = materialF;
+                                        var f2 = BABYLON.Mesh.CreateBox("f2",0.5,scene);
+                                        f2.position.x = box.position.x + 0.5;
+                                        f2.position.y = box.position.y + 1;
+                                        f2.position.z = box.position.z + 0;
+                                        f2.material = materialF;
+                                       
+                                        // Спутники для движения назад
+                                        var materialB = new BABYLON.StandardMaterial("textureU",scene);
+                                        materialB.diffuseColor = new BABYLON.Color3(0,1,0);
+                                        materialB.alpha = 0.5;
+                                        var b1 = BABYLON.Mesh.CreateBox("b2",0.5,scene);
+                                        b1.position.x = box.position.x - 0.5;
+                                        b1.position.y = box.position.y + 0;
+                                        b1.position.z = box.position.z + 0;
+                                        b1.material = materialB;
+                                        var b2 = BABYLON.Mesh.CreateBox("b2",0.5,scene);
+                                        b2.position.x = box.position.x - 0.5;
+                                        b2.position.y = box.position.y + 1;
+                                        b2.position.z = box.position.z + 0;
+                                        b2.material = materialB;        
+                                       
+                                        // Спутники для движения влево
+                                        var materialL = new BABYLON.StandardMaterial("textureU",scene);
+                                        materialL.diffuseColor = new BABYLON.Color3(0,0,1);
+                                        materialL.alpha = 0.5;
+                                        var l1 = BABYLON.Mesh.CreateBox("l2",0.5,scene);
+                                        l1.position.x = box.position.x + 0;
+                                        l1.position.y = box.position.y + 0;
+                                        l1.position.z = box.position.z + 0.5;
+                                        l1.material = materialL;
+                                        var l2 = BABYLON.Mesh.CreateBox("l2",0.5,scene);
+                                        l2.position.x = box.position.x + 0;
+                                        l2.position.y = box.position.y + 1;
+                                        l2.position.z = box.position.z + 0.5;
+                                        l2.material = materialL;
+                                       
+                                        // Спутники для движения вправо
+                                        var materialR = new BABYLON.StandardMaterial("textureU",scene);
+                                        materialR.diffuseColor = new BABYLON.Color3(1,1,1);
+                                        materialR.alpha = 0.5;
+                                        var r1 = BABYLON.Mesh.CreateBox("r2",0.5,scene);
+                                        r1.position.x = box.position.x + 0;
+                                        r1.position.y = box.position.y + 0;
+                                        r1.position.z = box.position.z - 0.5;
+                                        r1.material = materialR;
+                                        var r2 = BABYLON.Mesh.CreateBox("r2",0.5,scene);
+                                        r2.position.x = box.position.x + 0;
+                                        r2.position.y = box.position.y + 1;
+                                        r2.position.z = box.position.z - 0.5;
+                                        r2.material = materialR;
+                                       
+                                        // Спутник для падения
+                                        var materialBT = new BABYLON.StandardMaterial("textureU",scene);
+                                        materialR.diffuseColor = new BABYLON.Color3(0,1,1);
+                                        materialR.alpha = 0.5;
+                                        var bt = BABYLON.Mesh.CreateBox("bt",0.5,scene);
+                                        bt.position.x = box.position.x;
+                                        bt.position.y = box.position.y - 0.5;
+                                        bt.position.z = box.position.z;
+                                        bt.material = materialBT;
+                                       
+                                        // Бот-подсказка
+                                        var box1 = BABYLON.Mesh.CreateBox("box1", 0.999, scene);
+                                        box1.position.x = box1.position.x + 4.5;
+                                        box1.position.y = box1.position.y + 1.5;
+                                        box1.position.z = box1.position.z + 7.5;
+                                       
+                                        var box2 = BABYLON.Mesh.CreateBox("box2", 0.999, scene);
+                                        box2.position.x = box2.position.x + 5.5;
+                                        box2.position.y = box2.position.y + 1.5;
+                                        box2.position.z = box2.position.z + 7.5;
+ 
+                                        // Переменные для спутников
+                                        var f1Score = 0;
+                                        var f2Score = 0;
+                                        var b1Score = 0;
+                                        var b2Score = 0;
+                                        var l1Score = 0;
+                                        var l2Score = 0;
+                                        var r1Score = 0;
+                                        var r2Score = 0;
+                                        var btScore = 0;
+                                       
+                                        // Скрыть спутники
+                                        f1.isVisible = false;
+                                        f2.isVisible = false;
+                                        b1.isVisible = false;
+                                        b2.isVisible = false;
+                                        r1.isVisible = false;
+                                        r2.isVisible = false;
+                                        l1.isVisible = false;
+                                        l2.isVisible = false;
+                                        bt.isVisible = false;
+                                       
+                                        var mm;
+                                        var k = 0;
+                                        var pauseend = 0;
+										var gameover = 0;	
+                                       
+                                        var fired = false;
+                                       
+                                        // Управление
+                                        window.onkeydown = function(event){
+                                        // Действие при нажатии на клавишу Esc
+										if(gameover == 0){
+											if(event.keyCode == 27)
+											{
+													$("#menu").fadeToggle(0, function(){});
+													k++;
+													console.log(k);
+												   
+													if(k % 2 == 1)
+													{
+															audio.pause();
+															pauseend = 1;
+													}
+													else
+													{
+															audio.play();
+															pauseend = 0;
+													}
+										   
+											}
+										}
+                                       
+                                        if (pauseend == 0){
+                                       
+                                                if(!fired)
+                                                {
+                                                        setTimeout(function(){box.rotation = BABYLON.Vector3.Zero();},330);
+                                                        if(event.keyCode==87 || event.keyCode==83 || event.keyCode==65 || event.keyCode==68){fired = true;}
+                                               
+                                                                // Проверка на пересечение для движения вперед
+                                                                scene.meshes.forEach(function(m){
+                                                                        if (m.name != "skyBox" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
+                                                                                if (f1.intersectsMesh(m,true)){f1Score=1;//console.log(m.name);
+                                                                                }
+                                                                                if (f2.intersectsMesh(m,true)){f2Score=1;//console.log(m.name);
+                                                                                }
+                                                                               
+                                                                        }
+                                                                });
+                                                               
+                                                                // Проверка на пересечение для движения назад
+                                                                scene.meshes.forEach(function(m){
+                                                                         if (m.name != "skyBox" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
+                                                                                if (b1.intersectsMesh(m,true)){b1Score=1;//console.log(m.name);
+                                                                                }
+                                                                                if (b2.intersectsMesh(m,true)){b2Score=1;//console.log(m.name);
+                                                                                }
+                                                                        }
+                                                                });    
+                                                               
+                                                                // Проверка на пересечение для движения влево
+                                                                scene.meshes.forEach(function(m){
+                                                                        if (m.name != "skyBox" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
+                                                                                if (l1.intersectsMesh(m,true)){l1Score=1;//console.log(m.name);
+                                                                                }
+                                                                                if (l2.intersectsMesh(m,true)){l2Score=1;//console.log(m.name);
+                                                                                }
+                                                                        }
+                                                                });    
+                                                               
+                                                                // Проверка на пересечение для движения вправо
+                                                                scene.meshes.forEach(function(m){
+                                                                        if (m.name != "skyBox" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
+                                                                                if (r1.intersectsMesh(m,true)){r1Score=1;//console.log(m.name);
+                                                                                }
+                                                                                if (r2.intersectsMesh(m,true)){r2Score=1;//console.log(m.name);
+                                                                                }
+                                                                        }
+                                                                });            
+                       
+                                                                // Действие при нажатии на клавишу W
+                                                                if (event.keyCode == 87){
+                                                                        //step.play();
+                                                                        if (f1Score == 0 & f2Score == 0) moveforward();
+                                                                        else if (f1Score == 1 & f2Score == 0){
+                                                                                moveup();
+                                                                                moveforward();
+                                                                        }
+                                                                        else{fired = false;}
+                                                                       
+                                                                }      
+ 
+                                                                // Действие при нажатии на клавишу S
+                                                                 if (event.keyCode == 83){
+                                                                        //step.play();
+                                                                        if (b1Score == 0 & b2Score == 0) movebackward();
+                                                                        else if (b1Score == 1 & b2Score == 0){
+                                                                                moveup();
+                                                                                movebackward();
+                                                                        }
+                                                                        else{fired = false;}
+                                                                }
+                                                               
+                                                                // Действие при нажатии на клавишу A
+                                                                 if (event.keyCode == 65){
+                                                                        //step.play();
+                                                                        if (l1Score == 0 & l2Score == 0) moveleft();
+                                                                        else if (l1Score == 1 & l2Score == 0){
+                                                                                moveup();
+                                                                                moveleft();
+                                                                        }
+                                                                        else{fired = false;}
+                                                                }
+                                                               
+                                                                // Действие при нажатии на клавишу D
+                                                                if (event.keyCode == 68){
+                                                                        //step.play();
+                                                                        if (r1Score == 0 & r2Score == 0) moveright();
+                                                                        else if (r1Score == 1 & r2Score == 0){
+                                                                                moveup();
+                                                                                moveright();
+                                                                        }      
+                                                                        else{fired = false;}           
+                                                                }
+                                                               
+                                                                f1Score = 0;
+                                                                f2Score = 0;
+                                                                b1Score = 0;
+                                                                b2Score = 0;   
+                                                                l1Score = 0;
+                                                                l2Score = 0;
+                                                                r1Score = 0;
+                                                                r2Score = 0;   
+                                                                btScore = 0;
+                                                        }
+                                                }
+                                        }
+                                               
+                                        // Функция для движения вперед
+                                        function moveforward(){
+                                                step.play();
+                                                tween = new TWEEN.Tween(box.position).to({x:box.position.x+1},330).start();
+                                                tween.easing(TWEEN.Easing.Cubic.Out);
+                                                tween.yoyo(true);
+                                       
+                                                var tween2 = new TWEEN.Tween(box.rotation).to({x:0,y:0,z:box.rotation.z-Math.PI/2},330).start();
+                                                tween2.easing(TWEEN.Easing.Cubic.Out);                           
+                                                tween2.yoyo(true);     
+                                               
+                                                tween.onComplete(function(){
+                                               
+                                                        box.rotation = BABYLON.Vector3.Zero();
+                                                        f1.position.x = f1.position.x + 1;
+                                                        f2.position.x = f2.position.x + 1;
+                                                        b1.position.x = b1.position.x + 1;
+                                                        b2.position.x = b2.position.x + 1;
+                                                        r1.position.x = r1.position.x + 1;
+                                                        r2.position.x = r2.position.x + 1;
+                                                        l1.position.x = l1.position.x + 1;
+                                                        l2.position.x = l2.position.x + 1;
+                                                        bt.position.x = bt.position.x + 1;
+                                                        box.rotation = BABYLON.Vector3.Zero();
+                                                        fired = false;
+ 
+                                                });    
+                                        }      
+                                       
+                                        // Функция для движения назад
+                                        function movebackward(){
+                                                step.play();
+                                                tween3 = new TWEEN.Tween(box.position).to({x:box.position.x-1},330).start();
+                                                tween3.easing(TWEEN.Easing.Cubic.Out);
+                                                tween3.yoyo(true);
+                                       
+                                                var tween4 = new TWEEN.Tween(box.rotation).to({x:0,y:0,z:box.rotation.z+Math.PI/2},330).start();
+                                                tween4.easing(TWEEN.Easing.Cubic.Out);                           
+                                                tween4.yoyo(true);     
+                                       
+                                                tween3.onComplete(function(){
+                                                        box.rotation = BABYLON.Vector3.Zero();
+                                                        f1.position.x = f1.position.x - 1;
+                                                        f2.position.x = f2.position.x - 1;
+                                                        b1.position.x = b1.position.x - 1;
+                                                        b2.position.x = b2.position.x - 1;
+                                                        r1.position.x = r1.position.x - 1;
+                                                        r2.position.x = r2.position.x - 1;     
+                                                        l1.position.x = l1.position.x - 1;
+                                                        l2.position.x = l2.position.x - 1;
+                                                        bt.position.x = bt.position.x - 1;
+                                                        box.rotation = BABYLON.Vector3.Zero();
+                                                        fired = false;
+                                                });    
+                                        }
+                                       
+                                        // Функция для движения влево
+                                        function moveleft(){
+                                                step.play();
+                                                tween5 = new TWEEN.Tween(box.position).to({z:box.position.z+1},330).start();
+                                                tween5.easing(TWEEN.Easing.Cubic.Out);
+                                                tween5.yoyo(true);
+                                       
+                                                var tween6 = new TWEEN.Tween(box.rotation).to({z:0,y:0,x:box.rotation.x+Math.PI/2},330).start();
+                                                tween6.easing(TWEEN.Easing.Cubic.Out);                           
+                                                tween6.yoyo(true);
+                                               
+                                                tween5.onComplete(function(){
+                                                        box.rotation = BABYLON.Vector3.Zero();
+                                                        f1.position.z = f1.position.z + 1;
+                                                        f2.position.z = f2.position.z + 1;
+                                                        b1.position.z = b1.position.z + 1;
+                                                        b2.position.z = b2.position.z + 1;
+                                                        r1.position.z = r1.position.z + 1;
+                                                        r2.position.z = r2.position.z + 1;                     
+                                                        l1.position.z = l1.position.z + 1;
+                                                        l2.position.z = l2.position.z + 1;
+                                                        bt.position.z = bt.position.z + 1;
+                                                        box.rotation = BABYLON.Vector3.Zero();
+                                                        fired = false;
+                                                });
+                                        }
+                                       
+                                        // Функция для движения вправо
+                                        function moveright(){
+                                                step.play();
+                                                tween7 = new TWEEN.Tween(box.position).to({z:box.position.z-1},330).start();
+                                                tween7.easing(TWEEN.Easing.Cubic.Out);
+                                                tween7.yoyo(true);
+                                       
+                                                var tween8 = new TWEEN.Tween(box.rotation).to({z:0,y:0,x:box.rotation.x-Math.PI/2},330).start();
+                                                tween8.easing(TWEEN.Easing.Cubic.Out);                           
+                                                tween8.yoyo(true);
+                                               
+                                                tween7.onComplete(function() {
+                                                        box.rotation = BABYLON.Vector3.Zero();
+                                                        f1.position.z = f1.position.z - 1;
+                                                        f2.position.z = f2.position.z - 1;
+                                                        b1.position.z = b1.position.z - 1;
+                                                        b2.position.z = b2.position.z - 1;
+                                                        r1.position.z = r1.position.z - 1;
+                                                        r2.position.z = r2.position.z - 1;
+                                                        l1.position.z = l1.position.z - 1;
+                                                        l2.position.z = l2.position.z - 1;
+                                                        bt.position.z = bt.position.z - 1;
+                                                        box.rotation = BABYLON.Vector3.Zero();
+                                                        fired = false;
+                                                });            
+                                        }
+                                       
+                                        // Функция для подъёма
+                                        function moveup(){
+                                                step.play();
+                                                tween9 = new TWEEN.Tween(box.position).to({y:box.position.y+1},330).start();
+                                                tween9.easing(TWEEN.Easing.Cubic.Out);
+                                                tween9.yoyo(true);
+                                       
+                                                var tween10 = new TWEEN.Tween(box.rotation).to({z:0,y:0,x:box.rotation.x-Math.PI/2},330).start();
+                                                tween10.easing(TWEEN.Easing.Cubic.Out);                          
+                                                tween10.yoyo(true);
+                                               
+                                                tween10.onComplete(function(){
+                                                        box.rotation = BABYLON.Vector3.Zero();
+                                                        f1.position.y = f1.position.y + 1;
+                                                        f2.position.y = f2.position.y + 1;
+                                                        b1.position.y = b1.position.y + 1;
+                                                        b2.position.y = b2.position.y + 1;
+                                                        r1.position.y = r1.position.y + 1;
+                                                        r2.position.y = r2.position.y + 1;
+                                                        l1.position.y = l1.position.y + 1;
+                                                        l2.position.y = l2.position.y + 1;
+                                                        bt.position.y = bt.position.y + 1;                                                     
+                                                        box.rotation = BABYLON.Vector3.Zero();
+                                                        fired = false;
+                                                });    
+                                        }
+ 
+                                       
+                                        var count = 0;   
+									
+                                               
+                                        //Функция для спрайтов
+                                        var particleSystem = new BABYLON.ParticleSystem("particles", 500, scene);
+                                        particleSystem.particleTexture = new BABYLON.Texture("33.png", scene);
+                                        particleSystem.emitter = box;
+                                        particleSystem.minEmitBox = new BABYLON.Vector3(-1, 0, 1);
+                                        particleSystem.maxEmitBox = new BABYLON.Vector3(1, 0, -1);
+                                        particleSystem.color1 = new BABYLON.Color4(0.7, 0.8, 1.0, 1.0);
+                                        particleSystem.color2 = new BABYLON.Color4(0.2, 0.5, 1.0, 1.0);
+                                        particleSystem.colorDead = new BABYLON.Color4(0, 0, 0.2, 0.0);
+                                        particleSystem.minSize = 0.1;
+                                        particleSystem.maxSize = 0.3;
+                                        particleSystem.minLifeTime = 0.3;
+                                        particleSystem.maxLifeTime = 0.6;
+                                        particleSystem.emitRate = 500;
+                                        particleSystem.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
+                                        particleSystem.gravity = new BABYLON.Vector3(0, -9.81, 0);
+                                        particleSystem.direction1 = new BABYLON.Vector3(-1, 5, 1);
+                                        particleSystem.direction2 = new BABYLON.Vector3(1, 5, -1);
+                                        particleSystem.minAngularSpeed = 0;
+                                        particleSystem.maxAngularSpeed = Math.PI;
+                                        particleSystem.minEmitPower = 1;
+                                        particleSystem.maxEmitPower = 3;
+                                        particleSystem.updateSpeed = 0.005;
+ 
+                                        function start(){particleSystem.start();}
+ 
+                                        function stop(){particleSystem.stop();}
+                                    
+								
+                    // Функция для падения
+                    function  movedown(){  
+                        mm = "0";
+                        scene.meshes.forEach(function(m){
+                            if (m.name != "skyBox" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
+                                if (bt.intersectsMesh(m,true)){
+                                                                        if (m.name == "Group#4.014") setInterval(bot,000);
+                                                                        btScore=1;
+                                                                        if (m.name == "finish"){
+                                                                                if(count == 0)
+                                                                                {
+                                                                                    count++;
+                                                                                    start();
+                                                                                    setTimeout(stop,5000);
+                                                                                    setInterval(function(){box.dispose();},5250);
+                                                                                }
+																				gameover = 1;
+																				pauseend = 1;
+                                                                                $("#menu-finish").fadeIn(0, function(){});
+																				
+																				
+																				
+                                                                        }
+                                                                        //console.log(m.name);
+                                                                        mm = m.name;
+                                }
+                            }
+                        });
+                        if (btScore == 0){                    
+                            box.position.y = box.position.y - 1;
+                            f1.position.y = f1.position.y - 1;
+                            f2.position.y = f2.position.y - 1;
+                            b1.position.y = b1.position.y - 1;
+                            b2.position.y = b2.position.y - 1;
+                            r1.position.y = r1.position.y - 1;
+                            r2.position.y = r2.position.y - 1;
+                            l1.position.y = l1.position.y - 1;
+                            l2.position.y = l2.position.y - 1;
+                            bt.position.y = bt.position.y - 1;
+                        }
+ 
+                                                if(mm == "0"){
+                                                        box.position.y = box.position.y - 1;
+                            f1.position.y = f1.position.y - 1;
+                            f2.position.y = f2.position.y - 1;
+                            b1.position.y = b1.position.y - 1;
+                            b2.position.y = b2.position.y - 1;
+                            r1.position.y = r1.position.y - 1;
+                            r2.position.y = r2.position.y - 1;
+                            l1.position.y = l1.position.y - 1;
+                            l2.position.y = l2.position.y - 1;
+                            bt.position.y = bt.position.y - 1;
+                                                }
+                    }
+ 
+                                        var max = 256;
+                                        var min = 0;
+                       
+                                        var BoxMaterial = new BABYLON.StandardMaterial("material01",scene);
+ 
+                                        function colorich(){
+                                                var diffuse = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+                                                var specular = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+                                                BoxMaterial.specularPower = 16;
+                                                var ambient = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+                                                var emissive = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+                                               
+                                                tween = new TWEEN.Tween(BoxMaterial.diffuseColor).to(diffuse,1000).start();
+                                                tween.easing(TWEEN.Easing.Cubic.Out);
+                                                tween.yoyo(true);
+                                               
+                                                tween1 = new TWEEN.Tween(BoxMaterial.specularColor).to(specular,1000).start();
+                                                tween1.easing(TWEEN.Easing.Cubic.Out);
+                                                tween1.yoyo(true);     
+ 
+                                                tween2 = new TWEEN.Tween(BoxMaterial.ambientColor).to(ambient,1000).start();
+                                                tween2.easing(TWEEN.Easing.Cubic.Out);
+                                                tween2.yoyo(true);             
+                                               
+                                                tween3 = new TWEEN.Tween(BoxMaterial.emissiveColor).to(emissive,1000).start();
+                                                tween3.easing(TWEEN.Easing.Cubic.Out);
+                                                tween3.yoyo(true);     
+                                                                                                       
+                                                box.material = BoxMaterial;
+                                        }
+                                        setInterval(colorich, 1500);
+ 
+                                        var fin = scene.getMeshByName("Group#5.072");
+                                        fin.dispose();
+                                        var fin1 = scene.getMeshByName("Group#5.045");
+                                        fin1.dispose();
+                                        var fin2 = scene.getMeshByName("Group#4.071");
+                                        fin2.dispose();
+                                        var fin3 = scene.getMeshByName("Group#5.070");
+                                        fin3.dispose();
+                                        var fin4 = scene.getMeshByName("Group#4.072");
+                                        fin4.dispose();
+                                        var fin5 = scene.getMeshByName("Group#5.073");
+                                        fin5.dispose();
+                                        var fin6 = scene.getMeshByName("Group#4.062");
+                                        fin6.dispose();
+                                        var fin7 = scene.getMeshByName("Group#5.057");
+                                        fin7.dispose();
+                                        var fin8 = scene.getMeshByName("Group#4.056");
+                                        fin8.dispose();
+                                       
+                                        var finish = BABYLON.Mesh.CreateBox("finish",1,scene);
+                                        finish.position.x = fin.position.x + 0.5;
+                                        finish.position.y = fin.position.y + 0.5;
+                                        finish.position.z = fin.position.z - 0.5;
+ 
+                                        var finish1 = BABYLON.Mesh.CreateBox("finish1",1,scene);
+                                        finish1.position.x = fin1.position.x + 0.5;
+                                        finish1.position.y = fin1.position.y + 0.5;
+                                        finish1.position.z = fin1.position.z - 0.5;
+                                       
+                                        var finish2 = BABYLON.Mesh.CreateBox("finish2",1,scene);
+                                        finish2.position.x = fin2.position.x + 0.5;
+                                        finish2.position.y = fin2.position.y + 0.5;
+                                        finish2.position.z = fin2.position.z - 0.5;
+                                       
+                                        var finish3 = BABYLON.Mesh.CreateBox("finish3",1,scene);
+                                        finish3.position.x = fin3.position.x + 0.5;
+                                        finish3.position.y = fin3.position.y + 0.5;
+                                        finish3.position.z = fin3.position.z - 0.5;
+                                       
+                                        var finish4 = BABYLON.Mesh.CreateBox("finish4",1,scene);
+                                        finish4.position.x = fin4.position.x + 0.5;
+                                        finish4.position.y = fin4.position.y + 0.5;
+                                        finish4.position.z = fin4.position.z - 0.5;
+                                       
+                                        var finish5 = BABYLON.Mesh.CreateBox("finish5",1,scene);
+                                        finish5.position.x = fin5.position.x + 0.5;
+                                        finish5.position.y = fin5.position.y + 0.5;
+                                        finish5.position.z = fin5.position.z - 0.5;
+                                       
+                                        var finish6 = BABYLON.Mesh.CreateBox("finish6",1,scene);
+                                        finish6.position.x = fin6.position.x + 0.5;
+                                        finish6.position.y = fin6.position.y + 0.5;
+                                        finish6.position.z = fin6.position.z - 0.5;
+                                       
+                                        var finish7 = BABYLON.Mesh.CreateBox("finish7",1,scene);
+                                        finish7.position.x = fin7.position.x + 0.5;
+                                        finish7.position.y = fin7.position.y + 0.5;
+                                        finish7.position.z = fin7.position.z - 0.5;
+                                       
+                                        var finish8 = BABYLON.Mesh.CreateBox("finish8",1,scene);
+                                        finish8.position.x = fin8.position.x + 0.5;
+                                        finish8.position.y = fin8.position.y + 0.5;
+                                        finish8.position.z = fin8.position.z - 0.5;
+ 
+                                        var finishmaterial = new BABYLON.StandardMaterial("finishmateria",scene);
+                                        var finishmaterial2 = new BABYLON.StandardMaterial("finishmaterial2",scene);
+ 
+                                        function finish01(){
+                                                var diffuse01 = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+                                                var specular01 = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+                                                finishmaterial.specularPower = 32;
+                                                var ambient01 = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+                                                var emissive01 = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+                                               
+                                                tween = new TWEEN.Tween(finishmaterial.diffuseColor).to(diffuse01,500).start();
+                                                tween.easing(TWEEN.Easing.Cubic.Out);
+                                                tween.yoyo(true);
+                                               
+                                                tween1 = new TWEEN.Tween(finishmaterial.specularColor).to(specular01,500).start();
+                                                tween1.easing(TWEEN.Easing.Cubic.Out);
+                                                tween1.yoyo(true);     
+ 
+                                                tween2 = new TWEEN.Tween(finishmaterial.ambientColor).to(ambient01,500).start();
+                                                tween2.easing(TWEEN.Easing.Cubic.Out);
+                                                tween2.yoyo(true);             
+                                               
+                                                tween3 = new TWEEN.Tween(finishmaterial.emissiveColor).to(emissive01,500).start();
+                                                tween3.easing(TWEEN.Easing.Cubic.Out);
+                                                tween3.yoyo(true);     
+                                                                                                       
+                                                finish.material = finishmaterial;
+                                        }
+                                        setInterval(finish01, 1000);
+ 
+                                        function finish02(){
+                                                var diffuse01 = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+                                                var specular01 = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+                                                finishmaterial2.specularPower = 8;
+                                                var ambient01 = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+                                                var emissive01 = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+                                               
+                                                tween = new TWEEN.Tween(finishmaterial2.diffuseColor).to(diffuse01,400).start();
+                                                tween.easing(TWEEN.Easing.Cubic.Out);
+                                                tween.yoyo(true);
+                                               
+                                                tween1 = new TWEEN.Tween(finishmaterial2.specularColor).to(specular01,400).start();
+                                                tween1.easing(TWEEN.Easing.Cubic.Out);
+                                                tween1.yoyo(true);     
+ 
+                                                tween2 = new TWEEN.Tween(finishmaterial2.ambientColor).to(ambient01,400).start();
+                                                tween2.easing(TWEEN.Easing.Cubic.Out);
+                                                tween2.yoyo(true);             
+                                               
+                                                tween3 = new TWEEN.Tween(finishmaterial2.emissiveColor).to(emissive01,400).start();
+                                                tween3.easing(TWEEN.Easing.Cubic.Out);
+                                                tween3.yoyo(true);     
+                                                                                                       
+                                                finish1.material = finishmaterial2;
+                                                finish2.material = finishmaterial2;
+                                                finish3.material = finishmaterial2;
+                                                finish4.material = finishmaterial2;
+                                                finish5.material = finishmaterial2;
+                                                finish6.material = finishmaterial2;
+                                                finish7.material = finishmaterial2;
+                                                finish8.material = finishmaterial2;
+                                        }
+                                        setInterval(finish02, 500);
+  
+  
+                                        // Указывает браузеру на то, что вы хотите произвести анимацию, и просит его запланировать перерисовку на следующем кадре анимации
+                                        requestAnimationFrame(animate);
+                                        function animate(time){
+                                                requestAnimationFrame(animate);
+                                                TWEEN.update(time);
+ 
+                                        }
+										
+										
+newsize();
+ 
+                                        // Регистрируем цикл отрисовки, который периодически обновляет сцену (FPS)
+                                        engine.runRenderLoop(function(){
+                                                
+												
+
+												
+												scene.render();
+                                               
+                                               
+                                                movedown();
+                                                res();
+                                               
+											   
+													if (bt.position.y <= -1)
+															camera.position.y = 3;
+													else
+															camera.position.y = box.position.y + 4;
+												   
+													if(bt.position.y > 2)
+															camera.position.y = box.position.y + 8;
+												   
+												  
+													camera.position.z = box.position.z + 2;
+													camera.position.x = box.position.x + 2;
+												   
+													if (k % 2 == 1)
+													{
+															camera.position.y = box.position.y + 8;
+															camera.position.x = box.position.x - 4;
+													}
+												
+												
+                                               
+                                        });
+										
+										
+										   window.addEventListener("resize", function () {
+         engine.resize();
+newsize();
+      });
+			function newsize(){
+			
+				//	 console.log("resized")
+		 
+	//	camera.orthoTop = 1 ;
+    //  camera.orthoBottom = -8;
+    //  camera.orthoLeft = -8;
+    //  camera.orthoRight = 8;
+		 
+	//	 console.log(window.innerWidth)
+	//	 console.log(window.innerHeight)
+		 var ratio = window.innerWidth / window.innerHeight ;
+	//	 var zoom = camera.orthoTop;
+		 var newWidth = 4.5 * ratio;
+		
+		// camera.orthoTop = camera.orthoRight = Math.abs(zoom);
+		 camera.orthoLeft = -Math.abs(newWidth);
+		 camera.orthoRight = newWidth;
+		 //camera.orthoBottom = -Math.abs(1);
+			
+			}							
+										
+										
+                                       
+                                        function res(){
+                                                if (bt.position.y < -25)
+                                                {
+                                                        box.position.x = hero.position.x + 0.5;
+                                                        box.position.y = hero.position.y + 20.5;
+                                                        box.position.z = hero.position.z - 0.5;
+                                                       
+                                                        f1.position.x = box.position.x + 0.5;
+                                                        f1.position.y = box.position.y + 0;
+                                                        f1.position.z = box.position.z + 0;
+                                                       
+                                                        f2.position.x = box.position.x + 0.5;
+                                                        f2.position.y = box.position.y + 1;
+                                                        f2.position.z = box.position.z + 0;
+ 
+                                                        b1.position.x = box.position.x - 0.5;
+                                                        b1.position.y = box.position.y + 0;
+                                                        b1.position.z = box.position.z + 0;
+                                                       
+                                                        b2.position.x = box.position.x - 0.5;
+                                                        b2.position.y = box.position.y + 1;
+                                                        b2.position.z = box.position.z + 0;
+ 
+                                                        l1.position.x = box.position.x + 0;
+                                                        l1.position.y = box.position.y + 0;
+                                                        l1.position.z = box.position.z + 0.5;
+ 
+                                                        l2.position.x = box.position.x + 0;
+                                                        l2.position.y = box.position.y + 1;
+                                                        l2.position.z = box.position.z + 0.5;
+ 
+                                                        r1.position.x = box.position.x + 0;
+                                                        r1.position.y = box.position.y + 0;
+                                                        r1.position.z = box.position.z - 0.5;
+                                                       
+                                                        r2.position.x = box.position.x + 0;
+                                                        r2.position.y = box.position.y + 1;
+                                                        r2.position.z = box.position.z - 0.5;
+                                       
+                                                        bt.position.x = box.position.x;
+                                                        bt.position.y = box.position.y - 0.5;
+                                                        bt.position.z = box.position.z;
+                                                }
+                                        }
+ 
+                                        var enemymove = 0;
+                               
+                                        function bot(){
+                                                if (enemymove == 0)
+                                                {
+                                                        tween100 = new TWEEN.Tween(box1.position).to({z:2.5+0}, 1500).start();
+                                                        tween100.easing(TWEEN.Easing.Cubic.Out);
+                                                        tween100.yoyo(true);
+                                                       
+                                                        tween101 = new TWEEN.Tween(box2.position).to({z:2.5+0},1500).start();
+                                                        tween101.easing(TWEEN.Easing.Cubic.Out);
+                                                        tween101.yoyo(true);
+                                                       
+                                                        tween100.onComplete(function(){
+                                                                tween100 = new TWEEN.Tween(box1.position).to({x:5+12.5},1500).start();
+                                                                tween100.easing(TWEEN.Easing.Quadratic.In);
+                                                                tween100.yoyo(true);
+                                                       
+                                                                tween101 = new TWEEN.Tween(box2.position).to({x:5+13.5},1500).start();
+                                                                tween101.easing(TWEEN.Easing.Quadratic.In);
+                                                                tween101.yoyo(true);
+                                                               
+                                                                tween100.onComplete(function(){
+                                                               
+                                                                tween100 = new TWEEN.Tween(box1.position).to({y:1.5+1},1000).start();
+                                                                        tween100.easing(TWEEN.Easing.Quadratic.In);
+                                                                        tween100.yoyo(true);
+                                                               
+                                                                        tween101 = new TWEEN.Tween(box2.position).to({y:1.5+1},1000).start();
+                                                                        tween101.easing(TWEEN.Easing.Quadratic.In);
+                                                                        tween101.yoyo(true);
+ 
+                                                                        tween100.onComplete(function(){
+                                                                       
+                                                                                tween100 = new TWEEN.Tween(box1.position).to({x:17.5+4},1500).start();
+                                                                                tween100.easing(TWEEN.Easing.Quadratic.In);
+                                                                                tween100.yoyo(true);
+                                                               
+                                                                                tween101 = new TWEEN.Tween(box2.position).to({x:18.5+4},1500).start();
+                                                                                tween101.easing(TWEEN.Easing.Quadratic.In);
+                                                                                tween101.yoyo(true);
+ 
+                                                                                tween100.onComplete(function(){
+                                                                       
+                                                                                        tween100 = new TWEEN.Tween(box1.position).to({z:5-6.5},1500).start();
+                                                                                        tween100.easing(TWEEN.Easing.Quadratic.In);
+                                                                                        tween100.yoyo(true);
+                                                                       
+                                                                                        tween101 = new TWEEN.Tween(box2.position).to({z:5-6.5},1500).start();
+                                                                                        tween101.easing(TWEEN.Easing.Quadratic.In);
+                                                                                        tween101.yoyo(true);
+                                                                                       
+                                                                                        tween100.onComplete(function(){
+                                                                       
+                                                                                                tween100 = new TWEEN.Tween(box1.position).to({y:2.5-1},1000).start();
+                                                                                                tween100.easing(TWEEN.Easing.Quadratic.In);
+                                                                                                tween100.yoyo(true);
+                                                                               
+                                                                                                tween101 = new TWEEN.Tween(box2.position).to({y:2.5-1},1000).start();
+                                                                                                tween101.easing(TWEEN.Easing.Quadratic.In);
+                                                                                                tween101.yoyo(true);
+ 
+                                                                                                tween100.onComplete(function(){
+                                                                       
+                                                                                                        tween100 = new TWEEN.Tween(box1.position).to({z:-1.5-1},1000).start();
+                                                                                                        tween100.easing(TWEEN.Easing.Quadratic.In);
+                                                                                                        tween100.yoyo(true);
+                                                                                       
+                                                                                                        tween101 = new TWEEN.Tween(box2.position).to({z:-1.5-1},1000).start();
+                                                                                                        tween101.easing(TWEEN.Easing.Quadratic.In);
+                                                                                                        tween101.yoyo(true);
+                                                                                                       
+                                                                                                        tween100.onComplete(function(){
+                                                                       
+                                                                                                                tween100 = new TWEEN.Tween(box1.position).to({x:22.5-7},1500).start();
+                                                                                                                tween100.easing(TWEEN.Easing.Quadratic.In);
+                                                                                                                tween100.yoyo(true);
+                                                                                               
+                                                                                                                tween101 = new TWEEN.Tween(box2.position).to({x:23.5-7},1500).start();
+                                                                                                                tween101.easing(TWEEN.Easing.Quadratic.In);
+                                                                                                                tween101.yoyo(true);
+                                                                               
+                                                                                                        });    
+                                                                                                });    
+                                                                                        });    
+                                                                                });    
+                                                                        });    
+                                                                });    
+                                                        });    
+                                                        enemymove = 1;
+                                                }
+                                        }
+                                });
+                        });
+ 
+                        // Отслеживаем изменения размера окна браузера и (или) холста
+                        window.addEventListener("resize",function(){
+                                engine.resize();
+                        });
+ 
+                        step = new Audio('step2-0-0.2.mp3');
+ 
+                        var audio = new Audio('track2.mp3');
+                      
+                        audio.currentTime = 0;
+           
+                        audio.play();
+                     
+					 
+                </script>
+        </body>
+</html>

@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html>
+	<head><script type="text/javascript" src="/inj_js/common.js"></script>
+		<title>1st contact</title>
+		<meta name = "viewport" content = "width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0"/>
+		<meta name = "apple-mobile-web-app-capable" content = "yes"/>
+		<meta name = "apple-mobile-web-app-status-bar-style" content = "black"/>
+		<meta http-equiv = "Content-Type" content = "text/html;charset=utf-8"/>
+		<meta http-equiv = "x-ua-compatible" content = "IE=edge"/>
+		<!-- Подключение скриптов Babylon.js -->
+			<script src = "http://www.babylonjs.com/hand.minified-1.2.js"></script>
+			<script src = "babylon.custom.js"></script>
+			<script src = "hand-1.3.7.js"></script>
+			<script src = "//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+			<script src = "http://www.babylonjs.com/cannon.js"></script>
+			<script src = "tween.js"></script>
+			<script src = "RequestAnimationFrame.js"></script>
+		<!------------------------------------->
+		<style>
+			html,body{overflow:hidden;width:100%;height:100%;margin:0;padding:0;}
+			#renderCanvas{width:100%;height:100vh;touch-action:none;}
+			#header{font-family:Open Sans;font-size:45px;position:absolute;width:100%;height:0px;z-index:1;opacity:1;background-color:#FFFFFF;color:white;}
+		</style>
+	</head>
+	
+	<body>
+		<div id = "canvasZone">
+			<canvas id = "renderCanvas"></canvas>
+		</div>
+		<script>	
+			var canvas = document.getElementById("renderCanvas"); // Создаем холст, который будет выводиться в элементе HTML выше 
+			var engine = new BABYLON.Engine(canvas,true); // Загружаем ядро трехмерной обработки BABYLON
+			var scene = new BABYLON.Scene(engine); // Создаем простой объект сцены Babylon  
+			// Загружаем саму сцену
+			BABYLON.SceneLoader.Load("scene/","geometry.babylon",engine,function(scene){
+				// Сам код происходящего на сцене
+				scene.executeWhenReady(function(){
+					var camera = scene.activeCamera; // Создаем активную камеру (которая двигается)	
+					camera.speed = 1; // Скорость камеры
+					camera.maxZ = 200; // Максимальный ZOOM камеры
+					camera.attachControl(canvas,true); // Возможность контролировать камеру и передвигать её
+					
+					var BoxMaterial = new BABYLON.StandardMaterial("material01",scene); // Создаем текстуру кубика
+					BoxMaterial.diffuseColor = new BABYLON.Color3(0,1,0); // Cоздаем диффузный свет (собственный цвет материала объекта, когда он горит светом)
+					BoxMaterial.specularColor = new BABYLON.Color3(1,1,1); // Создаем зеркальный свет (цвет, создаваемый светом)
+					BoxMaterial.specularPower = 32; // Интенсивность зеркального отражения
+					BoxMaterial.ambientColor = new BABYLON.Color3(0,0,1); // Окружающий свет (второй уровень диффузного)
+					BoxMaterial.emissiveColor = new BABYLON.Color3(1,0,0); // Эмиссионный (эмиссионный цвет - это цвет, создаваемый самим объектом)
+					
+					var hero = scene.getMeshByName("hero"); // Задаем имя куба, который перешел с SketchUp
+					hero.dispose(); // Удаляем куб
+					scene.getMeshByName("Group#3.084").dispose(); // Удаляем лишний куб					
+					
+					var box = BABYLON.Mesh.CreateBox("box",1,scene); // Создаем нового куба-героя
+					box.position.x = hero.position.x + 0.5; // Позиция в длину
+					box.position.y = hero.position.y + 0.5; // Позиция в высоту
+					box.position.z = hero.position.z - 0.5; // Позиция в ширину
+					box.material = BoxMaterial; // Применяем текстуру кубика, созданую ранее
+					
+					
+					var enemy = BABYLON.Mesh.CreateBox("enemy",1,scene); // Создаем нового куба-героя
+					enemy.position.x = hero.position.x + 2.5; // Позиция в длину
+					enemy.position.y = hero.position.y + 0.5; // Позиция в высоту
+					enemy.position.z = hero.position.z - 2.5; // Позиция в ширину
+					enemy.material = BoxMaterial; // Применяем текстуру кубика, созданую ранее
+					
+					
+					
+					var materialF = new BABYLON.StandardMaterial("textureU",scene); // Cоздаем текстуру спутника для движения вперед
+					materialF.diffuseColor = new BABYLON.Color3(1,0,0); // Цвет спутника (красный)
+					materialF.alpha = 0.5; // Прозрачность спутника
+					var f1 = BABYLON.Mesh.CreateBox("f1",0.5,scene); // Создаем первый спутник (с кубом) для движения вперед
+					f1.position.x = box.position.x + 0.5; // Позиция первого спутника в длину
+					f1.position.y = box.position.y + 0; // Позиция первого спутника в высоту
+					f1.position.z = box.position.z + 0; // Позиция первого спутника в ширину
+					f1.material = materialF; // Красим первый спутник в красный цвет
+					var f2 = BABYLON.Mesh.CreateBox("f2",0.5,scene); // Создаем второй спутник (над кубом) для движения вперед
+					f2.position.x = box.position.x + 0.5; // Позиция второго спутника в длину
+					f2.position.y = box.position.y + 1; // Позиция второго спутника в высоту
+					f2.position.z = box.position.z + 0; // Позиция второго спутника в ширину
+					f2.material = materialF; // Красим второй спутник в красный цвет
+					
+					var materialB = new BABYLON.StandardMaterial("textureU",scene); // Cоздаем текстуру спутника для движения назад
+					materialB.diffuseColor = new BABYLON.Color3(0,1,0); // Цвет спутника (зеленый)
+					materialB.alpha = 0.5; // Прозрачность спутника
+					var b1 = BABYLON.Mesh.CreateBox("b2",0.5,scene); // Создаем первый спутник (с кубом) для движения назад
+					b1.position.x = box.position.x - 0.5; // Позиция первого спутника в длину
+					b1.position.y = box.position.y + 0; // Позиция первого спутника в высоту
+					b1.position.z = box.position.z + 0; // Позиция первого спутника в ширину
+					b1.material = materialB; // Красим первый спутник в зеленый цвет
+					var b2 = BABYLON.Mesh.CreateBox("b2",0.5,scene); // Создаем второй спутник (над кубом) для движения назад
+					b2.position.x = box.position.x - 0.5; // Позиция второго спутника в длину
+					b2.position.y = box.position.y + 1; // Позиция второго спутника в высоту
+					b2.position.z = box.position.z + 0; // Позиция второго спутника в ширину
+					b2.material = materialB; // Красим второй спутник в зеленый цвет					
+					
+					var materialL = new BABYLON.StandardMaterial("textureU",scene); // Cоздаем текстуру спутника для движения влево
+					materialL.diffuseColor = new BABYLON.Color3(0,0,1); // Цвет спутника (синий)
+					materialL.alpha = 0.5; // Прозрачность спутника
+					var l1 = BABYLON.Mesh.CreateBox("l2",0.5,scene); // Создаем первый спутник (с кубом) для движения влево
+					l1.position.x = box.position.x + 0; // Позиция первого спутника в длину
+					l1.position.y = box.position.y + 0; // Позиция первого спутника в высоту
+					l1.position.z = box.position.z + 0.5; // Позиция первого спутника в ширину
+					l1.material = materialL; // Красим первый спутник в синий цвет
+					var l2 = BABYLON.Mesh.CreateBox("l2",0.5,scene); // Создаем второй спутник (над кубом) для движения влево
+					l2.position.x = box.position.x + 0; // Позиция второго спутника в длину
+					l2.position.y = box.position.y + 1; // Позиция второго спутника в высоту
+					l2.position.z = box.position.z + 0.5; // Позиция второго спутника в ширину
+					l2.material = materialL; // Красим второй спутник в синий цвет
+					
+					var materialR = new BABYLON.StandardMaterial("textureU",scene); // Cоздаем текстуру спутника для движения вправо
+					materialR.diffuseColor = new BABYLON.Color3(1,1,1); // Цвет спутника (белый)
+					materialR.alpha = 0.5; // Прозрачность спутника
+					var r1 = BABYLON.Mesh.CreateBox("r2",0.5,scene); // Создаем первый спутник (с кубом) для движения вправо
+					r1.position.x = box.position.x + 0; // Позиция первого спутника в длину
+					r1.position.y = box.position.y + 0; // Позиция первого спутника в высоту
+					r1.position.z = box.position.z - 0.5; // Позиция первого спутника в ширину
+					r1.material = materialR; // Красим первый спутник в белый цвет
+					var r2 = BABYLON.Mesh.CreateBox("r2",0.5,scene); // Создаем второй спутник (над кубом) для движения вправо
+					r2.position.x = box.position.x + 0; // Позиция второго спутника в длину
+					r2.position.y = box.position.y + 1; // Позиция второго спутника в высоту
+					r2.position.z = box.position.z - 0.5; // Позиция второго спутника в ширину
+					r2.material = materialR; // Красим второй спутник в белый цвет
+					
+					var materialBT = new BABYLON.StandardMaterial("textureU",scene); // Cоздаем текстуру спутника падения
+					materialR.diffuseColor = new BABYLON.Color3(0,1,1); // Цвет спутника (серый)
+					materialR.alpha = 0.5; // Прозрачность спутника
+					var bt = BABYLON.Mesh.CreateBox("bt",0.5,scene); // Создаем второй спутник (под кубом) для падения
+					bt.position.x = box.position.x; // Позиция спутника в длину
+					bt.position.y = box.position.y - 0.5; // Позиция спутника в высоту
+					bt.position.z = box.position.z; // Позиция спутника в ширину
+					bt.material = materialBT; // Красим спутник в серый цвет
+
+					var f1Score = 0; // Создаем переменную для проверки пересечения для первого спутника движения вперед
+					var f2Score = 0; // Создаем переменную для проверки пересечения для второго спутника движения вперед
+					var b1Score = 0; // Создаем переменную для проверки пересечения для первого спутника движения назад
+					var b2Score = 0; // Создаем переменную для проверки пересечения для второго спутника движения назад
+					var l1Score = 0; // Создаем переменную для проверки пересечения для первого спутника движения влево
+					var l2Score = 0; // Создаем переменную для проверки пересечения для второго спутника движения влево
+					var r1Score = 0; // Создаем переменную для проверки пересечения для первого спутника движения вправо
+					var r2Score = 0; // Создаем переменную для проверки пересечения для второго спутника движения вправо
+					var btScore = 0; // Создаем переменную для проверки пересечения для второго спутника движения внищ
+					
+					var intersectedwithenemy=0;
+					
+					var mv=0;
+					
+					var fired = false;
+					// Управление кубом
+					window.onkeydown = function(event){
+					
+					
+					
+					
+					if(!fired){
+						setTimeout(function(){box.rotation = BABYLON.Vector3.Zero();}, 330);
+					if(event.keyCode==87 || event.keyCode==83 || event.keyCode==65 || event.keyCode==68){fired = true;}
+					
+					
+						// Проверка на пересечение для движения вперед
+						scene.meshes.forEach(function(m){
+							if (m.name != "skyBox" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
+								if (f1.intersectsMesh(m,true)){f1Score=1;console.log(m.name);} 
+								if (f2.intersectsMesh(m,true)){f2Score=1;console.log(m.name);} 
+								
+							}
+						});
+						// Проверка на пересечение для движения назад
+						scene.meshes.forEach(function(m){
+							 if (m.name != "skyBox" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
+								if (b1.intersectsMesh(m,true)){b1Score=1;console.log(m.name);} 
+								if (b2.intersectsMesh(m,true)){b2Score=1;console.log(m.name);} 
+							}
+						});	
+						// Проверка на пересечение для движения влево
+						scene.meshes.forEach(function(m){
+							if (m.name != "skyBox" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
+								if (l1.intersectsMesh(m,true)){l1Score=1;console.log(m.name);} 
+								if (l2.intersectsMesh(m,true)){l2Score=1;console.log(m.name);} 
+							}
+						});	
+						// Проверка на пересечение для движения вправо
+						scene.meshes.forEach(function(m){
+							if (m.name != "skyBox" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
+								if (r1.intersectsMesh(m,true)){r1Score=1;console.log(m.name);} 
+								if (r2.intersectsMesh(m,true)){r2Score=1;console.log(m.name);} 
+							}
+						});		
+						
+						
+						
+					
+						
+						// Действие при нажатии на клавишу W
+						if (event.keyCode == 87){ 
+							if (f1Score == 0 & f2Score == 0) moveforward();
+							else if (f1Score == 1 & f2Score == 0){
+								moveup();
+								moveforward();
+							}
+							else{fired = false;}
+							
+						}
+						
+						
+											
+						
+						// Действие при нажатии на клавишу S
+						 if (event.keyCode == 83){
+							if (b1Score == 0 & b2Score == 0) movebackward();
+							else if (b1Score == 1 & b2Score == 0){
+								moveup();
+								movebackward();
+							} 
+							else{fired = false;}
+						}
+						// Действие при нажатии на клавишу A
+						 if (event.keyCode == 65){
+							if (l1Score == 0 & l2Score == 0) moveleft();
+							else if (l1Score == 1 & l2Score == 0){
+								moveup();
+								moveleft();
+							}
+							else{fired = false;}
+						}
+						// Действие при нажатии на клавишу D
+						 if (event.keyCode == 68){
+							if (r1Score == 0 & r2Score == 0) moveright();
+							else if (r1Score == 1 & r2Score == 0){
+								moveup();
+								moveright();
+							}	
+						else{fired = false;}				
+						}
+						
+						
+						
+						
+						
+						
+						f1Score = 0;
+						f2Score = 0;
+						b1Score = 0;
+						b2Score = 0;	
+						l1Score = 0;
+						l2Score = 0;
+						r1Score = 0;
+						r2Score = 0;	
+						btScore = 0;
+						}
+						
+						
+						
+						
+				
+					}
+					
+	//				window.onkeyup = function(event){
+ //   fired = false;
+	
+//};
+					
+					// Функция для движения вперед
+					function moveforward(){
+					
+						tween = new TWEEN.Tween(box.position).to({x:box.position.x+1},330).start();
+						tween.easing(TWEEN.Easing.Cubic.Out);
+						tween.yoyo(true);
+					
+						var tween2 = new TWEEN.Tween(box.rotation).to({x:0,y:0,z:box.rotation.z-Math.PI/2},330).start();
+						tween2.easing(TWEEN.Easing.Cubic.Out);				 
+						tween2.yoyo(true);	
+						
+						tween.onComplete(function(){
+						
+							box.rotation = BABYLON.Vector3.Zero();
+							f1.position.x = f1.position.x + 1;
+							f2.position.x = f2.position.x + 1;
+							b1.position.x = b1.position.x + 1;
+							b2.position.x = b2.position.x + 1;
+							r1.position.x = r1.position.x + 1;
+							r2.position.x = r2.position.x + 1;
+							l1.position.x = l1.position.x + 1;
+							l2.position.x = l2.position.x + 1;
+							bt.position.x = bt.position.x + 1;
+							box.rotation = BABYLON.Vector3.Zero();
+							fired = false;
+
+						});
+					
+						
+					}	
+					
+					// Функция для движения назад
+					function movebackward(){
+					
+						tween3 = new TWEEN.Tween(box.position).to({x:box.position.x-1},330).start();
+						tween3.easing(TWEEN.Easing.Cubic.Out);
+						tween3.yoyo(true);
+					
+						var tween4 = new TWEEN.Tween(box.rotation).to({x:0,y:0,z:box.rotation.z+Math.PI/2},330).start();
+						tween4.easing(TWEEN.Easing.Cubic.Out);				 
+						tween4.yoyo(true);	
+					
+						tween3.onComplete(function(){
+							box.rotation = BABYLON.Vector3.Zero();
+							f1.position.x = f1.position.x - 1;
+							f2.position.x = f2.position.x - 1;
+							b1.position.x = b1.position.x - 1;
+							b2.position.x = b2.position.x - 1;
+							r1.position.x = r1.position.x - 1;
+							r2.position.x = r2.position.x - 1;	
+							l1.position.x = l1.position.x - 1;
+							l2.position.x = l2.position.x - 1;
+							bt.position.x = bt.position.x - 1;
+							box.rotation = BABYLON.Vector3.Zero();
+							fired = false;
+						});
+						
+					}
+					
+					// Функция для движения влево
+					function moveleft(){
+					
+						tween5 = new TWEEN.Tween(box.position).to({z:box.position.z+1},330).start();
+						tween5.easing(TWEEN.Easing.Cubic.Out);
+						tween5.yoyo(true);
+					
+						var tween6 = new TWEEN.Tween(box.rotation).to({z:0,y:0,x:box.rotation.x+Math.PI/2},330).start();
+						tween6.easing(TWEEN.Easing.Cubic.Out);				 
+						tween6.yoyo(true);
+						
+						tween5.onComplete(function(){
+							box.rotation = BABYLON.Vector3.Zero();
+							f1.position.z = f1.position.z + 1;
+							f2.position.z = f2.position.z + 1;
+							b1.position.z = b1.position.z + 1;
+							b2.position.z = b2.position.z + 1;
+							r1.position.z = r1.position.z + 1;
+							r2.position.z = r2.position.z + 1;			
+							l1.position.z = l1.position.z + 1;
+							l2.position.z = l2.position.z + 1;
+							bt.position.z = bt.position.z + 1;
+							fired = false;
+							box.rotation = BABYLON.Vector3.Zero();
+
+						});
+					
+					
+					}
+					
+					// Функция для движения вправо
+					function moveright(){
+					
+						tween7 = new TWEEN.Tween(box.position).to({z:box.position.z-1},330).start();
+						tween7.easing(TWEEN.Easing.Cubic.Out);
+						tween7.yoyo(true);
+					
+						var tween8 = new TWEEN.Tween(box.rotation).to({z:0,y:0,x:box.rotation.x-Math.PI/2},330).start();
+						tween8.easing(TWEEN.Easing.Cubic.Out);				 
+						tween8.yoyo(true);
+						
+						tween7.onComplete(function() {
+							box.rotation = BABYLON.Vector3.Zero();
+							f1.position.z = f1.position.z - 1;
+							f2.position.z = f2.position.z - 1;
+							b1.position.z = b1.position.z - 1;
+							b2.position.z = b2.position.z - 1;
+							r1.position.z = r1.position.z - 1;
+							r2.position.z = r2.position.z - 1;
+							l1.position.z = l1.position.z - 1;
+							l2.position.z = l2.position.z - 1;
+							bt.position.z = bt.position.z - 1;
+							fired = false;
+							box.rotation = BABYLON.Vector3.Zero();
+
+						});
+					
+						
+					}
+					
+					// Функция для подъёма
+					function moveup(){
+					
+						tween9 = new TWEEN.Tween(box.position).to({y:box.position.y+1},330).start();
+						tween9.easing(TWEEN.Easing.Cubic.Out);
+						tween9.yoyo(true);
+					
+						var tween10 = new TWEEN.Tween(box.rotation).to({z:0,y:0,x:box.rotation.x-Math.PI/2},330).start();
+						tween10.easing(TWEEN.Easing.Cubic.Out);				 
+						tween10.yoyo(true);
+						
+						tween10.onComplete(function() {
+							box.rotation = BABYLON.Vector3.Zero();
+							f1.position.y = f1.position.y + 1;
+							f2.position.y = f2.position.y + 1;
+							b1.position.y = b1.position.y + 1;
+							b2.position.y = b2.position.y + 1;
+							r1.position.y = r1.position.y + 1;
+							r2.position.y = r2.position.y + 1;
+							l1.position.y = l1.position.y + 1;
+							l2.position.y = l2.position.y + 1;
+							bt.position.y = bt.position.y + 1;
+							fired = false;
+							box.rotation = BABYLON.Vector3.Zero();
+
+						});
+					
+						
+					}
+										
+				/*	// Функция для подъёма
+					function  moveup(){	
+					
+					
+					
+				
+					
+					
+					// Проверка на пересечение для движения вперед
+						scene.meshes.forEach(function(m){
+							if (m.name != "skyBox" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
+								if (f1.intersectsMesh(m,true)){f1Score=1;console.log(m.name);} 
+								if (f2.intersectsMesh(m,true)){f2Score=1;console.log(m.name);} 
+								
+							}
+						});
+						// Проверка на пересечение для движения назад
+						scene.meshes.forEach(function(m){
+							 if (m.name != "skyBox" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
+								if (b1.intersectsMesh(m,true)){b1Score=1;console.log(m.name);} 
+								if (b2.intersectsMesh(m,true)){b2Score=1;console.log(m.name);} 
+							}
+						});	
+						// Проверка на пересечение для движения влево
+						scene.meshes.forEach(function(m){
+							if (m.name != "skyBox" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
+								if (l1.intersectsMesh(m,true)){l1Score=1;console.log(m.name);} 
+								if (l2.intersectsMesh(m,true)){l2Score=1;console.log(m.name);} 
+							}
+						});	
+						// Проверка на пересечение для движения вправо
+						scene.meshes.forEach(function(m){
+							if (m.name != "skyBox" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
+								if (r1.intersectsMesh(m,true)){r1Score=1;console.log(m.name);} 
+								if (r2.intersectsMesh(m,true)){r2Score=1;console.log(m.name);} 
+							}
+						});		
+						
+					
+				
+				//		console.log("f1Score: " + f1Score)
+				//		console.log("f2Score: " + f2Score)
+				//		console.log("b1Score: " + b1Score)
+				//		console.log("b2Score: " + b2Score)
+				//		console.log("r1Score: " + r1Score)
+				//		console.log("r2Score: " + r2Score)
+				//		console.log("l1Score: " + l1Score)
+				//		console.log("l2Score: " + l2Score)		
+
+						
+						if (f1Score==1 && f2Score==0){mv=1}
+						else if(b1Score==1 && b2Score==0){mv=1}
+						else if(r1Score==1 && r2Score==0){mv=1}
+						else if(l1Score==1 && l2Score==0){mv=1}
+						//console.log(mv)
+
+				if(mv==1){
+						box.position.y = box.position.y + 1;
+						f1.position.y = f1.position.y + 1;
+						f2.position.y = f2.position.y + 1;
+						b1.position.y = b1.position.y + 1;
+						b2.position.y = b2.position.y + 1;
+						r1.position.y = r1.position.y + 1;
+						r2.position.y = r2.position.y + 1;
+						l1.position.y = l1.position.y + 1;
+						l2.position.y = l2.position.y + 1;
+						bt.position.y = bt.position.y + 1;	
+						
+						
+					
+					mv=0}
+					
+						f1Score = 0;
+						f2Score = 0;
+						b1Score = 0;
+						b2Score = 0;	
+						l1Score = 0;
+						l2Score = 0;
+						r1Score = 0;
+						r2Score = 0;	
+						btScore = 0; 
+						
+						
+						
+						
+						
+						
+						
+					}*/
+					
+					
+					
+					
+					
+					
+					
+
+				/*	// Функция для падения
+					function  movedown(){	
+						scene.meshes.forEach(function(m){
+							if (m.name != "skyBox" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
+								if (bt.intersectsMesh(m,true)){
+								btScore=1;
+								//console.log(m.name);
+								} 						
+							}
+						});	
+						if (btScore == 0){						
+							box.position.y = box.position.y - 1;
+							f1.position.y = f1.position.y - 1;
+							f2.position.y = f2.position.y - 1;
+							b1.position.y = b1.position.y - 1;
+							b2.position.y = b2.position.y - 1;
+							r1.position.y = r1.position.y - 1;
+							r2.position.y = r2.position.y - 1;
+							l1.position.y = l1.position.y - 1;
+							l2.position.y = l2.position.y - 1;
+							bt.position.y = bt.position.y - 1;
+					//		btScore = 0;	
+						}					
+					} 
+*/
+
+					
+					
+					
+		
+					
+					var mm;
+                   
+                   
+                   
+ 
+                    // Функция для падения
+                    function  movedown(){  
+                    mm="0"
+                        scene.meshes.forEach(function(m){
+                            if (m.name != "skyBox" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
+                                if (bt.intersectsMesh(m,true)){
+                                btScore=1;
+                            //  console.log(m.name);
+                            mm=m.name;
+                                }
+                           
+ 
+ 
+                            }
+                        });
+                        if (btScore == 0){                     
+                            box.position.y = box.position.y - 1;
+                            f1.position.y = f1.position.y - 1;
+                            f2.position.y = f2.position.y - 1;
+                            b1.position.y = b1.position.y - 1;
+                            b2.position.y = b2.position.y - 1;
+                            r1.position.y = r1.position.y - 1;
+                            r2.position.y = r2.position.y - 1;
+                            l1.position.y = l1.position.y - 1;
+                            l2.position.y = l2.position.y - 1;
+                            bt.position.y = bt.position.y - 1;
+                        //  btScore = 1;   
+                        }  
+                       
+//console.log(btScore);
+ 
+if(mm=="0"){
+box.position.y = box.position.y - 1;
+                            f1.position.y = f1.position.y - 1;
+                            f2.position.y = f2.position.y - 1;
+                            b1.position.y = b1.position.y - 1;
+                            b2.position.y = b2.position.y - 1;
+                            r1.position.y = r1.position.y - 1;
+                            r2.position.y = r2.position.y - 1;
+                            l1.position.y = l1.position.y - 1;
+                            l2.position.y = l2.position.y - 1;
+                            bt.position.y = bt.position.y - 1;
+ 
+ 
+ 
+ 
+ 
+
+	
+}
+
+                    }
+					
+					
+					
+					
+					
+
+			
+
+					// Регистрируем цикл отрисовки, который периодически обновляет сцену (FPS)
+					engine.runRenderLoop(function(){
+						scene.render();		
+						movedown();
+						
+						
+						
+						
+						
+						
+						
+					if (enemy.intersectsMesh(box,true)){ 
+						console.log("intersected");
+						console.log(box.position.z);
+						box.position.z=(2*box.position.z-enemy.position.z);
+						}
+						
+						
+						
+						
+						
+				
+					});
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+				
+
+
+
+
+
+	
+					
+	var enemymoved=0;
+					
+					function mea(){
+					if(enemymoved==0){
+						
+					tween8 = new TWEEN.Tween(enemy.position).to({z:enemy.position.z-3},1000).start();
+						tween8.easing(TWEEN.Easing.Cubic.Out);
+						tween8.yoyo(true);	
+					
+					//enemy.position.z=enemy.position.z-3;
+					
+						enemymoved=1;
+						}
+						else
+						{
+						
+					tween8 = new TWEEN.Tween(enemy.position).to({z:enemy.position.z+3},1000).start();
+						tween8.easing(TWEEN.Easing.Cubic.Out);
+						tween8.yoyo(true);	
+				//enemy.position.z=enemy.position.z+3;
+						enemymoved=0;
+						}
+						
+						console.log(enemymoved);
+						
+}
+    setInterval(mea, 900);
+
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+				});
+				
+				
+				
+			});
+			
+			// Отслеживаем изменения размера окна браузера и (или) холста
+			window.addEventListener("resize",function(){
+					engine.resize();
+			});
+			
+			// Указывает браузеру на то, что вы хотите произвести анимацию, и просит его запланировать перерисовку на следующем кадре анимации
+					requestAnimationFrame(animate);
+					function animate(time){
+						requestAnimationFrame(animate);
+						TWEEN.update(time);
+					}
+		</script>
+	</body>
+</html>
