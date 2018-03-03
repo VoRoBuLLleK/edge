@@ -51,20 +51,23 @@
 			
 					var hero = scene.getMeshByName("hero");
 					hero.dispose();
+					var Group4122 = scene.getMeshByName("Group#4.122");
 					
 					var box = BABYLON.Mesh.CreateBox("box",1,scene);
-					box.position.x = hero.position.x + 0.5;
-                    box.position.y = hero.position.y + 0.5;
-                    box.position.z = hero.position.z + 0.5;
+					box.position.x = Group4122.position.x - 0.5;
+                    box.position.y = Group4122.position.y + 1.5;
+                    box.position.z = Group4122.position.z + 0.5;
 							
 					var materialBox = new BABYLON.StandardMaterial("textureBox",scene);
 					materialBox.diffuseColor = new BABYLON.Color3(1, 1, 0);
 					materialBox.specularColor = new BABYLON.Color3(1, 1, 1);
-					materialBox.emissiveColor = new BABYLON.Color3(0, 1, 0);
+					materialBox.emissiveColor = new BABYLON.Color3(0, 1, 1);
 					materialBox.ambientColor = new BABYLON.Color3(1, 1, 1);
-                    box.material = materialBox;
+                    //box.material = materialBox;
 					
 					var Group5022 = scene.getMeshByName("Group#5.022");
+					var Group5121 = scene.getMeshByName("Group#5.121");
+					var Group4127 = scene.getMeshByName("Group#4.127");
 					
 					var bot4_1 = BABYLON.Mesh.CreateBox("bot4_1",0.999,scene);
 					bot4_1.position.x = Group5022.position.x - 2.5;
@@ -87,6 +90,59 @@
 					bot4_2.material = materialBox;
 					bot4_3.material = materialBox;
 					bot4_4.material = materialBox;
+					
+										
+					var downPl = new BABYLON.StandardMaterial("textureBox",scene);
+					downPl.diffuseColor = new BABYLON.Color3(1, 1, 1);
+					downPl.specularColor = new BABYLON.Color3(1, 1, 1);
+					downPl.emissiveColor = new BABYLON.Color3(1, 1, 1);
+					downPl.ambientColor = new BABYLON.Color3(1, 1, 1);
+					
+					var down1 = BABYLON.Mesh.CreateBox("down1",1,scene);
+					down1.position.x = Group4122.position.x+0.5;
+					down1.position.y = Group4122.position.y+0.5;
+					down1.position.z = Group4122.position.z+0.5;
+					var down2 = BABYLON.Mesh.CreateBox("down2",1,scene);
+					down2.position.x = down1.position.x+1;
+					down2.position.y = down1.position.y;
+					down2.position.z = down1.position.z;
+					var down3 = BABYLON.Mesh.CreateBox("down3",1,scene);
+					down3.position.x = down2.position.x+1;
+					down3.position.y = down2.position.y;
+					down3.position.z = down2.position.z;
+					var down4 = BABYLON.Mesh.CreateBox("down4",1,scene);
+					down4.position.x = down3.position.x+1;
+					down4.position.y = down3.position.y;
+					down4.position.z = down3.position.z;
+					
+					var down5 = BABYLON.Mesh.CreateBox("down5",1,scene);
+					down5.position.x = Group5121.position.x-0.5;
+					down5.position.y = Group5121.position.y+0.5;
+					down5.position.z = Group5121.position.z-0.5;
+					var down6 = BABYLON.Mesh.CreateBox("down6",1,scene);
+					down6.position.x = down5.position.x;
+					down6.position.y = down5.position.y;
+					down6.position.z = down5.position.z-1;
+
+					down1.material = downPl;
+					down2.material = downPl;
+					down3.material = downPl;
+					down4.material = downPl;
+					down5.material = downPl;
+					down6.material = downPl;
+
+					var matBTT1 = new BABYLON.StandardMaterial("matBTT1",scene);
+					matBTT1.diffuseColor = new BABYLON.Color3(169/256, 169/256, 169/256);
+					matBTT1.specularColor = new BABYLON.Color3(92/256, 99/256, 113/256);
+					matBTT1.emissiveColor = new BABYLON.Color3(92/256, 99/256,113/256);
+					matBTT1.ambientColor = new BABYLON.Color3(92/256, 99/256,113/256);
+					
+					var btt1 = BABYLON.Mesh.CreateBox("btt1",0.5,scene);
+					btt1.position.x = Group4127.position.x-0.5;
+					btt1.position.y = Group4127.position.y+0.85; 
+					btt1.position.z = Group4127.position.z+0.5; 
+					btt1.material = matBTT1; 
+					
 
 					var materialF = new BABYLON.StandardMaterial("textureU",scene); // Cоздаем текстуру спутника для движения вперед
 					materialF.diffuseColor = new BABYLON.Color3(1,0,0); // Цвет спутника (красный)
@@ -154,7 +210,6 @@
 					bt.position.z = box.position.z; // Позиция спутника в ширину
 					bt.material = materialBT; // Красим спутник в серый цвет
 					
-					
 					var f1Score = 0; // Создаем переменную для проверки пересечения для первого спутника движения вперед
 					var f2Score = 0; // Создаем переменную для проверки пересечения для второго спутника движения вперед
 					var b1Score = 0; // Создаем переменную для проверки пересечения для первого спутника движения назад
@@ -168,6 +223,10 @@
 					
 					var fired = false;
 					var trig = 0;
+					
+					
+					var ppppppp = 0;
+					
 					
 					window.onkeydown = function(event){
 						if(!fired){
@@ -275,14 +334,6 @@
 					}
 					
 
-							
-		
-					
-		
-					
-					
-					
-					
 					// Функция для движения вперед
 					function moveforward(){
 						//step.play();
@@ -427,11 +478,108 @@
                         mm = "0";
                         scene.meshes.forEach(function(m){
                             if (m.name != "skyBox" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
-                                if (bt.intersectsMesh(m,true)){
-                                                                   btScore=1;     
-                                                                        
-                                                                        //console.log(m.name);
-                                                                        mm = m.name;
+                                if (bt.intersectsMesh(m,true)){btScore=1; 
+									if(m.name == "down1"){
+										setInterval(function(){
+											tween100 = new TWEEN.Tween(down1.position).to({y:-5.5}, 100).start();
+											tween100.easing(TWEEN.Easing.Exponential.Out);
+											tween100.yoyo(true);
+											}, 500);
+									}
+									if(m.name == "down2"){
+										setInterval(function(){
+											tween100 = new TWEEN.Tween(down2.position).to({y:-5.5}, 100).start();
+											tween100.easing(TWEEN.Easing.Exponential.Out);
+											tween100.yoyo(true);
+											}, 500);
+									}
+									if(m.name == "down3"){
+										setInterval(function(){
+											tween100 = new TWEEN.Tween(down3.position).to({y:-5.5}, 100).start();
+											tween100.easing(TWEEN.Easing.Exponential.Out);
+											tween100.yoyo(true);
+											}, 500);
+									}
+									if(m.name == "down4"){
+										setInterval(function(){
+											tween100 = new TWEEN.Tween(down4.position).to({y:-5.5}, 100).start();
+											tween100.easing(TWEEN.Easing.Exponential.Out);
+											tween100.yoyo(true);
+											}, 500);
+									}
+									if(m.name == "down5"){
+										setInterval(function(){
+											tween100 = new TWEEN.Tween(down5.position).to({y:-5.5}, 100).start();
+											tween100.easing(TWEEN.Easing.Exponential.Out);
+											tween100.yoyo(true);
+											}, 500);
+									}
+									if(m.name == "down6"){
+										setInterval(function(){
+											tween100 = new TWEEN.Tween(down6.position).to({y:-5.5}, 100).start();
+											tween100.easing(TWEEN.Easing.Exponential.Out);
+											tween100.yoyo(true);
+											}, 500);
+									}
+									
+									if(m.name == "btt1")
+									{
+										f1.position.z = box.position.z+0.5;
+										f2.position.z = box.position.z+0.5;
+										l1.position.z = box.position.z;
+										l2.position.z = box.position.z;
+										b1.position.z = box.position.z-0.5;
+										b2.position.z = box.position.z-0.5;
+										r1.position.z = box.position.z;
+										r2.position.z = box.position.z;
+										bt.position.z = box.position.z;	
+										tween500 = new TWEEN.Tween(box.position).to({z:20.5},100).start();
+										tween500.easing(TWEEN.Easing.Cubic.Out);
+										tween500.yoyo(true);
+										tween500 = new TWEEN.Tween(box.rotation).to({z:0,y:0,x:box.rotation.z-Math.PI/2},50).start();
+										tween500.easing(TWEEN.Easing.Cubic.Out);				 
+										tween500.yoyo(true);	
+										tween500.onComplete(function(){
+											tween501 = new TWEEN.Tween(box.position).to({z:19.5},100).start();
+											tween501.easing(TWEEN.Easing.Cubic.Out);
+											tween501.yoyo(true);
+											tween501 = new TWEEN.Tween(box.rotation).to({z:0,y:0,x:box.rotation.z-Math.PI/2},50).start();
+											tween501.easing(TWEEN.Easing.Cubic.Out);				 
+											tween501.yoyo(true);	
+											tween501.onComplete(function(){
+												tween502 = new TWEEN.Tween(box.position).to({z:18.5},100).start();
+												tween502.easing(TWEEN.Easing.Cubic.Out);
+												tween502.yoyo(true);
+												tween502 = new TWEEN.Tween(box.rotation).to({z:0,y:0,x:box.rotation.z-Math.PI/2},50).start();
+												tween502.easing(TWEEN.Easing.Cubic.Out);				 
+												tween502.yoyo(true);	
+													tween502.onComplete(function(){
+														tween503 = new TWEEN.Tween(box.position).to({z:17.5},100).start();
+														tween503.easing(TWEEN.Easing.Cubic.Out);
+														tween503.yoyo(true);
+														tween503 = new TWEEN.Tween(box.rotation).to({z:0,y:0,x:box.rotation.z-Math.PI/2},100).start();
+														tween503.easing(TWEEN.Easing.Cubic.Out);				 
+														tween503.yoyo(true);
+														tween503.onComplete(function(){
+														tween504 = new TWEEN.Tween(box.position).to({z:16.5},50).start();
+														tween504.easing(TWEEN.Easing.Cubic.Out);
+														tween504.yoyo(true);
+														tween504 = new TWEEN.Tween(box.rotation).to({z:0,y:0,x:box.rotation.z-Math.PI/2},100).start();
+														tween504.easing(TWEEN.Easing.Cubic.Out);				 
+														tween504.yoyo(true);
+													});
+													});
+												
+											});
+										});
+										
+									}
+										
+								
+                                    if(m.name == "bot4_2") ppppppp = 1;
+									else ppppppp = 0;
+                                    console.log(m.name);
+                                    mm = m.name;
                                 }
                             }
                         });
@@ -461,7 +609,41 @@
                             bt.position.y = bt.position.y - 1;
                         }
                     }
+					
+					
+					var max = 256;
+					var min = 0;
+					
+					var BoxMaterial = new BABYLON.StandardMaterial("material01",scene);
+					
+					function colorich(){
 
+						var diffuse = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+						var specular = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+						BoxMaterial.specularPower = 16;
+						var ambient = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+						var emissive = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+						
+						tween = new TWEEN.Tween(BoxMaterial.diffuseColor).to(diffuse,1000).start();
+						tween.easing(TWEEN.Easing.Cubic.Out);
+						tween.yoyo(true);
+						
+						tween1 = new TWEEN.Tween(BoxMaterial.specularColor).to(specular,1000).start();
+						tween1.easing(TWEEN.Easing.Cubic.Out);
+						tween1.yoyo(true);	
+
+						tween2 = new TWEEN.Tween(BoxMaterial.ambientColor).to(ambient,1000).start();
+						tween2.easing(TWEEN.Easing.Cubic.Out);
+						tween2.yoyo(true);		
+						
+						tween3 = new TWEEN.Tween(BoxMaterial.emissiveColor).to(emissive,1000).start();
+						tween3.easing(TWEEN.Easing.Cubic.Out);
+						tween3.yoyo(true);	
+													
+						box.material = BoxMaterial;
+				
+					}
+					setInterval(colorich, 1500);
 					
 	
 			
@@ -474,7 +656,7 @@
 					}
 	
 
-		setInterval(bot4block, 2000);			
+					setInterval(bot4block, 2000);			
 					
 					
 					
@@ -483,48 +665,64 @@
 						scene.render();	
 						movedown();
 						
-						if (bot4_2.intersectsMesh(box,true) || bot4_4.intersectsMesh(box,true)){ 
-							trig = 1;
-							box.position.x = bot4_2.position.x + 1;
-							f1.position.x = box.position.x;
-							f2.position.x = box.position.x;
-							l1.position.x = box.position.x-0.5;
-							l2.position.x = box.position.x-0.5;
-							b1.position.x = box.position.x;
-							b2.position.x = box.position.x;
-							r1.position.x = box.position.x+0.5;
-							r2.position.x = box.position.x+0.5;
-							bt.position.x = box.position.x;										
+						/*if ((bot4_2.intersectsMesh(box,true) || bot4_4.intersectsMesh(box,true))){ 
+						if(ppppppp != 1){
+								trig = 1;
+								box.position.x = bot4_2.position.x + 1;
+								f1.position.x = box.position.x;
+								f2.position.x = box.position.x;
+								l1.position.x = box.position.x-0.5;
+								l2.position.x = box.position.x-0.5;
+								b1.position.x = box.position.x;
+								b2.position.x = box.position.x;
+								r1.position.x = box.position.x+0.5;
+								r2.position.x = box.position.x+0.5;
+								bt.position.x = box.position.x;	
+}
+else
+{box.position.x = bot4_2.position.x;
+								f1.position.x = box.position.x;
+								f2.position.x = box.position.x;
+								l1.position.x = box.position.x-0.5;
+								l2.position.x = box.position.x-0.5;
+								b1.position.x = box.position.x;
+								b2.position.x = box.position.x;
+								r1.position.x = box.position.x+0.5;
+								r2.position.x = box.position.x+0.5;
+								bt.position.x = box.position.x;		}								
 						}
-						else {trig = 0;} 
+						else{trig = 0;}*/
+
+						
+						
 						
 					});
 					
 					function bot4block(){
 						tween100 = new TWEEN.Tween(bot4_1.position).to({x:4.5}, 1000).start();
-                        tween100.easing(TWEEN.Easing.Cubic.Out);
+                        tween100.easing(TWEEN.Easing.Linear.None);
                         tween100.yoyo(true);
 						tween100 = new TWEEN.Tween(bot4_2.position).to({x:5.5}, 1000).start();
-                        tween100.easing(TWEEN.Easing.Cubic.Out);
+                        tween100.easing(TWEEN.Easing.Linear.None);
                         tween100.yoyo(true);
 						tween100 = new TWEEN.Tween(bot4_3.position).to({x:4.5}, 1000).start();
-                        tween100.easing(TWEEN.Easing.Cubic.Out);
+                        tween100.easing(TWEEN.Easing.Linear.None);
                         tween100.yoyo(true);
 						tween100 = new TWEEN.Tween(bot4_4.position).to({x:5.5}, 1000).start();
-                        tween100.easing(TWEEN.Easing.Cubic.Out);
+                        tween100.easing(TWEEN.Easing.Linear.None);
                         tween100.yoyo(true);
 						tween100.onComplete(function(){
 							tween101 = new TWEEN.Tween(bot4_1.position).to({x:2.5}, 1000).start();
-							tween101.easing(TWEEN.Easing.Cubic.Out);
+							tween101.easing(TWEEN.Easing.Linear.None);
 							tween101.yoyo(true);
 							tween101 = new TWEEN.Tween(bot4_2.position).to({x:3.5}, 1000).start();
-							tween101.easing(TWEEN.Easing.Cubic.Out);
+							tween101.easing(TWEEN.Easing.Linear.None);
 							tween101.yoyo(true);
 							tween101 = new TWEEN.Tween(bot4_3.position).to({x:2.5}, 1000).start();
-							tween101.easing(TWEEN.Easing.Cubic.Out);
+							tween101.easing(TWEEN.Easing.Linear.None);
 							tween101.yoyo(true);
 							tween101 = new TWEEN.Tween(bot4_4.position).to({x:3.5}, 1000).start();
-							tween101.easing(TWEEN.Easing.Cubic.Out);
+							tween101.easing(TWEEN.Easing.Linear.None);
 							tween101.yoyo(true);
 						});
 					}
