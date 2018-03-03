@@ -556,14 +556,19 @@
 										tween500 = new TWEEN.Tween(bt.position).to({z:16.5},400).start();
 										tween500.easing(TWEEN.Easing.Linear.None);
 										tween500.yoyo(true);
-										
-										
+										tween500 = new TWEEN.Tween(bt.position).to({z:16.5},400).start();
+										tween500.easing(TWEEN.Easing.Linear.None);
+										tween500.yoyo(true);
+										tween500.onComplete(function(){
+											box.rotation = BABYLON.Vector3.Zero();
+										});
+									
 									}
 										
 								
                                     if(m.name == "bot4_2") ppppppp = 1;
 									else ppppppp = 0;
-                                    console.log(m.name);
+                                    //console.log(m.name);
                                     mm = m.name;
                                 }
                             }
