@@ -220,6 +220,17 @@
 					var r2Score = 0; // Создаем переменную для проверки пересечения для второго спутника движения вправо
 					var btScore = 0; // Создаем переменную для проверки пересечения для второго спутника движения вниз
 					
+					 // Скрыть спутники
+                  /*  f1.isVisible = false;
+                    f2.isVisible = false;
+                    b1.isVisible = false;
+                    b2.isVisible = false;
+                    r1.isVisible = false;
+                    r2.isVisible = false;
+                    l1.isVisible = false;
+                    l2.isVisible = false;
+                    bt.isVisible = false;*/
+					
 					
 					var fired = false;
 					var trig = 0;
@@ -524,7 +535,7 @@
 									
 									if(m.name == "btt1")
 									{
-									box.rotation = BABYLON.Vector3.Zero();
+										
 										f1.position.z = 17;
 										f2.position.z = 17;
 										l1.position.z = 16.5;
@@ -534,71 +545,19 @@
 										r1.position.z = 16.5;
 										r2.position.z = 16.5;
 										//bt.position.z = box.position.z;	
+
 										
-										
-										
-										
-										
-										
-										
-										
-										
-										
-										tween500 = new TWEEN.Tween(box.position).to({z:20.5},100).start();
+										tween500 = new TWEEN.Tween(box.position).to({z:16.5},400).start();
 										tween500.easing(TWEEN.Easing.Linear.None);
 										tween500.yoyo(true);
-										tween500 = new TWEEN.Tween(box.rotation).to({z:0,y:0,x:box.rotation.z-Math.PI/2},100).start();
+										tween500 = new TWEEN.Tween(box.rotation).to({z:0,y:0,x:box.rotation.z-3*Math.PI/2},400).start();
 										tween500.easing(TWEEN.Easing.Linear.None);				 
 										tween500.yoyo(true);
-										tween500 = new TWEEN.Tween(bt.position).to({z:20.5},100).start();
+										tween500 = new TWEEN.Tween(bt.position).to({z:16.5},400).start();
 										tween500.easing(TWEEN.Easing.Linear.None);
 										tween500.yoyo(true);
-										tween500.onComplete(function(){
-											tween501 = new TWEEN.Tween(box.position).to({z:19.5},100).start();
-											tween501.easing(TWEEN.Easing.Linear.None);
-											tween501.yoyo(true);
-											tween501 = new TWEEN.Tween(box.rotation).to({z:0,y:0,x:box.rotation.z-Math.PI/2},100).start();
-											tween501.easing(TWEEN.Easing.Linear.None);				 
-											tween501.yoyo(true);	
-											tween501 = new TWEEN.Tween(bt.position).to({z:19.5},100).start();
-											tween501.easing(TWEEN.Easing.Linear.None);
-											tween501.yoyo(true);
-											tween501.onComplete(function(){
-												tween502 = new TWEEN.Tween(box.position).to({z:18.5},100).start();
-												tween502.easing(TWEEN.Easing.Linear.None);
-												tween502.yoyo(true);
-												tween502 = new TWEEN.Tween(box.rotation).to({z:0,y:0,x:box.rotation.z-Math.PI/2},100).start();
-												tween502.easing(TWEEN.Easing.Linear.None);				 
-												tween502.yoyo(true);	
-												tween502 = new TWEEN.Tween(bt.position).to({z:18.5},100).start();
-												tween502.easing(TWEEN.Easing.Linear.None);
-												tween502.yoyo(true);
-													tween502.onComplete(function(){
-														tween503 = new TWEEN.Tween(box.position).to({z:17.5},100).start();
-														tween503.easing(TWEEN.Easing.Linear.None);
-														tween503.yoyo(true);
-														tween503 = new TWEEN.Tween(box.rotation).to({z:0,y:0,x:box.rotation.z-Math.PI/2},100).start();
-														tween503.easing(TWEEN.Easing.Linear.None);				 
-														tween503.yoyo(true);
-														tween503 = new TWEEN.Tween(bt.position).to({z:17.5},100).start();
-														tween503.easing(TWEEN.Easing.Linear.None);
-														tween503.yoyo(true)
-															tween503.onComplete(function(){
-															tween504 = new TWEEN.Tween(box.position).to({z:16.5},100).start();
-															tween504.easing(TWEEN.Easing.Linear.None);
-															tween504.yoyo(true);
-															tween504 = new TWEEN.Tween(box.rotation).to({z:0,y:0,x:box.rotation.z-Math.PI/2},100).start();
-															tween504.easing(TWEEN.Easing.Linear.None);				 
-															tween504.yoyo(true);
-															tween504 = new TWEEN.Tween(bt.position).to({z:16.5},100).start();
-															tween504.easing(TWEEN.Easing.Linear.None);
-															tween504.yoyo(true);	
-														});
-													});
-												
-											});
-										});
-										box.rotation = BABYLON.Vector3.Zero();
+										
+										
 									}
 										
 								
