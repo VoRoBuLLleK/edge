@@ -59,12 +59,14 @@
 					var Group8042 = scene.getMeshByName("Group#8.042");
 					var Group5072 = scene.getMeshByName("Group#5.072");
 					var Group2004 = scene.getMeshByName("Group#2.004");	
-					var Group7032 = scene.getMeshByName("Group#7.032");						
+					var Group7032 = scene.getMeshByName("Group#7.032");	
+					var Group6013 = scene.getMeshByName("Group#6.013");	
+					var Group3001 = scene.getMeshByName("Group#3.001");						
 					
 					var box = BABYLON.Mesh.CreateBox("box",1,scene);
-					box.position.x = Group8042.position.x - 0.5;
-                    box.position.y = Group8042.position.y + 1.5;
-                    box.position.z = Group8042.position.z + 0.5;
+					box.position.x = Group6013.position.x - 0.5;
+                    box.position.y = Group6013.position.y + 1.5;
+                    box.position.z = Group6013.position.z + 0.5;
 							
 					var materialBox = new BABYLON.StandardMaterial("textureBox",scene);
 					materialBox.diffuseColor = new BABYLON.Color3(216/256, 216/256, 216/256);
@@ -148,6 +150,30 @@
 					bot7_2.material = materialBox;
 					bot7_3.material = materialBox;
 					bot7_4.material = materialBox;
+					
+					var bot6 = BABYLON.Mesh.CreateBox("bot6",1,scene);
+					bot6.position.x = Group6013.position.x - 0.5;
+					bot6.position.y = Group6013.position.y + 0.5;
+					bot6.position.z = Group6013.position.z + 1.5;
+					
+					bot6.material = materialBox;
+					
+					var bot3_1 = BABYLON.Mesh.CreateBox("bot3_1",0.999,scene);
+					bot3_1.position.x = Group3001.position.x - 0.5;
+					bot3_1.position.y = Group3001.position.y + 1.5;
+					bot3_1.position.z = Group3001.position.z + 0.5;
+					var bot3_2 = BABYLON.Mesh.CreateBox("bot3_2",0.999,scene);
+					bot3_2.position.x = bot3_1.position.x - 1;
+					bot3_2.position.y = bot3_1.position.y;
+					bot3_2.position.z = bot3_1.position.z;
+					var bot3_3 = BABYLON.Mesh.CreateBox("bot3_3",0.999,scene);
+					bot3_3.position.x = bot3_2.position.x-1;
+					bot3_3.position.y = bot3_2.position.y;
+					bot3_3.position.z = bot3_2.position.z;
+					
+					bot3_1.material = materialBox;
+					bot3_2.material = materialBox;
+					bot3_3.material = materialBox;
 					
 					var downPl = new BABYLON.StandardMaterial("textureBox",scene);
 					downPl.diffuseColor = new BABYLON.Color3(235/256, 237/256, 242/256);
@@ -563,6 +589,8 @@
 					
 					var stFinish = 0;
 					var ggg = 0;
+					var stStart = 0;
+					var qqq = 0;
 					
 					// Функция для падения
 					 function  movedown(){  
@@ -644,7 +672,7 @@
 										});
 									
 									}
-
+										
 									if(m.name == "btt2")
 									{
 										btt2.position.y = 1.76;
@@ -656,6 +684,7 @@
 										btt3.material = matBTT2; 
 										
 										if(stFinish == 0){
+
 											trig = 1;
 											tween750 = new TWEEN.Tween(bot7_1.position).to({x:bot7_1.position.x + 2},400).start();
 											tween750.easing(TWEEN.Easing.Linear.None);
@@ -675,12 +704,44 @@
 											});
 											
 											stFinish = 1;
+											
 										}
 									}
 									if(m.name == "btt4")
 									{
-										btt4.position.y = 0.76;
+										btt4.position.y = 2.76;
 										btt4.material = matBTT2; 
+										qqq = 1;
+										
+										if(stStart == 0)
+										{
+											trig = 1;
+											tween1000 = new TWEEN.Tween(bot3_1.position).to({x:bot3_1.position.x + 2},500).start();
+											tween1000.easing(TWEEN.Easing.Linear.None);
+											tween1000.yoyo(true);
+											tween1000 = new TWEEN.Tween(bot3_2.position).to({x:bot3_2.position.x + 2},500).start();
+											tween1000.easing(TWEEN.Easing.Linear.None);
+											tween1000.yoyo(true);
+											tween1000 = new TWEEN.Tween(bot3_3.position).to({x:bot3_3.position.x + 2},500).start();
+											tween1000.easing(TWEEN.Easing.Linear.None);
+											tween1000.yoyo(true);
+											tween1000.onComplete(function(){
+												tween1000 = new TWEEN.Tween(bot3_1.position).to({x:bot3_1.position.x - 2},500).start();
+												tween1000.easing(TWEEN.Easing.Linear.None);
+												tween1000.yoyo(true);
+												tween1000 = new TWEEN.Tween(bot3_2.position).to({x:bot3_2.position.x - 2},500).start();
+												tween1000.easing(TWEEN.Easing.Linear.None);
+												tween1000.yoyo(true);
+												tween1000 = new TWEEN.Tween(bot3_3.position).to({x:bot3_3.position.x - 2},500).start();
+												tween1000.easing(TWEEN.Easing.Linear.None);
+												tween1000.yoyo(true);
+												trig = 0;
+											});
+											
+											qqq = 2;
+											stStart = 1;
+											
+										}
 									}
                                     
                                     //console.log(m.name);
@@ -761,7 +822,12 @@
 					}
 	
 
-					
+					setInterval(bot4block, 2000);				
+					//setInterval(bot6block, 2000);		
+					setInterval(function(){
+						setTimeout(bot6block_v1, 0);
+						setTimeout(bot6block_v2, 2000);
+					}, 4000);
 					
 					// Регистрируем цикл отрисовки, который периодически обновляет сцену (FPS)
 					engine.runRenderLoop(function(){
@@ -771,7 +837,6 @@
 						if(bot7_1.intersectsMesh(box, true))
 						{	
 							if(ggg == 0){
-							
 							box.position.x = bot7_1.position.x + 1;
 							f1.position.x = box.position.x;
 							f2.position.x = box.position.x;
@@ -785,8 +850,38 @@
 							}
 						}
 						
+						if(bot3_1.intersectsMesh(box, true))
+						{	
+							if(qqq == 1){
+								box.position.x = bot3_1.position.x + 1;
+								f1.position.x = box.position.x;
+								f2.position.x = box.position.x;
+								l1.position.x = box.position.x-0.5;
+								l2.position.x = box.position.x-0.5;
+								b1.position.x = box.position.x;
+								b2.position.x = box.position.x;
+								r1.position.x = box.position.x+0.5;
+								r2.position.x = box.position.x+0.5;
+								bt.position.x = box.position.x;	
+							}
+						}
 						
-						/*if ((bot4_2.intersectsMesh(box,true) || bot4_4.intersectsMesh(box,true))){ 
+						if(bot6.intersectsMesh(bt, true))
+						{					
+							box.position.z = bot6.position.z;
+							f1.position.z = box.position.z+0.5;
+							f2.position.z = box.position.z+0.5;
+							l1.position.z = box.position.z;
+							l2.position.z = box.position.z;
+							b1.position.z = box.position.z-0.5;
+							b2.position.z = box.position.z-0.5;
+							r1.position.z = box.position.z;
+							r2.position.z = box.position.z;
+							bt.position.z = box.position.z;	
+						}
+						
+						
+						if ((bot4_2.intersectsMesh(box,true) || bot4_4.intersectsMesh(box,true))){ 
 						if(ppppppp != 1){
 								trig = 1;
 								box.position.x = bot4_2.position.x + 1;
@@ -812,7 +907,7 @@ else
 								r2.position.x = box.position.x+0.5;
 								bt.position.x = box.position.x;		}								
 						}
-						else{trig = 0;}*/
+						else{trig = 0;}
 
 						
 						
@@ -848,6 +943,18 @@ else
 						});
 					}
 					
+					
+					function bot6block_v1(){
+						tween200 = new TWEEN.Tween(bot6.position).to({z:20.5}, 1000).start();
+                        tween200.easing(TWEEN.Easing.Linear.None);
+                        tween200.yoyo(true);
+					}
+					
+					function bot6block_v2(){
+						tween200 = new TWEEN.Tween(bot6.position).to({z:18.5}, 1000).start();
+						tween200.easing(TWEEN.Easing.Linear.None);
+						tween200.yoyo(true);
+					}
 
 				});
 			});
