@@ -68,8 +68,14 @@
 					box.position.x = Group6013.position.x - 0.5;
                     box.position.y = Group6013.position.y + 1.5;
                     box.position.z = Group6013.position.z + 0.5;
-							
+                    
+                    var materialBox = scene.getMeshByName("xxxx").material;
+                    
+						/*	
 					var materialBox = new BABYLON.StandardMaterial("textureBox",scene);
+                    
+                    
+                    
 					materialBox.diffuseColor = new BABYLON.Color3(216/256, 216/256, 216/256);
 					materialBox.specularColor = new BABYLON.Color3(209/256, 209/256, 209/256);
                     materialBox.specularPower = 1;
@@ -77,7 +83,7 @@
                 //    materialBox.emissivePower = 0.05;
 				//	materialBox.ambientColor = new BABYLON.Color3(16/256, 216/256, 216/256);
                     //box.material = materialBox;
-					
+					*/
 					var bot4_1 = BABYLON.Mesh.CreateBox("bot4_1",0.999,scene);
 					bot4_1.position.x = Group5022.position.x - 2.5;
 					bot4_1.position.y = Group5022.position.y + 1.5;
@@ -796,6 +802,41 @@
 					var min = 0;
 					
 					var BoxMaterial = new BABYLON.StandardMaterial("material01",scene);
+                    
+                    
+                    
+                    
+                    
+                    
+                      var pos=0.1
+                      var rot=Math.PI/2;
+                    
+                    function healthbox(){
+                        
+                       var diffuseh = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+                       // scene.getMeshByName("xxxx").material.diffuseColor=diffuseh;
+                        
+                        
+                        tween = new TWEEN.Tween(scene.getMeshByName("h").material.diffuseColor).to(diffuseh,500).start();
+						tween.easing(TWEEN.Easing.Cubic.Out);
+						tween.yoyo(true);
+                        
+                        
+                        var tween1121 = new TWEEN.Tween(scene.getMeshByName("h").rotation).to({y:scene.getMeshByName("h").rotation.y+rot},500).start();
+                  var tween1122 = new TWEEN.Tween(scene.getMeshByName("hsh").rotation).to({y:scene.getMeshByName("hsh").rotation.y+rot},500).start();
+				
+                        
+                        
+                        
+                        tween100 = new TWEEN.Tween(scene.getMeshByName("h").position).to({y:scene.getMeshByName("h").position.y+pos}, 500).start();
+                        tween100.onComplete(function(){
+                  pos=pos*(-1)
+                        });
+                        tween100.easing(TWEEN.Easing.Linear.None);
+                        tween100.yoyo(true);
+                        
+                    } 
+                    setInterval(healthbox, 550);
 					
 					function colorich(){
 

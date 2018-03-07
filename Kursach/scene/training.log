@@ -4,7 +4,7 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 		selected layers only:  false
 		flat shading entire scene:  false
 		inline textures:  false
-		texture directory:  Z:\GITHUB\edge\Kursach\training-patch\scene-files\
+		texture directory:  Z:\GITHUB\edge\Kursach\scene\
 	Python World class constructor completed
 	processing begun of mesh:  hero
 		processing begun of Standard material:  [Color I06]
@@ -1323,9 +1323,41 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 		num uvs2           :  0
 		num colors         :  0
 		num indices        :  1662
+	processing begun of mesh:  h
+		processing begun of Standard material:  Color_J0
+		num positions      :  20
+		num normals        :  20
+		num uvs            :  40
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  hsh
+		processing begun of Standard material:  _Color_M
+		num positions      :  4
+		num normals        :  4
+		num uvs            :  8
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  6
+	processing begun of mesh:  xxxx
+		processing begun of Standard material:  Material.001
+		num positions      :  8
+		num normals        :  8
+		num uvs            :  0
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  hb
+		processing begun of Standard material:  Material.003
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  64
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
 	processing begun of light (HEMI):  1Hemi
 	WARNING: Only directional (sun) and spot types of lamp are valid for shadows thus ignored: 1Hemi
 ========= Writing of scene file started =========
 ========= Writing of scene file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 0.9273 secs
+elapsed time:  0 min, 1.0039 secs
