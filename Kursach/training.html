@@ -71,9 +71,11 @@
 							
 					var materialBox = new BABYLON.StandardMaterial("textureBox",scene);
 					materialBox.diffuseColor = new BABYLON.Color3(216/256, 216/256, 216/256);
-					materialBox.specularColor = new BABYLON.Color3(216/256, 216/256, 216/256);
-					materialBox.emissiveColor = new BABYLON.Color3(216/256, 216/256, 216/256);
-					materialBox.ambientColor = new BABYLON.Color3(216/256, 216/256, 216/256);
+					materialBox.specularColor = new BABYLON.Color3(209/256, 209/256, 209/256);
+                    materialBox.specularPower = 1;
+				//	materialBox.emissiveColor = new BABYLON.Color3(206/256, 206/256, 206/256);
+                //    materialBox.emissivePower = 0.05;
+				//	materialBox.ambientColor = new BABYLON.Color3(16/256, 216/256, 216/256);
                     //box.material = materialBox;
 					
 					var bot4_1 = BABYLON.Mesh.CreateBox("bot4_1",0.999,scene);
@@ -364,7 +366,7 @@
 					
 							// Проверка на пересечение для движения вперед
 							scene.meshes.forEach(function(m){
-								if (m.name != "skyBox" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
+								if (m.name != "skyBox" && m.name != "1mesh" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
 									if (f1.intersectsMesh(m,true)){f1Score=1;//console.log(m.name);
 									} 
 									if (f2.intersectsMesh(m,true)){f2Score=1;//console.log(m.name);
@@ -374,7 +376,7 @@
 							
 							// Проверка на пересечение для движения назад
 							scene.meshes.forEach(function(m){
-								 if (m.name != "skyBox" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
+								 if (m.name != "skyBox" && m.name != "1mesh" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
 									if (b1.intersectsMesh(m,true)){b1Score=1;//console.log(m.name);
 									} 
 									if (b2.intersectsMesh(m,true)){b2Score=1;//console.log(m.name);
@@ -384,7 +386,7 @@
 							
 							// Проверка на пересечение для движения влево
 							scene.meshes.forEach(function(m){
-								if (m.name != "skyBox" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
+								if (m.name != "skyBox" && m.name != "1mesh" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
 									if (l1.intersectsMesh(m,true)){l1Score=1;console.log(m.name);
 									} 
 									if (l2.intersectsMesh(m,true)){l2Score=1;//console.log(m.name);
@@ -394,7 +396,7 @@
 							
 							// Проверка на пересечение для движения вправо
 							scene.meshes.forEach(function(m){
-								if (m.name != "skyBox" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
+								if (m.name != "skyBox" && m.name != "1mesh" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
 									if (r1.intersectsMesh(m,true)){r1Score=1;//console.log(m.name);
 									} 
 									if (r2.intersectsMesh(m,true)){r2Score=1;//console.log(m.name);
@@ -609,7 +611,7 @@
 					 function  movedown(){  
                         mm = "0";
                         scene.meshes.forEach(function(m){
-                            if (m.name != "skyBox" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
+                            if (m.name != "skyBox" && m.name != "1mesh" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
                                 if (bt.intersectsMesh(m,true)){btScore=1; 
 									if(m.name == "down1"){
 										setInterval(function(){

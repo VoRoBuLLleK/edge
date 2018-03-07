@@ -1,0 +1,1331 @@
+Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
+========= Conversion from Blender to Babylon.js =========
+	Scene settings used:
+		selected layers only:  false
+		flat shading entire scene:  false
+		inline textures:  false
+		texture directory:  Z:\GITHUB\edge\Kursach\training-patch\scene-files\
+	Python World class constructor completed
+	processing begun of mesh:  hero
+		processing begun of Standard material:  [Color I06]
+		num positions      :  8
+		num normals        :  8
+		num uvs            :  0
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  Group#12
+		processing begun of Standard material:  side2
+			Diffuse texture found "Texture"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  side1
+			Diffuse texture found "Texture.001"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  top1
+			Diffuse texture found "Texture.002"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  training.Multimaterial#0
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  64
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  Group#11
+		registered as also a user of material:  side2
+		registered as also a user of material:  side1
+		processing begun of Standard material:  top2
+			Diffuse texture found "Texture.003"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  training.Multimaterial#1
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  64
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  Group#10.001
+		registered as also a user of material:  side2
+		registered as also a user of material:  side1
+		registered as also a user of material:  top1
+		processing begun of multimaterial:  training.Multimaterial#2
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  64
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  Group#10
+		mesh is an instance of :  Group#10.001.  Processing halted.
+	processing begun of mesh:  Group#1.041
+		registered as also a user of material:  side2
+		registered as also a user of material:  side1
+		registered as also a user of material:  top2
+		processing begun of multimaterial:  training.Multimaterial#3
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  64
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  Group#3.052
+		registered as also a user of material:  side2
+		registered as also a user of material:  side1
+		registered as also a user of material:  top2
+		processing begun of multimaterial:  training.Multimaterial#4
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  64
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  Group#4.136
+		registered as also a user of material:  side2
+		registered as also a user of material:  side1
+		registered as also a user of material:  top1
+		processing begun of multimaterial:  training.Multimaterial#5
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  64
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  Group#5.133
+		registered as also a user of material:  side2
+		registered as also a user of material:  side1
+		registered as also a user of material:  top2
+		processing begun of multimaterial:  training.Multimaterial#6
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  64
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  Group#4.135
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#3.051
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#8.059
+		registered as also a user of material:  side2
+		registered as also a user of material:  side1
+		registered as also a user of material:  top1
+		registered as also a user of material:  top2
+		processing begun of multimaterial:  training.Multimaterial#7
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  64
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  Group#2.054
+		registered as also a user of material:  side2
+		registered as also a user of material:  side1
+		registered as also a user of material:  top1
+		processing begun of multimaterial:  training.Multimaterial#8
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  64
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  Group#2.053
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#3.050
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#1.040
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#6.041
+		registered as also a user of material:  side2
+		registered as also a user of material:  side1
+		registered as also a user of material:  top1
+		processing begun of multimaterial:  training.Multimaterial#9
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  64
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  Group#5.132
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.134
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.133
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.131
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#1.039
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#4.132
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.131
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.130
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.130
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.129
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.128
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.129
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.128
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.127
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.127
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.126
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.126
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.125
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.124
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.125
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.123
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.124
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.122
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.121
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.123
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#2.052
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#2.051
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#3.049
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#2.050
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#3.048
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#2.049
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#3.047
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#3.046
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#8.058
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#6.040
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#6.039
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#1.038
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#1.037
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#6.038
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#6.037
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#3.045
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#3.044
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#2.048
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#3.043
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#4.122
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.121
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.120
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.119
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.118
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.117
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.120
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.119
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.118
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.117
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.116
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.115
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.116
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.115
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.114
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.113
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#8.057
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#8.056
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#8.055
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#7.057
+		registered as also a user of material:  side2
+		registered as also a user of material:  side1
+		registered as also a user of material:  top2
+		registered as also a user of material:  top1
+		processing begun of multimaterial:  training.Multimaterial#10
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  64
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  Group#7.056
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#7.055
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8.054
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#5.112
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#7.054
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#7.053
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8.053
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#5.111
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.114
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#8.052
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#4.113
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#7.052
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#7.051
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#7.050
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8.051
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#4.112
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.110
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.111
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.109
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.110
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.109
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.108
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.107
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.108
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.106
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.107
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.106
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.105
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.105
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.104
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.104
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.103
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.103
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.102
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.101
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.100
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.099
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.098
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.102
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.101
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.100
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.099
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.097
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.096
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.095
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.098
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.094
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.097
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.096
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#8.050
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#7.049
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8.049
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#7.048
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8.048
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#7.047
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#7.046
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8.047
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#2.047
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#8.046
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#3.042
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#7.045
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#7.044
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#2.046
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#1.036
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#6.036
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#1.035
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#6.035
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#1.034
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#6.034
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#3.041
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#2.045
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#2.044
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#3.040
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#2.043
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#2.042
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#2.041
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#3.039
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#1.033
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#6.033
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#6.032
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#1.032
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#6.031
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#1.031
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#1.030
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#1.029
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#6.030
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#1.028
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#1.027
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#6.029
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#1.026
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#6.028
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#6.027
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#6.026
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#1.025
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#6.025
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#6.024
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#6.023
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#1.024
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#1.023
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#6.022
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#1.022
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#1.021
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#3.038
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#2.040
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#2.039
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#6.021
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#1.020
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#6.020
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#2.038
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#7.043
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#7.042
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8.045
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#7.041
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#7.040
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8.044
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#8.043
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#8.042
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#7.039
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8.041
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#8.040
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#5.093
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.092
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.091
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.090
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.095
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.094
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.093
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.089
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.092
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.091
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.090
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.089
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.088
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.087
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.086
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.088
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.087
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.085
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.084
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.086
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.083
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.085
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.084
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.082
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.081
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.080
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.079
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.078
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.083
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.082
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.081
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.080
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.077
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.079
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.076
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.075
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.078
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.077
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.074
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.073
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.072
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.076
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.075
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.074
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.073
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.072
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.071
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.070
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.069
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.068
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.071
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.067
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.066
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.070
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.069
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.068
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.067
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.065
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.066
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.065
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.064
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.063
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.064
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.063
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.062
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.062
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.061
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.061
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.060
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#7.038
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#7.037
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8.039
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#7.036
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8.038
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#8.037
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#3.037
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#3.036
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#3.035
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#2.037
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#2.036
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#3.034
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#2.035
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#3.033
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#3.032
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#2.034
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#3.031
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#2.033
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#3.030
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#3.029
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#2.032
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#2.031
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#2.030
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#2.029
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#2.028
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#7.035
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#7.034
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#3.028
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#7.033
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#7.032
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8.036
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#8.035
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#8.034
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#7.031
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8.033
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#7.030
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#5.059
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#8.032
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#7.029
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8.031
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#7.028
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8.030
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#7.027
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8.029
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#8.028
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#3.027
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#3.026
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#8.027
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#4.060
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.058
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.059
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#7.026
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#7.025
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#7.024
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8.026
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#7.023
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#7.022
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8.025
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#8.024
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#8.023
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#7.021
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#7.020
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#7.019
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8.022
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#8.021
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#7.018
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8.020
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#8.019
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#5.057
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.056
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.058
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.055
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.054
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.053
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.052
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.051
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.057
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.050
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.056
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.049
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.055
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.054
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.053
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.052
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.051
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.048
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.047
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.050
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.046
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.045
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.044
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.049
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.048
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.043
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.042
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.041
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.047
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.040
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.046
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.039
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.038
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.045
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.037
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.044
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.043
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.036
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.042
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.035
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.034
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.033
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.041
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.040
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.032
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.031
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.039
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.038
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.037
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.036
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.035
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.034
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.030
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.029
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.033
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.032
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.031
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.028
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.030
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.029
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.028
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.027
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.027
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.026
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.026
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.025
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.025
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.024
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.024
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.023
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.023
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.022
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.022
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.021
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.020
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.021
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.020
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.019
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.019
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.018
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.017
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.018
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.017
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.016
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.016
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.015
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.014
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.015
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.014
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.013
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.013
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.012
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.012
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.011
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.011
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.010
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.010
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.009
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.009
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.008
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.008
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.007
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.006
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.007
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.006
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#8.018
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#7.017
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#7.016
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8.017
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#8.016
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#7.015
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8.015
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#8.014
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#8.013
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#7.014
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8.012
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#8.011
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#7.013
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#7.012
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#7.011
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#7.010
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#7.009
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8.010
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#8.009
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#8.008
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#7.008
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#3.025
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#2.027
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#2.026
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#2.025
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#3.024
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#3.023
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#2.024
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#3.022
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#3.021
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#2.023
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#3.020
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#2.022
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#3.019
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#3.018
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#3.017
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#2.021
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#2.020
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#3.016
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#3.015
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#2.019
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#2.018
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#3.014
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#2.017
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#3.013
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#7.007
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#7.006
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8.007
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#7.005
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#7.004
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8.006
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#8.005
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#5.005
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.005
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.004
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.003
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#4.002
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.004
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#5.003
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4.001
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#5.002
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#4
+		mesh is an instance of :  Group#4.136.  Processing halted.
+	processing begun of mesh:  Group#8.004
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#8.003
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#5.001
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#7.003
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#5
+		mesh is an instance of :  Group#5.133.  Processing halted.
+	processing begun of mesh:  Group#6.019
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#1.018
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#6.018
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#6.017
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#1.017
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#6.016
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#1.016
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#6.015
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#1.015
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#6.014
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#1.014
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#1.013
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#1.012
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#6.013
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#1.011
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#6.012
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#6.011
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#6.010
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#6.009
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#1.010
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#1.009
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#6.008
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#6.007
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#1.008
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#6.006
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#1.007
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#1.006
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#6.005
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#1.005
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#1.004
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#6.004
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#1.003
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#6.003
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#1.002
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#1.001
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#1
+		mesh is an instance of :  Group#1.041.  Processing halted.
+	processing begun of mesh:  Group#6.002
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#6.001
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#2.016
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#6
+		mesh is an instance of :  Group#6.041.  Processing halted.
+	processing begun of mesh:  Group#2.015
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#3.012
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#3.011
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#3.010
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#2.014
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#2.013
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#3.009
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#2.012
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#3.008
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#3.007
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#3.006
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#2.011
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#2.010
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#3.005
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#2.009
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#3.004
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#7.002
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8.002
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#7.001
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8.001
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#7
+		mesh is an instance of :  Group#7.057.  Processing halted.
+	processing begun of mesh:  Group#8
+		mesh is an instance of :  Group#8.059.  Processing halted.
+	processing begun of mesh:  Group#2.008
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#2.007
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#2.006
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#2.005
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#3.003
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#2.004
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#3.002
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#2.003
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#2.002
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#3.001
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of mesh:  Group#2.001
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#2
+		mesh is an instance of :  Group#2.054.  Processing halted.
+	processing begun of mesh:  Group#3
+		mesh is an instance of :  Group#3.052.  Processing halted.
+	processing begun of camera (FreeCamera):  Active Camera
+	processing begun of mesh:  Group#1.042
+		processing begun of Standard material:  side2.001
+			Diffuse texture found "Texture.006"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  side1.001
+			Diffuse texture found "Texture.005"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  top2.001
+			Diffuse texture found "Texture.004"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  training.Multimaterial#11
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  64
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  1mesh
+		processing begun of Standard material:  Material.008
+			Diffuse texture found "Texture.013"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  Material.006
+			Diffuse texture found "Texture.012"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  training.Multimaterial#12
+		num positions      :  1004
+		num normals        :  1004
+		num uvs            :  2008
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1662
+	processing begun of light (HEMI):  1Hemi
+	WARNING: Only directional (sun) and spot types of lamp are valid for shadows thus ignored: 1Hemi
+========= Writing of scene file started =========
+========= Writing of scene file completed =========
+========= end of processing =========
+elapsed time:  0 min, 0.9273 secs
