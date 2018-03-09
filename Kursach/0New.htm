@@ -467,7 +467,11 @@ camera.orthoTop = 1 ;
                                         var fired = false;
                                        
                                         // Управление
+                                    var keydis=1;
                                         window.onkeydown = function(event){
+                                            if(keydis==1){
+                                            keydis
+                                            
                                         // Действие при нажатии на клавишу Esc
 										if(gameover == 0){
 											if(event.keyCode == 27)
@@ -594,6 +598,7 @@ camera.orthoTop = 1 ;
                                                                 btScore = 0;
                                                         }
                                                 }
+                                        }
                                         }
                                                
                                         // Функция для движения вперед
@@ -768,10 +773,11 @@ camera.orthoTop = 1 ;
 								
                     // Функция для падения
                     function  movedown(){  
+                    
                         mm = "0";
                         scene.meshes.forEach(function(m){
                             if (m.name != "skyBox" && m.name != "h"  && m.name != "hsh"  && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
-                                if (bt.intersectsMesh(m,true)){
+                                if (bt.intersectsMesh(m,true)){keydis=1;
                                                                         if (m.name == "Group#4.014") setInterval(bot,000);
                                                                         btScore=1;
                                                                         if (m.name == "finish"){
@@ -791,7 +797,9 @@ camera.orthoTop = 1 ;
                                                                         }
                                                                         //console.log(m.name);
                                                                         mm = m.name;
+                                    
                                 }
+                                
                             }
                         });
                         if (btScore == 0){                    
@@ -805,6 +813,7 @@ camera.orthoTop = 1 ;
                             l1.position.y = l1.position.y - 1;
                             l2.position.y = l2.position.y - 1;
                             bt.position.y = bt.position.y - 1;
+                           
                         }
  
                                                 if(mm == "0"){
@@ -818,6 +827,9 @@ camera.orthoTop = 1 ;
                             l1.position.y = l1.position.y - 1;
                             l2.position.y = l2.position.y - 1;
                             bt.position.y = bt.position.y - 1;
+                                                //        console.log("here")
+                                                     keydis=0;
+                                                    setTimeout(function(){keydis=1;},1000);
                                                 }
                     }
  
@@ -1112,9 +1124,11 @@ newsize();
                                                     
                                                      var death = new Audio('death.mp3');
         
-                        death.play();
-                                                    
+                                                    death.play();
                                                     showtip("ouch!")
+                                                    
+                                                    keydis=0;
+                                                    setTimeout(function(){keydis=1;},400);
                                                     
                                                       particleSystem.start();
                                                     setTimeout(function(){particleSystem.stop();},700);
