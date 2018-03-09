@@ -23,11 +23,12 @@
 			#renderCanvas{width:100%;height:100vh;touch-action:none;}
 			#header{font-family: 'WebFont', Arial, sans-serif;font-size:45px;position:absolute;width:100%;height:0px;z-index:1;opacity:1;background-color:#FFFFFF;color:white;}
 			#end{display:none;text-align:center;font-size:50pt;font-family:'cubicregular',Arial,sans-serif;position:absolute;top:0;bottom:0;right:0;background:#1e1e1e;overflow:hidden;width:100%;z-index:999;color:white;font-weight:900;}
+            body{background-image:url("skybox/SkyKosmos.jpg");}
 
 		</style>
 	</head>
 	
-	<body>
+	<body id="body">
 
 		<div id = "canvasZone">
 			<canvas id = "renderCanvas"></canvas>
@@ -37,16 +38,24 @@
 			var canvas = document.getElementById("renderCanvas"); // Создаем холст, который будет выводиться в элементе HTML выше 
 			var engine = new BABYLON.Engine(canvas,true); // Загружаем ядро трехмерной обработки BABYLON
 			var scene = new BABYLON.Scene(engine); // Создаем простой объект сцены Babylon
-			
 			// Загружаем саму сцену
 			BABYLON.SceneLoader.Load("scene/","training.babylon",engine,function(scene){
 				// Сам код происходящего на сцене
 				scene.executeWhenReady(function(){
 					var camera = scene.activeCamera; // Создаем активную камеру (которая двигается)	
 					camera.speed = 1; // Скорость камеры
-					camera.maxZ = 200; // Максимальный ZOOM камеры
+					camera.maxZ = 1000; // Максимальный ZOOM камеры
 					camera.attachControl(canvas,true); // Возможность контролировать камеру и передвигать её
 					//camera.rotation = new BABYLON.Vector3(Math.PI/4, 19.5, 0);
+                    
+                    
+              //      camera.mode = BABYLON.Camera.ORTHOGRAPHIC_CAMERA;
+            //        camera.orthoTop = 1 ;
+            //        camera.orthoBottom = -8;
+            //        camera.orthoLeft = -8;
+            //        camera.orthoRight = 8;
+                    
+                    scene.clearColor = new BABYLON.Color4(0,0,0,0);
 					var light = new BABYLON.HemisphericLight("HemiLight", new BABYLON.Vector3(0, 1, 0), scene);
 			
 					var hero = scene.getMeshByName("hero");
@@ -885,11 +894,33 @@
 						setTimeout(bot6block_v2, 2000);
 					}, 4000);
 					setInterval(bot2block, 3000);	
+                    
 					
+                     //оффсет бекграунда
+                                            var el = $("#body"),
+                                                bgWidth = 20,
+                                                bgHeight = 20;
+                    
+                    
+                    
+                    
 					// Регистрируем цикл отрисовки, который периодически обновляет сцену (FPS)
 					engine.runRenderLoop(function(){
 						scene.render();	
 						movedown();
+                        
+                        
+                        //оффсет бекграунда
+
+                        
+                        el.css({
+  "background-position": (el.width()-bgWidth+10) + "px " + (el.height()-bgHeight-10) +  "px"                       
+});                     
+     bgWidth=bgWidth+0.3;                   
+                        
+                        
+                        
+                        
 						
 						if(bot7_1.intersectsMesh(box, true))
 						{	

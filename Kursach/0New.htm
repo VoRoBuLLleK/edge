@@ -204,7 +204,8 @@
                 <script>       
                         var canvas = document.getElementById("renderCanvas");
                         var engine = new BABYLON.Engine(canvas,true);
-                        var scene = new BABYLON.Scene(engine);         
+                        var scene = new BABYLON.Scene(engine);  
+                    scene.clearColor = new BABYLON.Color4(0,0,0,0);
                         // Загружаем саму сцену
                         BABYLON.SceneLoader.Load("scene/","geometry.babylon",engine,function(scene){
 						scene.clearColor = new BABYLON.Color4(0,0,0,0);
