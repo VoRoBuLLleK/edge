@@ -1,0 +1,27 @@
+{"producer":{"name":"Blender","version":"2.79 (sub 0)","exporter_version":"5.2.0","file":"geomhealth.babylon"},
+"autoClear":true,"clearColor":[0.0509,0.0509,0.0509],"ambientColor":[0,0,0],"gravity":[0,-9.81,0],
+"materials":[{"name":"geomhealth.Color_J0","id":"geomhealth.Color_J0","ambient":[0.4,0,0.8],"diffuse":[0.32,0,0.64],"specular":[0.1647,0.1647,0.1647],"emissive":[0.4,0,0.8],"specularPower":50,"alpha":1,"backFaceCulling":true,"checkReadyOnlyOnce":false,"maxSimultaneousLights":4},
+{"name":"geomhealth._Color_M","id":"geomhealth._Color_M","ambient":[0.1424,0.1424,0.1424],"diffuse":[0.1424,0.1424,0.1424],"specular":[0.1647,0.1647,0.1647],"emissive":[0.1424,0.1424,0.1424],"specularPower":50,"alpha":1,"backFaceCulling":true,"checkReadyOnlyOnce":false,"maxSimultaneousLights":4}],
+"multiMaterials":[],
+"skeletons":[],
+"meshes":[{"name":"h","id":"h","materialId":"geomhealth.Color_J0","billboardMode":0,"position":[20.5171,2.4,1.5171],"rotation":[0,0,0],"scaling":[1,1,1],"isVisible":true,"freezeWorldMatrix":false,"isEnabled":true,"checkCollisions":false,"receiveShadows":false,"tags":""
+,"positions":[0.1537,0.1708,0.1537,0.1537,-0.1708,-0.1879,0.1537,-0.1708,0.1537,0.1537,0.1708,0.1537,-0.1879,-0.1708,0.1537,-0.1879,0.1708,0.1537,-0.1879,0.1708,-0.1879,-0.1879,0.1708,0.1537,-0.1879,-0.1708,0.1537,-0.1879,0.1708,-0.1879,-0.1879,0.1708,0.1537,0.1537,-0.1708,-0.1879,-0.1879,-0.1708,0.1537,0.1537,-0.1708,0.1537,0.1537,-0.1708,-0.1879,0.1537,0.1708,-0.1879,0.1537,0.1708,-0.1879
+,0.1537,-0.1708,0.1537,0.1537,0.1708,-0.1879,-0.1879,-0.1708,-0.1879]
+,"normals":[0.7071,0.7071,0,1,0,0,1,0,0,0,0,1,0,0,1,0,0,1,0,1,0,0,1,0,-1,0,0,-0.7071,0,-0.7071,-1,0,0,0,-1,0,0,-1,0,0,-1,0,0,0,-1,0,0,-1,1,0,0
+,0,0,1,0,1,0,-0.5773,-0.5773,-0.5773]
+,"uvs":[13.4488,13.4488,0,0,13.4488,0,-13.4488,13.4488,0,0,0,13.4488,0,0,0,13.4488,-13.4488,0,0,13.4488,-13.4488,13.4488,-13.4488,0,0,13.4488,-13.4488,13.4488,13.4488,0,13.4488,13.4488,0,13.4488,-13.4488,0,13.4488,0,0,0]
+,"indices":[0,1,2,3,4,5,6,0,7,8,9,10,11,12,13,9,14,15,0,16,1,3,17,4,6,18,0,8,19,9,11,19,12,9,19,14]
+,"subMeshes":[{"materialIndex":0,"verticesStart":0,"verticesCount":20,"indexStart":0,"indexCount":36}]
+,"instances":[]}
+,{"name":"hsh","id":"hsh","materialId":"geomhealth._Color_M","billboardMode":0,"position":[20.3924,2.0277,1.5101],"rotation":[0,0,0],"scaling":[1,1,1],"isVisible":true,"freezeWorldMatrix":false,"isEnabled":true,"checkCollisions":false,"receiveShadows":false,"tags":""
+,"positions":[0.1708,0,0.1708,-0.1708,0,-0.1708,0.1708,0,-0.1708,-0.1708,0,0.1708]
+,"normals":[0,1,0,0,1,0,0,1,0,0,1,0]
+,"uvs":[13.4488,13.4488,0,0,13.4488,0,0,13.4488]
+,"indices":[0,1,2,0,3,1]
+,"subMeshes":[{"materialIndex":0,"verticesStart":0,"verticesCount":4,"indexStart":0,"indexCount":6}]
+,"instances":[]}
+],
+"cameras":[],
+"lights":[],
+"shadowGenerators":[]
+}

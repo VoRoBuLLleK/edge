@@ -54,10 +54,69 @@
 						#level-rank{background:grey;position:relative;font-size:20pt;padding:5px;height:160px;}
 						.book{transform:rotate(-90deg);width:150px;position:relative;left:-5px;top:-49px;}
 						#rank-name{width:150px;height:150px;position:absolute;background:white;border:1px solid black;top:10px;left:225px;text-align:center;font-size:75pt;}
+                    
+                    
+                    
+                    
+                    .cell {
+                position: absolute;
+    width: 10%;
+    height:30px;
+    overflow: hidden;
+    border-top-left-radius:5px 5px;
+    border-top-right-radius:5px 5px;
+    border-bottom-left-radius:5px 5px;
+    border-bottom-right-radius:5px 5px;
+    -moz-box-shadow: 0 1px 3px #000;
+    -webkit-box-shadow: 0 1px 3px #000;
+    box-shadow: 0 1px 3px #000;
+   background-color:rgba(0, 0, 0, 0.90);
+   
+     left:0; right:0;
+        top:0; bottom:0;
+        margin:auto;
+
+        /*this to solve "the content will not be cut when the window is smaller than the content": */
+        max-width:100%;
+        max-height:100%;
+        overflow:auto;
+           opacity:0;            
+}
+
+
+.cell .text{
+    height: 100%;
+    color: #ffffff;
+    font-weight: bold;
+    position: absolute;
+   
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+font-family:'Giantypo',Arial,sans-serif;
+    text-align:center;
+    font-size:18pt;
+     
+
+    
+position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+                    
 			</style>
         </head>
        
-        <body>
+    
+        <body id="body">
+            
+            <div id="bodytip" class="span8 cell">
+
+    <div id="tip" class="text">SECRET</div>
+</div>
+            
+            
                 <div id = "level01">
                         <div id = "lvl"><p style = "font-size:20pt;left:1%;position:relative;top:5px;">level<br><span style = "font-size:45pt;">01</span></p></div>
                         <div id = "lvl_name">1st contact</div>
@@ -201,13 +260,58 @@
                                         }, 250);
 				</script>
        
-                <script>       
+                <script>   
+                    function showtip(tip){
+                        var tip;
+                       document.getElementById("tip").innerHTML = tip;
+                        
+                          tween = new TWEEN.Tween(document.getElementById("bodytip").style).to({opacity:1},600).start();
+                                 tween.onComplete(function(){
+                                               
+                                       tween2 = new TWEEN.Tween(document.getElementById("bodytip").style).to({opacity:0},600).start();     
+ 
+                                                });               
+                        
+                    }
                         var canvas = document.getElementById("renderCanvas");
                         var engine = new BABYLON.Engine(canvas,true);
                         var scene = new BABYLON.Scene(engine);  
                     scene.clearColor = new BABYLON.Color4(0,0,0,0);
                         // Загружаем саму сцену
                         BABYLON.SceneLoader.Load("scene/","geometry.babylon",engine,function(scene){
+                     
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        BABYLON.SceneLoader.ImportMesh("", "scene/", "geomhealth.babylon", scene, function (mesh) {
+                            
+                    /*       mesh[0].position.x =scene.getMeshByName("hero").position.x+1;
+                            mesh[1].position.x = scene.getMeshByName("hero").position.x+1;
+                            
+                              mesh[0].position.y =scene.getMeshByName("hero").position.y+1;
+                            mesh[1].position.y = scene.getMeshByName("hero").position.y+1;
+                            
+                             mesh[0].position.z =scene.getMeshByName("hero").position.z+1;
+                            mesh[1].position.z = scene.getMeshByName("hero").position.z+1;
+                      */
+                      });    
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
 						scene.clearColor = new BABYLON.Color4(0,0,0,0);
                                 // Сам код происходящего на сцене
                                 scene.executeWhenReady(function(){
@@ -395,7 +499,7 @@ camera.orthoTop = 1 ;
                                                
                                                                 // Проверка на пересечение для движения вперед
                                                                 scene.meshes.forEach(function(m){
-                                                                        if (m.name != "skyBox" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
+                                                                        if (m.name != "skyBox" && m.name != "h"  && m.name != "hsh"  && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
                                                                                 if (f1.intersectsMesh(m,true)){f1Score=1;//console.log(m.name);
                                                                                 }
                                                                                 if (f2.intersectsMesh(m,true)){f2Score=1;//console.log(m.name);
@@ -406,7 +510,7 @@ camera.orthoTop = 1 ;
                                                                
                                                                 // Проверка на пересечение для движения назад
                                                                 scene.meshes.forEach(function(m){
-                                                                         if (m.name != "skyBox" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
+                                                                         if (m.name != "skyBox" && m.name != "h"  && m.name != "hsh"  && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
                                                                                 if (b1.intersectsMesh(m,true)){b1Score=1;//console.log(m.name);
                                                                                 }
                                                                                 if (b2.intersectsMesh(m,true)){b2Score=1;//console.log(m.name);
@@ -416,7 +520,7 @@ camera.orthoTop = 1 ;
                                                                
                                                                 // Проверка на пересечение для движения влево
                                                                 scene.meshes.forEach(function(m){
-                                                                        if (m.name != "skyBox" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
+                                                                        if (m.name != "skyBox" && m.name != "h"  && m.name != "hsh"  && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
                                                                                 if (l1.intersectsMesh(m,true)){l1Score=1;//console.log(m.name);
                                                                                 }
                                                                                 if (l2.intersectsMesh(m,true)){l2Score=1;//console.log(m.name);
@@ -426,7 +530,7 @@ camera.orthoTop = 1 ;
                                                                
                                                                 // Проверка на пересечение для движения вправо
                                                                 scene.meshes.forEach(function(m){
-                                                                        if (m.name != "skyBox" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
+                                                                        if (m.name != "skyBox" && m.name != "h"  && m.name != "hsh"  && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
                                                                                 if (r1.intersectsMesh(m,true)){r1Score=1;//console.log(m.name);
                                                                                 }
                                                                                 if (r2.intersectsMesh(m,true)){r2Score=1;//console.log(m.name);
@@ -642,8 +746,8 @@ camera.orthoTop = 1 ;
                                         particleSystem.color1 = new BABYLON.Color4(0.7, 0.8, 1.0, 1.0);
                                         particleSystem.color2 = new BABYLON.Color4(0.2, 0.5, 1.0, 1.0);
                                         particleSystem.colorDead = new BABYLON.Color4(0, 0, 0.2, 0.0);
-                                        particleSystem.minSize = 0.1;
-                                        particleSystem.maxSize = 0.3;
+                                        particleSystem.minSize = 0.01;
+                                        particleSystem.maxSize = 0.2;
                                         particleSystem.minLifeTime = 0.3;
                                         particleSystem.maxLifeTime = 0.6;
                                         particleSystem.emitRate = 500;
@@ -653,11 +757,11 @@ camera.orthoTop = 1 ;
                                         particleSystem.direction2 = new BABYLON.Vector3(1, 5, -1);
                                         particleSystem.minAngularSpeed = 0;
                                         particleSystem.maxAngularSpeed = Math.PI;
-                                        particleSystem.minEmitPower = 1;
-                                        particleSystem.maxEmitPower = 3;
+                                        particleSystem.minEmitPower = 5;
+                                        particleSystem.maxEmitPower = 13;
                                         particleSystem.updateSpeed = 0.005;
  
-                                        function start(){particleSystem.start();}
+                                        function start(){particleSystem.start();  var finish = new Audio('finish2.mp3'); finish.play();}
  
                                         function stop(){particleSystem.stop();}
                                     
@@ -666,7 +770,7 @@ camera.orthoTop = 1 ;
                     function  movedown(){  
                         mm = "0";
                         scene.meshes.forEach(function(m){
-                            if (m.name != "skyBox" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
+                            if (m.name != "skyBox" && m.name != "h"  && m.name != "hsh"  && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
                                 if (bt.intersectsMesh(m,true)){
                                                                         if (m.name == "Group#4.014") setInterval(bot,000);
                                                                         btScore=1;
@@ -717,7 +821,7 @@ camera.orthoTop = 1 ;
                                                 }
                     }
  
-                                        var max = 256;
+                                        var max = 156;
                                         var min = 0;
                        
                                         var BoxMaterial = new BABYLON.StandardMaterial("material01",scene);
@@ -840,6 +944,7 @@ camera.orthoTop = 1 ;
                                                 tween3.yoyo(true);     
                                                                                                        
                                                 finish.material = finishmaterial;
+                                           
                                         }
                                         setInterval(finish01, 1000);
  
@@ -888,6 +993,11 @@ camera.orthoTop = 1 ;
 										
 										
 newsize();
+                                     //оффсет бекграунда
+                                            var el = $("#body"),
+                                                bgWidth = 20,
+                                                bgHeight = 20;
+                                    
  
                                         // Регистрируем цикл отрисовки, который периодически обновляет сцену (FPS)
                                         engine.runRenderLoop(function(){
@@ -900,7 +1010,49 @@ newsize();
                                                
                                                 movedown();
                                                 res();
-                                               
+                                      //    console.log("X: "+box.position.x);     
+                                    //      console.log("Y: "+box.position.y);     
+                                    //      console.log("Z: "+box.position.z);     
+                                            
+                                             //оффсет бекграунда
+
+                        
+                        el.css({
+  "background-position": (el.width()-bgWidth+10) + "px "                       
+});                     
+     bgWidth=bgWidth+0.3;                   
+                        
+                                     
+                                            
+                                            
+         //поднятие жизы
+                                            
+                                             scene.meshes.forEach(function(m){
+                                                                        if (m.name == "h"){
+                                                                                if (box.intersectsMesh(m,true)){
+                                                                                    
+                                                                               
+                                                                                    scene.getmes
+                                                                                   // console.log("AAAAAAAAA");
+                                                                                    scene.getMeshByName("h").dispose();
+                                                                                    scene.getMeshByName("hsh").dispose();
+                                                                                   var bonus = new Audio('bonus.mp3'); bonus.play(); 
+                                                                                    showtip("bonus");
+                                                                                    particleSystem.start();
+                                                                                    setTimeout(function(){particleSystem.stop();},500);
+                                                                           //         particleSystem.start();
+                                                                                        
+                                                                                }
+                                                                        }
+                                                                });
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
 											   
 													if (bt.position.y <= -1)
 															camera.position.y = 3;
@@ -956,6 +1108,17 @@ newsize();
                                         function res(){
                                                 if (bt.position.y < -25)
                                                 {
+                                                    
+                                                    
+                                                     var death = new Audio('death.mp3');
+        
+                        death.play();
+                                                    
+                                                    showtip("ouch!")
+                                                    
+                                                      particleSystem.start();
+                                                    setTimeout(function(){particleSystem.stop();},700);
+                                                    
                                                         box.position.x = hero.position.x + 0.5;
                                                         box.position.y = hero.position.y + 20.5;
                                                         box.position.z = hero.position.z - 0.5;
@@ -997,12 +1160,55 @@ newsize();
                                                         bt.position.z = box.position.z;
                                                 }
                                         }
+                                    
+                                    
+                                                                           
+                    var pos=0.1
+                      var rot=Math.PI/2;
+                      var dohealth=0;
+                    function healthbox(){
+                    if(dohealth==0){
+                        dohealth=1;
+                       var diffuseh = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+                       // scene.getMeshByName("xxxx").material.diffuseColor=diffuseh;
+                        
+                        
+                        tween = new TWEEN.Tween(scene.getMeshByName("h").material.diffuseColor).to(diffuseh,500).start();
+						tween.easing(TWEEN.Easing.Cubic.Out);
+						tween.yoyo(true);
+                        
+                        
+                        var tween1121 = new TWEEN.Tween(scene.getMeshByName("h").rotation).to({y:scene.getMeshByName("h").rotation.y+rot},500).start();
+                  var tween1122 = new TWEEN.Tween(scene.getMeshByName("hsh").rotation).to({y:scene.getMeshByName("hsh").rotation.y+rot},500).start();
+				
+                        
+                        
+                        
+                        tween100 = new TWEEN.Tween(scene.getMeshByName("h").position).to({y:scene.getMeshByName("h").position.y+pos}, 500).start();
+                        tween100.onComplete(function(){
+                            pos=pos*(-1);
+                            dohealth=0;
+                        });
+                        tween100.easing(TWEEN.Easing.Linear.None);
+                        tween100.yoyo(true);
+                    }
+                    } 
+                    
+                    setInterval(healthbox, 5);   
  
                                         var enemymove = 0;
                                
                                         function bot(){
                                                 if (enemymove == 0)
                                                 {
+                                                    
+                        var helper = new Audio('helper.mp3');
+                       
+                      
+                        
+           
+                        helper.play();
+                                                    showtip("secret");
                                                         tween100 = new TWEEN.Tween(box1.position).to({z:2.5+0}, 1500).start();
                                                         tween100.easing(TWEEN.Easing.Cubic.Out);
                                                         tween100.yoyo(true);
@@ -1101,6 +1307,7 @@ newsize();
                         step = new Audio('step2-0-0.2.mp3');
  
                         var audio = new Audio('track2.mp3');
+                       
                       
                         audio.currentTime = 0;
            

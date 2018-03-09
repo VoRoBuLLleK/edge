@@ -819,9 +819,10 @@
                     
                       var pos=0.1
                       var rot=Math.PI/2;
-                    
+                      var dohealth=0;
                     function healthbox(){
-                        
+                    if(dohealth==0){
+                        dohealth=1;
                        var diffuseh = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
                        // scene.getMeshByName("xxxx").material.diffuseColor=diffuseh;
                         
@@ -839,13 +840,15 @@
                         
                         tween100 = new TWEEN.Tween(scene.getMeshByName("h").position).to({y:scene.getMeshByName("h").position.y+pos}, 500).start();
                         tween100.onComplete(function(){
-                  pos=pos*(-1)
+                            pos=pos*(-1);
+                            dohealth=0;
                         });
                         tween100.easing(TWEEN.Easing.Linear.None);
                         tween100.yoyo(true);
-                        
+                    }
                     } 
-                    setInterval(healthbox, 550);
+                    
+                    setInterval(healthbox, 5);
 					
 					function colorich(){
 
