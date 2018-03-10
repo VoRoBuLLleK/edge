@@ -261,9 +261,17 @@
 			var bonus3 = scene.getMeshByName("h").clone("h3");
 			var shadow3 = scene.getMeshByName("hsh").clone("hsh3");
 			
+			var bonus4 = scene.getMeshByName("h").clone("h4");
+			var shadow4 = scene.getMeshByName("hsh").clone("hsh4");
+			
+			var bonus5 = scene.getMeshByName("h").clone("h5");
+			var shadow5 = scene.getMeshByName("hsh").clone("hsh5");
+			
 			var bns1 = scene.getMeshByName("Group#4.030");
 			var bns2 = scene.getMeshByName("Group#5.041");
 			var bns3 = scene.getMeshByName("Group#4.028");
+			var bns4 = scene.getMeshByName("Group#8.013");
+			var bns5 = scene.getMeshByName("Group#4.108");
 			
 			
 			bonus1.position.x =  bns1.position.x+0.5;
@@ -286,6 +294,20 @@
 			shadow3.position.x =  bns3.position.x+0.5;
 			shadow3.position.y =  bns3.position.y+1.01;
 			shadow3.position.z =  bns3.position.z-0.5;
+			
+			bonus4.position.x =  bns4.position.x+0.5;
+			bonus4.position.y =  bns4.position.y+1.5;
+			bonus4.position.z =  bns4.position.z-0.5;
+			shadow4.position.x =  bns4.position.x+0.5;
+			shadow4.position.y =  bns4.position.y+1.01;
+			shadow4.position.z =  bns4.position.z-0.5;
+			
+			bonus5.position.x =  bns5.position.x+0.5;
+			bonus5.position.y =  bns5.position.y+1.5;
+			bonus5.position.z =  bns5.position.z-0.5;
+			shadow5.position.x =  bns5.position.x+0.5;
+			shadow5.position.y =  bns5.position.y+1.01;
+			shadow5.position.z =  bns5.position.z-0.5;
 			
 			
 	   
@@ -1021,6 +1043,38 @@ newsize();
 			}
 		});
 		
+		scene.meshes.forEach(function(m){
+			if (m.name == "h4"){
+
+				if (box.intersectsMesh(bonus4,true)){
+					scene.getMeshByName("h4").dispose();
+					scene.getMeshByName("hsh4").dispose();
+					var bonus = new Audio('bonus.mp3'); 
+					bonus.play(); 
+					showtip("bonus");
+					particleSystem.start();
+					setTimeout(function(){particleSystem.stop();},500);	
+				}
+				
+			}
+		});
+		
+		scene.meshes.forEach(function(m){
+			if (m.name == "h5"){
+
+				if (box.intersectsMesh(bonus5,true)){
+					scene.getMeshByName("h5").dispose();
+					scene.getMeshByName("hsh5").dispose();
+					var bonus = new Audio('bonus.mp3'); 
+					bonus.play(); 
+					showtip("bonus");
+					particleSystem.start();
+					setTimeout(function(){particleSystem.stop();},500);	
+				}
+				
+			}
+		});
+		
 		
 
 													if (bt.position.y <= -1)
@@ -1152,19 +1206,31 @@ newsize();
 						tween = new TWEEN.Tween(bonus3.material.diffuseColor).to(diffuseh,500).start();
 						tween.easing(TWEEN.Easing.Cubic.Out);
 						tween.yoyo(true);
+						tween = new TWEEN.Tween(bonus5.material.diffuseColor).to(diffuseh,500).start();
+						tween.easing(TWEEN.Easing.Cubic.Out);
+						tween.yoyo(true);
+						tween = new TWEEN.Tween(bonus5.material.diffuseColor).to(diffuseh,500).start();
+						tween.easing(TWEEN.Easing.Cubic.Out);
+						tween.yoyo(true);
                         
                         
                         var tween1121 = new TWEEN.Tween(bonus1.rotation).to({y:bonus1.rotation.y+rot},500).start();
 						var tween1121 = new TWEEN.Tween(bonus2.rotation).to({y:bonus2.rotation.y+rot},500).start();
 						var tween1121 = new TWEEN.Tween(bonus3.rotation).to({y:bonus3.rotation.y+rot},500).start();
+						var tween1121 = new TWEEN.Tween(bonus4.rotation).to({y:bonus4.rotation.y+rot},500).start();
+						var tween1121 = new TWEEN.Tween(bonus5.rotation).to({y:bonus5.rotation.y+rot},500).start();
 						 
 						var tween1122 = new TWEEN.Tween(shadow1.rotation).to({y:shadow1.rotation.y+rot},500).start();
 						var tween1122 = new TWEEN.Tween(shadow2.rotation).to({y:shadow2.rotation.y+rot},500).start();
 						var tween1122 = new TWEEN.Tween(shadow3.rotation).to({y:shadow3.rotation.y+rot},500).start();
+						var tween1122 = new TWEEN.Tween(shadow4.rotation).to({y:shadow4.rotation.y+rot},500).start();
+						var tween1122 = new TWEEN.Tween(shadow5.rotation).to({y:shadow5.rotation.y+rot},500).start();
 				
                         tween100 = new TWEEN.Tween(bonus1.position).to({y:bonus1.position.y+pos}, 500).start();
 						tween100 = new TWEEN.Tween(bonus2.position).to({y:bonus2.position.y+pos}, 500).start();
 						tween100 = new TWEEN.Tween(bonus3.position).to({y:bonus3.position.y+pos}, 500).start();
+						tween100 = new TWEEN.Tween(bonus4.position).to({y:bonus4.position.y+pos}, 500).start();
+						tween100 = new TWEEN.Tween(bonus5.position).to({y:bonus5.position.y+pos}, 500).start();
                         tween100.onComplete(function(){
                             pos=pos*(-1);
                             dohealth=0;
