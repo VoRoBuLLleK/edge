@@ -45,7 +45,7 @@
 			#level-time{background:white;position:relative;font-size:15pt;padding:5px;height:50px;}
 			#level-rank{background:grey;position:relative;font-size:20pt;padding:5px;height:160px;}
 			.book{transform:rotate(-90deg);width:150px;position:relative;left:-5px;top:-49px;}
-			#rank-name{width:150px;height:150px;position:absolute;background:white;border:1px solid black;top:10px;left:225px;text-align:center;font-size:75pt;}
+			#rank-name{width:150px;height:150px;position:absolute;background:white;border:1px solid black;top:10px;left:225px;text-align:center;font-size:100pt;padding:0;}
             .cell{position:absolute;width:10%;height:30px;overflow:hidden; border-top-left-radius:5px 5px;border-top-right-radius:5px 5px;border-bottom-left-radius:5px 5px;border-bottom-right-radius:5px 5px;-moz-box-shadow: 0 1px 3px #000;-webkit-box-shadow:0 1px 3px #000;box-shadow:0 1px 3px #000;background-color:rgba(0, 0, 0, 0.90);left:0;right:0;top:0;bottom:0;margin:auto;max-width:100%;max-height:100%;overflow:auto;opacity:0;            }
 			.cell .text{ height: 100%;color: #ffffff;font-weight: bold;position: absolute;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;font-family:'Giantypo',Arial,sans-serif;text-align:center;font-size:18pt;position:absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);}    
 		</style>
@@ -69,16 +69,16 @@
             </div>
             <div style = "float:right;position:relative;top:10%;">
                 <div style = "width:100%;height:1px;clear:both;"></div>
-                <div id = "bonus"></div>
-                <div id = "bonus"></div>
-                <div id = "bonus"></div>
-                <div id = "bonus"></div>
-                <div id = "bonus"></div>
+                <div id = "bonus" class = "one"></div>
+                <div id = "bonus" class = "two"></div>
+                <div id = "bonus" class = "three"></div>
+                <div id = "bonus" class = "four"></div>
+                <div id = "bonus" class = "five"></div>
                 <div style = "width:100%;height:1px;clear:both;"></div>
 			</div>
             <div style = "width:100%;height:1px;clear:both;"></div>
                 <div id = "menu-bt">
-                    <input type = "button" class = "bt" id = "bt-Resume" value = "resume">
+                    <input type = "button" class = "bt" id = "bt-Resume" value = "resume" onclick = "resumeqw()">
                     <input type = "button" class = "bt" id = "bt-Retry" value = "retry">
                     <input type = "button" class = "bt" id = "bt-Options" value = "options">
                     <input type = "button" class = "bt" id = "bt-Menu" value = "main menu">
@@ -101,16 +101,15 @@
 				<div id = "level-rank">
 					<img src = "bookmark.png" class = "book">
 					<p style = "position:relative;top:-140px;color:white;left:30px;">rank</p>
-					<div id = "rank-name">s</div>
+					<div id = "rank-name"><span id = "rank">s</span></div>
 				</div>
 				<div style = "width:100%;height:1px;clear:both;"></div>
-				<p style = "background:white;padding:5px;font-size:15pt;">dead: <span>0</span></p>
+				<p style = "background:white;padding:5px;font-size:15pt;">dead: <span id = "dead">0</span></p>
 				<div style = "width:100%;height:1px;clear:both;"></div>
-				<p style = "background:white;padding:5px;font-size:15pt;">prism: <span>0 /5</span></p>
+				<p style = "background:white;padding:5px;font-size:15pt;">prism: <span><span id = "prizm">0</span> of 5</span></p>
 				<div style = "width:100%;height:10px;clear:both;"></div>
 				<input type = "button" class = "bt" id = "bt-Next" value = "next" onclick = "nextlvl()">
-				<input type = "button" class = "bt" id = "bt-Retry-finish" value = "retry">
-				<input type = "button" class = "bt" id = "bt-leaderboard" value = "leaderboard">
+				<input type = "button" class = "bt" id = "bt-Retry-finish" value = "retry" onclick = "reload()">
 				<input type = "button" class = "bt" id = "bt-Menu-finish" value = "main menu">
 			</div>
                
@@ -124,7 +123,17 @@
 				
 				
 		<script>
+		var k = 0;
+		var pauseend = 0;
+		function resumeqw(){
+					$("#menu").fadeOut(0, function(){});
+					k++;
+					audio.play();
+					pauseend = 0;
+				}
+				
 			function nextlvl(){document.location.href = "training.html";}
+			function reload(){document.location.href = "0New.htm";}
 			function getRandomColor(){
                 var letters = '0123456789ABCDEF';
                 var color = '#';
@@ -386,6 +395,53 @@
 			bt.position.y = box.position.y - 0.5;
 			bt.position.z = box.position.z;
 			bt.material = materialBT;
+
+										document.getElementById('bt-Retry').onclick = function() {
+											$("#menu").fadeOut(0, function(){});
+											k++;
+											audio.play();
+											pauseend = 0;
+											box.position.x = hero.position.x + 0.5;
+                                                        box.position.y = hero.position.y + 20.5;
+                                                        box.position.z = hero.position.z - 0.5;
+                                                       
+                                                        f1.position.x = box.position.x + 0.5;
+                                                        f1.position.y = box.position.y + 0;
+                                                        f1.position.z = box.position.z + 0;
+                                                       
+                                                        f2.position.x = box.position.x + 0.5;
+                                                        f2.position.y = box.position.y + 1;
+                                                        f2.position.z = box.position.z + 0;
+ 
+                                                        b1.position.x = box.position.x - 0.5;
+                                                        b1.position.y = box.position.y + 0;
+                                                        b1.position.z = box.position.z + 0;
+                                                       
+                                                        b2.position.x = box.position.x - 0.5;
+                                                        b2.position.y = box.position.y + 1;
+                                                        b2.position.z = box.position.z + 0;
+ 
+                                                        l1.position.x = box.position.x + 0;
+                                                        l1.position.y = box.position.y + 0;
+                                                        l1.position.z = box.position.z + 0.5;
+ 
+                                                        l2.position.x = box.position.x + 0;
+                                                        l2.position.y = box.position.y + 1;
+                                                        l2.position.z = box.position.z + 0.5;
+ 
+                                                        r1.position.x = box.position.x + 0;
+                                                        r1.position.y = box.position.y + 0;
+                                                        r1.position.z = box.position.z - 0.5;
+                                                       
+                                                        r2.position.x = box.position.x + 0;
+                                                        r2.position.y = box.position.y + 1;
+                                                        r2.position.z = box.position.z - 0.5;
+                                       
+                                                        bt.position.x = box.position.x;
+                                                        bt.position.y = box.position.y - 0.5;
+                                                        bt.position.z = box.position.z;
+										}
+			
        
 			// Бот-подсказка
 			var box1 = BABYLON.Mesh.CreateBox("box1", 0.999, scene);
@@ -421,12 +477,13 @@
 			bt.isVisible = false;
 		   
 			var mm;
-			var k = 0;
-			var pauseend = 0;
+			
 			var gameover = 0;	
+			var prizma = 0;
+			var dead = 0;
        
 			var fired = false;
-       
+
 			// Управление
 			var keydis=1;
 			window.onkeydown = function(event){
@@ -753,7 +810,7 @@ if (bt.intersectsMesh(m,true)){keydis=1;
 																				
 																				
         }
-        console.log(m.name);
+        //console.log(m.name);
         mm = m.name;
     
 }
@@ -822,7 +879,7 @@ if (bt.intersectsMesh(m,true)){keydis=1;
                 box.material = BoxMaterial;
         }
         setInterval(colorich, 1500);
- 
+
         var fin = scene.getMeshByName("Group#5.072");
         fin.dispose();
         var fin1 = scene.getMeshByName("Group#5.045");
@@ -951,6 +1008,7 @@ if (bt.intersectsMesh(m,true)){keydis=1;
                 finish8.material = finishmaterial2;
         }
         setInterval(finish02, 500);
+		
   
         // Указывает браузеру на то, что вы хотите произвести анимацию, и просит его запланировать перерисовку на следующем кадре анимации
         requestAnimationFrame(animate);
@@ -960,7 +1018,8 @@ if (bt.intersectsMesh(m,true)){keydis=1;
  
         }
 										
-										
+				//$("#prism").text("zdarova");	
+//$("prism").firstChild.nodeValue = "Hello" + "World";				
 newsize();
      //оффсет бекграунда
             var el = $("#body"),
@@ -997,7 +1056,7 @@ newsize();
          //поднятие жизы
         scene.meshes.forEach(function(m){
 			if (m.name == "h"){
-
+				
 				if (box.intersectsMesh(bonus1,true)){
 					scene.getMeshByName("h").dispose();
 					scene.getMeshByName("hsh").dispose();
@@ -1005,6 +1064,7 @@ newsize();
 					bonus.play(); 
 					showtip("bonus");
 					particleSystem.start();
+					prizma++;
 					setTimeout(function(){particleSystem.stop();},500);	
 				}
 				
@@ -1021,6 +1081,7 @@ newsize();
 					bonus.play(); 
 					showtip("bonus");
 					particleSystem.start();
+					prizma++;
 					setTimeout(function(){particleSystem.stop();},500);	
 				}
 				
@@ -1037,6 +1098,7 @@ newsize();
 					bonus.play(); 
 					showtip("bonus");
 					particleSystem.start();
+					prizma++;
 					setTimeout(function(){particleSystem.stop();},500);	
 				}
 				
@@ -1053,6 +1115,7 @@ newsize();
 					bonus.play(); 
 					showtip("bonus");
 					particleSystem.start();
+					prizma++;
 					setTimeout(function(){particleSystem.stop();},500);	
 				}
 				
@@ -1069,16 +1132,50 @@ newsize();
 					bonus.play(); 
 					showtip("bonus");
 					particleSystem.start();
+					prizma++;
 					setTimeout(function(){particleSystem.stop();},500);	
 				}
 				
 			}
 		});
-		
-		
+		document.getElementById('prizm').innerHTML = prizma;
 
-													if (bt.position.y <= -1)
+		
+		if(prizma == 5)
+		{
+			document.getElementById('rank').innerHTML = "S+";
+			var $five = $(".five");
+			$five.css("background-color", "red");
+		}
+		if(prizma == 4)
+		{
+			document.getElementById('rank').innerHTML = "S";
+			var $four = $(".four");
+			$four.css("background-color", "red");
+		}
+		if(prizma == 3)
+		{
+			document.getElementById('rank').innerHTML = "A";
+			var $three = $(".three");
+			$three.css("background-color", "red");
+		}
+		if(prizma == 2)
+		{
+			document.getElementById('rank').innerHTML = "B";
+			var $two = $(".two");
+			$two.css("background-color", "red");
+		}
+		if(prizma == 1)
+		{
+			document.getElementById('rank').innerHTML = "C";
+			var $one = $(".one");
+			$one.css("background-color", "red");
+		}
+		if(prizma == 0)
+			document.getElementById('rank').innerHTML = "D";
+													if (bt.position.y <= -1){
 															camera.position.y = 3;
+													}
 													else
 															camera.position.y = box.position.y + 4;
 												   
@@ -1095,8 +1192,7 @@ newsize();
 															camera.position.x = box.position.x - 4;
 													}
 												
-												
-               
+               document.getElementById('dead').innerHTML = dead;
         });
 										
 										
@@ -1131,10 +1227,9 @@ newsize();
         function res(){
                 if (bt.position.y < -25)
                 {
-                    
-                    
-                     var death = new Audio('death.mp3');
-        
+
+                    var death = new Audio('death.mp3');
+					dead++;
                     death.play();
                     showtip("ouch!")
                     
@@ -1354,7 +1449,8 @@ engine.resize();
                         audio.currentTime = 0;
            
                         audio.play();
-                     
+                    // document.getElementById('prism').innerHTML = prizma;
+					 
 					 
                 </script>
         </body>
