@@ -43,11 +43,19 @@
 				// Сам код происходящего на сцене
 				scene.executeWhenReady(function(){
 					var camera = scene.activeCamera; // Создаем активную камеру (которая двигается)	
+                   
 					camera.speed = 1; // Скорость камеры
 					camera.maxZ = 1000; // Максимальный ZOOM камеры
 					camera.attachControl(canvas,true); // Возможность контролировать камеру и передвигать её
 					//camera.rotation = new BABYLON.Vector3(Math.PI/4, 19.5, 0);
+                 
                     
+                    
+    camera.mode = BABYLON.Camera.ORTHOGRAPHIC_CAMERA;
+    camera.orthoTop = 1 ;
+    camera.orthoBottom = -18;
+    camera.orthoLeft = -18;
+    camera.orthoRight = 18; 
                     
               //      camera.mode = BABYLON.Camera.ORTHOGRAPHIC_CAMERA;
             //        camera.orthoTop = 1 ;
@@ -917,7 +925,7 @@
 
                         
                         el.css({
-  "background-position": (el.width()-bgWidth+10) + "px " + (el.height()-bgHeight-10) +  "px"                       
+  "background-position": (el.width()-bgWidth+10) + "px " 
 });                     
      bgWidth=bgWidth+0.3;                   
                         
@@ -1072,7 +1080,10 @@ else
 			// Отслеживаем изменения размера окна браузера и (или) холста
 			window.addEventListener("resize",function(){
 					engine.resize();
+                
 			});
+            
+            
 			
 			var audio = new Audio('track3.mp3');
                       

@@ -382,7 +382,7 @@
 ,"subMeshes":[{"materialIndex":0,"verticesStart":0,"verticesCount":32,"indexStart":0,"indexCount":36}]
 ,"instances":[]}
 ],
-"cameras":[{"name":"Active Camera","id":"Active Camera","position":[10.5303,8.2643,-7.7609],"rotation":[0.4845,-0.3183,0],"fov":1.086,"minZ":0.1,"maxZ":1250,"speed":1,"inertia":0.9,"checkCollisions":false,"applyGravity":false,"ellipsoid":[0.2,0.9,0.2],"cameraRigMode":0,"interaxial_distance":0.0637,"type":"FreeCamera"}],"activeCamera":"Active Camera",
+"cameras":[{"name":"Active Camera","id":"Active Camera","position":[33.4133,36.3845,-7.87],"rotation":[0.7854,-0.7854,0],"fov":1.1164,"minZ":0.5,"maxZ":1250,"speed":1,"inertia":0.9,"checkCollisions":false,"applyGravity":false,"ellipsoid":[0.2,0.9,0.2],"cameraRigMode":0,"interaxial_distance":0.0637,"type":"FreeCamera"}],"activeCamera":"Active Camera",
 "lights":[{"name":"1Hemi","id":"1Hemi","type":3,"direction":[0,1,0],"groundColor":[0,0,0],"intensity":0.5,"diffuse":[0,0,0],"specular":[0,0,0]}],
 "shadowGenerators":[]
 }
