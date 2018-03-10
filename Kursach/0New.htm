@@ -486,7 +486,61 @@
 
 			// Управление
 			var keydis=1;
+                
+                
+                
+                //camera trigger
+                camidle=1;
+                function camshake(){
+                 //    camera shake
+                    
+                     camidle=0;  
+                    tween = new TWEEN.Tween(camera.position).to({y:camera.position.y+0.225},300).start();
+                     tween.easing(TWEEN.Easing.Bounce.InOut);
+                tween.onComplete(function(){
+               
+                tween2 = new TWEEN.Tween(camera.position).to({y:camera.position.y-0.225},1).start();
+                    tween2.onComplete(function(){camidle=1;   }); 
+                     tween2.easing(TWEEN.Easing.Bounce.InOut);   
+                });   
+               /*     
+                	if(event.keyCode == 107)
+					{
+                     
+					camera.position.y=camera.position.y+1;	
+					}
+                
+                if(event.keyCode == 109)
+					{
+                      camidle=0;  
+					camera.position.y=camera.position.y-1;	
+					}
+                */
+                
+                }
+                
+                
+                
+                
+                
 			window.onkeydown = function(event){
+                
+           if(event.keyCode == 107)
+					{
+                     
+					camshake()
+					camshake()
+					}
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
 				if(keydis==1){
 				//keydis
             
@@ -1173,6 +1227,8 @@ newsize();
 		}
 		if(prizma == 0)
 			document.getElementById('rank').innerHTML = "D";
+            
+            if (camidle==1){
 													if (bt.position.y <= -1){
 															camera.position.y = 3;
 													}
@@ -1192,6 +1248,7 @@ newsize();
 															camera.position.x = box.position.x - 4;
 													}
 												
+            }
                document.getElementById('dead').innerHTML = dead;
         });
 										
