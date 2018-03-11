@@ -1,0 +1,18 @@
+{"producer":{"name":"Blender","version":"2.79 (sub 0)","exporter_version":"5.2.0","file":"monkey.babylon"},
+"autoClear":true,"clearColor":[0.0509,0.0509,0.0509],"ambientColor":[0,0,0],"gravity":[0,-9.81,0],
+"materials":[{"name":"monkey.monkey","id":"monkey.monkey","ambient":[0.9257,1,0.7907],"diffuse":[0.7405,0.8,0.6325],"specular":[0.1647,0.1647,0.1647],"emissive":[0.9257,1,0.7907],"specularPower":50,"alpha":1,"backFaceCulling":true,"checkReadyOnlyOnce":false,"maxSimultaneousLights":4, 
+"diffuseTexture":{"name":"monkey.png","level":1,"hasAlpha":1,"coordinatesMode":0,"uOffset":0,"vOffset":0,"uScale":1,"vScale":1,"uAng":0,"vAng":0,"wAng":0,"wrapU":1,"wrapV":1,"coordinatesIndex":0}}],
+"multiMaterials":[],
+"skeletons":[],
+"meshes":[{"name":"monkey","id":"monkey","materialId":"monkey.monkey","billboardMode":0,"position":[8.6294,3.3671,25.0003],"rotation":[0,0,0],"scaling":[1,1,1],"isVisible":true,"freezeWorldMatrix":false,"isEnabled":true,"checkCollisions":false,"receiveShadows":false,"tags":""
+,"positions":[-0.6017,0.6338,0,0.6017,-0.6338,0,0.6017,0.6338,0,-0.6017,-0.6338,0]
+,"normals":[0,0,-1,0,0,-1,0,0,-1,0,0,-1]
+,"uvs":[0,0.9986,1,0,1,0.9986,0,0]
+,"indices":[0,1,2,0,3,1]
+,"subMeshes":[{"materialIndex":0,"verticesStart":0,"verticesCount":4,"indexStart":0,"indexCount":6}]
+,"instances":[]}
+],
+"cameras":[],
+"lights":[],
+"shadowGenerators":[]
+}

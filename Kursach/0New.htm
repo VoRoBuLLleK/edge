@@ -227,6 +227,17 @@
                             mesh[1].position.z = scene.getMeshByName("hero").position.z+1;
                       */
             });    
+            
+            //monkey
+              
+            BABYLON.SceneLoader.ImportMesh("", "scene/", "monkey.babylon", scene, function (mesh) {
+                  //       mesh[0].position.x = mesh[0].position.x+1;  
+                mesh[0].rotation.y =Math.PI/2
+                mesh[0].position.x =23.5+1+0.5;
+                mesh[0].position.y = 2.5+0.5;
+                mesh[0].position.z =1.5;
+            });    
+       
                             
             scene.clearColor = new BABYLON.Color4(0,0,0,0);
 			// Сам код происходящего на сцене
@@ -493,6 +504,11 @@
                 camidle=1;
                 function camshake(){
                  //    camera shake
+                 
+                //    console.log("X "+box.position.x)
+               //     console.log("Y "+box.position.y)
+               //     console.log("Z "+box.position.z)
+             
                     
                      camidle=0;  
                     tween = new TWEEN.Tween(camera.position).to({y:camera.position.y+0.225},300).start();
@@ -1071,7 +1087,21 @@ if (bt.intersectsMesh(m,true)){keydis=1;
                 TWEEN.update(time);
  
         }
-										
+                
+                //monkey
+                var monkeyshowed=0;
+function showmonkey(){
+    if(prizma>3 && monkeyshowed==0 ){
+    
+    //  scene.getMeshByName("monkey").position.y = scene.getMeshByName("monkey").position.y+(0.655)*2;
+        
+         tween = new TWEEN.Tween( scene.getMeshByName("monkey").position).to({y:scene.getMeshByName("monkey").position.y+(0.655)*2},1000).start();
+        var bonus = new Audio('monkey.mp3'); 
+					bonus.play(); 
+        monkeyshowed=1;
+    }
+    
+}										
 				//$("#prism").text("zdarova");	
 //$("prism").firstChild.nodeValue = "Hello" + "World";				
 newsize();
@@ -1105,6 +1135,10 @@ newsize();
      bgWidth=bgWidth+0.3;                   
                         
      
+          
+      //monkey
+            showmonkey();
+            
             
             
          //поднятие жизы
