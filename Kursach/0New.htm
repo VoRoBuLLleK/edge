@@ -46,8 +46,9 @@
 			#level-rank{background:grey;position:relative;font-size:20pt;padding:5px;height:160px;}
 			.book{transform:rotate(-90deg);width:150px;position:relative;left:-5px;top:-49px;}
 			#rank-name{width:150px;height:150px;position:absolute;background:white;border:1px solid black;top:10px;left:225px;text-align:center;font-size:100pt;padding:0;}
-            .cell{position:absolute;width:10%;height:30px;overflow:hidden; border-top-left-radius:5px 5px;border-top-right-radius:5px 5px;border-bottom-left-radius:5px 5px;border-bottom-right-radius:5px 5px;-moz-box-shadow: 0 1px 3px #000;-webkit-box-shadow:0 1px 3px #000;box-shadow:0 1px 3px #000;background-color:rgba(0, 0, 0, 0.90);left:0;right:0;top:0;bottom:0;margin:auto;max-width:100%;max-height:100%;overflow:auto;opacity:0;            }
+            .cell{position:absolute;width:10%;height:30px;overflow:hidden;border-top-left-radius:5px 5px;border-top-right-radius:5px 5px;border-bottom-left-radius:5px 5px;border-bottom-right-radius:5px 5px;-moz-box-shadow: 0 1px 3px #000;-webkit-box-shadow:0 1px 3px #000;box-shadow:0 1px 3px #000;background-color:rgba(0, 0, 0, 0.90);left:0;right:0;top:0;bottom:0;margin:auto;max-width:100%;max-height:100%;overflow:auto;opacity:0;}
 			.cell .text{ height: 100%;color: #ffffff;font-weight: bold;position: absolute;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;font-family:'Giantypo',Arial,sans-serif;text-align:center;font-size:18pt;position:absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);}    
+			#upra{position:absolute;width:100px;height:100px;color:#ffffff;background-color:rgba(0, 0, 0, 0.90);z-index:999;}
 		</style>
     </head>
        
@@ -62,6 +63,13 @@
             <div id = "lvl_name">1st contact</div>
             <div id = "load">loading...</div>
         </div>
+		
+		<div id = "upra">
+		<div id = "bodytip1" class = "span8 cell">
+			<img src = "wasd.png">
+		</div>
+			
+		</div>
                
         <div id = "menu">
             <div style = "float:left;" id = "text-lvl">
@@ -80,8 +88,10 @@
                 <div id = "menu-bt">
                     <input type = "button" class = "bt" id = "bt-Resume" value = "resume" onclick = "resumeqw()">
                     <input type = "button" class = "bt" id = "bt-Retry" value = "retry">
+					<!----
                     <input type = "button" class = "bt" id = "bt-Options" value = "options">
                     <input type = "button" class = "bt" id = "bt-Menu" value = "main menu">
+					-->
                 </div>
             </div>
 				
@@ -95,7 +105,7 @@
 				<div style = "width:100%;height:1px;clear:both;"></div>
 				<div id = "level-time">
 					<p>level time:</p>
-					<p align = "right" style = "color:grey">00' 00'' 00</p>
+					<p align = "right" style = "color:grey"><span id = "timer">00:00</span></p>
 				</div>
 				<div style = "width:100%;height:1px;clear:both;"></div>
 				<div id = "level-rank">
@@ -110,7 +120,7 @@
 				<div style = "width:100%;height:10px;clear:both;"></div>
 				<input type = "button" class = "bt" id = "bt-Next" value = "next" onclick = "nextlvl()">
 				<input type = "button" class = "bt" id = "bt-Retry-finish" value = "retry" onclick = "reload()">
-				<input type = "button" class = "bt" id = "bt-Menu-finish" value = "main menu">
+				<!--<input type = "button" class = "bt" id = "bt-Menu-finish" value = "main menu">-->
 			</div>
                
             <div id = "canvasZone">
@@ -133,7 +143,7 @@
 				}
 				
 			function nextlvl(){document.location.href = "training.html";}
-			function reload(){document.location.href = "0New.htm";}
+			function reload(){document.location.href = "0New.htm";document.getElementById("timer").innerHTML = "00:00";}
 			function getRandomColor(){
                 var letters = '0123456789ABCDEF';
                 var color = '#';
@@ -197,6 +207,7 @@
 				if(mainm == 1){$main.css("background-color", getRandomColor());}
 				if(mainm == 0){$main.css("background-color", "#FFFFFF");}
 			},250);
+	
 	</script>
        
     <script>   
@@ -209,6 +220,15 @@
 			});                             
         }
 		
+		function showtip1(upra){
+			var upra;
+            document.getElementById("upra").innerHTML = upra;
+            tween = new TWEEN.Tween(document.getElementById("bodytip1").style).to({opacity:1},600).start();
+			tween.onComplete(function(){
+				tween2 = new TWEEN.Tween(document.getElementById("bodytip1").style).to({opacity:0},600).start();     
+			});                             
+        }
+		showtip1();
         var canvas = document.getElementById("renderCanvas");
         var engine = new BABYLON.Engine(canvas,true);
         var scene = new BABYLON.Scene(engine);  
@@ -303,10 +323,10 @@
 			
 			bonus2.position.x =  bns2.position.x+0.5;
 			bonus2.position.y =  bns2.position.y+1.5;
-			bonus2.position.z =  bns2.position.z-0.5;
+			bonus2.position.z =  bns2.position.z+0.5;
 			shadow2.position.x =  bns2.position.x+0.5;
 			shadow2.position.y =  bns2.position.y+1.01;
-			shadow2.position.z =  bns2.position.z-0.5;
+			shadow2.position.z =  bns2.position.z+0.5;
 			
 			bonus3.position.x =  bns3.position.x+0.5;
 			bonus3.position.y =  bns3.position.y+1.5;
@@ -590,7 +610,7 @@
                
 						// Проверка на пересечение для движения вперед
 						scene.meshes.forEach(function(m){
-							if (m.name != "skyBox" && m.name != "h"  && m.name != "hsh"  && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
+							if (m.name != "skyBox" && m.name != "h"  && m.name != "hsh" && m.name != "h2"  && m.name != "hsh2" && m.name != "h3"  && m.name != "hsh3" && m.name != "h4"  && m.name != "hsh4" && m.name != "h5"  && m.name != "hsh5" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
 								if (f1.intersectsMesh(m,true)){f1Score=1;//console.log(m.name);
 								}
 								if (f2.intersectsMesh(m,true)){f2Score=1;//console.log(m.name);
@@ -601,7 +621,7 @@
                                
 						// Проверка на пересечение для движения назад
 						scene.meshes.forEach(function(m){
-							if (m.name != "skyBox" && m.name != "h"  && m.name != "hsh"  && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
+							if (m.name != "skyBox" && m.name != "h"  && m.name != "hsh"  && m.name != "h2"  && m.name != "hsh2" && m.name != "h3"  && m.name != "hsh3" && m.name != "h4"  && m.name != "hsh4" && m.name != "h5"  && m.name != "hsh5" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
 								if (b1.intersectsMesh(m,true)){b1Score=1;//console.log(m.name);
 								}
 								if (b2.intersectsMesh(m,true)){b2Score=1;//console.log(m.name);
@@ -611,7 +631,7 @@
                                
 						// Проверка на пересечение для движения влево
 						scene.meshes.forEach(function(m){
-							if (m.name != "skyBox" && m.name != "h"  && m.name != "hsh"  && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
+							if (m.name != "skyBox" && m.name != "h"  && m.name != "hsh" && m.name != "h2"  && m.name != "hsh2" && m.name != "h3"  && m.name != "hsh3" && m.name != "h4"  && m.name != "hsh4" && m.name != "h5"  && m.name != "hsh5" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
 								if (l1.intersectsMesh(m,true)){l1Score=1;//console.log(m.name);
 								}
 								if (l2.intersectsMesh(m,true)){l2Score=1;//console.log(m.name);
@@ -621,7 +641,7 @@
                                
 						// Проверка на пересечение для движения вправо
 						scene.meshes.forEach(function(m){
-							if (m.name != "skyBox" && m.name != "h"  && m.name != "hsh"  && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
+							if (m.name != "skyBox" && m.name != "h"  && m.name != "hsh" && m.name != "h2"  && m.name != "hsh2" && m.name != "h3"  && m.name != "hsh3" && m.name != "h4"  && m.name != "hsh4" && m.name != "h5"  && m.name != "hsh5" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
 								if (r1.intersectsMesh(m,true)){r1Score=1;//console.log(m.name);
 								}
 								if (r2.intersectsMesh(m,true)){r2Score=1;//console.log(m.name);
@@ -862,7 +882,7 @@
                     
                         mm = "0";
                         scene.meshes.forEach(function(m){
-                            if (m.name != "skyBox" && m.name != "h"  && m.name != "hsh"  && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
+                            if (m.name != "skyBox" && m.name != "h"  && m.name != "hsh" && m.name != "h2"  && m.name != "hsh2" && m.name != "h3"  && m.name != "hsh3" && m.name != "h4"  && m.name != "hsh4" && m.name != "h5"  && m.name != "hsh5" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
 if (bt.intersectsMesh(m,true)){keydis=1;
         if (m.name == "Group#4.014") setInterval(bot,000);
         btScore=1;
@@ -877,6 +897,8 @@ if (bt.intersectsMesh(m,true)){keydis=1;
 																				gameover = 1;
 																				pauseend = 1;
                 $("#menu-finish").fadeIn(0, function(){});
+	
+				
 																				
 																				
 																				
@@ -1428,6 +1450,39 @@ newsize();
                     } 
                     
                     setInterval(healthbox, 5);   
+					
+					
+						
+			
+    var $worked = $("#timer");
+
+    function update() {
+	if(gameover!=1){
+
+        var myTime = $worked.html();
+        var ss = myTime.split(":");
+        var dt = new Date();
+        dt.setHours(0);
+        dt.setMinutes(ss[0]);
+        dt.setSeconds(ss[1]);
+        
+        var dt2 = new Date(dt.valueOf() + 1000);
+        var temp = dt2.toTimeString().split(" ");
+        var ts = temp[0].split(":");
+		
+		console.log(ts)
+        
+        $worked.html(ts[1]+":"+ts[2]);
+        setTimeout(update, 1000);
+    }
+	}
+	setTimeout(update, 1000);
+//	if (bt.intersectsMesh(finish, true)){
+	
+	//}
+
+					
+					
  
         var enemymove = 0;
                                
