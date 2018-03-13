@@ -1324,21 +1324,21 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 		num colors         :  0
 		num indices        :  36
 	processing begun of mesh:  1mesh
-		processing begun of Standard material:  Material.002
-			Diffuse texture found "Texture.007"
+		processing begun of Standard material:  Material.000
+			Diffuse texture found "Texture.010"
 				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of Standard material:  Material.004
-			Diffuse texture found "Texture.008"
+		processing begun of Standard material:  Material.005
+			Diffuse texture found "Texture.009"
 				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
 		processing begun of multimaterial:  training.Multimaterial#12
-		num positions      :  1142
-		num normals        :  1142
-		num uvs            :  2284
+		num positions      :  1491
+		num normals        :  1491
+		num uvs            :  2982
 		num uvs2           :  0
 		num colors         :  0
-		num indices        :  1728
+		num indices        :  2487
 	WARNING: The following lamp not visible in scene thus ignored: 1Hemi
 ========= Writing of scene file started =========
 ========= Writing of scene file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 0.5526 secs
+elapsed time:  0 min, 0.563 secs
