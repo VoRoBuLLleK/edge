@@ -91,8 +91,8 @@
                 <input type = "button" class = "bt" id = "bt-Retry" value = "retry">
 				
 				<span style = "color:white;font-size:20pt;">select a level</span><br>
-				<input type = "button" id = "lvl1" value = "1" class = "bt-lvl1">
-				<input type = "button" id = "lvl2" value = "2" class = "bt-lvl2">
+				<input type = "button" id = "lvl1" value = "1" class = "bt-lvl1" onclick = "lvvvl1()">
+				<input type = "button" id = "lvl2" value = "2" class = "bt-lvl2" onclick = "lvvvl2()">
             </div>
         </div>
 				
@@ -143,6 +143,8 @@
 				}
 				
 			function nextlvl(){document.location.href = "training.html";}
+			function lvvvl1(){document.location.href = "index.html";}
+			function lvvvl2(){document.location.href = "training.html";}
 			function reload(){document.location.href = "0New.htm";document.getElementById("timer").innerHTML = "00:00";}
 			function getRandomColor(){
                 var letters = '0123456789ABCDEF';
