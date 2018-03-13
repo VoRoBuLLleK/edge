@@ -101,7 +101,7 @@
 				<div style = "width:100%;height:1px;clear:both;"></div>
 				<p style = "background:white;padding:5px;font-size:15pt;position:relative;top:-93px;">dead: <span id = "dead">0</span></p>
 				<div style = "width:100%;height:1px;clear:both;"></div>
-				<p style = "background:white;padding:5px;font-size:15pt;position:relative;top:-133px;">prism: <span><span id = "prizm">0</span> of 5</span></p>
+				<p style = "background:white;padding:5px;font-size:15pt;position:relative;top:-133px;">prism: <span><span id = "prizm">0</span> of 7</span></p>
 				<div style = "width:100%;height:10px;clear:both;"></div>
 				<input style = "position:relative;top:-153px;" type = "button" class = "bt" id = "bt-Next" value = "next" onclick = "nextlvl()">
 				<input style = "position:relative;top:-153px;" type = "button" class = "bt" id = "bt-Retry-finish" value = "retry" onclick = "reload()">
@@ -250,7 +250,7 @@
 					var Group3001 = scene.getMeshByName("Group#3.001");	
 					var Group2009 = scene.getMeshByName("Group#2.009");		
 
-					var fin = scene.getMeshByName("Group#1.016");
+					/*var fin = scene.getMeshByName("Group#1.016");
 					fin.dispose();
 					var fin1 = scene.getMeshByName("Group#6.022");
 					fin1.dispose();
@@ -267,21 +267,20 @@
 					var fin7 = scene.getMeshByName("Group#6.021");
 					fin7.dispose();
 					var fin8 = scene.getMeshByName("Group#1.041");
-					fin8.dispose();
-					var gggggg = scene.getMeshByName("Group#1.042");
-					gggggg.geometry.dispose();
+					fin8.dispose();*/
+					
                     					
 					
-					/*var box = BABYLON.Mesh.CreateBox("box",1,scene);
+					var box = BABYLON.Mesh.CreateBox("box",1,scene);
 					box.position.x = hero.position.x - 0.5;
                     box.position.y = hero.position.y + 0.5;
-                    box.position.z = hero.position.z + 0.5;*/
+                    box.position.z = hero.position.z + 0.5;
 					
 					
-					var box = BABYLON.Mesh.CreateBox("box",1,scene);
+					/*var box = BABYLON.Mesh.CreateBox("box",1,scene);
 					box.position.x = fin.position.x - 0.5;
                     box.position.y = fin.position.y + 1.5;
-                    box.position.z = fin.position.z + 0.5;
+                    box.position.z = fin.position.z + 0.5;*/
                     
                     var materialBox = scene.getMeshByName("xxxx").material;
                     
@@ -1170,7 +1169,62 @@
                     
                     
                     
+                    function res(){
+                if (bt.position.y < -25)
+                {
+
+                    var death = new Audio('death.mp3');
+					dead++;
+                    death.play();
+                    showtip("ouch!")
                     
+                    keydis=0;
+                    setTimeout(function(){keydis=1;},400);
+                    
+                      particleSystem.start();
+                    setTimeout(function(){particleSystem.stop();},700);
+                    
+                        box.position.x = hero.position.x + 0.5;
+                        box.position.y = hero.position.y + 20.5;
+                        box.position.z = hero.position.z - 0.5;
+                       
+                        f1.position.x = box.position.x + 0.5;
+                        f1.position.y = box.position.y + 0;
+                        f1.position.z = box.position.z + 0;
+                       
+                        f2.position.x = box.position.x + 0.5;
+                        f2.position.y = box.position.y + 1;
+                        f2.position.z = box.position.z + 0;
+ 
+                        b1.position.x = box.position.x - 0.5;
+                        b1.position.y = box.position.y + 0;
+                        b1.position.z = box.position.z + 0;
+                       
+                        b2.position.x = box.position.x - 0.5;
+                        b2.position.y = box.position.y + 1;
+                        b2.position.z = box.position.z + 0;
+ 
+                        l1.position.x = box.position.x + 0;
+                        l1.position.y = box.position.y + 0;
+                        l1.position.z = box.position.z + 0.5;
+ 
+                        l2.position.x = box.position.x + 0;
+                        l2.position.y = box.position.y + 1;
+                        l2.position.z = box.position.z + 0.5;
+ 
+                        r1.position.x = box.position.x + 0;
+                        r1.position.y = box.position.y + 0;
+                        r1.position.z = box.position.z - 0.5;
+                       
+                        r2.position.x = box.position.x + 0;
+                        r2.position.y = box.position.y + 1;
+                        r2.position.z = box.position.z - 0.5;
+       
+                        bt.position.x = box.position.x;
+                        bt.position.y = box.position.y - 0.5;
+                        bt.position.z = box.position.z;
+                }
+        }
                     
                       var pos=0.1
                       var rot=Math.PI/2;
@@ -1238,6 +1292,31 @@
                     
                     setInterval(healthbox, 5);
 					
+					
+					 var $worked = $("#timer");
+
+    function update() {
+	if(gameover!=1){
+
+        var myTime = $worked.html();
+        var ss = myTime.split(":");
+        var dt = new Date();
+        dt.setHours(0);
+        dt.setMinutes(ss[0]);
+        dt.setSeconds(ss[1]);
+        
+        var dt2 = new Date(dt.valueOf() + 1000);
+        var temp = dt2.toTimeString().split(" ");
+        var ts = temp[0].split(":");
+		
+		console.log(ts)
+        
+        $worked.html(ts[1]+":"+ts[2]);
+        setTimeout(update, 1000);
+    }
+	}
+	setTimeout(update, 1000);
+					
 					function colorich(){
 
 						var diffuse = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
@@ -1267,7 +1346,7 @@
 					}
 					setInterval(colorich, 1500);
 					
-					var finish = BABYLON.Mesh.CreateBox("finish",1,scene);
+			/*		var finish = BABYLON.Mesh.CreateBox("finish",1,scene);
         finish.position.x = fin.position.x - 0.5;
         finish.position.y = fin.position.y + 0.5;
         finish.position.z = fin.position.z + 0.5;
@@ -1375,7 +1454,7 @@
                 finish5.material = finishmaterial2;
                 finish6.material = finishmaterial2;
         }
-        setInterval(finish02, 500);
+        setInterval(finish02, 500);*/
 			
 			
 					// Указывает браузеру на то, что вы хотите произвести анимацию, и просит его запланировать перерисовку на следующем кадре анимации
@@ -1408,7 +1487,7 @@
 					engine.runRenderLoop(function(){
 						scene.render();	
 						movedown();
-                        
+                        res();
                         
                         //оффсет бекграунда
 
@@ -1537,7 +1616,10 @@ scene.meshes.forEach(function(m){
 				
 			}
 		});		
-						
+		document.getElementById('prizm').innerHTML = prizma;
+				document.getElementById('dead').innerHTML = dead;
+				
+				
 						if(bot7_1.intersectsMesh(box, true))
 						{	
 							if(ggg == 0){
