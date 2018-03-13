@@ -1896,10 +1896,30 @@ else
 			// Отслеживаем изменения размера окна браузера и (или) холста
 			window.addEventListener("resize",function(){
 					engine.resize();
-                
+                newsize();
 			});
             
-            
+            function newsize(){
+			
+				//	 console.log("resized")
+		 
+	//	camera.orthoTop = 1 ;
+    //  camera.orthoBottom = -8;
+    //  camera.orthoLeft = -8;
+    //  camera.orthoRight = 8;
+		 
+	//	 console.log(window.innerWidth)
+	//	 console.log(window.innerHeight)
+		 var ratio = window.innerWidth / window.innerHeight ;
+	//	 var zoom = camera.orthoTop;
+		 var newWidth = 4.5 * ratio;
+		
+		// camera.orthoTop = camera.orthoRight = Math.abs(zoom);
+		 camera.orthoLeft = -Math.abs(newWidth);
+		 camera.orthoRight = newWidth;
+		 //camera.orthoBottom = -Math.abs(1);
+			
+			}					
 			
 			var audio = new Audio('track4.mp3');
                       

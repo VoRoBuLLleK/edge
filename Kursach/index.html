@@ -526,8 +526,6 @@
                      camidle=0;  
                     tween = new TWEEN.Tween(camera.position).to({y:camera.position.y+0.225},300).start();
                      tween.easing(TWEEN.Easing.Bounce.InOut);
-					 tween = new TWEEN.Tween(camera.position).to({z:camera.position.z-3},300).start();
-                     tween.easing(TWEEN.Easing.Bounce.InOut);
                 tween.onComplete(function(){
                
                 tween2 = new TWEEN.Tween(camera.position).to({y:camera.position.y-0.225},1).start();
