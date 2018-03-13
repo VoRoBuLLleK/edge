@@ -19,22 +19,39 @@
 		<!------------------------------------->
 		<link rel="stylesheet" href="font/stylesheet.css" type="text/css" charset="utf-8" />
 		<style>		
+			@font-face{font-family:'cubicregular';src:url('cubic-webfont.woff2')format('woff2'),url('cubic-webfont.woff')format('woff');font-weight: normal;font-style: normal;}
+			@font-face{font-family:Giantypo;src:url(font/Giantypo.otf);}
+            
 			html,body{overflow:hidden;width:100%;height:100%;margin:0;padding:0;}
 			#renderCanvas{width:100%;height:100vh;touch-action:none;}
 			#header{font-family: 'WebFont', Arial, sans-serif;font-size:45px;position:absolute;width:100%;height:0px;z-index:1;opacity:1;background-color:#FFFFFF;color:white;}
 			#end{display:none;text-align:center;font-size:50pt;font-family:'cubicregular',Arial,sans-serif;position:absolute;top:0;bottom:0;right:0;background:#1e1e1e;overflow:hidden;width:100%;z-index:999;color:white;font-weight:900;}
             body{background-image:url("skybox/SkyKosmos.jpg");}
+			 .cell{position:absolute;width:10%;height:30px;overflow:hidden;border-top-left-radius:5px 5px;border-top-right-radius:5px 5px;border-bottom-left-radius:5px 5px;border-bottom-right-radius:5px 5px;-moz-box-shadow: 0 1px 3px #000;-webkit-box-shadow:0 1px 3px #000;box-shadow:0 1px 3px #000;background-color:rgba(0, 0, 0, 0.90);left:0;right:0;top:0;bottom:0;margin:auto;max-width:100%;max-height:100%;overflow:auto;opacity:0;}
+			.cell .text{ height: 100%;color: #ffffff;font-weight: bold;position: absolute;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;font-family:'Giantypo',Arial,sans-serif;text-align:center;font-size:18pt;position:absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);}    
 
 		</style>
 	</head>
 	
 	<body id="body">
+        <div id = "bodytip" class = "span8 cell">
+			<div id="tip" class="text">SECRET</div>
+		</div>
 
 		<div id = "canvasZone">
 			<canvas id = "renderCanvas"></canvas>
 		</div>
 
 		<script>	
+		function showtip(tip){
+			var tip;
+            document.getElementById("tip").innerHTML = tip;
+            tween = new TWEEN.Tween(document.getElementById("bodytip").style).to({opacity:1},600).start();
+			tween.onComplete(function(){
+				tween2 = new TWEEN.Tween(document.getElementById("bodytip").style).to({opacity:0},600).start();     
+			});                             
+        }
+		
 			var canvas = document.getElementById("renderCanvas"); // Создаем холст, который будет выводиться в элементе HTML выше 
 			var engine = new BABYLON.Engine(canvas,true); // Загружаем ядро трехмерной обработки BABYLON
 			var scene = new BABYLON.Scene(engine); // Создаем простой объект сцены Babylon
@@ -51,11 +68,11 @@
                  
                     
                     
-    camera.mode = BABYLON.Camera.ORTHOGRAPHIC_CAMERA;
+    /*camera.mode = BABYLON.Camera.ORTHOGRAPHIC_CAMERA;
     camera.orthoTop = 1 ;
     camera.orthoBottom = -18;
     camera.orthoLeft = -18;
-    camera.orthoRight = 18; 
+    camera.orthoRight = 18; */
                     
               //      camera.mode = BABYLON.Camera.ORTHOGRAPHIC_CAMERA;
             //        camera.orthoTop = 1 ;
@@ -79,12 +96,34 @@
 					var Group7032 = scene.getMeshByName("Group#7.032");	
 					var Group6013 = scene.getMeshByName("Group#6.013");	
 					var Group3001 = scene.getMeshByName("Group#3.001");	
-					var Group2009 = scene.getMeshByName("Group#2.009");						
+					var Group2009 = scene.getMeshByName("Group#2.009");		
+
+					var fin = scene.getMeshByName("Group#1.016");
+					fin.dispose();
+					var fin1 = scene.getMeshByName("Group#6.022");
+					fin1.dispose();
+					var fin2 = scene.getMeshByName("Group#1.027");
+					fin2.dispose();
+					var fin3 = scene.getMeshByName("Group#6.020");
+					fin3.dispose();
+					var fin4 = scene.getMeshByName("Group#1.021");
+					fin4.dispose();
+					var fin5 = scene.getMeshByName("Group#6.019");
+					fin5.dispose();
+					var fin6 = scene.getMeshByName("Group#1.015");
+					fin6.dispose();
+					var fin7 = scene.getMeshByName("Group#6.021");
+					fin7.dispose();
+					var fin8 = scene.getMeshByName("Group#1.041");
+					fin8.dispose();
+					var gggggg = scene.getMeshByName("Group#1.042");
+					gggggg.geometry.dispose();
+                    					
 					
 					var box = BABYLON.Mesh.CreateBox("box",1,scene);
-					box.position.x = Group6013.position.x - 0.5;
-                    box.position.y = Group6013.position.y + 1.5;
-                    box.position.z = Group6013.position.z + 0.5;
+					box.position.x = hero.position.x - 0.5;
+                    box.position.y = hero.position.y + 0.5;
+                    box.position.z = hero.position.z + 0.5;
                     
                     var materialBox = scene.getMeshByName("xxxx").material;
                     
@@ -251,6 +290,82 @@
 					down4.material = downPl;
 					down5.material = downPl;
 					down6.material = downPl;
+					
+					
+					var bonus1 = scene.getMeshByName("h");
+					var shadow1 = scene.getMeshByName("hsh");
+					var bonus2 = scene.getMeshByName("h").clone("h2");
+					var shadow2 = scene.getMeshByName("hsh").clone("hsh2");
+					var bonus3 = scene.getMeshByName("h").clone("h3");
+					var shadow3 = scene.getMeshByName("hsh").clone("hsh3");
+					var bonus4 = scene.getMeshByName("h").clone("h4");
+					var shadow4 = scene.getMeshByName("hsh").clone("hsh4");
+					var bonus5 = scene.getMeshByName("h").clone("h5");
+					var shadow5 = scene.getMeshByName("hsh").clone("hsh5");
+					var bonus6 = scene.getMeshByName("h").clone("h6");
+					var shadow6 = scene.getMeshByName("hsh").clone("hsh6");
+					var bonus7 = scene.getMeshByName("h").clone("h7");
+					var shadow7 = scene.getMeshByName("hsh").clone("hsh7");
+					
+					var bns1 = scene.getMeshByName("Group#4.019");
+					var bns2 = scene.getMeshByName("Group#6.005");
+					var bns3 = scene.getMeshByName("Group#6.013");
+					var bns4 = scene.getMeshByName("Group#6.035");
+					var bns5 = scene.getMeshByName("Group#7.049");
+					var bns6 = scene.getMeshByName("Group#5.094");
+					var bns7 = scene.getMeshByName("Group#5.074");
+					
+					bonus1.position.x =  bns1.position.x-0.5;
+					bonus1.position.y =  bns1.position.y+1.5;
+					bonus1.position.z =  bns1.position.z+0.5;
+					shadow1.position.x =  bns1.position.x-0.5;
+					shadow1.position.y =  bns1.position.y+1.01;
+					shadow1.position.z =  bns1.position.z+0.5;
+					
+					bonus2.position.x =  bns2.position.x-0.5;
+					bonus2.position.y =  bns2.position.y+1.5;
+					bonus2.position.z =  bns2.position.z+0.5;
+					shadow2.position.x =  bns2.position.x-0.5;
+					shadow2.position.y =  bns2.position.y+1.01;
+					shadow2.position.z =  bns2.position.z+0.5;
+					
+					bonus3.position.x =  bns3.position.x-0.5;
+					bonus3.position.y =  bns3.position.y+1.5;
+					bonus3.position.z =  bns3.position.z+0.5;
+					shadow3.position.x =  bns3.position.x-0.5;
+					shadow3.position.y =  bns3.position.y+1.01;
+					shadow3.position.z =  bns3.position.z+0.5;
+						
+					bonus4.position.x =  bns4.position.x-0.5;
+					bonus4.position.y =  bns4.position.y+1.5;
+					bonus4.position.z =  bns4.position.z+0.5;
+					shadow4.position.x =  bns4.position.x-0.5;
+					shadow4.position.y =  bns4.position.y+1.01;
+					shadow4.position.z =  bns4.position.z+0.5;
+					
+					bonus5.position.x =  bns5.position.x-0.5;
+					bonus5.position.y =  bns5.position.y+1.5;
+					bonus5.position.z =  bns5.position.z+0.5;
+					shadow5.position.x =  bns5.position.x-0.5;
+					shadow5.position.y =  bns5.position.y+1.01;
+					shadow5.position.z =  bns5.position.z+0.5;
+					
+					bonus6.position.x =  bns6.position.x-0.5;
+					bonus6.position.y =  bns6.position.y+1.5;
+					bonus6.position.z =  bns6.position.z+0.5;
+					shadow6.position.x =  bns6.position.x-0.5;
+					shadow6.position.y =  bns6.position.y+1.01;
+					shadow6.position.z =  bns6.position.z+0.5
+					
+					bonus7.position.x =  bns7.position.x-0.5;
+					bonus7.position.y =  bns7.position.y+1.5;
+					bonus7.position.z =  bns7.position.z+0.5;
+					shadow7.position.x =  bns7.position.x-0.5;
+					shadow7.position.y =  bns7.position.y+1.01;
+					shadow7.position.z =  bns7.position.z+0.5;
+					
+					
+					
 
 					var matBTT1 = new BABYLON.StandardMaterial("matBTT1",scene);
 					matBTT1.diffuseColor = new BABYLON.Color3(92/256, 99/256, 113/256);
@@ -375,7 +490,7 @@
 					
 					var fired = false;
 					var trig = 0;
-					
+					var prizma = 0;
 					
 					var ppppppp = 0;
 					
@@ -389,7 +504,7 @@
 					
 							// Проверка на пересечение для движения вперед
 							scene.meshes.forEach(function(m){
-								if (m.name != "skyBox" && m.name != "1mesh" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
+								if (m.name != "skyBox" && m.name != "1mesh" && m.name != "h"  && m.name != "hsh" && m.name != "h2"  && m.name != "hsh2" && m.name != "h3"  && m.name != "hsh3" && m.name != "h4"  && m.name != "hsh4" && m.name != "h5"  && m.name != "hsh5" && m.name != "h6"  && m.name != "hsh6" && m.name != "h7"  && m.name != "hsh7" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
 									if (f1.intersectsMesh(m,true)){f1Score=1;//console.log(m.name);
 									} 
 									if (f2.intersectsMesh(m,true)){f2Score=1;//console.log(m.name);
@@ -399,7 +514,7 @@
 							
 							// Проверка на пересечение для движения назад
 							scene.meshes.forEach(function(m){
-								 if (m.name != "skyBox" && m.name != "1mesh" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
+								 if (m.name != "skyBox" && m.name != "1mesh" && m.name != "h"  && m.name != "hsh" && m.name != "h2"  && m.name != "hsh2" && m.name != "h3"  && m.name != "hsh3" && m.name != "h4"  && m.name != "hsh4" && m.name != "h5"  && m.name != "hsh5" && m.name != "h6"  && m.name != "hsh6" && m.name != "h7"  && m.name != "hsh7" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
 									if (b1.intersectsMesh(m,true)){b1Score=1;//console.log(m.name);
 									} 
 									if (b2.intersectsMesh(m,true)){b2Score=1;//console.log(m.name);
@@ -409,8 +524,8 @@
 							
 							// Проверка на пересечение для движения влево
 							scene.meshes.forEach(function(m){
-								if (m.name != "skyBox" && m.name != "1mesh" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
-									if (l1.intersectsMesh(m,true)){l1Score=1;console.log(m.name);
+								if (m.name != "skyBox" && m.name != "1mesh" && m.name != "h"  && m.name != "hsh" && m.name != "h2"  && m.name != "hsh2" && m.name != "h3"  && m.name != "hsh3" && m.name != "h4"  && m.name != "hsh4" && m.name != "h5"  && m.name != "hsh5" && m.name != "h6"  && m.name != "hsh6" && m.name != "h7"  && m.name != "hsh7" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
+									if (l1.intersectsMesh(m,true)){l1Score=1;//console.log(m.name);
 									} 
 									if (l2.intersectsMesh(m,true)){l2Score=1;//console.log(m.name);
 									} 
@@ -419,7 +534,7 @@
 							
 							// Проверка на пересечение для движения вправо
 							scene.meshes.forEach(function(m){
-								if (m.name != "skyBox" && m.name != "1mesh" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
+								if (m.name != "skyBox" && m.name != "1mesh" && m.name != "h"  && m.name != "hsh" && m.name != "h2"  && m.name != "hsh2" && m.name != "h3"  && m.name != "hsh3" && m.name != "h4"  && m.name != "hsh4" && m.name != "h5"  && m.name != "hsh5" && m.name != "h6"  && m.name != "hsh6" && m.name != "h7"  && m.name != "hsh7" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
 									if (r1.intersectsMesh(m,true)){r1Score=1;//console.log(m.name);
 									} 
 									if (r2.intersectsMesh(m,true)){r2Score=1;//console.log(m.name);
@@ -624,6 +739,35 @@
                                                         fired = false;
                                                 });    
                                         }
+										
+										
+						var particleSystem = new BABYLON.ParticleSystem("particles", 500, scene);
+        particleSystem.particleTexture = new BABYLON.Texture("33.png", scene);
+        particleSystem.emitter = box;
+        particleSystem.minEmitBox = new BABYLON.Vector3(-1, 0, 1);
+        particleSystem.maxEmitBox = new BABYLON.Vector3(1, 0, -1);
+        particleSystem.color1 = new BABYLON.Color4(0.7, 0.8, 1.0, 1.0);
+        particleSystem.color2 = new BABYLON.Color4(0.2, 0.5, 1.0, 1.0);
+        particleSystem.colorDead = new BABYLON.Color4(0, 0, 0.2, 0.0);
+        particleSystem.minSize = 0.01;
+        particleSystem.maxSize = 0.2;
+        particleSystem.minLifeTime = 0.3;
+        particleSystem.maxLifeTime = 0.6;
+        particleSystem.emitRate = 500;
+        particleSystem.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
+        particleSystem.gravity = new BABYLON.Vector3(0, -9.81, 0);
+        particleSystem.direction1 = new BABYLON.Vector3(-1, 5, 1);
+        particleSystem.direction2 = new BABYLON.Vector3(1, 5, -1);
+        particleSystem.minAngularSpeed = 0;
+        particleSystem.maxAngularSpeed = Math.PI;
+        particleSystem.minEmitPower = 5;
+        particleSystem.maxEmitPower = 13;
+        particleSystem.updateSpeed = 0.005;
+ 
+        function start(){particleSystem.start();  var finish = new Audio('finish2.mp3'); finish.play();}
+ 
+        function stop(){particleSystem.stop();}
+		
 					
 					var stFinish = 0;
 					var ggg = 0;
@@ -634,7 +778,7 @@
 					 function  movedown(){  
                         mm = "0";
                         scene.meshes.forEach(function(m){
-                            if (m.name != "skyBox" && m.name != "1mesh" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
+                            if (m.name != "skyBox" && m.name != "1mesh" && m.name != "h"  && m.name != "hsh" && m.name != "h2"  && m.name != "hsh2" && m.name != "h3"  && m.name != "hsh3" && m.name != "h4"  && m.name != "hsh4" && m.name != "h5"  && m.name != "hsh5" && m.name != "h6"  && m.name != "hsh6" && m.name != "h7"  && m.name != "hsh7" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
                                 if (bt.intersectsMesh(m,true)){btScore=1; 
 									if(m.name == "down1"){
 										setInterval(function(){
@@ -824,29 +968,61 @@
                     
                     
                     
-                    
                       var pos=0.1
                       var rot=Math.PI/2;
                       var dohealth=0;
+					  
                     function healthbox(){
                     if(dohealth==0){
                         dohealth=1;
                        var diffuseh = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
                        // scene.getMeshByName("xxxx").material.diffuseColor=diffuseh;
-                        
-                        
-                        tween = new TWEEN.Tween(scene.getMeshByName("h").material.diffuseColor).to(diffuseh,500).start();
+                        tween = new TWEEN.Tween(bonus1.material.diffuseColor).to(diffuseh,500).start();
+						tween.easing(TWEEN.Easing.Cubic.Out);
+						tween.yoyo(true);
+						tween = new TWEEN.Tween(bonus2.material.diffuseColor).to(diffuseh,500).start();
+						tween.easing(TWEEN.Easing.Cubic.Out);
+						tween.yoyo(true);
+						tween = new TWEEN.Tween(bonus3.material.diffuseColor).to(diffuseh,500).start();
+						tween.easing(TWEEN.Easing.Cubic.Out);
+						tween.yoyo(true);
+						tween = new TWEEN.Tween(bonus4.material.diffuseColor).to(diffuseh,500).start();
+						tween.easing(TWEEN.Easing.Cubic.Out);
+						tween.yoyo(true);
+						tween = new TWEEN.Tween(bonus5.material.diffuseColor).to(diffuseh,500).start();
+						tween.easing(TWEEN.Easing.Cubic.Out);
+						tween.yoyo(true);
+                        tween = new TWEEN.Tween(bonus6.material.diffuseColor).to(diffuseh,500).start();
+						tween.easing(TWEEN.Easing.Cubic.Out);
+						tween.yoyo(true);
+						tween = new TWEEN.Tween(bonus7.material.diffuseColor).to(diffuseh,500).start();
 						tween.easing(TWEEN.Easing.Cubic.Out);
 						tween.yoyo(true);
                         
-                        
-                        var tween1121 = new TWEEN.Tween(scene.getMeshByName("h").rotation).to({y:scene.getMeshByName("h").rotation.y+rot},500).start();
-                  var tween1122 = new TWEEN.Tween(scene.getMeshByName("hsh").rotation).to({y:scene.getMeshByName("hsh").rotation.y+rot},500).start();
+                        var tween1121 = new TWEEN.Tween(bonus1.rotation).to({y:bonus1.rotation.y+rot},500).start();
+						var tween1121 = new TWEEN.Tween(bonus2.rotation).to({y:bonus2.rotation.y+rot},500).start();
+						var tween1121 = new TWEEN.Tween(bonus3.rotation).to({y:bonus3.rotation.y+rot},500).start();
+						var tween1121 = new TWEEN.Tween(bonus4.rotation).to({y:bonus4.rotation.y+rot},500).start();
+						var tween1121 = new TWEEN.Tween(bonus5.rotation).to({y:bonus5.rotation.y+rot},500).start();
+						var tween1121 = new TWEEN.Tween(bonus6.rotation).to({y:bonus6.rotation.y+rot},500).start();
+						var tween1121 = new TWEEN.Tween(bonus7.rotation).to({y:bonus7.rotation.y+rot},500).start();
 				
+                        var tween1122 = new TWEEN.Tween(shadow1.rotation).to({y:shadow1.rotation.y+rot},500).start();
+						var tween1122 = new TWEEN.Tween(shadow2.rotation).to({y:shadow2.rotation.y+rot},500).start();
+						var tween1122 = new TWEEN.Tween(shadow3.rotation).to({y:shadow3.rotation.y+rot},500).start();
+						var tween1122 = new TWEEN.Tween(shadow4.rotation).to({y:shadow4.rotation.y+rot},500).start();
+						var tween1122 = new TWEEN.Tween(shadow5.rotation).to({y:shadow5.rotation.y+rot},500).start();
+						var tween1122 = new TWEEN.Tween(shadow6.rotation).to({y:shadow6.rotation.y+rot},500).start();
+						var tween1122 = new TWEEN.Tween(shadow7.rotation).to({y:shadow7.rotation.y+rot},500).start();
                         
                         
-                        
-                        tween100 = new TWEEN.Tween(scene.getMeshByName("h").position).to({y:scene.getMeshByName("h").position.y+pos}, 500).start();
+                        tween100 = new TWEEN.Tween(bonus1.position).to({y:bonus1.position.y+pos}, 500).start();
+						tween100 = new TWEEN.Tween(bonus2.position).to({y:bonus2.position.y+pos}, 500).start();
+						tween100 = new TWEEN.Tween(bonus3.position).to({y:bonus3.position.y+pos}, 500).start();
+						tween100 = new TWEEN.Tween(bonus4.position).to({y:bonus4.position.y+pos}, 500).start();
+						tween100 = new TWEEN.Tween(bonus5.position).to({y:bonus5.position.y+pos}, 500).start();
+						tween100 = new TWEEN.Tween(bonus6.position).to({y:bonus6.position.y+pos}, 500).start();
+						tween100 = new TWEEN.Tween(bonus7.position).to({y:bonus7.position.y+pos}, 500).start();
                         tween100.onComplete(function(){
                             pos=pos*(-1);
                             dohealth=0;
@@ -887,7 +1063,116 @@
 					}
 					setInterval(colorich, 1500);
 					
-	
+					var finish = BABYLON.Mesh.CreateBox("finish",1,scene);
+        finish.position.x = fin.position.x - 0.5;
+        finish.position.y = fin.position.y + 0.5;
+        finish.position.z = fin.position.z + 0.5;
+ 
+        var finish1 = BABYLON.Mesh.CreateBox("finish1",1,scene);
+        finish1.position.x = fin1.position.x - 0.5;
+        finish1.position.y = fin1.position.y + 0.5;
+        finish1.position.z = fin1.position.z + 0.5;
+       
+        var finish2 = BABYLON.Mesh.CreateBox("finish2",1,scene);
+        finish2.position.x = fin2.position.x - 0.5;
+        finish2.position.y = fin2.position.y + 0.5;
+        finish2.position.z = fin2.position.z + 0.5;
+       
+        var finish3 = BABYLON.Mesh.CreateBox("finish3",1,scene);
+        finish3.position.x = fin3.position.x - 0.5;
+        finish3.position.y = fin3.position.y + 0.5;
+        finish3.position.z = fin3.position.z + 0.5;
+       
+        var finish4 = BABYLON.Mesh.CreateBox("finish4",1,scene);
+        finish4.position.x = fin4.position.x - 0.5;
+        finish4.position.y = fin4.position.y + 0.5;
+        finish4.position.z = fin4.position.z + 0.5;
+       
+        var finish5 = BABYLON.Mesh.CreateBox("finish5",1,scene);
+        finish5.position.x = fin5.position.x - 0.5;
+        finish5.position.y = fin5.position.y + 0.5;
+        finish5.position.z = fin5.position.z + 0.5;
+       
+        var finish6 = BABYLON.Mesh.CreateBox("finish6",1,scene);
+        finish6.position.x = fin6.position.x - 0.5;
+        finish6.position.y = fin6.position.y + 0.5;
+        finish6.position.z = fin6.position.z + 0.5;
+       
+        var finish7 = BABYLON.Mesh.CreateBox("finish7",1,scene);
+        finish7.position.x = fin7.position.x - 0.5;
+        finish7.position.y = fin7.position.y + 0.5;
+        finish7.position.z = fin7.position.z + 0.5;
+       
+        var finish8 = BABYLON.Mesh.CreateBox("finish8",1,scene);
+        finish8.position.x = fin8.position.x - 0.5;
+        finish8.position.y = fin8.position.y + 0.5;
+        finish8.position.z = fin8.position.z + 0.5;
+			
+			var finishmaterial = new BABYLON.StandardMaterial("finishmateria",scene);
+        var finishmaterial2 = new BABYLON.StandardMaterial("finishmaterial2",scene);
+ 
+        function finish01(){
+                var diffuse01 = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+                var specular01 = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+                finishmaterial.specularPower = 32;
+                var ambient01 = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+                var emissive01 = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+               
+                tween = new TWEEN.Tween(finishmaterial.diffuseColor).to(diffuse01,500).start();
+                tween.easing(TWEEN.Easing.Cubic.Out);
+                tween.yoyo(true);
+               
+                tween1 = new TWEEN.Tween(finishmaterial.specularColor).to(specular01,500).start();
+                tween1.easing(TWEEN.Easing.Cubic.Out);
+                tween1.yoyo(true);     
+ 
+                tween2 = new TWEEN.Tween(finishmaterial.ambientColor).to(ambient01,500).start();
+                tween2.easing(TWEEN.Easing.Cubic.Out);
+                tween2.yoyo(true);             
+               
+                tween3 = new TWEEN.Tween(finishmaterial.emissiveColor).to(emissive01,500).start();
+                tween3.easing(TWEEN.Easing.Cubic.Out);
+                tween3.yoyo(true);     
+       
+                finish4.material = finishmaterial;
+           
+        }
+        setInterval(finish01, 1000);
+ 
+        function finish02(){
+                var diffuse01 = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+                var specular01 = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+                finishmaterial2.specularPower = 8;
+                var ambient01 = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+                var emissive01 = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+               
+                tween = new TWEEN.Tween(finishmaterial2.diffuseColor).to(diffuse01,400).start();
+                tween.easing(TWEEN.Easing.Cubic.Out);
+                tween.yoyo(true);
+               
+                tween1 = new TWEEN.Tween(finishmaterial2.specularColor).to(specular01,400).start();
+                tween1.easing(TWEEN.Easing.Cubic.Out);
+                tween1.yoyo(true);     
+ 
+                tween2 = new TWEEN.Tween(finishmaterial2.ambientColor).to(ambient01,400).start();
+                tween2.easing(TWEEN.Easing.Cubic.Out);
+                tween2.yoyo(true);             
+               
+                tween3 = new TWEEN.Tween(finishmaterial2.emissiveColor).to(emissive01,400).start();
+                tween3.easing(TWEEN.Easing.Cubic.Out);
+                tween3.yoyo(true);     
+       
+                finish.material = finishmaterial2;
+                finish1.material = finishmaterial2;
+                finish2.material = finishmaterial2;
+                finish7.material = finishmaterial2;
+                finish3.material = finishmaterial2;
+                finish8.material = finishmaterial2;
+                finish5.material = finishmaterial2;
+                finish6.material = finishmaterial2;
+        }
+        setInterval(finish02, 500);
+			
 			
 					// Указывает браузеру на то, что вы хотите произвести анимацию, и просит его запланировать перерисовку на следующем кадре анимации
 					requestAnimationFrame(animate);
@@ -930,8 +1215,124 @@
      bgWidth=bgWidth+0.3;                   
                         
                         
-                        
-                        
+                        scene.meshes.forEach(function(m){
+			if (m.name == "h"){
+				
+				if (box.intersectsMesh(bonus1,true)){
+					scene.getMeshByName("h").dispose();
+					scene.getMeshByName("hsh").dispose();
+					var bonus = new Audio('bonus.mp3'); 
+					bonus.play(); 
+					showtip("bonus");
+					particleSystem.start();
+					prizma++;
+					setTimeout(function(){particleSystem.stop();},500);	
+				}
+				
+			}
+		});
+		
+		scene.meshes.forEach(function(m){
+			if (m.name == "h2"){
+
+				if (box.intersectsMesh(bonus2,true)){
+					scene.getMeshByName("h2").dispose();
+					scene.getMeshByName("hsh2").dispose();
+					var bonus = new Audio('bonus.mp3'); 
+					bonus.play(); 
+					showtip("bonus");
+					particleSystem.start();
+					prizma++;
+					setTimeout(function(){particleSystem.stop();},500);	
+				}
+				
+			}
+		});
+		
+		scene.meshes.forEach(function(m){
+			if (m.name == "h3"){
+
+				if (box.intersectsMesh(bonus3,true)){
+					scene.getMeshByName("h3").dispose();
+					scene.getMeshByName("hsh3").dispose();
+					var bonus = new Audio('bonus.mp3'); 
+					bonus.play(); 
+					showtip("bonus");
+					particleSystem.start();
+					prizma++;
+					setTimeout(function(){particleSystem.stop();},500);	
+				}
+				
+			}
+		});
+		
+		scene.meshes.forEach(function(m){
+			if (m.name == "h4"){
+
+				if (box.intersectsMesh(bonus4,true)){
+					scene.getMeshByName("h4").dispose();
+					scene.getMeshByName("hsh4").dispose();
+					var bonus = new Audio('bonus.mp3'); 
+					bonus.play(); 
+					showtip("bonus");
+					particleSystem.start();
+					prizma++;
+					setTimeout(function(){particleSystem.stop();},500);	
+				}
+				
+			}
+		});
+		
+		scene.meshes.forEach(function(m){
+			if (m.name == "h5"){
+
+				if (box.intersectsMesh(bonus5,true)){
+					scene.getMeshByName("h5").dispose();
+					scene.getMeshByName("hsh5").dispose();
+					var bonus = new Audio('bonus.mp3'); 
+					bonus.play(); 
+					showtip("bonus");
+					particleSystem.start();
+					prizma++;
+					setTimeout(function(){particleSystem.stop();},500);	
+				}
+				
+			}
+		});
+               
+scene.meshes.forEach(function(m){
+			if (m.name == "h6"){
+
+				if (box.intersectsMesh(bonus6,true)){
+					scene.getMeshByName("h6").dispose();
+					scene.getMeshByName("hsh6").dispose();
+					var bonus = new Audio('bonus.mp3'); 
+					bonus.play(); 
+					showtip("bonus");
+					particleSystem.start();
+					prizma++;
+					setTimeout(function(){particleSystem.stop();},500);	
+				}
+				
+			}
+		});
+
+scene.meshes.forEach(function(m){
+			if (m.name == "h7"){
+
+				if (box.intersectsMesh(bonus7,true)){
+					scene.getMeshByName("h7").dispose();
+					scene.getMeshByName("hsh7").dispose();
+					var bonus = new Audio('bonus.mp3'); 
+					bonus.play(); 
+					showtip("bonus");
+					particleSystem.start();
+					prizma++;
+					setTimeout(function(){particleSystem.stop();},500);	
+				}
+				
+			}
+		});		
 						
 						if(bot7_1.intersectsMesh(box, true))
 						{	
@@ -1089,7 +1490,7 @@ else
                       
             audio.currentTime = 0;
            
-            //audio.play();
+            audio.play();
 
 		</script>
 	</body>
