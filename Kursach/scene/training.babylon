@@ -383,6 +383,6 @@
 ,"instances":[]}
 ],
 "cameras":[{"name":"Active Camera","id":"Active Camera","position":[10.5303,8.2643,-7.7609],"rotation":[0.4845,-0.3183,0],"fov":1.086,"minZ":0.1,"maxZ":1250,"speed":1,"inertia":0.9,"checkCollisions":false,"applyGravity":false,"ellipsoid":[0.2,0.9,0.2],"cameraRigMode":0,"interaxial_distance":0.0637,"type":"FreeCamera"}],"activeCamera":"Active Camera",
-"lights":[],
+"lights":[{"name":"1Hemi","id":"1Hemi","type":3,"direction":[0,1,0],"groundColor":[0,0,0],"intensity":0.5,"diffuse":[0,0,0],"specular":[0,0,0]}],
 "shadowGenerators":[]
 }
