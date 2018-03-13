@@ -51,7 +51,8 @@
 			#upra{position:absolute;width:100px;height:100px;color:#ffffff;background-color:rgba(0, 0, 0, 0.90);z-index:999;}
 			.cell1{position:absolute;width:225px;height:125px;overflow:hidden;border-top-left-radius:5px 5px;border-top-right-radius:5px 5px;border-bottom-left-radius:5px 5px;border-bottom-right-radius:5px 5px;-moz-box-shadow: 0 1px 3px #000;-webkit-box-shadow:0 1px 3px #000;box-shadow:0 1px 3px #000;background-color:rgba(0, 0, 0, 0.90);left:0;right:0;top:0;bottom:0;margin:auto;max-width:100%;max-height:100%;overflow:auto;opacity:0;}
 			.cell1 .text{ height: 100%;color: #ffffff;font-weight: bold;position: absolute;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;font-family:'Giantypo',Arial,sans-serif;text-align:center;font-size:18pt;position:absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);}    
-			
+			.bt-lvl1{background-image:url("1.jpg");background-size:cover;cursor:pointer;font-family:'Giantypo',Arial,sans-serif;display:inline-block;color:black;font-weight:900;padding:.5em 2em;outline:none;border:1px solid #333333;border-radius:1px;transition:0.2s;width:100px;height:100px;text-align:center;font-size:25pt;margin-top:10px;}
+			.bt-lvl2{background-image:url("2lvl.jpg");background-size:cover;cursor:pointer;font-family:'Giantypo',Arial,sans-serif;display:inline-block;color:black;font-weight:900;padding:.5em 2em;outline:none;border:1px solid #333333;border-radius:1px;transition:0.2s;width:100px;height:100px;text-align:center;font-size:25pt;margin-top:10px;}
 		</style>
     </head>
        
@@ -88,6 +89,10 @@
             <div id = "menu-bt">
                 <input type = "button" class = "bt" id = "bt-Resume" value = "resume" onclick = "resumeqw()">
                 <input type = "button" class = "bt" id = "bt-Retry" value = "retry">
+				
+				<span style = "color:white;font-size:20pt;">select a level</span><br>
+				<input type = "button" id = "lvl1" value = "1" class = "bt-lvl1">
+				<input type = "button" id = "lvl2" value = "2" class = "bt-lvl2">
             </div>
         </div>
 				
@@ -170,6 +175,8 @@
 			var $main = $("#bt-Menu-finish");
 			var $done = $("#done");
 			var $rankname = $("#rank-name");
+			var $lvl_1 = $("#bt-lvl1");
+			var $lvl_2 = $("#bt-lvl2");
        
 			$resume.hover(function(){res = 1;},function(){res = 0;});
 			$retry.hover(function(){ret = 1;},function(){ret = 0;});
