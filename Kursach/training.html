@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-	<head><script type="text/javascript" src="/inj_js/common.js"></script><script type="text/javascript" src="/inj_js/common.js"></script>
+
 		<title>training</title>
 		<meta name = "viewport" content = "width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0"/>
 		<meta name = "apple-mobile-web-app-capable" content = "yes"/>
@@ -212,8 +212,8 @@
                    
 					camera.speed = 1; // Скорость камеры
 					camera.maxZ = 1000; // Максимальный ZOOM камеры
-					camera.attachControl(canvas,true); // Возможность контролировать камеру и передвигать её
-					camera.rotation = new BABYLON.Vector3(Math.PI/4, 5.5, 0);
+				//	camera.attachControl(canvas,true); // Возможность контролировать камеру и передвигать её
+					//camera.rotation = new BABYLON.Vector3(Math.PI/4, 5.5, 0);
                  
                     
                     
@@ -223,11 +223,41 @@
     camera.orthoLeft = -18;
     camera.orthoRight = 18; */
                     
-                 camera.mode = BABYLON.Camera.ORTHOGRAPHIC_CAMERA;
+                    camera.mode = BABYLON.Camera.ORTHOGRAPHIC_CAMERA;
                     camera.orthoTop = 1;
                     camera.orthoBottom = -8;
                     camera.orthoLeft = -8;
                     camera.orthoRight = 8;
+                   var ratio = window.innerWidth / window.innerHeight ;
+	//	 var zoom = camera.orthoTop;
+		 var newWidth = 4.5 * ratio;
+		
+		// camera.orthoTop = camera.orthoRight = Math.abs(zoom);
+		 camera.orthoLeft = -Math.abs(newWidth);
+		 camera.orthoRight = newWidth;
+                    
+                    
+                  window.onresize = function(event) {
+			
+				//	 console.log("resized")
+		 
+	//	camera.orthoTop = 1 ;
+    //  camera.orthoBottom = -8;
+    //  camera.orthoLeft = -8;
+    //  camera.orthoRight = 8;
+		 
+	//	 console.log(window.innerWidth)
+	//	 console.log(window.innerHeight)
+		 var ratio = window.innerWidth / window.innerHeight ;
+	//	 var zoom = camera.orthoTop;
+		 var newWidth = 4.5 * ratio;
+		
+		// camera.orthoTop = camera.orthoRight = Math.abs(zoom);
+		 camera.orthoLeft = -Math.abs(newWidth);
+		 camera.orthoRight = newWidth;
+		 //camera.orthoBottom = -Math.abs(1);
+			
+		};					
                     
                     scene.clearColor = new BABYLON.Color4(0,0,0,0);
 					var light = new BABYLON.HemisphericLight("HemiLight", new BABYLON.Vector3(0, 1, 0), scene);
@@ -1896,30 +1926,10 @@ else
 			// Отслеживаем изменения размера окна браузера и (или) холста
 			window.addEventListener("resize",function(){
 					engine.resize();
-                newsize();
+            
 			});
             
-            function newsize(){
-			
-				//	 console.log("resized")
-		 
-	//	camera.orthoTop = 1 ;
-    //  camera.orthoBottom = -8;
-    //  camera.orthoLeft = -8;
-    //  camera.orthoRight = 8;
-		 
-	//	 console.log(window.innerWidth)
-	//	 console.log(window.innerHeight)
-		 var ratio = window.innerWidth / window.innerHeight ;
-	//	 var zoom = camera.orthoTop;
-		 var newWidth = 4.5 * ratio;
-		
-		// camera.orthoTop = camera.orthoRight = Math.abs(zoom);
-		 camera.orthoLeft = -Math.abs(newWidth);
-		 camera.orthoRight = newWidth;
-		 //camera.orthoBottom = -Math.abs(1);
-			
-			}					
+            
 			
 			var audio = new Audio('track4.mp3');
                       
