@@ -57,7 +57,7 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 		num indices        :  36
 	processing begun of mesh:  Group#10
 		mesh is an instance of :  Group#10.001.  Processing halted.
-	processing begun of mesh:  Group#1.041
+	processing begun of mesh:  Group#3.052
 		registered as also a user of material:  side2
 		registered as also a user of material:  side1
 		registered as also a user of material:  top2
@@ -68,22 +68,11 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 		num uvs2           :  0
 		num colors         :  0
 		num indices        :  36
-	processing begun of mesh:  Group#3.052
-		registered as also a user of material:  side2
-		registered as also a user of material:  side1
-		registered as also a user of material:  top2
-		processing begun of multimaterial:  training.Multimaterial#4
-		num positions      :  32
-		num normals        :  32
-		num uvs            :  64
-		num uvs2           :  0
-		num colors         :  0
-		num indices        :  36
 	processing begun of mesh:  Group#4.136
 		registered as also a user of material:  side2
 		registered as also a user of material:  side1
 		registered as also a user of material:  top1
-		processing begun of multimaterial:  training.Multimaterial#5
+		processing begun of multimaterial:  training.Multimaterial#4
 		num positions      :  32
 		num normals        :  32
 		num uvs            :  64
@@ -94,7 +83,7 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 		registered as also a user of material:  side2
 		registered as also a user of material:  side1
 		registered as also a user of material:  top2
-		processing begun of multimaterial:  training.Multimaterial#6
+		processing begun of multimaterial:  training.Multimaterial#5
 		num positions      :  32
 		num normals        :  32
 		num uvs            :  64
@@ -110,7 +99,7 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 		registered as also a user of material:  side1
 		registered as also a user of material:  top1
 		registered as also a user of material:  top2
-		processing begun of multimaterial:  training.Multimaterial#7
+		processing begun of multimaterial:  training.Multimaterial#6
 		num positions      :  32
 		num normals        :  32
 		num uvs            :  64
@@ -121,7 +110,7 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 		registered as also a user of material:  side2
 		registered as also a user of material:  side1
 		registered as also a user of material:  top1
-		processing begun of multimaterial:  training.Multimaterial#8
+		processing begun of multimaterial:  training.Multimaterial#7
 		num positions      :  32
 		num normals        :  32
 		num uvs            :  64
@@ -133,7 +122,16 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 	processing begun of mesh:  Group#3.050
 		mesh is an instance of :  Group#3.052.  Processing halted.
 	processing begun of mesh:  Group#1.040
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		registered as also a user of material:  side2
+		registered as also a user of material:  side1
+		registered as also a user of material:  top2
+		processing begun of multimaterial:  training.Multimaterial#8
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  64
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
 	processing begun of mesh:  Group#6.041
 		registered as also a user of material:  side2
 		registered as also a user of material:  side1
@@ -154,7 +152,7 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 	processing begun of mesh:  Group#5.131
 		mesh is an instance of :  Group#5.133.  Processing halted.
 	processing begun of mesh:  Group#1.039
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#4.132
 		mesh is an instance of :  Group#4.136.  Processing halted.
 	processing begun of mesh:  Group#4.131
@@ -218,9 +216,9 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 	processing begun of mesh:  Group#6.039
 		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#1.038
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#1.037
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#6.038
 		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#6.037
@@ -410,15 +408,15 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 	processing begun of mesh:  Group#2.046
 		mesh is an instance of :  Group#2.054.  Processing halted.
 	processing begun of mesh:  Group#1.036
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#6.036
 		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#1.035
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#6.035
 		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#1.034
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#6.034
 		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#3.041
@@ -438,31 +436,29 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 	processing begun of mesh:  Group#3.039
 		mesh is an instance of :  Group#3.052.  Processing halted.
 	processing begun of mesh:  Group#1.033
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#6.033
 		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#6.032
 		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#1.032
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#6.031
 		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#1.031
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#1.030
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#1.029
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#6.030
 		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#1.028
-		mesh is an instance of :  Group#1.041.  Processing halted.
-	processing begun of mesh:  Group#1.027
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#6.029
 		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#1.026
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#6.028
 		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#6.027
@@ -470,7 +466,7 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 	processing begun of mesh:  Group#6.026
 		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#1.025
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#6.025
 		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#6.024
@@ -478,27 +474,19 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 	processing begun of mesh:  Group#6.023
 		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#1.024
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#1.023
-		mesh is an instance of :  Group#1.041.  Processing halted.
-	processing begun of mesh:  Group#6.022
-		mesh is an instance of :  Group#6.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#1.022
-		mesh is an instance of :  Group#1.041.  Processing halted.
-	processing begun of mesh:  Group#1.021
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#3.038
 		mesh is an instance of :  Group#3.052.  Processing halted.
 	processing begun of mesh:  Group#2.040
 		mesh is an instance of :  Group#2.054.  Processing halted.
 	processing begun of mesh:  Group#2.039
 		mesh is an instance of :  Group#2.054.  Processing halted.
-	processing begun of mesh:  Group#6.021
-		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#1.020
-		mesh is an instance of :  Group#1.041.  Processing halted.
-	processing begun of mesh:  Group#6.020
-		mesh is an instance of :  Group#6.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#2.038
 		mesh is an instance of :  Group#2.054.  Processing halted.
 	processing begun of mesh:  Group#7.043
@@ -1141,36 +1129,30 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 		mesh is an instance of :  Group#7.057.  Processing halted.
 	processing begun of mesh:  Group#5
 		mesh is an instance of :  Group#5.133.  Processing halted.
-	processing begun of mesh:  Group#6.019
-		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#1.018
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#6.018
 		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#6.017
 		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#1.017
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#6.016
 		mesh is an instance of :  Group#6.041.  Processing halted.
-	processing begun of mesh:  Group#1.016
-		mesh is an instance of :  Group#1.041.  Processing halted.
 	processing begun of mesh:  Group#6.015
 		mesh is an instance of :  Group#6.041.  Processing halted.
-	processing begun of mesh:  Group#1.015
-		mesh is an instance of :  Group#1.041.  Processing halted.
 	processing begun of mesh:  Group#6.014
 		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#1.014
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#1.013
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#1.012
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#6.013
 		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#1.011
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#6.012
 		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#6.011
@@ -1180,39 +1162,39 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 	processing begun of mesh:  Group#6.009
 		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#1.010
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#1.009
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#6.008
 		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#6.007
 		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#1.008
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#6.006
 		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#1.007
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#1.006
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#6.005
 		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#1.005
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#1.004
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#6.004
 		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#1.003
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#6.003
 		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#1.002
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#1.001
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#1
-		mesh is an instance of :  Group#1.041.  Processing halted.
+		mesh is an instance of :  Group#1.040.  Processing halted.
 	processing begun of mesh:  Group#6.002
 		mesh is an instance of :  Group#6.041.  Processing halted.
 	processing begun of mesh:  Group#6.001
@@ -1360,4 +1342,4 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 ========= Writing of scene file started =========
 ========= Writing of scene file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 0.9991 secs
+elapsed time:  0 min, 1.0196 secs
