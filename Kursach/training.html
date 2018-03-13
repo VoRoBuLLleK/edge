@@ -213,7 +213,7 @@
 					camera.speed = 1; // Скорость камеры
 					camera.maxZ = 1000; // Максимальный ZOOM камеры
 				//	camera.attachControl(canvas,true); // Возможность контролировать камеру и передвигать её
-					//camera.rotation = new BABYLON.Vector3(Math.PI/4, 5.5, 0);
+					camera.rotation = new BABYLON.Vector3(Math.PI/4, 5.5, 0);
                  
                     
                     
@@ -1545,7 +1545,6 @@
                 finish6.material = finishmaterial2;
         }
         setInterval(finish02, 500);
-			newsize();
 			
 					// Указывает браузеру на то, что вы хотите произвести анимацию, и просит его запланировать перерисовку на следующем кадре анимации
 					requestAnimationFrame(animate);
@@ -1826,7 +1825,7 @@ scene.meshes.forEach(function(m){
 						}
 						
 						
-						if ((bot4_2.intersectsMesh(box,true) || bot4_4.intersectsMesh(box,true))){ 
+						/*if ((bot4_2.intersectsMesh(box,true) || bot4_4.intersectsMesh(box,true))){ 
 						if(ppppppp != 1){
 								trig = 1;
 								box.position.x = bot4_2.position.x + 1;
@@ -1852,10 +1851,24 @@ else
 								r2.position.x = box.position.x+0.5;
 								bt.position.x = box.position.x;		}								
 						}
-						else{trig = 0;}
+						else{trig = 0;}*/
 
 						
+						if ((bot4_2.intersectsMesh(box,true) || bot4_4.intersectsMesh(box,true)))
+						{
+							box.position.x = bot4_2.position.x + 1;
+							f1.position.x = box.position.x;
+								f2.position.x = box.position.x;
+								l1.position.x = box.position.x-0.5;
+								l2.position.x = box.position.x-0.5;
+								b1.position.x = box.position.x;
+								b2.position.x = box.position.x;
+								r1.position.x = box.position.x+0.5;
+								r2.position.x = box.position.x+0.5;
+								bt.position.x = box.position.x;
 						
+						}
+					var qqq = math.round(box.position.x);
 						
 					});
 					
