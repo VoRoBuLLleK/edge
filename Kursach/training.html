@@ -398,11 +398,12 @@
 					bot2_1.material = materialBox;
 					bot2_2.material = materialBox;
 					
-					var downPl = new BABYLON.StandardMaterial("textureBox",scene);
+					/*var downPl = new BABYLON.StandardMaterial("textureBox",scene);
 					downPl.diffuseColor = new BABYLON.Color3(235/256, 237/256, 242/256);
 					downPl.specularColor = new BABYLON.Color3(235/256, 237/256, 242/256);
 					downPl.emissiveColor = new BABYLON.Color3(235/256, 237/256, 242/256);
-					downPl.ambientColor = new BABYLON.Color3(235/256, 237/256, 242/256);
+					downPl.ambientColor = new BABYLON.Color3(235/256, 237/256, 242/256);*/
+					 var downPl = scene.getMeshByName("xxxx2").material;
 					
 					var down1 = BABYLON.Mesh.CreateBox("down1",1,scene);
 					down1.position.x = Group4122.position.x+0.5;
