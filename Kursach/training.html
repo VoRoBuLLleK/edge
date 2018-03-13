@@ -27,9 +27,23 @@
 			#header{font-family: 'WebFont', Arial, sans-serif;font-size:45px;position:absolute;width:100%;height:0px;z-index:1;opacity:1;background-color:#FFFFFF;color:white;}
 			#end{display:none;text-align:center;font-size:50pt;font-family:'cubicregular',Arial,sans-serif;position:absolute;top:0;bottom:0;right:0;background:#1e1e1e;overflow:hidden;width:100%;z-index:999;color:white;font-weight:900;}
             body{background-image:url("skybox/SkyKosmos.jpg");}
-			 .cell{position:absolute;width:10%;height:30px;overflow:hidden;border-top-left-radius:5px 5px;border-top-right-radius:5px 5px;border-bottom-left-radius:5px 5px;border-bottom-right-radius:5px 5px;-moz-box-shadow: 0 1px 3px #000;-webkit-box-shadow:0 1px 3px #000;box-shadow:0 1px 3px #000;background-color:rgba(0, 0, 0, 0.90);left:0;right:0;top:0;bottom:0;margin:auto;max-width:100%;max-height:100%;overflow:auto;opacity:0;}
+			.cell{position:absolute;width:10%;height:30px;overflow:hidden;border-top-left-radius:5px 5px;border-top-right-radius:5px 5px;border-bottom-left-radius:5px 5px;border-bottom-right-radius:5px 5px;-moz-box-shadow: 0 1px 3px #000;-webkit-box-shadow:0 1px 3px #000;box-shadow:0 1px 3px #000;background-color:rgba(0, 0, 0, 0.90);left:0;right:0;top:0;bottom:0;margin:auto;max-width:100%;max-height:100%;overflow:auto;opacity:0;}
 			.cell .text{ height: 100%;color: #ffffff;font-weight: bold;position: absolute;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;font-family:'Giantypo',Arial,sans-serif;text-align:center;font-size:18pt;position:absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);}    
-
+			#menu{display:none;width:31%;height:100%;background:#333333;position:absolute;left:12%;z-index:999;font-weight:900;font-family:'Giantypo',Arial,sans-serif;padding:10px;}
+            #menu-bt{position:relative;width:100%;height:50%;margin-top:10px;top:-43px}
+			#bonus{width:17px;height:17px;float:right;background:#666666;margin-left:10px;}
+			.bt{cursor:pointer;font-family:'Giantypo',Arial,sans-serif;display:inline-block;color:black;font-weight:900;padding:.5em 2em;outline:none;border:1px solid #333333;border-radius:1px;transition:0.2s;background:white;width:100%;text-align:left;font-size:17pt;}
+			#level02{width:100%;top:0;bottom:0;right:0;background:#1e1e1e;z-index:999;height:100%;color:white;font-weight:900;font-family:'Giantypo',Arial,sans-serif;padding:5px;}
+			#lvl{width:99%;height:15%;left:1px;right:1px;top:-25px;background:#666666;position:relative;color:#CCCCCC;}
+            #lvl_name{background:none;margin:0 auto;text-align:center;position:relative;top:21%;font-size:50pt;}
+            #load{color:#CCCCCC;position:relative;top:64%;padding:5px;font-size:20pt;}     
+			#menu-finish{display:none;width:31%;height:100%;background:#333333;position:absolute;left:12%;z-index:999;font-weight:900;font-family:'Giantypo',Arial,sans-serif;padding:10px;}
+			#text_done{position:relative;top:2%}
+			#rank-name{width:150px;height:150px;position:absolute;background:white;border:1px solid black;top:10px;left:225px;text-align:center;font-size:100pt;padding:0;}
+            #level-time{background:white;position:relative;font-size:15pt;padding:5px;height:50px;top:-73px;}
+			#level-rank{background:grey;position:relative;font-size:20pt;padding:5px;height:160px;top:-73px;}
+			.book{transform:rotate(-90deg);width:150px;position:relative;left:-5px;top:-49px;}
+			
 		</style>
 	</head>
 	
@@ -37,11 +51,146 @@
         <div id = "bodytip" class = "span8 cell">
 			<div id="tip" class="text">SECRET</div>
 		</div>
+		
+		<div id = "level02">
+            <div id = "lvl"><p style = "font-size:20pt;left:1%;position:relative;top:5px;">level<br><span style = "font-size:45pt;">02</span></p></div>
+            <div id = "lvl_name">training</div>
+            <div id = "load">loading...</div>
+        </div>
+		
+		<div id = "menu">
+            <div style = "float:left;" id = "text-lvl">
+                <p style = "float:left;font-size:20pt;left:1%;position:relative;top:-23px;">level<br><span style = "font-size:45pt;">02</span></p>
+            </div>
+            <div style = "float:right;position:relative;top:10%;">
+                <div style = "width:100%;height:1px;clear:both;"></div>
+                <div id = "bonus" class = "one"></div>
+                <div id = "bonus" class = "two"></div>
+                <div id = "bonus" class = "three"></div>
+                <div id = "bonus" class = "four"></div>
+                <div id = "bonus" class = "five"></div>
+				<div id = "bonus" class = "six"></div>
+                <div id = "bonus" class = "seven"></div>
+                <div style = "width:100%;height:1px;clear:both;"></div>
+			</div>
+            <!-- <div style = "width:100%;height:1px;clear:both;"></div>-->
+            <div id = "menu-bt">
+                <input type = "button" class = "bt" id = "bt-Resume" value = "resume" onclick = "resumeqw()">
+                <input type = "button" class = "bt" id = "bt-Retry" value = "retry">
+            </div>
+        </div>
+		
+		<div id = "menu-finish">
+				<div style = "float:left;" id = "text-lvl-fin">
+					<p style = "float:left;font-size:20pt;left:1%;position:relative;top:-22px;">level<br><span style = "font-size:45pt;">02</span></p>
+				</div>
+				<div style = "float:right;" id = "text_done">
+					<p style = "float:center;font-size:40pt;left:1%;position:relative;top:-38px;color:white" id = "done">done</p>
+				</div>
+				<div style = "width:100%;height:1px;clear:both;"></div>
+				<div id = "level-time">
+					<p style = "position:relative;top:-20px;">level time:</p>
+					<p align = "right" style = "color:grey;position:relative;top:-40px;"><span id = "timer">00:00</span></p>
+				</div>
+				<div style = "width:100%;height:1px;clear:both;"></div>
+				<div id = "level-rank">
+					<img src = "bookmark.png" class = "book">
+					<p style = "position:relative;top:-168px;color:white;left:30px;">rank</p>
+					<div id = "rank-name"><span id = "rank">s</span></div>
+				</div>
+				<div style = "width:100%;height:1px;clear:both;"></div>
+				<p style = "background:white;padding:5px;font-size:15pt;position:relative;top:-93px;">dead: <span id = "dead">0</span></p>
+				<div style = "width:100%;height:1px;clear:both;"></div>
+				<p style = "background:white;padding:5px;font-size:15pt;position:relative;top:-133px;">prism: <span><span id = "prizm">0</span> of 5</span></p>
+				<div style = "width:100%;height:10px;clear:both;"></div>
+				<input style = "position:relative;top:-153px;" type = "button" class = "bt" id = "bt-Next" value = "next" onclick = "nextlvl()">
+				<input style = "position:relative;top:-153px;" type = "button" class = "bt" id = "bt-Retry-finish" value = "retry" onclick = "reload()">
+			</div>
 
 		<div id = "canvasZone">
 			<canvas id = "renderCanvas"></canvas>
 		</div>
 
+		
+		<script>
+		var k = 0;
+		var pauseend = 0;
+		function resumeqw(){
+					$("#menu").fadeOut(0, function(){});
+					k++;
+					audio.play();
+					pauseend = 0;
+				}
+				
+			function nextlvl(){document.location.href = "";}
+			function reload(){document.location.href = "training.html";document.getElementById("timer").innerHTML = "00:00";}
+			function getRandomColor(){
+                var letters = '0123456789ABCDEF';
+                var color = '#';
+                for (var i = 0; i < 6; i++)
+                {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+			}
+				
+			var res;
+			var ret;
+			var opt;
+			var men;
+			var nxt;
+			var rtf;
+			var lead;
+			var mainm;
+
+			var $text = $("#text-lvl");
+			var $resume = $("#bt-Resume");
+			var $retry = $("#bt-Retry");
+			var $options = $("#bt-Options");
+			var $menu = $("#bt-Menu");
+			var $next = $("#bt-Next");
+			var $retfin = $("#bt-Retry-finish");
+			var $textfin = $("#text-lvl-fin");
+			var $leaderboard = $("#bt-leaderboard");
+			var $main = $("#bt-Menu-finish");
+			var $done = $("#done");
+			var $rankname = $("#rank-name");
+       
+			$resume.hover(function(){res = 1;},function(){res = 0;});
+			$retry.hover(function(){ret = 1;},function(){ret = 0;});
+			$options.hover(function(){opt = 1;},function(){opt = 0;});
+			$menu.hover(function(){men = 1;},function(){men = 0;});
+			$next.hover(function(){nxt = 1;},function(){nxt = 0;});
+			$retfin.hover(function(){rtf = 1;},function(){rtf = 0;});
+			$leaderboard.hover(function(){lead = 1;},function(){lead = 0;});
+			$main.hover(function(){mainm = 1;},function(){mainm = 0;});
+       
+			setInterval(function(){
+				$text.css("color", getRandomColor());
+				$textfin.css("color", getRandomColor());
+				$done.css("color", getRandomColor());
+				$rankname.css("color", getRandomColor());
+				if(res == 1){$resume.css("background-color", getRandomColor());}
+				if(res == 0){$resume.css("background-color", "#FFFFFF");}
+				if(ret == 1){$retry.css("background-color", getRandomColor());}
+				if(ret == 0){$retry.css("background-color", "#FFFFFF");}
+				if(opt == 1){$options.css("background-color", getRandomColor());}
+				if(opt == 0){$options.css("background-color", "#FFFFFF");}
+				if(men == 1){$menu.css("background-color", getRandomColor());}
+				if(men == 0){$menu.css("background-color", "#FFFFFF");}
+				if(nxt == 1){$next.css("background-color", getRandomColor());}
+				if(nxt == 0){$next.css("background-color", "#FFFFFF");}
+				if(rtf == 1){$retfin.css("background-color", getRandomColor());}
+				if(rtf == 0){$retfin.css("background-color", "#FFFFFF");}
+				if(lead == 1){$leaderboard.css("background-color", getRandomColor());}
+				if(lead == 0){$leaderboard.css("background-color", "#FFFFFF");}
+				if(mainm == 1){$main.css("background-color", getRandomColor());}
+				if(mainm == 0){$main.css("background-color", "#FFFFFF");}
+			},250);
+	
+	</script>
+		
+		
 		<script>	
 		function showtip(tip){
 			var tip;
@@ -85,6 +234,9 @@
 			
 					var hero = scene.getMeshByName("hero");
 					hero.dispose();
+					
+					$("#level02").fadeOut( "slow", function(){});
+					
 					var Group4122 = scene.getMeshByName("Group#4.122");
 					var Group5022 = scene.getMeshByName("Group#5.022");
 					var Group5121 = scene.getMeshByName("Group#5.121");
@@ -120,10 +272,16 @@
 					gggggg.geometry.dispose();
                     					
 					
-					var box = BABYLON.Mesh.CreateBox("box",1,scene);
+					/*var box = BABYLON.Mesh.CreateBox("box",1,scene);
 					box.position.x = hero.position.x - 0.5;
                     box.position.y = hero.position.y + 0.5;
-                    box.position.z = hero.position.z + 0.5;
+                    box.position.z = hero.position.z + 0.5;*/
+					
+					
+					var box = BABYLON.Mesh.CreateBox("box",1,scene);
+					box.position.x = fin.position.x - 0.5;
+                    box.position.y = fin.position.y + 1.5;
+                    box.position.z = fin.position.z + 0.5;
                     
                     var materialBox = scene.getMeshByName("xxxx").material;
                     
@@ -490,12 +648,38 @@
 					
 					var fired = false;
 					var trig = 0;
+					var gameover = 0;	
 					var prizma = 0;
+					var dead = 0;
 					
 					var ppppppp = 0;
 					
 					
 					window.onkeydown = function(event){
+					
+					if(gameover == 0){
+						if(event.keyCode == 27)
+						{
+							$("#menu").fadeToggle(0, function(){});
+							k++;
+							//console.log(k);					   
+							if(k % 2 == 1)
+							{
+								audio.pause();
+								pauseend = 1;
+							}
+							else
+							{
+								audio.play();
+								pauseend = 0;
+							}
+						}
+					}
+					
+					if (pauseend == 0)
+					{
+					
+					
 						if(!fired){
 							if (trig == 0){
 						
@@ -597,6 +781,7 @@
 							r2Score = 0;	
 							btScore = 0;							
 						}
+					}
 					}
 					}
 					
@@ -740,7 +925,8 @@
                                                 });    
                                         }
 										
-										
+					var count = 0; 
+					
 						var particleSystem = new BABYLON.ParticleSystem("particles", 500, scene);
         particleSystem.particleTexture = new BABYLON.Texture("33.png", scene);
         particleSystem.emitter = box;
@@ -925,6 +1111,24 @@
 											
 										}
 									}
+									
+									if (m.name == "finish4"){
+                if(count == 0)
+                {
+                    count++;
+                    start();
+                    setTimeout(stop,5000);
+                    setInterval(function(){box.dispose();},5250);
+                }
+																				gameover = 1;
+																				pauseend = 1;
+                $("#menu-finish").fadeIn(0, function(){});
+	
+				
+																				
+																				
+																				
+        }
                                     
                                     //console.log(m.name);
                                     mm = m.name;
@@ -1490,7 +1694,7 @@ else
                       
             audio.currentTime = 0;
            
-            audio.play();
+            //audio.play();
 
 		</script>
 	</body>
