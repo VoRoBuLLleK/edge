@@ -869,7 +869,7 @@
 
 					// Функция для движения вперед
 					function moveforward(){
-						//step.play();
+						step.play();
 						tween = new TWEEN.Tween(box.position).to({z:box.position.z+1},330).start();
 						tween.easing(TWEEN.Easing.Cubic.Out);
 						tween.yoyo(true);
@@ -898,7 +898,7 @@
 					
 					// Функция для движения назад
 					function movebackward(){
-						//step.play();
+						step.play();
 						tween3 = new TWEEN.Tween(box.position).to({z:box.position.z-1},330).start();
 						tween3.easing(TWEEN.Easing.Cubic.Out);
 						tween3.yoyo(true);
@@ -925,7 +925,7 @@
 					
 					// Функция для движения влево
 					function moveleft(){
-						//step.play();
+						step.play();
 						tween5 = new TWEEN.Tween(box.position).to({x:box.position.x-1},330).start();
 						tween5.easing(TWEEN.Easing.Cubic.Out);
 						tween5.yoyo(true);
@@ -954,7 +954,7 @@
 					
 					// Функция для движения вправо
 					function moveright(){
-						//step.play();
+						step.play();
 						tween7 = new TWEEN.Tween(box.position).to({x:box.position.x+1},330).start();
 						tween7.easing(TWEEN.Easing.Cubic.Out);
 						tween7.yoyo(true);
@@ -981,7 +981,7 @@
 					
 					// Функция для подъёма
                     function moveup(){
-						// step.play();
+						 step.play();
                         tween9 = new TWEEN.Tween(box.position).to({y:box.position.y+1},330).start();
                                                 tween9.easing(TWEEN.Easing.Cubic.Out);
                                                 tween9.yoyo(true);
@@ -1396,7 +1396,7 @@
         var temp = dt2.toTimeString().split(" ");
         var ts = temp[0].split(":");
 		
-		console.log(ts)
+		//console.log(ts)
         
         $worked.html(ts[1]+":"+ts[2]);
         setTimeout(update, 1000);
@@ -1545,7 +1545,7 @@
                 finish6.material = finishmaterial2;
         }
         setInterval(finish02, 500);
-			
+			newsize();
 			
 					// Указывает браузеру на то, что вы хотите произвести анимацию, и просит его запланировать перерисовку на следующем кадре анимации
 					requestAnimationFrame(animate);
@@ -1929,7 +1929,7 @@ else
             
 			});
             
-            
+            step = new Audio('step2-0-0.2.mp3');
 			
 			var audio = new Audio('track4.mp3');
                       
