@@ -1436,12 +1436,15 @@
 			var finishmaterial = new BABYLON.StandardMaterial("finishmateria",scene);
         var finishmaterial2 = new BABYLON.StandardMaterial("finishmaterial2",scene);
  
+ var max1 = 100;
+ var min1 = 0;
+ 
         function finish01(){
-                var diffuse01 = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
-                var specular01 = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+                var diffuse01 = new BABYLON.Color3(Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255);
+                var specular01 = new BABYLON.Color3(Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255);
                 finishmaterial.specularPower = 32;
-                var ambient01 = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
-                var emissive01 = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+                var ambient01 = new BABYLON.Color3(Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255);
+                var emissive01 = new BABYLON.Color3(Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255);
                
                 tween = new TWEEN.Tween(finishmaterial.diffuseColor).to(diffuse01,500).start();
                 tween.easing(TWEEN.Easing.Cubic.Out);
@@ -1465,11 +1468,11 @@
         setInterval(finish01, 1000);
  
         function finish02(){
-                var diffuse01 = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
-                var specular01 = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+                var diffuse01 = new BABYLON.Color3(Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255);
+                var specular01 = new BABYLON.Color3(Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255);
                 finishmaterial2.specularPower = 8;
-                var ambient01 = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
-                var emissive01 = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+                var ambient01 = new BABYLON.Color3(Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255);
+                var emissive01 = new BABYLON.Color3(Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255);
                
                 tween = new TWEEN.Tween(finishmaterial2.diffuseColor).to(diffuse01,400).start();
                 tween.easing(TWEEN.Easing.Cubic.Out);
