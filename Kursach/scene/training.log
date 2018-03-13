@@ -1337,9 +1337,8 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 		num uvs2           :  0
 		num colors         :  0
 		num indices        :  1728
-	processing begun of light (HEMI):  1Hemi
-	WARNING: Only directional (sun) and spot types of lamp are valid for shadows thus ignored: 1Hemi
+	WARNING: The following lamp not visible in scene thus ignored: 1Hemi
 ========= Writing of scene file started =========
 ========= Writing of scene file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 0.5861 secs
+elapsed time:  0 min, 0.5526 secs
