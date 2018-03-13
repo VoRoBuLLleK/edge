@@ -213,21 +213,21 @@
 					camera.speed = 1; // Скорость камеры
 					camera.maxZ = 1000; // Максимальный ZOOM камеры
 					camera.attachControl(canvas,true); // Возможность контролировать камеру и передвигать её
-					//camera.rotation = new BABYLON.Vector3(Math.PI/4, 19.5, 0);
+					camera.rotation = new BABYLON.Vector3(Math.PI/4, 5.5, 0);
                  
                     
                     
-    /*camera.mode = BABYLON.Camera.ORTHOGRAPHIC_CAMERA;
+  /* camera.mode = BABYLON.Camera.ORTHOGRAPHIC_CAMERA;
     camera.orthoTop = 1 ;
     camera.orthoBottom = -18;
     camera.orthoLeft = -18;
     camera.orthoRight = 18; */
                     
-              //      camera.mode = BABYLON.Camera.ORTHOGRAPHIC_CAMERA;
-            //        camera.orthoTop = 1 ;
-            //        camera.orthoBottom = -8;
-            //        camera.orthoLeft = -8;
-            //        camera.orthoRight = 8;
+                 camera.mode = BABYLON.Camera.ORTHOGRAPHIC_CAMERA;
+                    camera.orthoTop = 1;
+                    camera.orthoBottom = -8;
+                    camera.orthoLeft = -8;
+                    camera.orthoRight = 8;
                     
                     scene.clearColor = new BABYLON.Color4(0,0,0,0);
 					var light = new BABYLON.HemisphericLight("HemiLight", new BABYLON.Vector3(0, 1, 0), scene);
@@ -670,7 +670,7 @@
 					var btScore = 0; // Создаем переменную для проверки пересечения для второго спутника движения вниз
 					
 					 // Скрыть спутники
-                  /*  f1.isVisible = false;
+                    f1.isVisible = false;
                     f2.isVisible = false;
                     b1.isVisible = false;
                     b2.isVisible = false;
@@ -678,7 +678,7 @@
                     r2.isVisible = false;
                     l1.isVisible = false;
                     l2.isVisible = false;
-                    bt.isVisible = false;*/
+                    bt.isVisible = false;
 					
 					
 					var fired = false;
@@ -686,7 +686,22 @@
 					var gameover = 0;	
 					var prizma = 0;
 					var dead = 0;
-					var keydis=1
+					var keydis=1;
+					
+					camidle=1;
+                function camshake(){
+
+                     camidle=0;  
+                   tween = new TWEEN.Tween(camera.position).to({y:camera.position.y+0.225},300).start();
+                     tween.easing(TWEEN.Easing.Bounce.InOut);
+                tween.onComplete(function(){
+               
+                tween2 = new TWEEN.Tween(camera.position).to({y:camera.position.y-0.225},1).start();
+                    tween2.onComplete(function(){camidle=1;   }); 
+                     tween2.easing(TWEEN.Easing.Bounce.InOut);   
+                });   
+				
+				}
 					
 					var ppppppp = 0;
 					
@@ -1707,11 +1722,32 @@ scene.meshes.forEach(function(m){
 			var $one = $(".one");
 			$one.css("background-color", "red");
 		}
-		if(prizma == 2)
+		if(prizma == 0)
 			document.getElementById('rank').innerHTML = "F";
 			
 		
-		
+		 if (camidle==1){
+													if (bt.position.y <= -1){
+															camera.position.y = 3;
+													}
+													else
+															camera.position.y = box.position.y + 4;
+												   
+													if(bt.position.y > 2)
+															camera.position.y = box.position.y + 8;
+												   
+												  
+													camera.position.z = box.position.z-1;
+													camera.position.x = box.position.x + 2;
+													camera.position.y = box.position.y +7;
+												   
+													if (k % 2 == 1)
+													{
+															camera.position.y = box.position.y + 8;
+															camera.position.x = box.position.x - 4;
+													}
+												
+            }
 				
 						if(bot7_1.intersectsMesh(box, true))
 						{	
