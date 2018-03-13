@@ -1337,8 +1337,16 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 		num uvs2           :  0
 		num colors         :  0
 		num indices        :  2487
+	processing begun of mesh:  xxxx2
+		processing begun of Standard material:  Material.006
+		num positions      :  8
+		num normals        :  8
+		num uvs            :  0
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
 	WARNING: The following lamp not visible in scene thus ignored: 1Hemi
 ========= Writing of scene file started =========
 ========= Writing of scene file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 0.5732 secs
+elapsed time:  0 min, 0.5916 secs
