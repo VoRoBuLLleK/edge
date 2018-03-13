@@ -948,6 +948,7 @@
 					var ggg = 0;
 					var stStart = 0;
 					var qqq = 0;
+					var prov = 0;
 					
 					// Функция для падения
 					 function  movedown(){  
@@ -1180,41 +1181,43 @@
                         box.position.y = hero.position.y + 20.5;
                         box.position.z = hero.position.z - 0.5;
                        
-                        f1.position.x = box.position.x + 0.5;
+                        f1.position.x = box.position.x + 0;
                         f1.position.y = box.position.y + 0;
-                        f1.position.z = box.position.z + 0;
+                        f1.position.z = box.position.z + 0.5;
                        
-                        f2.position.x = box.position.x + 0.5;
+                        f2.position.x = box.position.x + 0;
                         f2.position.y = box.position.y + 1;
-                        f2.position.z = box.position.z + 0;
+                        f2.position.z = box.position.z + 0.5;
  
-                        b1.position.x = box.position.x - 0.5;
+                        b1.position.x = box.position.x - 0;
                         b1.position.y = box.position.y + 0;
-                        b1.position.z = box.position.z + 0;
+                        b1.position.z = box.position.z - 0.5;
                        
-                        b2.position.x = box.position.x - 0.5;
+                        b2.position.x = box.position.x - 0;
                         b2.position.y = box.position.y + 1;
-                        b2.position.z = box.position.z + 0;
+                        b2.position.z = box.position.z - 0.5;
  
-                        l1.position.x = box.position.x + 0;
+                        l1.position.x = box.position.x - 0.5;
                         l1.position.y = box.position.y + 0;
-                        l1.position.z = box.position.z + 0.5;
+                        l1.position.z = box.position.z - 0;
  
-                        l2.position.x = box.position.x + 0;
+                        l2.position.x = box.position.x - 0.5;
                         l2.position.y = box.position.y + 1;
-                        l2.position.z = box.position.z + 0.5;
+                        l2.position.z = box.position.z + 0;
  
-                        r1.position.x = box.position.x + 0;
+                        r1.position.x = box.position.x + 0.5;
                         r1.position.y = box.position.y + 0;
-                        r1.position.z = box.position.z - 0.5;
+                        r1.position.z = box.position.z + 0;
                        
-                        r2.position.x = box.position.x + 0;
+                        r2.position.x = box.position.x + 0.5;
                         r2.position.y = box.position.y + 1;
-                        r2.position.z = box.position.z - 0.5;
+                        r2.position.z = box.position.z + 0;
        
                         bt.position.x = box.position.x;
                         bt.position.y = box.position.y - 0.5;
                         bt.position.z = box.position.z;
+					
+						
                 }
         }
                     
@@ -1611,6 +1614,54 @@ scene.meshes.forEach(function(m){
 		document.getElementById('prizm').innerHTML = prizma;
 				document.getElementById('dead').innerHTML = dead;
 				
+				
+				if(prizma == 7)
+		{
+			document.getElementById('rank').innerHTML = "S+";
+			var $five = $(".seven");
+			$five.css("background-color", "red");
+		}
+		if(prizma == 6)
+		{
+			document.getElementById('rank').innerHTML = "S";
+			var $four = $(".six");
+			$four.css("background-color", "red");
+		}
+		if(prizma == 5)
+		{
+			document.getElementById('rank').innerHTML = "A";
+			var $three = $(".five");
+			$three.css("background-color", "red");
+		}
+		if(prizma == 4)
+		{
+			document.getElementById('rank').innerHTML = "B";
+			var $two = $(".four");
+			$two.css("background-color", "red");
+		}
+		if(prizma == 3)
+		{
+			document.getElementById('rank').innerHTML = "C";
+			var $one = $(".three");
+			$one.css("background-color", "red");
+		}
+		if(prizma == 2)
+		{
+			document.getElementById('rank').innerHTML = "D";
+			var $one = $(".two");
+			$one.css("background-color", "red");
+		}
+		if(prizma == 1)
+		{
+			document.getElementById('rank').innerHTML = "E";
+			var $one = $(".one");
+			$one.css("background-color", "red");
+		}
+		if(prizma == 2)
+			document.getElementById('rank').innerHTML = "F";
+			
+		
+		
 				
 						if(bot7_1.intersectsMesh(box, true))
 						{	
