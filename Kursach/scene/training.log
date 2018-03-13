@@ -1291,20 +1291,6 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 		num uvs2           :  0
 		num colors         :  0
 		num indices        :  36
-	processing begun of mesh:  1mesh
-		processing begun of Standard material:  Material.008
-			Diffuse texture found "Texture.013"
-				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of Standard material:  Material.006
-			Diffuse texture found "Texture.012"
-				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of multimaterial:  training.Multimaterial#12
-		num positions      :  1004
-		num normals        :  1004
-		num uvs            :  2008
-		num uvs2           :  0
-		num colors         :  0
-		num indices        :  1662
 	processing begun of mesh:  h
 		processing begun of Standard material:  Color_J0
 		num positions      :  20
@@ -1337,9 +1323,23 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 		num uvs2           :  0
 		num colors         :  0
 		num indices        :  36
+	processing begun of mesh:  1mesh
+		processing begun of Standard material:  Material.002
+			Diffuse texture found "Texture.007"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  Material.004
+			Diffuse texture found "Texture.008"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  training.Multimaterial#12
+		num positions      :  1142
+		num normals        :  1142
+		num uvs            :  2284
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1728
 	processing begun of light (HEMI):  1Hemi
 	WARNING: Only directional (sun) and spot types of lamp are valid for shadows thus ignored: 1Hemi
 ========= Writing of scene file started =========
 ========= Writing of scene file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 1.0109 secs
+elapsed time:  0 min, 0.5861 secs
