@@ -1323,20 +1323,6 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 		num uvs2           :  0
 		num colors         :  0
 		num indices        :  36
-	processing begun of mesh:  1mesh
-		processing begun of Standard material:  Material.000
-			Diffuse texture found "Texture.010"
-				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of Standard material:  Material.005
-			Diffuse texture found "Texture.009"
-				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of multimaterial:  training.Multimaterial#12
-		num positions      :  1491
-		num normals        :  1491
-		num uvs            :  2982
-		num uvs2           :  0
-		num colors         :  0
-		num indices        :  2487
 	processing begun of mesh:  xxxx2
 		processing begun of Standard material:  Material.006
 		num positions      :  8
@@ -1355,7 +1341,7 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 		processing begun of Standard material:  top1.001
 			Diffuse texture found "Texture.007"
 				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of multimaterial:  training.Multimaterial#13
+		processing begun of multimaterial:  training.Multimaterial#12
 		num positions      :  32
 		num normals        :  32
 		num uvs            :  64
@@ -1372,7 +1358,7 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 		processing begun of Standard material:  top1.002
 			Diffuse texture found "Texture.012"
 				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of multimaterial:  training.Multimaterial#14
+		processing begun of multimaterial:  training.Multimaterial#13
 		num positions      :  32
 		num normals        :  32
 		num uvs            :  64
@@ -1389,7 +1375,7 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 		processing begun of Standard material:  top1.004
 			Diffuse texture found "Texture.018"
 				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of multimaterial:  training.Multimaterial#15
+		processing begun of multimaterial:  training.Multimaterial#14
 		num positions      :  32
 		num normals        :  32
 		num uvs            :  64
@@ -1406,7 +1392,7 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 		processing begun of Standard material:  top1.003
 			Diffuse texture found "Texture.015"
 				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of multimaterial:  training.Multimaterial#16
+		processing begun of multimaterial:  training.Multimaterial#15
 		num positions      :  32
 		num normals        :  32
 		num uvs            :  64
@@ -1423,7 +1409,7 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 		processing begun of Standard material:  top1.005
 			Diffuse texture found "Texture.021"
 				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of multimaterial:  training.Multimaterial#17
+		processing begun of multimaterial:  training.Multimaterial#16
 		num positions      :  32
 		num normals        :  32
 		num uvs            :  64
@@ -1440,7 +1426,7 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 		processing begun of Standard material:  top1.006
 			Diffuse texture found "Texture.024"
 				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of multimaterial:  training.Multimaterial#18
+		processing begun of multimaterial:  training.Multimaterial#17
 		num positions      :  32
 		num normals        :  32
 		num uvs            :  64
@@ -1457,7 +1443,7 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 		processing begun of Standard material:  top1.007
 			Diffuse texture found "Texture.027"
 				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of multimaterial:  training.Multimaterial#19
+		processing begun of multimaterial:  training.Multimaterial#18
 		num positions      :  32
 		num normals        :  32
 		num uvs            :  64
@@ -1474,7 +1460,7 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 		processing begun of Standard material:  top1.010
 			Diffuse texture found "Texture.036"
 				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of multimaterial:  training.Multimaterial#20
+		processing begun of multimaterial:  training.Multimaterial#19
 		num positions      :  32
 		num normals        :  32
 		num uvs            :  64
@@ -1491,7 +1477,7 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 		processing begun of Standard material:  top1.009
 			Diffuse texture found "Texture.033"
 				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of multimaterial:  training.Multimaterial#21
+		processing begun of multimaterial:  training.Multimaterial#20
 		num positions      :  32
 		num normals        :  32
 		num uvs            :  64
@@ -1508,7 +1494,7 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 		processing begun of Standard material:  top1.011
 			Diffuse texture found "Texture.039"
 				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of multimaterial:  training.Multimaterial#22
+		processing begun of multimaterial:  training.Multimaterial#21
 		num positions      :  32
 		num normals        :  32
 		num uvs            :  64
@@ -1525,7 +1511,7 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 		processing begun of Standard material:  top1.012
 			Diffuse texture found "Texture.042"
 				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of multimaterial:  training.Multimaterial#23
+		processing begun of multimaterial:  training.Multimaterial#22
 		num positions      :  32
 		num normals        :  32
 		num uvs            :  64
@@ -1542,7 +1528,7 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 		processing begun of Standard material:  top1.013
 			Diffuse texture found "Texture.045"
 				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of multimaterial:  training.Multimaterial#24
+		processing begun of multimaterial:  training.Multimaterial#23
 		num positions      :  32
 		num normals        :  32
 		num uvs            :  64
@@ -1559,15 +1545,29 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 		processing begun of Standard material:  top1.014
 			Diffuse texture found "Texture.048"
 				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of multimaterial:  training.Multimaterial#25
+		processing begun of multimaterial:  training.Multimaterial#24
 		num positions      :  32
 		num normals        :  32
 		num uvs            :  64
 		num uvs2           :  0
 		num colors         :  0
 		num indices        :  36
+	processing begun of mesh:  1mesh
+		processing begun of Standard material:  Material.004
+			Diffuse texture found "Texture.052"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  Material.002
+			Diffuse texture found "Texture.051"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  training.Multimaterial#25
+		num positions      :  1458
+		num normals        :  1458
+		num uvs            :  2916
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  2391
 	WARNING: The following lamp not visible in scene thus ignored: 1Hemi
 ========= Writing of scene file started =========
 ========= Writing of scene file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 1.193 secs
+elapsed time:  0 min, 1.3656 secs
