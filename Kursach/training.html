@@ -212,7 +212,7 @@
                    
 					camera.speed = 1; // Скорость камеры
 					camera.maxZ = 1000; // Максимальный ZOOM камеры
-				//	camera.attachControl(canvas,true); // Возможность контролировать камеру и передвигать её
+					camera.attachControl(canvas,true); // Возможность контролировать камеру и передвигать её
 					camera.rotation = new BABYLON.Vector3(Math.PI/4, 5.5, 0);
                  
                     
@@ -222,6 +222,13 @@
     camera.orthoBottom = -18;
     camera.orthoLeft = -18;
     camera.orthoRight = 18; */
+                    
+                    
+                    
+                    
+                    
+                    
+                      
                     
                     camera.mode = BABYLON.Camera.ORTHOGRAPHIC_CAMERA;
                     camera.orthoTop = 1;
@@ -235,6 +242,16 @@
 		// camera.orthoTop = camera.orthoRight = Math.abs(zoom);
 		 camera.orthoLeft = -Math.abs(newWidth);
 		 camera.orthoRight = newWidth;
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     
                     
                   window.onresize = function(event) {
@@ -305,6 +322,12 @@
 					box.position.x = hero.position.x - 0.5;
                     box.position.y = hero.position.y + 0.5;
                     box.position.z = hero.position.z + 0.5;
+                    
+
+                    
+                    
+                    
+                    box.checkCollisions = true;
 	
                     var materialBox = scene.getMeshByName("xxxx").material;
 
@@ -403,6 +426,13 @@
 					bot3_1.position.x = Group3001.position.x - 0.5;
 					bot3_1.position.y = Group3001.position.y + 1.5;
 					bot3_1.position.z = Group3001.position.z + 0.5;
+                    
+                    bot3_1.checkCollisions = true;
+                    
+                    
+                    
+                    
+                    
 					var bot3_2 = BABYLON.Mesh.CreateBox("bot3_2",0.999,scene);
 					bot3_2.position.x = bot3_1.position.x - 1;
 					bot3_2.position.y = bot3_1.position.y;
@@ -416,17 +446,20 @@
 					bot3_2.material = materialBox;
 					bot3_3.material = materialBox;
 					
-					var bot2_1 = BABYLON.Mesh.CreateBox("bot2_1",0.999,scene);
-					bot2_1.position.x = Group2009.position.x-0.5;
-					bot2_1.position.y = Group2009.position.y+1.5;
-					bot2_1.position.z = Group2009.position.z+0.5;
-					var bot2_2 = BABYLON.Mesh.CreateBox("bot2_2",0.999,scene);
-					bot2_2.position.x = bot2_1.position.x;
-					bot2_2.position.y = bot2_1.position.y;
-					bot2_2.position.z = bot2_1.position.z+1;
+					//var bot2_1 = BABYLON.Mesh.CreateBox("bot2_1",0.999,scene);
+					//bot2_1.position.x = Group2009.position.x-0.5;
+					//bot2_1.position.y = Group2009.position.y+1.5;
+					//bot2_1.position.z = Group2009.position.z+0.5;
+                    
+                    
+                    
+					//var bot2_2 = BABYLON.Mesh.CreateBox("bot2_2",0.999,scene);
+					//bot2_2.position.x = bot2_1.position.x;
+					//bot2_2.position.y = bot2_1.position.y;
+					//bot2_2.position.z = bot2_1.position.z+1;
 					
-					bot2_1.material = materialBox;
-					bot2_2.material = materialBox;
+					//bot2_1.material = materialBox;
+					//bot2_2.material = materialBox;
 					
 					/*var downPl = new BABYLON.StandardMaterial("textureBox",scene);
 					downPl.diffuseColor = new BABYLON.Color3(235/256, 237/256, 242/256);
@@ -561,12 +594,14 @@
 					btt1.position.y = Group4127.position.y+0.85; 
 					btt1.position.z = Group4127.position.z+0.5; 
 					btt1.material = matBTT1; 
-					var btt2 = BABYLON.Mesh.CreateBox("btt2",0.5,scene);
+					
+                    /*var btt2 = BABYLON.Mesh.CreateBox("btt2",0.5,scene);
 					btt2.position.x = Group8044.position.x-0.5;
 					btt2.position.y = Group8044.position.y+0.85; 
 					btt2.position.z = Group8044.position.z+0.5; 
 					btt2.material = matBTT1; 
-					var btt3 = BABYLON.Mesh.CreateBox("btt3",0.5,scene);
+					*/
+                    var btt3 = BABYLON.Mesh.CreateBox("btt3",0.5,scene);
 					btt3.position.x = Group5072.position.x-0.5;
 					btt3.position.y = Group5072.position.y+0.85; 
 					btt3.position.z = Group5072.position.z+0.5; 
@@ -709,7 +744,7 @@
                     l1.isVisible = false;
                     l2.isVisible = false;
                     bt.isVisible = false;
-					
+				
 					
 					var fired = false;
 					var trig = 0;
@@ -717,6 +752,7 @@
 					var prizma = 0;
 					var dead = 0;
 					var keydis=1;
+					var keydis2=0;
 					
 					camidle=1;
                 function camshake(){
@@ -737,6 +773,7 @@
 					
 					
 					window.onkeydown = function(event){
+     if (keydis2==0){
 					if (keydis == 1){
 					if(gameover == 0){
 						if(event.keyCode == 27)
@@ -865,20 +902,36 @@
 					}
 					}
 					}
+                        
+                        
+                  
+                       if (event.keyCode == 32){ 
+					//			tween.finish()
+								//tweenr.stop()
+                           repos2();
+								} 
+            if (event.keyCode == 48){ 
+					//			tween.finish()
+								//tweenr.stop()
+                           repos();
+								} 
+                
 					}
+                }
 
 					// Функция для движения вперед
 					function moveforward(){
+                        
 						step.play();
-						tween = new TWEEN.Tween(box.position).to({z:box.position.z+1},330).start();
-						tween.easing(TWEEN.Easing.Cubic.Out);
-						tween.yoyo(true);
+						tweenm = new TWEEN.Tween(box.position).to({z:box.position.z+1},330).start();
+						tweenm.easing(TWEEN.Easing.Cubic.Out);
+						tweenm.yoyo(true);
 					
-						var tween2 = new TWEEN.Tween(box.rotation).to({z:0,y:0,x:box.rotation.z+Math.PI/2},330).start();
-						tween2.easing(TWEEN.Easing.Cubic.Out);				 
-						tween2.yoyo(true);	
+						var tweenr = new TWEEN.Tween(box.rotation).to({z:0,y:0,x:box.rotation.z+Math.PI/2},330).start();
+						tweenr.easing(TWEEN.Easing.Cubic.Out);				 
+						tweenr.yoyo(true);	
 						
-						tween.onComplete(function(){
+						tweenm.onComplete(function(){
 						
 							box.rotation = BABYLON.Vector3.Zero();
 							f1.position.z = f1.position.z + 1;
@@ -892,6 +945,7 @@
 							bt.position.z = bt.position.z + 1;
 							box.rotation = BABYLON.Vector3.Zero();
 							fired = false;
+                            repos2();
 
 						});	
 					}	
@@ -920,21 +974,22 @@
 							bt.position.z = bt.position.z - 1;
 							box.rotation = BABYLON.Vector3.Zero();
 							fired = false;
+                             repos2();
 						});	
 					}
 					
 					// Функция для движения влево
 					function moveleft(){
 						step.play();
-						tween5 = new TWEEN.Tween(box.position).to({x:box.position.x-1},330).start();
-						tween5.easing(TWEEN.Easing.Cubic.Out);
-						tween5.yoyo(true);
+						tweenm = new TWEEN.Tween(box.position).to({x:box.position.x-1},330).start();
+						tweenm.easing(TWEEN.Easing.Cubic.Out);
+						tweenm.yoyo(true);
 					
-						var tween6 = new TWEEN.Tween(box.rotation).to({x:0,y:0,z:box.rotation.z+Math.PI/2},330).start();
-						tween6.easing(TWEEN.Easing.Cubic.Out);				 
-						tween6.yoyo(true);
+						var tweenr = new TWEEN.Tween(box.rotation).to({x:0,y:0,z:box.rotation.z+Math.PI/2},330).start();
+						tweenr.easing(TWEEN.Easing.Cubic.Out);				 
+						tweenr.yoyo(true);
 						
-						tween5.onComplete(function(){
+						tweenm.onComplete(function(){
 							box.rotation = BABYLON.Vector3.Zero();
 							f1.position.x = f1.position.x - 1;
 							f2.position.x = f2.position.x - 1;
@@ -947,6 +1002,7 @@
 							bt.position.x = bt.position.x - 1;
 							box.rotation = BABYLON.Vector3.Zero();
 							fired = false;
+                             repos2();
 						});
 					
 					
@@ -955,15 +1011,15 @@
 					// Функция для движения вправо
 					function moveright(){
 						step.play();
-						tween7 = new TWEEN.Tween(box.position).to({x:box.position.x+1},330).start();
-						tween7.easing(TWEEN.Easing.Cubic.Out);
-						tween7.yoyo(true);
+						tweenm = new TWEEN.Tween(box.position).to({x:box.position.x+1},330).start();
+						tweenm.easing(TWEEN.Easing.Cubic.Out);
+						tweenm.yoyo(true);
 					
-						var tween8 = new TWEEN.Tween(box.rotation).to({x:0,y:0,z:box.rotation.z-Math.PI/2},330).start();
-						tween8.easing(TWEEN.Easing.Cubic.Out);				 
-						tween8.yoyo(true);
+						var tweenr = new TWEEN.Tween(box.rotation).to({x:0,y:0,z:box.rotation.z-Math.PI/2},330).start();
+						tweenr.easing(TWEEN.Easing.Cubic.Out);				 
+						tweenr.yoyo(true);
 						
-						tween7.onComplete(function() {
+						tweenm.onComplete(function() {
 							box.rotation = BABYLON.Vector3.Zero();
 							f1.position.x = f1.position.x + 1;
 							f2.position.x = f2.position.x + 1;
@@ -976,21 +1032,22 @@
 							bt.position.x = bt.position.x + 1;
 							box.rotation = BABYLON.Vector3.Zero();
 							fired = false;
+                             repos2();
 						});		
 					}
 					
 					// Функция для подъёма
                     function moveup(){
 						 step.play();
-                        tween9 = new TWEEN.Tween(box.position).to({y:box.position.y+1},330).start();
-                                                tween9.easing(TWEEN.Easing.Cubic.Out);
-                                                tween9.yoyo(true);
+                        tweenm = new TWEEN.Tween(box.position).to({y:box.position.y+1},330).start();
+                                                tweenm.easing(TWEEN.Easing.Cubic.Out);
+                                                tweenm.yoyo(true);
                                        
-                                                var tween10 = new TWEEN.Tween(box.rotation).to({z:0,y:0,x:box.rotation.x-Math.PI/2},330).start();
-                                                tween10.easing(TWEEN.Easing.Cubic.Out);                          
-                                                tween10.yoyo(true);
+                                                var tweenr = new TWEEN.Tween(box.rotation).to({z:0,y:0,x:box.rotation.x-Math.PI/2},330).start();
+                                                tweenr.easing(TWEEN.Easing.Cubic.Out);                          
+                                                tweenr.yoyo(true);
                                                
-                                                tween10.onComplete(function(){
+                                                tweenm.onComplete(function(){
                                                         box.rotation = BABYLON.Vector3.Zero();
                                                         f1.position.y = f1.position.y + 1;
                                                         f2.position.y = f2.position.y + 1;
@@ -1003,6 +1060,7 @@
                                                         bt.position.y = bt.position.y + 1;                                                     
                                                         box.rotation = BABYLON.Vector3.Zero();
                                                         fired = false;
+                                                     repos2();
                                                 });    
                                         }
 										
@@ -1041,7 +1099,142 @@
 					var stStart = 0;
 					var qqq = 0;
 					var prov = 0;
+                    
+                    
+                    
+                   
+                    
+                    
 					
+					// Функция repos
+                    
+                    function repos(){
+                        
+                        var x=box.position.x;
+                        var y=box.position.y;
+                        var z=box.position.z;
+                        
+                        x=x-0.5;
+                        y=y-0.5;
+                        z=z-0.5;
+                        
+                        x=Math.round(x)
+                        y=Math.round(y)
+                        z=Math.round(z)
+                        
+                     /*   console.log(x)
+                        if (x === parseInt(x, 10))
+                            console.log("int")
+                        else
+                            console.log("nonint")
+                        
+                        
+                        console.log(y)
+                        if (y === parseInt(y, 10))
+                            console.log("int")
+                        else
+                            console.log("nonint")
+                        
+                        
+                        console.log(z)
+                        if (z === parseInt(z, 10))
+                            console.log("int")
+                        else
+                            console.log("nonint")
+                        */
+                        
+                        x=x+0.5;
+                        y=y+0.5;
+                        z=z+0.5;
+                       box.position.x=x;
+                       box.position.y=y;
+                       box.position.z=z;
+                        
+                        f1.position.x = box.position.x; // Позиция первого спутника в длину
+					f1.position.y = box.position.y; // Позиция первого спутника в высоту
+					f1.position.z = box.position.z + 0.5; // Позиция первого спутника в ширину
+
+f2.position.x = box.position.x; // Позиция второго спутника в длину
+					f2.position.y = box.position.y + 1; // Позиция второго спутника в высоту
+					f2.position.z = box.position.z + 0.5; // Позиция второго спутника в ширину
+
+b1.position.x = box.position.x; // Позиция первого спутника в длину
+					b1.position.y = box.position.y; // Позиция первого спутника в высоту
+					b1.position.z = box.position.z - 0.5; // Позиция первого спутника в ширину
+
+b2.position.x = box.position.x; // Позиция второго спутника в длину
+					b2.position.y = box.position.y + 1; // Позиция второго спутника в высоту
+					b2.position.z = box.position.z - 0.5; // Позиция второго спутника в ширину
+
+l1.position.x = box.position.x - 0.5; // Позиция первого спутника в длину
+					l1.position.y = box.position.y + 0; // Позиция первого спутника в высоту
+					l1.position.z = box.position.z; // Позиция первого спутника в ширину
+
+l2.position.x = box.position.x - 0.5; // Позиция второго спутника в длину
+					l2.position.y = box.position.y + 1; // Позиция второго спутника в высоту
+					l2.position.z = box.position.z; // Позиция второго спутника в ширину
+
+r1.position.x = box.position.x + 0.5; // Позиция первого спутника в длину
+					r1.position.y = box.position.y + 0; // Позиция первого спутника в высоту
+					r1.position.z = box.position.z; // Позиция первого спутника в ширину
+
+r2.position.x = box.position.x + 0.5; // Позиция второго спутника в длину
+					r2.position.y = box.position.y + 1; // Позиция второго спутника в высоту
+					r2.position.z = box.position.z; // Позиция второго спутника в ширину
+
+bt.position.x = box.position.x; // Позиция спутника в длину
+					bt.position.y = box.position.y - 0.5; // Позиция спутника в высоту
+					bt.position.z = box.position.z; // Позиция спутника в ширину
+                                                
+                        
+                    }
+                    
+                    
+                     // Функция repos для спутников
+                     function repos2(){
+                   
+                    f1.position.x = box.position.x; // Позиция первого спутника в длину
+					f1.position.y = box.position.y; // Позиция первого спутника в высоту
+					f1.position.z = box.position.z + 0.5; // Позиция первого спутника в ширину
+
+f2.position.x = box.position.x; // Позиция второго спутника в длину
+					f2.position.y = box.position.y + 1; // Позиция второго спутника в высоту
+					f2.position.z = box.position.z + 0.5; // Позиция второго спутника в ширину
+
+b1.position.x = box.position.x; // Позиция первого спутника в длину
+					b1.position.y = box.position.y; // Позиция первого спутника в высоту
+					b1.position.z = box.position.z - 0.5; // Позиция первого спутника в ширину
+
+b2.position.x = box.position.x; // Позиция второго спутника в длину
+					b2.position.y = box.position.y + 1; // Позиция второго спутника в высоту
+					b2.position.z = box.position.z - 0.5; // Позиция второго спутника в ширину
+
+l1.position.x = box.position.x - 0.5; // Позиция первого спутника в длину
+					l1.position.y = box.position.y + 0; // Позиция первого спутника в высоту
+					l1.position.z = box.position.z; // Позиция первого спутника в ширину
+
+l2.position.x = box.position.x - 0.5; // Позиция второго спутника в длину
+					l2.position.y = box.position.y + 1; // Позиция второго спутника в высоту
+					l2.position.z = box.position.z; // Позиция второго спутника в ширину
+
+r1.position.x = box.position.x + 0.5; // Позиция первого спутника в длину
+					r1.position.y = box.position.y + 0; // Позиция первого спутника в высоту
+					r1.position.z = box.position.z; // Позиция первого спутника в ширину
+
+r2.position.x = box.position.x + 0.5; // Позиция второго спутника в длину
+					r2.position.y = box.position.y + 1; // Позиция второго спутника в высоту
+					r2.position.z = box.position.z; // Позиция второго спутника в ширину
+
+bt.position.x = box.position.x; // Позиция спутника в длину
+					bt.position.y = box.position.y - 0.5; // Позиция спутника в высоту
+					bt.position.z = box.position.z; // Позиция спутника в ширину
+                                                
+                    //    console.log("repos2")
+                    }
+                    
+                  //  setInterval(function(){repos2()}, 10);
+                    
+                    
 					// Функция для падения
 					 function  movedown(){  
                         mm = "0";
@@ -1123,11 +1316,12 @@
 									
 									}
 										
-									if(m.name == "btt2")
+									/*if(m.name == "btt2")
 									{
 										btt2.position.y = 1.76;
 										btt2.material = matBTT2; 
 									}
+                                      */                         
 									if(m.name == "btt3")
 									{
 										btt3.position.y = 0.76;
@@ -1151,6 +1345,7 @@
 											tween750.onComplete(function(){
 												trig = 0;
 												ggg = 1;
+                                                repos();
 											});
 											
 											stFinish = 1;
@@ -1175,17 +1370,22 @@
 											tween1000 = new TWEEN.Tween(bot3_3.position).to({x:bot3_3.position.x + 2},500).start();
 											tween1000.easing(TWEEN.Easing.Linear.None);
 											tween1000.yoyo(true);
-											tween1000.onComplete(function(){
-												tween1000 = new TWEEN.Tween(bot3_1.position).to({x:bot3_1.position.x - 2},500).start();
+                                            
+                                                tween1000.onComplete(function(){
+												tween1000 = new TWEEN.Tween(bot3_1.position).to({x:bot3_1.position.x - 4},500).start();
 												tween1000.easing(TWEEN.Easing.Linear.None);
 												tween1000.yoyo(true);
-												tween1000 = new TWEEN.Tween(bot3_2.position).to({x:bot3_2.position.x - 2},500).start();
+												tween1000 = new TWEEN.Tween(bot3_2.position).to({x:bot3_2.position.x - 4},500).start();
 												tween1000.easing(TWEEN.Easing.Linear.None);
 												tween1000.yoyo(true);
-												tween1000 = new TWEEN.Tween(bot3_3.position).to({x:bot3_3.position.x - 2},500).start();
+												tween1000 = new TWEEN.Tween(bot3_3.position).to({x:bot3_3.position.x - 4},500).start();
 												tween1000.easing(TWEEN.Easing.Linear.None);
 												tween1000.yoyo(true);
 												trig = 0;
+                                                    
+                                                if(qqq=1){repos();}
+                                                
+                                                tween1000.onComplete(function(){ });
 											});
 											
 											qqq = 2;
@@ -1561,7 +1761,7 @@
 						setTimeout(bot6block_v1, 0);
 						setTimeout(bot6block_v2, 3000);
 					}, 6000);
-					setInterval(bot2block, 3000);	
+					//setInterval(bot2block, 3000);	
                     
 					
                      //оффсет бекграунда
@@ -1571,12 +1771,20 @@
                     
                     
                     
+                    var bot4inter=0;
+                    var bot6inter=0;
+                    //startpos
+                 //   box.position.x =  bot4_4.position.x + 0.5;
+                //    box.position.y =  bot4_4.position.y + 1+0.5;
+                //    box.position.z =  bot4_4.position.z + 0.5;
+                   repos()
                     
 					// Регистрируем цикл отрисовки, который периодически обновляет сцену (FPS)
 					engine.runRenderLoop(function(){
 						scene.render();	
 						movedown();
                         res();
+                        
                         
                         //оффсет бекграунда
 
@@ -1808,6 +2016,7 @@ scene.meshes.forEach(function(m){
 								r2.position.x = box.position.x+0.5;
 								bt.position.x = box.position.x;	
 							}
+                            
 						}
 						
 						if(bot6.intersectsMesh(bt, true))
@@ -1822,7 +2031,11 @@ scene.meshes.forEach(function(m){
 							r1.position.z = box.position.z;
 							r2.position.z = box.position.z;
 							bt.position.z = box.position.z;	
+                            
+                             bot6inter=1;
 						}
+                        else{bot6inter=0;}
+                     
 						
 						
 						/*if ((bot4_2.intersectsMesh(box,true) || bot4_4.intersectsMesh(box,true))){ 
@@ -1866,7 +2079,7 @@ else
 								r1.position.x = box.position.x+0.5;
 								r2.position.x = box.position.x+0.5;
 								bt.position.x = box.position.x;
-						
+					bot4inter=1;
 						}
 					
 						
@@ -1885,6 +2098,17 @@ else
 						tween100 = new TWEEN.Tween(bot4_4.position).to({x:5.5}, 1000).start();
                         tween100.easing(TWEEN.Easing.Linear.None);
                         tween100.yoyo(true);
+                        
+                        tween1011 = new TWEEN.Tween(scene.getMeshByName("Group#a").position).to({x:scene.getMeshByName("Group#a").position.x+2}, 1000).start();
+                        tween1011 = new TWEEN.Tween(scene.getMeshByName("Group#b").position).to({x:scene.getMeshByName("Group#b").position.x+2}, 1000).start();
+                        tween1011 = new TWEEN.Tween(scene.getMeshByName("Group#c").position).to({x:scene.getMeshByName("Group#c").position.x+2}, 1000).start();
+                        tween1011 = new TWEEN.Tween(scene.getMeshByName("Group#d").position).to({x:scene.getMeshByName("Group#d").position.x+2}, 1000).start();
+                       
+                        
+                        
+                        
+                        
+                        
 						tween100.onComplete(function(){
 							tween101 = new TWEEN.Tween(bot4_1.position).to({x:2.5}, 1000).start();
 							tween101.easing(TWEEN.Easing.Linear.None);
@@ -1898,23 +2122,63 @@ else
 							tween101 = new TWEEN.Tween(bot4_4.position).to({x:3.5}, 1000).start();
 							tween101.easing(TWEEN.Easing.Linear.None);
 							tween101.yoyo(true);
+                            
+                            
+                            
+                        tween1011 = new TWEEN.Tween(scene.getMeshByName("Group#a").position).to({x:scene.getMeshByName("Group#a").position.x-2}, 1000).start();
+                        tween1011 = new TWEEN.Tween(scene.getMeshByName("Group#b").position).to({x:scene.getMeshByName("Group#b").position.x-2}, 1000).start();
+                        tween1011 = new TWEEN.Tween(scene.getMeshByName("Group#c").position).to({x:scene.getMeshByName("Group#c").position.x-2}, 1000).start();
+                        tween1011 = new TWEEN.Tween(scene.getMeshByName("Group#d").position).to({x:scene.getMeshByName("Group#d").position.x-2}, 1000).start();
+                       
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            if(bot4inter==1){repos(); bot4inter=0;}
+                            
+                            tween101.onComplete(function(){
+                             if(bot4inter==1){repos(); bot4inter=0;}});
+                            
 						});
 					}
 					
 					
 					function bot6block_v1(){
+                        if(bot6inter==1){keydis2 =1;}
+                         scene.getMeshByName("b6d1").position.y=5;
 						tween200 = new TWEEN.Tween(bot6.position).to({z:20.5}, 1000).start();
                         tween200.easing(TWEEN.Easing.Linear.None);
                         tween200.yoyo(true);
+                        
+                        
+                        
+                     						tween200.onComplete(function(){
+                                                scene.getMeshByName("b6d2").position.y=6;
+                                                 keydis2 =0;
+						});
+                            
+                        
+                     
+                    
 					}
 					
 					function bot6block_v2(){
+                       if(bot6inter==1){keydis2 =1;}
+                        scene.getMeshByName("b6d2").position.y=5;
 						tween200 = new TWEEN.Tween(bot6.position).to({z:18.5}, 1000).start();
 						tween200.easing(TWEEN.Easing.Linear.None);
 						tween200.yoyo(true);
+                        
+                        					tween200.onComplete(function(){
+                                                keydis2 =0;
+                                                scene.getMeshByName("b6d1").position.y=6;
+						});
 					}
 					
-					function bot2block(){
+				/*	function bot2block(){
 						tween200 = new TWEEN.Tween(bot2_2.position).to({z:13.5}, 1500).start();
 						tween200.easing(TWEEN.Easing.Linear.None);
 						tween200.yoyo(true);
@@ -1930,7 +2194,7 @@ else
 							tween200.yoyo(true);
 						});
 					}
-
+*/
 				});
 			});
 			
