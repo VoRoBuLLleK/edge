@@ -1,0 +1,2219 @@
+<!DOCTYPE html>
+<html>
+
+		<title>training</title>
+		<meta name = "viewport" content = "width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0"/>
+		<meta name = "apple-mobile-web-app-capable" content = "yes"/>
+		<meta name = "apple-mobile-web-app-status-bar-style" content = "black"/>
+		<meta http-equiv = "Content-Type" content = "text/html;charset=utf-8"/>
+		<meta http-equiv = "x-ua-compatible" content = "IE=edge"/>
+		<!-- Подключение скриптов Babylon.js -->
+			<script src = "http://www.babylonjs.com/hand.minified-1.2.js"></script>
+			<script src = "babylon.custom.js"></script>
+			<script src = "hand-1.3.7.js"></script>
+			<script src = "//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+			<script src = "http://www.babylonjs.com/cannon.js"></script>
+			<script src = "tween.js"></script>
+			<script src = "RequestAnimationFrame.js"></script>
+			<script src="velocity.js"></script>
+		<!------------------------------------->
+		<link rel="stylesheet" href="font/stylesheet.css" type="text/css" charset="utf-8" />
+		<style>		
+			@font-face{font-family:'cubicregular';src:url('cubic-webfont.woff2')format('woff2'),url('cubic-webfont.woff')format('woff');font-weight: normal;font-style: normal;}
+			@font-face{font-family:Giantypo;src:url(font/Giantypo.otf);}
+            
+			html,body{overflow:hidden;width:100%;height:100%;margin:0;padding:0;}
+			#renderCanvas{width:100%;height:100vh;touch-action:none;}
+			#header{font-family: 'WebFont', Arial, sans-serif;font-size:45px;position:absolute;width:100%;height:0px;z-index:1;opacity:1;background-color:#FFFFFF;color:white;}
+			#end{display:none;text-align:center;font-size:50pt;font-family:'cubicregular',Arial,sans-serif;position:absolute;top:0;bottom:0;right:0;background:#1e1e1e;overflow:hidden;width:100%;z-index:999;color:white;font-weight:900;}
+            body{background-image:url("skybox/SkyKosmos.jpg");}
+			.cell{position:absolute;width:10%;height:30px;overflow:hidden;border-top-left-radius:5px 5px;border-top-right-radius:5px 5px;border-bottom-left-radius:5px 5px;border-bottom-right-radius:5px 5px;-moz-box-shadow: 0 1px 3px #000;-webkit-box-shadow:0 1px 3px #000;box-shadow:0 1px 3px #000;background-color:rgba(0, 0, 0, 0.90);left:0;right:0;top:0;bottom:0;margin:auto;max-width:100%;max-height:100%;overflow:auto;opacity:0;}
+			.cell .text{ height: 100%;color: #ffffff;font-weight: bold;position: absolute;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;font-family:'Giantypo',Arial,sans-serif;text-align:center;font-size:18pt;position:absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);}    
+			#menu{display:none;width:31%;height:100%;background:#333333;position:absolute;left:12%;z-index:999;font-weight:900;font-family:'Giantypo',Arial,sans-serif;padding:10px;}
+            #menu-bt{position:relative;width:100%;height:50%;margin-top:10px;top:-43px}
+			#bonus{width:17px;height:17px;float:right;background:#666666;margin-left:10px;}
+			.bt{cursor:pointer;font-family:'Giantypo',Arial,sans-serif;display:inline-block;color:black;font-weight:900;padding:.5em 2em;outline:none;border:1px solid #333333;border-radius:1px;transition:0.2s;background:white;width:100%;text-align:left;font-size:17pt;}
+			#level02{width:100%;top:0;bottom:0;right:0;background:#1e1e1e;z-index:999;height:100%;color:white;font-weight:900;font-family:'Giantypo',Arial,sans-serif;padding:5px;}
+			#lvl{width:99%;height:15%;left:1px;right:1px;top:-25px;background:#666666;position:relative;color:#CCCCCC;}
+            #lvl_name{background:none;margin:0 auto;text-align:center;position:relative;top:21%;font-size:50pt;}
+            #load{color:#CCCCCC;position:relative;top:64%;padding:5px;font-size:20pt;}     
+			#menu-finish{display:none;width:31%;height:100%;background:#333333;position:absolute;left:12%;z-index:999;font-weight:900;font-family:'Giantypo',Arial,sans-serif;padding:10px;}
+			#text_done{position:relative;top:2%}
+			#rank-name{width:150px;height:150px;position:absolute;background:white;border:1px solid black;top:10px;left:225px;text-align:center;font-size:100pt;padding:0;}
+            #level-time{background:white;position:relative;font-size:15pt;padding:5px;height:50px;top:-73px;}
+			#level-rank{background:grey;position:relative;font-size:20pt;padding:5px;height:160px;top:-73px;}
+			.book{transform:rotate(-90deg);width:150px;position:relative;left:-5px;top:-49px;}
+			
+		</style>
+	</head>
+	
+	<body id="body">
+        <div id = "bodytip" class = "span8 cell">
+			<div id="tip" class="text">SECRET</div>
+		</div>
+		
+		<div id = "level02">
+            <div id = "lvl"><p style = "font-size:20pt;left:1%;position:relative;top:5px;">level<br><span style = "font-size:45pt;">02</span></p></div>
+            <div id = "lvl_name">training</div>
+            <div id = "load">loading...</div>
+        </div>
+		
+		<div id = "menu">
+            <div style = "float:left;" id = "text-lvl">
+                <p style = "float:left;font-size:20pt;left:1%;position:relative;top:-23px;">level<br><span style = "font-size:45pt;">02</span></p>
+            </div>
+            <div style = "float:right;position:relative;top:10%;">
+                <div style = "width:100%;height:1px;clear:both;"></div>
+                <div id = "bonus" class = "one"></div>
+                <div id = "bonus" class = "two"></div>
+                <div id = "bonus" class = "three"></div>
+                <div id = "bonus" class = "four"></div>
+                <div id = "bonus" class = "five"></div>
+				<div id = "bonus" class = "six"></div>
+                <div id = "bonus" class = "seven"></div>
+                <div style = "width:100%;height:1px;clear:both;"></div>
+			</div>
+            <!-- <div style = "width:100%;height:1px;clear:both;"></div>-->
+            <div id = "menu-bt">
+                <input type = "button" class = "bt" id = "bt-Resume" value = "resume" onclick = "resumeqw()">
+                <input type = "button" class = "bt" id = "bt-Retry" value = "retry">
+            </div>
+        </div>
+		
+		<div id = "menu-finish">
+				<div style = "float:left;" id = "text-lvl-fin">
+					<p style = "float:left;font-size:20pt;left:1%;position:relative;top:-22px;">level<br><span style = "font-size:45pt;">02</span></p>
+				</div>
+				<div style = "float:right;" id = "text_done">
+					<p style = "float:center;font-size:40pt;left:1%;position:relative;top:-38px;color:white" id = "done">done</p>
+				</div>
+				<div style = "width:100%;height:1px;clear:both;"></div>
+				<div id = "level-time">
+					<p style = "position:relative;top:-20px;">level time:</p>
+					<p align = "right" style = "color:grey;position:relative;top:-40px;"><span id = "timer">00:00</span></p>
+				</div>
+				<div style = "width:100%;height:1px;clear:both;"></div>
+				<div id = "level-rank">
+					<img src = "bookmark.png" class = "book">
+					<p style = "position:relative;top:-168px;color:white;left:30px;">rank</p>
+					<div id = "rank-name"><span id = "rank">s</span></div>
+				</div>
+				<div style = "width:100%;height:1px;clear:both;"></div>
+				<p style = "background:white;padding:5px;font-size:15pt;position:relative;top:-93px;">dead: <span id = "dead">0</span></p>
+				<div style = "width:100%;height:1px;clear:both;"></div>
+				<p style = "background:white;padding:5px;font-size:15pt;position:relative;top:-133px;">prism: <span><span id = "prizm">0</span> of 7</span></p>
+				<div style = "width:100%;height:10px;clear:both;"></div>
+				<input style = "position:relative;top:-153px;" type = "button" class = "bt" id = "bt-Next" value = "next" onclick = "nextlvl()">
+				<input style = "position:relative;top:-153px;" type = "button" class = "bt" id = "bt-Retry-finish" value = "retry" onclick = "reload()">
+			</div>
+
+		<div id = "canvasZone">
+			<canvas id = "renderCanvas"></canvas>
+		</div>
+
+		
+		<script>
+		var k = 0;
+		var pauseend = 0;
+		function resumeqw(){
+					$("#menu").fadeOut(0, function(){});
+					k++;
+					audio.play();
+					pauseend = 0;
+				}
+				
+			function nextlvl(){document.location.href = "";}
+			function reload(){document.location.href = "training.html";document.getElementById("timer").innerHTML = "00:00";}
+			function getRandomColor(){
+                var letters = '0123456789ABCDEF';
+                var color = '#';
+                for (var i = 0; i < 6; i++)
+                {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+			}
+				
+			var res;
+			var ret;
+			var opt;
+			var men;
+			var nxt;
+			var rtf;
+			var lead;
+			var mainm;
+
+			var $text = $("#text-lvl");
+			var $resume = $("#bt-Resume");
+			var $retry = $("#bt-Retry");
+			var $options = $("#bt-Options");
+			var $menu = $("#bt-Menu");
+			var $next = $("#bt-Next");
+			var $retfin = $("#bt-Retry-finish");
+			var $textfin = $("#text-lvl-fin");
+			var $leaderboard = $("#bt-leaderboard");
+			var $main = $("#bt-Menu-finish");
+			var $done = $("#done");
+			var $rankname = $("#rank-name");
+       
+			$resume.hover(function(){res = 1;},function(){res = 0;});
+			$retry.hover(function(){ret = 1;},function(){ret = 0;});
+			$options.hover(function(){opt = 1;},function(){opt = 0;});
+			$menu.hover(function(){men = 1;},function(){men = 0;});
+			$next.hover(function(){nxt = 1;},function(){nxt = 0;});
+			$retfin.hover(function(){rtf = 1;},function(){rtf = 0;});
+			$leaderboard.hover(function(){lead = 1;},function(){lead = 0;});
+			$main.hover(function(){mainm = 1;},function(){mainm = 0;});
+       
+			setInterval(function(){
+				$text.css("color", getRandomColor());
+				$textfin.css("color", getRandomColor());
+				$done.css("color", getRandomColor());
+				$rankname.css("color", getRandomColor());
+				if(res == 1){$resume.css("background-color", getRandomColor());}
+				if(res == 0){$resume.css("background-color", "#FFFFFF");}
+				if(ret == 1){$retry.css("background-color", getRandomColor());}
+				if(ret == 0){$retry.css("background-color", "#FFFFFF");}
+				if(opt == 1){$options.css("background-color", getRandomColor());}
+				if(opt == 0){$options.css("background-color", "#FFFFFF");}
+				if(men == 1){$menu.css("background-color", getRandomColor());}
+				if(men == 0){$menu.css("background-color", "#FFFFFF");}
+				if(nxt == 1){$next.css("background-color", getRandomColor());}
+				if(nxt == 0){$next.css("background-color", "#FFFFFF");}
+				if(rtf == 1){$retfin.css("background-color", getRandomColor());}
+				if(rtf == 0){$retfin.css("background-color", "#FFFFFF");}
+				if(lead == 1){$leaderboard.css("background-color", getRandomColor());}
+				if(lead == 0){$leaderboard.css("background-color", "#FFFFFF");}
+				if(mainm == 1){$main.css("background-color", getRandomColor());}
+				if(mainm == 0){$main.css("background-color", "#FFFFFF");}
+			},250);
+	
+	</script>
+		
+		
+		<script>	
+		function showtip(tip){
+			var tip;
+            document.getElementById("tip").innerHTML = tip;
+            tween = new TWEEN.Tween(document.getElementById("bodytip").style).to({opacity:1},600).start();
+			tween.onComplete(function(){
+				tween2 = new TWEEN.Tween(document.getElementById("bodytip").style).to({opacity:0},600).start();     
+			});                             
+        }
+		
+			var canvas = document.getElementById("renderCanvas"); // Создаем холст, который будет выводиться в элементе HTML выше 
+			var engine = new BABYLON.Engine(canvas,true); // Загружаем ядро трехмерной обработки BABYLON
+			var scene = new BABYLON.Scene(engine); // Создаем простой объект сцены Babylon
+			// Загружаем саму сцену
+			BABYLON.SceneLoader.Load("scene/","training.babylon",engine,function(scene){
+				// Сам код происходящего на сцене
+				scene.executeWhenReady(function(){
+					var camera = scene.activeCamera; // Создаем активную камеру (которая двигается)	
+                   
+					camera.speed = 1; // Скорость камеры
+					camera.maxZ = 1000; // Максимальный ZOOM камеры
+					camera.attachControl(canvas,true); // Возможность контролировать камеру и передвигать её
+					camera.rotation = new BABYLON.Vector3(Math.PI/4, 5.5, 0);
+                 
+                    
+                    
+  /* camera.mode = BABYLON.Camera.ORTHOGRAPHIC_CAMERA;
+    camera.orthoTop = 1 ;
+    camera.orthoBottom = -18;
+    camera.orthoLeft = -18;
+    camera.orthoRight = 18; */
+                    
+                    
+                    
+                    
+                    
+                    
+                      
+                    
+                    camera.mode = BABYLON.Camera.ORTHOGRAPHIC_CAMERA;
+                    camera.orthoTop = 1;
+                    camera.orthoBottom = -8;
+                    camera.orthoLeft = -8;
+                    camera.orthoRight = 8;
+                   var ratio = window.innerWidth / window.innerHeight ;
+	//	 var zoom = camera.orthoTop;
+		 var newWidth = 4.5 * ratio;
+		
+		// camera.orthoTop = camera.orthoRight = Math.abs(zoom);
+		 camera.orthoLeft = -Math.abs(newWidth);
+		 camera.orthoRight = newWidth;
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                  window.onresize = function(event) {
+			
+				//	 console.log("resized")
+		 
+	//	camera.orthoTop = 1 ;
+    //  camera.orthoBottom = -8;
+    //  camera.orthoLeft = -8;
+    //  camera.orthoRight = 8;
+		 
+	//	 console.log(window.innerWidth)
+	//	 console.log(window.innerHeight)
+		 var ratio = window.innerWidth / window.innerHeight ;
+	//	 var zoom = camera.orthoTop;
+		 var newWidth = 4.5 * ratio;
+		
+		// camera.orthoTop = camera.orthoRight = Math.abs(zoom);
+		 camera.orthoLeft = -Math.abs(newWidth);
+		 camera.orthoRight = newWidth;
+		 //camera.orthoBottom = -Math.abs(1);
+			
+		};					
+                    
+                    scene.clearColor = new BABYLON.Color4(0,0,0,0);
+					var light = new BABYLON.HemisphericLight("HemiLight", new BABYLON.Vector3(0, 1, 0), scene);
+			
+					var hero = scene.getMeshByName("hero");
+					hero.dispose();
+					
+					$("#level02").fadeOut( "slow", function(){});
+					
+					var Group4122 = scene.getMeshByName("Group#4.122");
+					var Group5022 = scene.getMeshByName("Group#5.022");
+					var Group5121 = scene.getMeshByName("Group#5.121");
+					var Group4127 = scene.getMeshByName("Group#4.127");
+					var Group8044 = scene.getMeshByName("Group#8.044");
+					var Group8042 = scene.getMeshByName("Group#8.042");
+					var Group5072 = scene.getMeshByName("Group#5.072");
+					var Group2004 = scene.getMeshByName("Group#2.004");	
+					var Group7032 = scene.getMeshByName("Group#7.032");	
+					var Group6013 = scene.getMeshByName("Group#6.013");	
+					var Group3001 = scene.getMeshByName("Group#3.001");	
+					var Group2009 = scene.getMeshByName("Group#2.009");		
+
+					var fin = scene.getMeshByName("Group#3.015");
+					//fin.dispose();
+					var fin1 = scene.getMeshByName("Group#2.030");
+					//fin1.dispose();
+					var fin2 = scene.getMeshByName("Group#3.036");
+					//fin2.dispose();
+					var fin3 = scene.getMeshByName("Group#2.032");
+					//fin3.dispose();
+					var fin4 = scene.getMeshByName("Group#3.029");
+					//fin4.dispose();
+					var fin5 = scene.getMeshByName("Group#2");
+					//fin5.dispose();
+					var fin6 = scene.getMeshByName("Group#3.021");
+					//fin6.dispose();
+					var fin7 = scene.getMeshByName("Group#2.034");
+					//fin7.dispose();
+					var fin8 = scene.getMeshByName("Group#3.052");
+					//fin8.dispose();
+					
+                    					
+					
+					var box = BABYLON.Mesh.CreateBox("box",1,scene);
+					box.position.x = hero.position.x - 0.5;
+                    box.position.y = hero.position.y + 0.5;
+                    box.position.z = hero.position.z + 0.5;
+                    
+
+                    
+                    
+                    
+                    box.checkCollisions = true;
+	
+                    var materialBox = scene.getMeshByName("xxxx").material;
+
+					/*materialBox.diffuseColor = new BABYLON.Color3(216/256, 216/256, 216/256);
+					materialBox.specularColor = new BABYLON.Color3(209/256, 209/256, 209/256);
+                    materialBox.specularPower = 1;
+				//	materialBox.emissiveColor = new BABYLON.Color3(206/256, 206/256, 206/256);
+                //    materialBox.emissivePower = 0.05;
+				//	materialBox.ambientColor = new BABYLON.Color3(16/256, 216/256, 216/256);
+                    //box.material = materialBox;*/
+				
+					var bot4_1 = BABYLON.Mesh.CreateBox("bot4_1",0.999,scene);
+					bot4_1.position.x = Group5022.position.x - 2.5;
+					bot4_1.position.y = Group5022.position.y + 1.5;
+					bot4_1.position.z = Group5022.position.z + 0.5;
+					var bot4_2 = BABYLON.Mesh.CreateBox("bot4_2",0.999,scene);
+					bot4_2.position.x = bot4_1.position.x+1;
+					bot4_2.position.y = bot4_1.position.y;
+					bot4_2.position.z = bot4_1.position.z;
+					var bot4_3 = BABYLON.Mesh.CreateBox("bot4_3",0.999,scene);
+					bot4_3.position.x = bot4_1.position.x;
+					bot4_3.position.y = bot4_1.position.y;
+					bot4_3.position.z = bot4_1.position.z-1;
+					var bot4_4 = BABYLON.Mesh.CreateBox("bot4_4",0.999,scene);
+					bot4_4.position.x = bot4_3.position.x+1;
+					bot4_4.position.y = bot4_3.position.y;
+					bot4_4.position.z = bot4_3.position.z;
+					
+					bot4_1.material = materialBox;
+					bot4_2.material = materialBox;
+					bot4_3.material = materialBox;
+					bot4_4.material = materialBox;
+					
+					var bot8_1 = BABYLON.Mesh.CreateBox("bot8_1",1,scene);
+					bot8_1.position.x = Group8042.position.x - 0.5;
+					bot8_1.position.y = Group8042.position.y - 0.5;
+					bot8_1.position.z = Group8042.position.z + 0.5;
+					var bot8_2 = BABYLON.Mesh.CreateBox("bot8_2",1,scene);
+					bot8_2.position.x = bot8_1.position.x + 1;
+					bot8_2.position.y = bot8_1.position.y;
+					bot8_2.position.z = bot8_1.position.z;
+					var bot8_3 = BABYLON.Mesh.CreateBox("bot8_3",1,scene);
+					bot8_3.position.x = bot8_2.position.x + 1;
+					bot8_3.position.y = bot8_2.position.y;
+					bot8_3.position.z = bot8_2.position.z;
+					var bot8_4 = BABYLON.Mesh.CreateBox("bot8_4",1,scene);
+					bot8_4.position.x = bot8_1.position.x;
+					bot8_4.position.y = bot8_1.position.y;
+					bot8_4.position.z = bot8_1.position.z - 1;
+					var bot8_5 = BABYLON.Mesh.CreateBox("bot8_5",1,scene);
+					bot8_5.position.x = bot8_4.position.x;
+					bot8_5.position.y = bot8_4.position.y;
+					bot8_5.position.z = bot8_4.position.z - 1;
+					var bot8_6 = BABYLON.Mesh.CreateBox("bot8_6",1,scene);
+					bot8_6.position.x = bot8_4.position.x + 1;
+					bot8_6.position.y = bot8_4.position.y;
+					bot8_6.position.z = bot8_4.position.z;
+					
+					bot8_1.material = materialBox;
+					bot8_2.material = materialBox;
+					bot8_3.material = materialBox;
+					bot8_4.material = materialBox;
+					bot8_5.material = materialBox;
+					bot8_6.material = materialBox;
+					
+					var bot7_1 = BABYLON.Mesh.CreateBox("bot7_1",1,scene);
+					bot7_1.position.x = Group7032.position.x - 0.6;
+					bot7_1.position.y = Group7032.position.y + 0.5;
+					bot7_1.position.z = Group7032.position.z + 0.5;
+					var bot7_2 = BABYLON.Mesh.CreateBox("bot7_2",1,scene);
+					bot7_2.position.x = bot7_1.position.x;
+					bot7_2.position.y = bot7_1.position.y;
+					bot7_2.position.z = bot7_1.position.z + 1;
+					var bot7_3 = BABYLON.Mesh.CreateBox("bot7_3",1,scene);
+					bot7_3.position.x = bot7_1.position.x - 1;
+					bot7_3.position.y = bot7_1.position.y;
+					bot7_3.position.z = bot7_1.position.z;
+					var bot7_4 = BABYLON.Mesh.CreateBox("bot7_4",1,scene);
+					bot7_4.position.x = bot7_3.position.x;
+					bot7_4.position.y = bot7_3.position.y + 1;
+					bot7_4.position.z = bot7_3.position.z;
+					
+					bot7_1.material = materialBox;
+					bot7_2.material = materialBox;
+					bot7_3.material = materialBox;
+					bot7_4.material = materialBox;
+					
+					var bot6 = BABYLON.Mesh.CreateBox("bot6",1,scene);
+					bot6.position.x = Group6013.position.x - 0.5;
+					bot6.position.y = Group6013.position.y + 0.5;
+					bot6.position.z = Group6013.position.z + 1.5;
+					
+					bot6.material = materialBox;
+					
+					var bot3_1 = BABYLON.Mesh.CreateBox("bot3_1",0.999,scene);
+					bot3_1.position.x = Group3001.position.x - 0.5;
+					bot3_1.position.y = Group3001.position.y + 1.5;
+					bot3_1.position.z = Group3001.position.z + 0.5;
+                    
+                    bot3_1.checkCollisions = true;
+                    
+                    
+                    
+                    
+                    
+					var bot3_2 = BABYLON.Mesh.CreateBox("bot3_2",0.999,scene);
+					bot3_2.position.x = bot3_1.position.x - 1;
+					bot3_2.position.y = bot3_1.position.y;
+					bot3_2.position.z = bot3_1.position.z;
+					var bot3_3 = BABYLON.Mesh.CreateBox("bot3_3",0.999,scene);
+					bot3_3.position.x = bot3_2.position.x-1;
+					bot3_3.position.y = bot3_2.position.y;
+					bot3_3.position.z = bot3_2.position.z;
+					
+					bot3_1.material = materialBox;
+					bot3_2.material = materialBox;
+					bot3_3.material = materialBox;
+					
+					//var bot2_1 = BABYLON.Mesh.CreateBox("bot2_1",0.999,scene);
+					//bot2_1.position.x = Group2009.position.x-0.5;
+					//bot2_1.position.y = Group2009.position.y+1.5;
+					//bot2_1.position.z = Group2009.position.z+0.5;
+                    
+                    
+                    
+					//var bot2_2 = BABYLON.Mesh.CreateBox("bot2_2",0.999,scene);
+					//bot2_2.position.x = bot2_1.position.x;
+					//bot2_2.position.y = bot2_1.position.y;
+					//bot2_2.position.z = bot2_1.position.z+1;
+					
+					//bot2_1.material = materialBox;
+					//bot2_2.material = materialBox;
+					
+					/*var downPl = new BABYLON.StandardMaterial("textureBox",scene);
+					downPl.diffuseColor = new BABYLON.Color3(235/256, 237/256, 242/256);
+					downPl.specularColor = new BABYLON.Color3(235/256, 237/256, 242/256);
+					downPl.emissiveColor = new BABYLON.Color3(235/256, 237/256, 242/256);
+					downPl.ambientColor = new BABYLON.Color3(235/256, 237/256, 242/256);*/
+					 var downPl = scene.getMeshByName("xxxx2").material;
+					
+					var down1 = BABYLON.Mesh.CreateBox("down1",1,scene);
+					down1.position.x = Group4122.position.x+0.5;
+					down1.position.y = Group4122.position.y+0.5;
+					down1.position.z = Group4122.position.z+0.5;
+					var down2 = BABYLON.Mesh.CreateBox("down2",1,scene);
+					down2.position.x = down1.position.x+1;
+					down2.position.y = down1.position.y;
+					down2.position.z = down1.position.z;
+					var down3 = BABYLON.Mesh.CreateBox("down3",1,scene);
+					down3.position.x = down2.position.x+1;
+					down3.position.y = down2.position.y;
+					down3.position.z = down2.position.z;
+					var down4 = BABYLON.Mesh.CreateBox("down4",1,scene);
+					down4.position.x = down3.position.x+1;
+					down4.position.y = down3.position.y;
+					down4.position.z = down3.position.z;
+					
+					var down5 = BABYLON.Mesh.CreateBox("down5",1,scene);
+					down5.position.x = Group5121.position.x-0.5;
+					down5.position.y = Group5121.position.y+0.5;
+					down5.position.z = Group5121.position.z-0.5;
+					var down6 = BABYLON.Mesh.CreateBox("down6",1,scene);
+					down6.position.x = down5.position.x;
+					down6.position.y = down5.position.y;
+					down6.position.z = down5.position.z-1;
+
+					down1.material = downPl;
+					down2.material = downPl;
+					down3.material = downPl;
+					down4.material = downPl;
+					down5.material = downPl;
+					down6.material = downPl;
+					
+					
+					var bonus1 = scene.getMeshByName("h");
+					var shadow1 = scene.getMeshByName("hsh");
+					var bonus2 = scene.getMeshByName("h").clone("h2");
+					var shadow2 = scene.getMeshByName("hsh").clone("hsh2");
+					var bonus3 = scene.getMeshByName("h").clone("h3");
+					var shadow3 = scene.getMeshByName("hsh").clone("hsh3");
+					var bonus4 = scene.getMeshByName("h").clone("h4");
+					var shadow4 = scene.getMeshByName("hsh").clone("hsh4");
+					var bonus5 = scene.getMeshByName("h").clone("h5");
+					var shadow5 = scene.getMeshByName("hsh").clone("hsh5");
+					var bonus6 = scene.getMeshByName("h").clone("h6");
+					var shadow6 = scene.getMeshByName("hsh").clone("hsh6");
+					var bonus7 = scene.getMeshByName("h").clone("h7");
+					var shadow7 = scene.getMeshByName("hsh").clone("hsh7");
+					
+					var bns1 = scene.getMeshByName("Group#4.019");
+					var bns2 = scene.getMeshByName("Group#6.005");
+					var bns3 = scene.getMeshByName("Group#6.013");
+					var bns4 = scene.getMeshByName("Group#6.035");
+					var bns5 = scene.getMeshByName("Group#7.049");
+					var bns6 = scene.getMeshByName("Group#5.094");
+					var bns7 = scene.getMeshByName("Group#5.074");
+					
+					bonus1.position.x =  bns1.position.x-0.5;
+					bonus1.position.y =  bns1.position.y+1.5;
+					bonus1.position.z =  bns1.position.z+0.5;
+					shadow1.position.x =  bns1.position.x-0.5;
+					shadow1.position.y =  bns1.position.y+1.01;
+					shadow1.position.z =  bns1.position.z+0.5;
+					
+					bonus2.position.x =  bns2.position.x-0.5;
+					bonus2.position.y =  bns2.position.y+1.5;
+					bonus2.position.z =  bns2.position.z+0.5;
+					shadow2.position.x =  bns2.position.x-0.5;
+					shadow2.position.y =  bns2.position.y+1.01;
+					shadow2.position.z =  bns2.position.z+0.5;
+					
+					bonus3.position.x =  bns3.position.x-0.5;
+					bonus3.position.y =  bns3.position.y+1.5;
+					bonus3.position.z =  bns3.position.z+0.5;
+					shadow3.position.x =  bns3.position.x-0.5;
+					shadow3.position.y =  bns3.position.y+1.01;
+					shadow3.position.z =  bns3.position.z+0.5;
+						
+					bonus4.position.x =  bns4.position.x-0.5;
+					bonus4.position.y =  bns4.position.y+1.5;
+					bonus4.position.z =  bns4.position.z+0.5;
+					shadow4.position.x =  bns4.position.x-0.5;
+					shadow4.position.y =  bns4.position.y+1.01;
+					shadow4.position.z =  bns4.position.z+0.5;
+					
+					bonus5.position.x =  bns5.position.x-0.5;
+					bonus5.position.y =  bns5.position.y+1.5;
+					bonus5.position.z =  bns5.position.z+0.5;
+					shadow5.position.x =  bns5.position.x-0.5;
+					shadow5.position.y =  bns5.position.y+1.01;
+					shadow5.position.z =  bns5.position.z+0.5;
+					
+					bonus6.position.x =  bns6.position.x-0.5;
+					bonus6.position.y =  bns6.position.y+1.5;
+					bonus6.position.z =  bns6.position.z+0.5;
+					shadow6.position.x =  bns6.position.x-0.5;
+					shadow6.position.y =  bns6.position.y+1.01;
+					shadow6.position.z =  bns6.position.z+0.5
+					
+					bonus7.position.x =  bns7.position.x-0.5;
+					bonus7.position.y =  bns7.position.y+1.5;
+					bonus7.position.z =  bns7.position.z+0.5;
+					shadow7.position.x =  bns7.position.x-0.5;
+					shadow7.position.y =  bns7.position.y+1.01;
+					shadow7.position.z =  bns7.position.z+0.5;
+					
+					
+					
+
+					var matBTT1 = new BABYLON.StandardMaterial("matBTT1",scene);
+					matBTT1.diffuseColor = new BABYLON.Color3(92/256, 99/256, 113/256);
+					matBTT1.specularColor = new BABYLON.Color3(92/256, 99/256, 113/256);
+					matBTT1.emissiveColor = new BABYLON.Color3(92/256, 99/256,113/256);
+					matBTT1.ambientColor = new BABYLON.Color3(92/256, 99/256,113/256);
+					
+					var matBTT2 = new BABYLON.StandardMaterial("matBTT1",scene);
+					matBTT2.diffuseColor = new BABYLON.Color3(169/256, 169/256, 169/256);
+					matBTT2.specularColor = new BABYLON.Color3(169/256, 169/256, 169/256);
+					matBTT2.emissiveColor = new BABYLON.Color3(169/256, 169/256, 169/256);
+					matBTT2.ambientColor = new BABYLON.Color3(169/256, 169/256, 169/256);
+					
+					var btt1 = BABYLON.Mesh.CreateBox("btt1",0.5,scene);
+					btt1.position.x = Group4127.position.x-0.5;
+					btt1.position.y = Group4127.position.y+0.85; 
+					btt1.position.z = Group4127.position.z+0.5; 
+					btt1.material = matBTT1; 
+					
+                    /*var btt2 = BABYLON.Mesh.CreateBox("btt2",0.5,scene);
+					btt2.position.x = Group8044.position.x-0.5;
+					btt2.position.y = Group8044.position.y+0.85; 
+					btt2.position.z = Group8044.position.z+0.5; 
+					btt2.material = matBTT1; 
+					*/
+                    var btt3 = BABYLON.Mesh.CreateBox("btt3",0.5,scene);
+					btt3.position.x = Group5072.position.x-0.5;
+					btt3.position.y = Group5072.position.y+0.85; 
+					btt3.position.z = Group5072.position.z+0.5; 
+					btt3.material = matBTT1; 
+					var btt4 = BABYLON.Mesh.CreateBox("btt4",0.5,scene);
+					btt4.position.x = Group2004.position.x-0.5;
+					btt4.position.y = Group2004.position.y+0.85; 
+					btt4.position.z = Group2004.position.z+0.5; 
+					btt4.material = matBTT1; 
+
+					var materialF = new BABYLON.StandardMaterial("textureU",scene); // Cоздаем текстуру спутника для движения вперед
+					materialF.diffuseColor = new BABYLON.Color3(1,0,0); // Цвет спутника (красный)
+					materialF.alpha = 0.5; // Прозрачность спутника
+					var f1 = BABYLON.Mesh.CreateBox("f1",0.5,scene); // Создаем первый спутник (с кубом) для движения вперед
+					f1.position.x = box.position.x; // Позиция первого спутника в длину
+					f1.position.y = box.position.y; // Позиция первого спутника в высоту
+					f1.position.z = box.position.z + 0.5; // Позиция первого спутника в ширину
+					f1.material = materialF; // Красим первый спутник в красный цвет
+					var f2 = BABYLON.Mesh.CreateBox("f2",0.5,scene); // Создаем второй спутник (над кубом) для движения вперед
+					f2.position.x = box.position.x; // Позиция второго спутника в длину
+					f2.position.y = box.position.y + 1; // Позиция второго спутника в высоту
+					f2.position.z = box.position.z + 0.5; // Позиция второго спутника в ширину
+					f2.material = materialF; // Красим второй спутник в красный цвет
+					
+					var materialB = new BABYLON.StandardMaterial("textureU",scene); // Cоздаем текстуру спутника для движения назад
+					materialB.diffuseColor = new BABYLON.Color3(0,1,0); // Цвет спутника (зеленый)
+					materialB.alpha = 0.5; // Прозрачность спутника
+					var b1 = BABYLON.Mesh.CreateBox("b2",0.5,scene); // Создаем первый спутник (с кубом) для движения назад
+					b1.position.x = box.position.x; // Позиция первого спутника в длину
+					b1.position.y = box.position.y; // Позиция первого спутника в высоту
+					b1.position.z = box.position.z - 0.5; // Позиция первого спутника в ширину
+					b1.material = materialB; // Красим первый спутник в зеленый цвет
+					var b2 = BABYLON.Mesh.CreateBox("b2",0.5,scene); // Создаем второй спутник (над кубом) для движения назад
+					b2.position.x = box.position.x; // Позиция второго спутника в длину
+					b2.position.y = box.position.y + 1; // Позиция второго спутника в высоту
+					b2.position.z = box.position.z - 0.5; // Позиция второго спутника в ширину
+					b2.material = materialB; // Красим второй спутник в зеленый цвет
+					
+					var materialL = new BABYLON.StandardMaterial("textureU",scene); // Cоздаем текстуру спутника для движения влево
+					materialL.diffuseColor = new BABYLON.Color3(0,0,1); // Цвет спутника (синий)
+					materialL.alpha = 0.5; // Прозрачность спутника
+					var l1 = BABYLON.Mesh.CreateBox("l2",0.5,scene); // Создаем первый спутник (с кубом) для движения влево
+					l1.position.x = box.position.x - 0.5; // Позиция первого спутника в длину
+					l1.position.y = box.position.y + 0; // Позиция первого спутника в высоту
+					l1.position.z = box.position.z; // Позиция первого спутника в ширину
+					l1.material = materialL; // Красим первый спутник в синий цвет
+					var l2 = BABYLON.Mesh.CreateBox("l2",0.5,scene); // Создаем второй спутник (над кубом) для движения влево
+					l2.position.x = box.position.x - 0.5; // Позиция второго спутника в длину
+					l2.position.y = box.position.y + 1; // Позиция второго спутника в высоту
+					l2.position.z = box.position.z; // Позиция второго спутника в ширину
+					l2.material = materialL; // Красим второй спутник в синий цвет
+					
+					var materialR = new BABYLON.StandardMaterial("textureU",scene); // Cоздаем текстуру спутника для движения вправо
+					materialR.diffuseColor = new BABYLON.Color3(1,1,1); // Цвет спутника (белый)
+					materialR.alpha = 0.5; // Прозрачность спутника
+					var r1 = BABYLON.Mesh.CreateBox("r2",0.5,scene); // Создаем первый спутник (с кубом) для движения вправо
+					r1.position.x = box.position.x + 0.5; // Позиция первого спутника в длину
+					r1.position.y = box.position.y + 0; // Позиция первого спутника в высоту
+					r1.position.z = box.position.z; // Позиция первого спутника в ширину
+					r1.material = materialR; // Красим первый спутник в белый цвет
+					var r2 = BABYLON.Mesh.CreateBox("r2",0.5,scene); // Создаем второй спутник (над кубом) для движения вправо
+					r2.position.x = box.position.x + 0.5; // Позиция второго спутника в длину
+					r2.position.y = box.position.y + 1; // Позиция второго спутника в высоту
+					r2.position.z = box.position.z; // Позиция второго спутника в ширину
+					r2.material = materialR; // Красим второй спутник в белый цвет
+					
+					
+					var materialBT = new BABYLON.StandardMaterial("textureU",scene); // Cоздаем текстуру спутника падения
+					materialBT.diffuseColor = new BABYLON.Color3(0,1,1); // Цвет спутника (серый)
+					materialBT.alpha = 0.5; // Прозрачность спутника
+					var bt = BABYLON.Mesh.CreateBox("bt",0.5,scene); // Создаем второй спутник (под кубом) для падения
+					bt.position.x = box.position.x; // Позиция спутника в длину
+					bt.position.y = box.position.y - 0.5; // Позиция спутника в высоту
+					bt.position.z = box.position.z; // Позиция спутника в ширину
+					bt.material = materialBT; // Красим спутник в серый цвет
+					
+					document.getElementById('bt-Retry').onclick = function() {
+											$("#menu").fadeOut(0, function(){});
+											k++;
+											audio.play();
+											pauseend = 0;
+											box.position.x = hero.position.x + 0.5;
+                                                        box.position.y = hero.position.y + 20.5;
+                                                        box.position.z = hero.position.z - 0.5;
+                                                       
+                                                        f1.position.x = box.position.x + 0.5;
+                                                        f1.position.y = box.position.y + 0;
+                                                        f1.position.z = box.position.z + 0;
+                                                       
+                                                        f2.position.x = box.position.x + 0.5;
+                                                        f2.position.y = box.position.y + 1;
+                                                        f2.position.z = box.position.z + 0;
+ 
+                                                        b1.position.x = box.position.x - 0.5;
+                                                        b1.position.y = box.position.y + 0;
+                                                        b1.position.z = box.position.z + 0;
+                                                       
+                                                        b2.position.x = box.position.x - 0.5;
+                                                        b2.position.y = box.position.y + 1;
+                                                        b2.position.z = box.position.z + 0;
+ 
+                                                        l1.position.x = box.position.x + 0;
+                                                        l1.position.y = box.position.y + 0;
+                                                        l1.position.z = box.position.z + 0.5;
+ 
+                                                        l2.position.x = box.position.x + 0;
+                                                        l2.position.y = box.position.y + 1;
+                                                        l2.position.z = box.position.z + 0.5;
+ 
+                                                        r1.position.x = box.position.x + 0;
+                                                        r1.position.y = box.position.y + 0;
+                                                        r1.position.z = box.position.z - 0.5;
+                                                       
+                                                        r2.position.x = box.position.x + 0;
+                                                        r2.position.y = box.position.y + 1;
+                                                        r2.position.z = box.position.z - 0.5;
+                                       
+                                                        bt.position.x = box.position.x;
+                                                        bt.position.y = box.position.y - 0.5;
+                                                        bt.position.z = box.position.z;
+										}
+					
+					var f1Score = 0; // Создаем переменную для проверки пересечения для первого спутника движения вперед
+					var f2Score = 0; // Создаем переменную для проверки пересечения для второго спутника движения вперед
+					var b1Score = 0; // Создаем переменную для проверки пересечения для первого спутника движения назад
+					var b2Score = 0; // Создаем переменную для проверки пересечения для второго спутника движения назад
+					var l1Score = 0; // Создаем переменную для проверки пересечения для первого спутника движения влево
+					var l2Score = 0; // Создаем переменную для проверки пересечения для второго спутника движения влево
+					var r1Score = 0; // Создаем переменную для проверки пересечения для первого спутника движения вправо
+					var r2Score = 0; // Создаем переменную для проверки пересечения для второго спутника движения вправо
+					var btScore = 0; // Создаем переменную для проверки пересечения для второго спутника движения вниз
+					
+					 // Скрыть спутники
+                    f1.isVisible = false;
+                    f2.isVisible = false;
+                    b1.isVisible = false;
+                    b2.isVisible = false;
+                    r1.isVisible = false;
+                    r2.isVisible = false;
+                    l1.isVisible = false;
+                    l2.isVisible = false;
+                    bt.isVisible = false;
+				
+					
+					var fired = false;
+					var trig = 0;
+					var gameover = 0;	
+					var prizma = 0;
+					var dead = 0;
+					var keydis=1;
+					var keydis2=0;
+					
+					camidle=1;
+                function camshake(){
+
+                     camidle=0;  
+                   tween = new TWEEN.Tween(camera.position).to({y:camera.position.y+0.225},300).start();
+                     tween.easing(TWEEN.Easing.Bounce.InOut);
+                tween.onComplete(function(){
+               
+                tween2 = new TWEEN.Tween(camera.position).to({y:camera.position.y-0.225},1).start();
+                    tween2.onComplete(function(){camidle=1;   }); 
+                     tween2.easing(TWEEN.Easing.Bounce.InOut);   
+                });   
+				
+				}
+					
+					var ppppppp = 0;
+					
+					
+					window.onkeydown = function(event){
+     if (keydis2==0){
+					if (keydis == 1){
+					if(gameover == 0){
+						if(event.keyCode == 27)
+						{
+							$("#menu").fadeToggle(0, function(){});
+							k++;
+							//console.log(k);					   
+							if(k % 2 == 1)
+							{
+								audio.pause();
+								pauseend = 1;
+							}
+							else
+							{
+								audio.play();
+								pauseend = 0;
+							}
+						}
+					}
+					
+					if (pauseend == 0)
+					{
+					
+					
+						if(!fired){
+							if (trig == 0){
+						
+						setTimeout(function(){box.rotation = BABYLON.Vector3.Zero();}, 330);
+						if(event.keyCode==87 || event.keyCode==83 || event.keyCode==65 || event.keyCode==68){fired = true;}
+					
+							// Проверка на пересечение для движения вперед
+							scene.meshes.forEach(function(m){
+								if (m.name != "skyBox" && m.name != "1mesh" && m.name != "h"  && m.name != "hsh" && m.name != "h2"  && m.name != "hsh2" && m.name != "h3"  && m.name != "hsh3" && m.name != "h4"  && m.name != "hsh4" && m.name != "h5"  && m.name != "hsh5" && m.name != "h6"  && m.name != "hsh6" && m.name != "h7"  && m.name != "hsh7" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
+									if (f1.intersectsMesh(m,true)){f1Score=1;//console.log(m.name);
+									} 
+									if (f2.intersectsMesh(m,true)){f2Score=1;//console.log(m.name);
+									} 
+								}
+							});
+							
+							// Проверка на пересечение для движения назад
+							scene.meshes.forEach(function(m){
+								 if (m.name != "skyBox" && m.name != "1mesh" && m.name != "h"  && m.name != "hsh" && m.name != "h2"  && m.name != "hsh2" && m.name != "h3"  && m.name != "hsh3" && m.name != "h4"  && m.name != "hsh4" && m.name != "h5"  && m.name != "hsh5" && m.name != "h6"  && m.name != "hsh6" && m.name != "h7"  && m.name != "hsh7" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
+									if (b1.intersectsMesh(m,true)){b1Score=1;//console.log(m.name);
+									} 
+									if (b2.intersectsMesh(m,true)){b2Score=1;//console.log(m.name);
+									} 
+								}
+							});	
+							
+							// Проверка на пересечение для движения влево
+							scene.meshes.forEach(function(m){
+								if (m.name != "skyBox" && m.name != "1mesh" && m.name != "h"  && m.name != "hsh" && m.name != "h2"  && m.name != "hsh2" && m.name != "h3"  && m.name != "hsh3" && m.name != "h4"  && m.name != "hsh4" && m.name != "h5"  && m.name != "hsh5" && m.name != "h6"  && m.name != "hsh6" && m.name != "h7"  && m.name != "hsh7" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
+									if (l1.intersectsMesh(m,true)){l1Score=1;//console.log(m.name);
+									} 
+									if (l2.intersectsMesh(m,true)){l2Score=1;//console.log(m.name);
+									} 
+								}
+							});	
+							
+							// Проверка на пересечение для движения вправо
+							scene.meshes.forEach(function(m){
+								if (m.name != "skyBox" && m.name != "1mesh" && m.name != "h"  && m.name != "hsh" && m.name != "h2"  && m.name != "hsh2" && m.name != "h3"  && m.name != "hsh3" && m.name != "h4"  && m.name != "hsh4" && m.name != "h5"  && m.name != "hsh5" && m.name != "h6"  && m.name != "hsh6" && m.name != "h7"  && m.name != "hsh7" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){ 
+									if (r1.intersectsMesh(m,true)){r1Score=1;//console.log(m.name);
+									} 
+									if (r2.intersectsMesh(m,true)){r2Score=1;//console.log(m.name);
+									} 
+								}
+							});
+						
+							
+							// Действие при нажатии на клавишу W
+							if (event.keyCode == 87){ 
+								//step.play();
+								if (f1Score == 0 & f2Score == 0) moveforward();
+								else if (f1Score == 1 & f2Score == 0){
+									moveup();
+									moveforward();
+								}
+							else{fired = false;}	
+							}
+							
+							// Действие при нажатии на клавишу S
+							 if (event.keyCode == 83){
+								//step.play();
+								if (b1Score == 0 & b2Score == 0) movebackward();
+								else if (b1Score == 1 & b2Score == 0){
+									moveup();
+									movebackward();
+								} 
+								else{fired = false;}
+							}
+							
+							// Действие при нажатии на клавишу A
+							 if (event.keyCode == 65){
+								//step.play();
+								if (l1Score == 0 & l2Score == 0) moveleft();
+								else if (l1Score == 1 & l2Score == 0){
+									moveup();
+									moveleft();
+								}
+								else{fired = false;}
+							}
+							
+							// Действие при нажатии на клавишу D
+							if (event.keyCode == 68){
+								//step.play();
+								if (r1Score == 0 & r2Score == 0) moveright();
+								else if (r1Score == 1 & r2Score == 0){
+									moveup();
+									moveright();
+								}	
+								else{fired = false;}		
+							}
+							
+							f1Score = 0;
+							f2Score = 0;
+							b1Score = 0;
+							b2Score = 0;	
+							l1Score = 0;
+							l2Score = 0;
+							r1Score = 0;
+							r2Score = 0;	
+							btScore = 0;							
+						}
+					}
+					}
+					}
+                        
+                        
+                  
+                       if (event.keyCode == 32){ 
+					//			tween.finish()
+								//tweenr.stop()
+                           repos2();
+								} 
+            if (event.keyCode == 48){ 
+					//			tween.finish()
+								//tweenr.stop()
+                           repos();
+								} 
+                
+					}
+                }
+
+					// Функция для движения вперед
+					function moveforward(){
+                        
+						step.play();
+						tweenm = new TWEEN.Tween(box.position).to({z:box.position.z+1},330).start();
+						tweenm.easing(TWEEN.Easing.Cubic.Out);
+						tweenm.yoyo(true);
+					
+						var tweenr = new TWEEN.Tween(box.rotation).to({z:0,y:0,x:box.rotation.z+Math.PI/2},330).start();
+						tweenr.easing(TWEEN.Easing.Cubic.Out);				 
+						tweenr.yoyo(true);	
+						
+						tweenm.onComplete(function(){
+						
+							box.rotation = BABYLON.Vector3.Zero();
+							f1.position.z = f1.position.z + 1;
+							f2.position.z = f2.position.z + 1;
+							b1.position.z = b1.position.z + 1;
+							b2.position.z = b2.position.z + 1;
+							r1.position.z = r1.position.z + 1;
+							r2.position.z = r2.position.z + 1;
+							l1.position.z = l1.position.z + 1;
+							l2.position.z = l2.position.z + 1;
+							bt.position.z = bt.position.z + 1;
+							box.rotation = BABYLON.Vector3.Zero();
+							fired = false;
+                            repos2();
+
+						});	
+					}	
+					
+					// Функция для движения назад
+					function movebackward(){
+						step.play();
+						tween3 = new TWEEN.Tween(box.position).to({z:box.position.z-1},330).start();
+						tween3.easing(TWEEN.Easing.Cubic.Out);
+						tween3.yoyo(true);
+					
+						var tween4 = new TWEEN.Tween(box.rotation).to({z:0,y:0,x:box.rotation.z-Math.PI/2},330).start();
+						tween4.easing(TWEEN.Easing.Cubic.Out);				 
+						tween4.yoyo(true);	
+					
+						tween3.onComplete(function(){
+							box.rotation = BABYLON.Vector3.Zero();
+							f1.position.z = f1.position.z - 1;
+							f2.position.z = f2.position.z - 1;
+							b1.position.z = b1.position.z - 1;
+							b2.position.z = b2.position.z - 1;
+							r1.position.z = r1.position.z - 1;
+							r2.position.z = r2.position.z - 1;	
+							l1.position.z = l1.position.z - 1;
+							l2.position.z = l2.position.z - 1;
+							bt.position.z = bt.position.z - 1;
+							box.rotation = BABYLON.Vector3.Zero();
+							fired = false;
+                             repos2();
+						});	
+					}
+					
+					// Функция для движения влево
+					function moveleft(){
+						step.play();
+						tweenm = new TWEEN.Tween(box.position).to({x:box.position.x-1},330).start();
+						tweenm.easing(TWEEN.Easing.Cubic.Out);
+						tweenm.yoyo(true);
+					
+						var tweenr = new TWEEN.Tween(box.rotation).to({x:0,y:0,z:box.rotation.z+Math.PI/2},330).start();
+						tweenr.easing(TWEEN.Easing.Cubic.Out);				 
+						tweenr.yoyo(true);
+						
+						tweenm.onComplete(function(){
+							box.rotation = BABYLON.Vector3.Zero();
+							f1.position.x = f1.position.x - 1;
+							f2.position.x = f2.position.x - 1;
+							b1.position.x = b1.position.x - 1;
+							b2.position.x = b2.position.x - 1;
+							r1.position.x = r1.position.x - 1;
+							r2.position.x = r2.position.x - 1;			
+							l1.position.x = l1.position.x - 1;
+							l2.position.x = l2.position.x - 1;
+							bt.position.x = bt.position.x - 1;
+							box.rotation = BABYLON.Vector3.Zero();
+							fired = false;
+                             repos2();
+						});
+					
+					
+					}
+					
+					// Функция для движения вправо
+					function moveright(){
+						step.play();
+						tweenm = new TWEEN.Tween(box.position).to({x:box.position.x+1},330).start();
+						tweenm.easing(TWEEN.Easing.Cubic.Out);
+						tweenm.yoyo(true);
+					
+						var tweenr = new TWEEN.Tween(box.rotation).to({x:0,y:0,z:box.rotation.z-Math.PI/2},330).start();
+						tweenr.easing(TWEEN.Easing.Cubic.Out);				 
+						tweenr.yoyo(true);
+						
+						tweenm.onComplete(function() {
+							box.rotation = BABYLON.Vector3.Zero();
+							f1.position.x = f1.position.x + 1;
+							f2.position.x = f2.position.x + 1;
+							b1.position.x = b1.position.x + 1;
+							b2.position.x = b2.position.x + 1;
+							r1.position.x = r1.position.x + 1;
+							r2.position.x = r2.position.x + 1;
+							l1.position.x = l1.position.x + 1;
+							l2.position.x = l2.position.x + 1;
+							bt.position.x = bt.position.x + 1;
+							box.rotation = BABYLON.Vector3.Zero();
+							fired = false;
+                             repos2();
+						});		
+					}
+					
+					// Функция для подъёма
+                    function moveup(){
+						 step.play();
+                        tweenm = new TWEEN.Tween(box.position).to({y:box.position.y+1},330).start();
+                                                tweenm.easing(TWEEN.Easing.Cubic.Out);
+                                                tweenm.yoyo(true);
+                                       
+                                                var tweenr = new TWEEN.Tween(box.rotation).to({z:0,y:0,x:box.rotation.x-Math.PI/2},330).start();
+                                                tweenr.easing(TWEEN.Easing.Cubic.Out);                          
+                                                tweenr.yoyo(true);
+                                               
+                                                tweenm.onComplete(function(){
+                                                        box.rotation = BABYLON.Vector3.Zero();
+                                                        f1.position.y = f1.position.y + 1;
+                                                        f2.position.y = f2.position.y + 1;
+                                                        b1.position.y = b1.position.y + 1;
+                                                        b2.position.y = b2.position.y + 1;
+                                                        r1.position.y = r1.position.y + 1;
+                                                        r2.position.y = r2.position.y + 1;
+                                                        l1.position.y = l1.position.y + 1;
+                                                        l2.position.y = l2.position.y + 1;
+                                                        bt.position.y = bt.position.y + 1;                                                     
+                                                        box.rotation = BABYLON.Vector3.Zero();
+                                                        fired = false;
+                                                     repos2();
+                                                });    
+                                        }
+										
+					var count = 0; 
+					
+						var particleSystem = new BABYLON.ParticleSystem("particles", 500, scene);
+        particleSystem.particleTexture = new BABYLON.Texture("33.png", scene);
+        particleSystem.emitter = box;
+        particleSystem.minEmitBox = new BABYLON.Vector3(-1, 0, 1);
+        particleSystem.maxEmitBox = new BABYLON.Vector3(1, 0, -1);
+        particleSystem.color1 = new BABYLON.Color4(0.7, 0.8, 1.0, 1.0);
+        particleSystem.color2 = new BABYLON.Color4(0.2, 0.5, 1.0, 1.0);
+        particleSystem.colorDead = new BABYLON.Color4(0, 0, 0.2, 0.0);
+        particleSystem.minSize = 0.01;
+        particleSystem.maxSize = 0.2;
+        particleSystem.minLifeTime = 0.3;
+        particleSystem.maxLifeTime = 0.6;
+        particleSystem.emitRate = 500;
+        particleSystem.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
+        particleSystem.gravity = new BABYLON.Vector3(0, -9.81, 0);
+        particleSystem.direction1 = new BABYLON.Vector3(-1, 5, 1);
+        particleSystem.direction2 = new BABYLON.Vector3(1, 5, -1);
+        particleSystem.minAngularSpeed = 0;
+        particleSystem.maxAngularSpeed = Math.PI;
+        particleSystem.minEmitPower = 5;
+        particleSystem.maxEmitPower = 13;
+        particleSystem.updateSpeed = 0.005;
+ 
+        function start(){particleSystem.start();  var finish = new Audio('finish2.mp3'); finish.play();}
+ 
+        function stop(){particleSystem.stop();}
+		
+					
+					var stFinish = 0;
+					var ggg = 0;
+					var stStart = 0;
+					var qqq = 0;
+					var prov = 0;
+                    
+                    
+                    
+                   
+                    
+                    
+					
+					// Функция repos
+                    
+                    function repos(){
+                        
+                        var x=box.position.x;
+                        var y=box.position.y;
+                        var z=box.position.z;
+                        
+                        x=x-0.5;
+                        y=y-0.5;
+                        z=z-0.5;
+                        
+                        x=Math.round(x)
+                        y=Math.round(y)
+                        z=Math.round(z)
+                        
+                     /*   console.log(x)
+                        if (x === parseInt(x, 10))
+                            console.log("int")
+                        else
+                            console.log("nonint")
+                        
+                        
+                        console.log(y)
+                        if (y === parseInt(y, 10))
+                            console.log("int")
+                        else
+                            console.log("nonint")
+                        
+                        
+                        console.log(z)
+                        if (z === parseInt(z, 10))
+                            console.log("int")
+                        else
+                            console.log("nonint")
+                        */
+                        
+                        x=x+0.5;
+                        y=y+0.5;
+                        z=z+0.5;
+                       box.position.x=x;
+                       box.position.y=y;
+                       box.position.z=z;
+                        
+                        f1.position.x = box.position.x; // Позиция первого спутника в длину
+					f1.position.y = box.position.y; // Позиция первого спутника в высоту
+					f1.position.z = box.position.z + 0.5; // Позиция первого спутника в ширину
+
+f2.position.x = box.position.x; // Позиция второго спутника в длину
+					f2.position.y = box.position.y + 1; // Позиция второго спутника в высоту
+					f2.position.z = box.position.z + 0.5; // Позиция второго спутника в ширину
+
+b1.position.x = box.position.x; // Позиция первого спутника в длину
+					b1.position.y = box.position.y; // Позиция первого спутника в высоту
+					b1.position.z = box.position.z - 0.5; // Позиция первого спутника в ширину
+
+b2.position.x = box.position.x; // Позиция второго спутника в длину
+					b2.position.y = box.position.y + 1; // Позиция второго спутника в высоту
+					b2.position.z = box.position.z - 0.5; // Позиция второго спутника в ширину
+
+l1.position.x = box.position.x - 0.5; // Позиция первого спутника в длину
+					l1.position.y = box.position.y + 0; // Позиция первого спутника в высоту
+					l1.position.z = box.position.z; // Позиция первого спутника в ширину
+
+l2.position.x = box.position.x - 0.5; // Позиция второго спутника в длину
+					l2.position.y = box.position.y + 1; // Позиция второго спутника в высоту
+					l2.position.z = box.position.z; // Позиция второго спутника в ширину
+
+r1.position.x = box.position.x + 0.5; // Позиция первого спутника в длину
+					r1.position.y = box.position.y + 0; // Позиция первого спутника в высоту
+					r1.position.z = box.position.z; // Позиция первого спутника в ширину
+
+r2.position.x = box.position.x + 0.5; // Позиция второго спутника в длину
+					r2.position.y = box.position.y + 1; // Позиция второго спутника в высоту
+					r2.position.z = box.position.z; // Позиция второго спутника в ширину
+
+bt.position.x = box.position.x; // Позиция спутника в длину
+					bt.position.y = box.position.y - 0.5; // Позиция спутника в высоту
+					bt.position.z = box.position.z; // Позиция спутника в ширину
+                                                
+                        
+                    }
+                    
+                    
+                     // Функция repos для спутников
+                     function repos2(){
+                   
+                    f1.position.x = box.position.x; // Позиция первого спутника в длину
+					f1.position.y = box.position.y; // Позиция первого спутника в высоту
+					f1.position.z = box.position.z + 0.5; // Позиция первого спутника в ширину
+
+f2.position.x = box.position.x; // Позиция второго спутника в длину
+					f2.position.y = box.position.y + 1; // Позиция второго спутника в высоту
+					f2.position.z = box.position.z + 0.5; // Позиция второго спутника в ширину
+
+b1.position.x = box.position.x; // Позиция первого спутника в длину
+					b1.position.y = box.position.y; // Позиция первого спутника в высоту
+					b1.position.z = box.position.z - 0.5; // Позиция первого спутника в ширину
+
+b2.position.x = box.position.x; // Позиция второго спутника в длину
+					b2.position.y = box.position.y + 1; // Позиция второго спутника в высоту
+					b2.position.z = box.position.z - 0.5; // Позиция второго спутника в ширину
+
+l1.position.x = box.position.x - 0.5; // Позиция первого спутника в длину
+					l1.position.y = box.position.y + 0; // Позиция первого спутника в высоту
+					l1.position.z = box.position.z; // Позиция первого спутника в ширину
+
+l2.position.x = box.position.x - 0.5; // Позиция второго спутника в длину
+					l2.position.y = box.position.y + 1; // Позиция второго спутника в высоту
+					l2.position.z = box.position.z; // Позиция второго спутника в ширину
+
+r1.position.x = box.position.x + 0.5; // Позиция первого спутника в длину
+					r1.position.y = box.position.y + 0; // Позиция первого спутника в высоту
+					r1.position.z = box.position.z; // Позиция первого спутника в ширину
+
+r2.position.x = box.position.x + 0.5; // Позиция второго спутника в длину
+					r2.position.y = box.position.y + 1; // Позиция второго спутника в высоту
+					r2.position.z = box.position.z; // Позиция второго спутника в ширину
+
+bt.position.x = box.position.x; // Позиция спутника в длину
+					bt.position.y = box.position.y - 0.5; // Позиция спутника в высоту
+					bt.position.z = box.position.z; // Позиция спутника в ширину
+                                                
+                    //    console.log("repos2")
+                    }
+                    
+                  //  setInterval(function(){repos2()}, 10);
+                    
+                    
+					// Функция для падения
+					 function  movedown(){  
+                        mm = "0";
+                        scene.meshes.forEach(function(m){
+                            if (m.name != "skyBox" && m.name != "1mesh" && m.name != "h"  && m.name != "hsh" && m.name != "h2"  && m.name != "hsh2" && m.name != "h3"  && m.name != "hsh3" && m.name != "h4"  && m.name != "hsh4" && m.name != "h5"  && m.name != "hsh5" && m.name != "h6"  && m.name != "hsh6" && m.name != "h7"  && m.name != "hsh7" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
+                                if (bt.intersectsMesh(m,true)){btScore=1; keydis=1;
+									if(m.name == "down1"){
+										setInterval(function(){
+											tween100 = new TWEEN.Tween(down1.position).to({y:-5.5}, 100).start();
+											tween100.easing(TWEEN.Easing.Exponential.Out);
+											tween100.yoyo(true);
+											}, 750);
+									}
+									if(m.name == "down2"){
+										setInterval(function(){
+											tween100 = new TWEEN.Tween(down2.position).to({y:-5.5}, 100).start();
+											tween100.easing(TWEEN.Easing.Exponential.Out);
+											tween100.yoyo(true);
+											}, 750);
+									}
+									if(m.name == "down3"){
+										setInterval(function(){
+											tween100 = new TWEEN.Tween(down3.position).to({y:-5.5}, 100).start();
+											tween100.easing(TWEEN.Easing.Exponential.Out);
+											tween100.yoyo(true);
+											}, 750);
+									}
+									if(m.name == "down4"){
+										setInterval(function(){
+											tween100 = new TWEEN.Tween(down4.position).to({y:-5.5}, 100).start();
+											tween100.easing(TWEEN.Easing.Exponential.Out);
+											tween100.yoyo(true);
+											}, 750);
+									}
+									if(m.name == "down5"){
+										setInterval(function(){
+											tween100 = new TWEEN.Tween(down5.position).to({y:-5.5}, 100).start();
+											tween100.easing(TWEEN.Easing.Exponential.Out);
+											tween100.yoyo(true);
+											}, 750);
+									}
+									if(m.name == "down6"){
+										setInterval(function(){
+											tween100 = new TWEEN.Tween(down6.position).to({y:-5.5}, 100).start();
+											tween100.easing(TWEEN.Easing.Exponential.Out);
+											tween100.yoyo(true);
+											}, 750);
+									}
+									
+									if(m.name == "btt1")
+									{
+										btt1.position.y = 0.76;
+										btt1.material = matBTT2; 
+										f1.position.z = 17;
+										f2.position.z = 17;
+										l1.position.z = 16.5;
+										l2.position.z = 16.5;
+										b1.position.z = 16;
+										b2.position.z = 16;
+										r1.position.z = 16.5;
+										r2.position.z = 16.5;
+										//bt.position.z = box.position.z;	
+
+										tween500 = new TWEEN.Tween(box.position).to({z:16.5},400).start();
+										tween500.easing(TWEEN.Easing.Linear.None);
+										tween500.yoyo(true);
+										tween500 = new TWEEN.Tween(box.rotation).to({z:0,y:0,x:box.rotation.z-4*Math.PI/2},400).start();
+										tween500.easing(TWEEN.Easing.Linear.None);				 
+										tween500.yoyo(true);
+										tween500 = new TWEEN.Tween(bt.position).to({z:16.5},400).start();
+										tween500.easing(TWEEN.Easing.Linear.None);
+										tween500.yoyo(true);
+										tween500 = new TWEEN.Tween(bt.position).to({z:16.5},400).start();
+										tween500.easing(TWEEN.Easing.Linear.None);
+										tween500.yoyo(true);
+										tween500.onComplete(function(){
+											box.rotation = BABYLON.Vector3.Zero();
+										});
+									
+									}
+										
+									/*if(m.name == "btt2")
+									{
+										btt2.position.y = 1.76;
+										btt2.material = matBTT2; 
+									}
+                                      */                         
+									if(m.name == "btt3")
+									{
+										btt3.position.y = 0.76;
+										btt3.material = matBTT2; 
+										
+										if(stFinish == 0){
+
+											trig = 1;
+											tween750 = new TWEEN.Tween(bot7_1.position).to({x:bot7_1.position.x + 2.1},400).start();
+											tween750.easing(TWEEN.Easing.Linear.None);
+											tween750.yoyo(true);
+											tween750 = new TWEEN.Tween(bot7_2.position).to({x:bot7_1.position.x + 2.1},400).start();
+											tween750.easing(TWEEN.Easing.Linear.None);
+											tween750.yoyo(true);
+											tween750 = new TWEEN.Tween(bot7_3.position).to({x:bot7_3.position.x + 2.1},400).start();
+											tween750.easing(TWEEN.Easing.Linear.None);
+											tween750.yoyo(true);
+											tween750 = new TWEEN.Tween(bot7_4.position).to({x:bot7_4.position.x + 2.1},400).start();
+											tween750.easing(TWEEN.Easing.Linear.None);
+											tween750.yoyo(true);
+											tween750.onComplete(function(){
+												trig = 0;
+												ggg = 1;
+                                                repos();
+											});
+											
+											stFinish = 1;
+											
+										}
+									}
+									if(m.name == "btt4")
+									{
+										btt4.position.y = 2.76;
+										btt4.material = matBTT2; 
+										qqq = 1;
+										
+										if(stStart == 0)
+										{
+											trig = 1;
+											tween1000 = new TWEEN.Tween(bot3_1.position).to({x:bot3_1.position.x + 2},500).start();
+											tween1000.easing(TWEEN.Easing.Linear.None);
+											tween1000.yoyo(true);
+											tween1000 = new TWEEN.Tween(bot3_2.position).to({x:bot3_2.position.x + 2},500).start();
+											tween1000.easing(TWEEN.Easing.Linear.None);
+											tween1000.yoyo(true);
+											tween1000 = new TWEEN.Tween(bot3_3.position).to({x:bot3_3.position.x + 2},500).start();
+											tween1000.easing(TWEEN.Easing.Linear.None);
+											tween1000.yoyo(true);
+                                            
+                                                tween1000.onComplete(function(){
+												tween1000 = new TWEEN.Tween(bot3_1.position).to({x:bot3_1.position.x - 4},500).start();
+												tween1000.easing(TWEEN.Easing.Linear.None);
+												tween1000.yoyo(true);
+												tween1000 = new TWEEN.Tween(bot3_2.position).to({x:bot3_2.position.x - 4},500).start();
+												tween1000.easing(TWEEN.Easing.Linear.None);
+												tween1000.yoyo(true);
+												tween1000 = new TWEEN.Tween(bot3_3.position).to({x:bot3_3.position.x - 4},500).start();
+												tween1000.easing(TWEEN.Easing.Linear.None);
+												tween1000.yoyo(true);
+												trig = 0;
+                                                    
+                                                if(qqq=1){repos();}
+                                                
+                                                tween1000.onComplete(function(){ });
+											});
+											
+											qqq = 2;
+											stStart = 1;
+											
+										}
+									}
+									
+									if (m.name == "finish4"){
+                if(count == 0)
+                {
+                    count++;
+                    start();
+                    setTimeout(stop,5000);
+                    setInterval(function(){box.dispose();},5250);
+                }
+																				gameover = 1;
+																				pauseend = 1;
+                $("#menu-finish").fadeIn(0, function(){});
+	
+				
+																				
+																				
+																				
+        }
+                                    
+                                    //console.log(m.name);
+                                    mm = m.name;
+                                }
+                            }
+                        });
+                        if (btScore == 0){                    
+                            box.position.y = box.position.y - 1;
+                            f1.position.y = f1.position.y - 1;
+                            f2.position.y = f2.position.y - 1;
+                            b1.position.y = b1.position.y - 1;
+                            b2.position.y = b2.position.y - 1;
+                            r1.position.y = r1.position.y - 1;
+                            r2.position.y = r2.position.y - 1;
+                            l1.position.y = l1.position.y - 1;
+                            l2.position.y = l2.position.y - 1;
+                            bt.position.y = bt.position.y - 1;
+                        }
+ 
+                        if(mm == "0"){
+                            box.position.y = box.position.y - 1;
+                            f1.position.y = f1.position.y - 1;
+                            f2.position.y = f2.position.y - 1;
+                            b1.position.y = b1.position.y - 1;
+                            b2.position.y = b2.position.y - 1;
+                            r1.position.y = r1.position.y - 1;
+                            r2.position.y = r2.position.y - 1;
+                            l1.position.y = l1.position.y - 1;
+                            l2.position.y = l2.position.y - 1;
+                            bt.position.y = bt.position.y - 1;
+							keydis = 0;
+							//setTimeout(function(){keydis=1;},1000);
+                        }
+                    }
+					
+					
+					var max = 156;
+					var min = 0;
+					
+					var BoxMaterial = new BABYLON.StandardMaterial("material01",scene);
+                    
+                    
+                    
+                    function res(){
+                if (bt.position.y < -25)
+                {
+
+                    var death = new Audio('death.mp3');
+					dead++;
+                    death.play();
+                    showtip("ouch!")
+                    
+                    keydis=0;
+                  //  setTimeout(function(){keydis=1;},400);
+                    
+                      particleSystem.start();
+                    setTimeout(function(){particleSystem.stop();},700);
+                    
+                        box.position.x = hero.position.x + 0.5;
+                        box.position.y = hero.position.y + 20.5;
+                        box.position.z = hero.position.z - 0.5;
+                       
+                        f1.position.x = box.position.x + 0;
+                        f1.position.y = box.position.y + 0;
+                        f1.position.z = box.position.z + 0.5;
+                       
+                        f2.position.x = box.position.x + 0;
+                        f2.position.y = box.position.y + 1;
+                        f2.position.z = box.position.z + 0.5;
+ 
+                        b1.position.x = box.position.x - 0;
+                        b1.position.y = box.position.y + 0;
+                        b1.position.z = box.position.z - 0.5;
+                       
+                        b2.position.x = box.position.x - 0;
+                        b2.position.y = box.position.y + 1;
+                        b2.position.z = box.position.z - 0.5;
+ 
+                        l1.position.x = box.position.x - 0.5;
+                        l1.position.y = box.position.y + 0;
+                        l1.position.z = box.position.z - 0;
+ 
+                        l2.position.x = box.position.x - 0.5;
+                        l2.position.y = box.position.y + 1;
+                        l2.position.z = box.position.z + 0;
+ 
+                        r1.position.x = box.position.x + 0.5;
+                        r1.position.y = box.position.y + 0;
+                        r1.position.z = box.position.z + 0;
+                       
+                        r2.position.x = box.position.x + 0.5;
+                        r2.position.y = box.position.y + 1;
+                        r2.position.z = box.position.z + 0;
+       
+                        bt.position.x = box.position.x;
+                        bt.position.y = box.position.y - 0.5;
+                        bt.position.z = box.position.z;
+					
+						
+                }
+        }
+                    
+                      var pos=0.1
+                      var rot=Math.PI/2;
+                      var dohealth=0;
+					  
+                    function healthbox(){
+                    if(dohealth==0){
+                        dohealth=1;
+                       var diffuseh = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+                       // scene.getMeshByName("xxxx").material.diffuseColor=diffuseh;
+                        tween = new TWEEN.Tween(bonus1.material.diffuseColor).to(diffuseh,500).start();
+						tween.easing(TWEEN.Easing.Cubic.Out);
+						tween.yoyo(true);
+						tween = new TWEEN.Tween(bonus2.material.diffuseColor).to(diffuseh,500).start();
+						tween.easing(TWEEN.Easing.Cubic.Out);
+						tween.yoyo(true);
+						tween = new TWEEN.Tween(bonus3.material.diffuseColor).to(diffuseh,500).start();
+						tween.easing(TWEEN.Easing.Cubic.Out);
+						tween.yoyo(true);
+						tween = new TWEEN.Tween(bonus4.material.diffuseColor).to(diffuseh,500).start();
+						tween.easing(TWEEN.Easing.Cubic.Out);
+						tween.yoyo(true);
+						tween = new TWEEN.Tween(bonus5.material.diffuseColor).to(diffuseh,500).start();
+						tween.easing(TWEEN.Easing.Cubic.Out);
+						tween.yoyo(true);
+                        tween = new TWEEN.Tween(bonus6.material.diffuseColor).to(diffuseh,500).start();
+						tween.easing(TWEEN.Easing.Cubic.Out);
+						tween.yoyo(true);
+						tween = new TWEEN.Tween(bonus7.material.diffuseColor).to(diffuseh,500).start();
+						tween.easing(TWEEN.Easing.Cubic.Out);
+						tween.yoyo(true);
+                        
+                        var tween1121 = new TWEEN.Tween(bonus1.rotation).to({y:bonus1.rotation.y+rot},500).start();
+						var tween1121 = new TWEEN.Tween(bonus2.rotation).to({y:bonus2.rotation.y+rot},500).start();
+						var tween1121 = new TWEEN.Tween(bonus3.rotation).to({y:bonus3.rotation.y+rot},500).start();
+						var tween1121 = new TWEEN.Tween(bonus4.rotation).to({y:bonus4.rotation.y+rot},500).start();
+						var tween1121 = new TWEEN.Tween(bonus5.rotation).to({y:bonus5.rotation.y+rot},500).start();
+						var tween1121 = new TWEEN.Tween(bonus6.rotation).to({y:bonus6.rotation.y+rot},500).start();
+						var tween1121 = new TWEEN.Tween(bonus7.rotation).to({y:bonus7.rotation.y+rot},500).start();
+				
+                        var tween1122 = new TWEEN.Tween(shadow1.rotation).to({y:shadow1.rotation.y+rot},500).start();
+						var tween1122 = new TWEEN.Tween(shadow2.rotation).to({y:shadow2.rotation.y+rot},500).start();
+						var tween1122 = new TWEEN.Tween(shadow3.rotation).to({y:shadow3.rotation.y+rot},500).start();
+						var tween1122 = new TWEEN.Tween(shadow4.rotation).to({y:shadow4.rotation.y+rot},500).start();
+						var tween1122 = new TWEEN.Tween(shadow5.rotation).to({y:shadow5.rotation.y+rot},500).start();
+						var tween1122 = new TWEEN.Tween(shadow6.rotation).to({y:shadow6.rotation.y+rot},500).start();
+						var tween1122 = new TWEEN.Tween(shadow7.rotation).to({y:shadow7.rotation.y+rot},500).start();
+                        
+                        
+                        tween100 = new TWEEN.Tween(bonus1.position).to({y:bonus1.position.y+pos}, 500).start();
+						tween100 = new TWEEN.Tween(bonus2.position).to({y:bonus2.position.y+pos}, 500).start();
+						tween100 = new TWEEN.Tween(bonus3.position).to({y:bonus3.position.y+pos}, 500).start();
+						tween100 = new TWEEN.Tween(bonus4.position).to({y:bonus4.position.y+pos}, 500).start();
+						tween100 = new TWEEN.Tween(bonus5.position).to({y:bonus5.position.y+pos}, 500).start();
+						tween100 = new TWEEN.Tween(bonus6.position).to({y:bonus6.position.y+pos}, 500).start();
+						tween100 = new TWEEN.Tween(bonus7.position).to({y:bonus7.position.y+pos}, 500).start();
+                        tween100.onComplete(function(){
+                            pos=pos*(-1);
+                            dohealth=0;
+                        });
+                        tween100.easing(TWEEN.Easing.Linear.None);
+                        tween100.yoyo(true);
+                    }
+                    } 
+                    
+                    setInterval(healthbox, 5);
+					
+					
+					 var $worked = $("#timer");
+
+    function update() {
+	if(gameover!=1){
+
+        var myTime = $worked.html();
+        var ss = myTime.split(":");
+        var dt = new Date();
+        dt.setHours(0);
+        dt.setMinutes(ss[0]);
+        dt.setSeconds(ss[1]);
+        
+        var dt2 = new Date(dt.valueOf() + 1000);
+        var temp = dt2.toTimeString().split(" ");
+        var ts = temp[0].split(":");
+		
+		//console.log(ts)
+        
+        $worked.html(ts[1]+":"+ts[2]);
+        setTimeout(update, 1000);
+    }
+	}
+	setTimeout(update, 1000);
+					
+					function colorich(){
+
+						var diffuse = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+						var specular = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+						BoxMaterial.specularPower = 16;
+						var ambient = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+						var emissive = new BABYLON.Color3(Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255,Math.floor(Math.random()*(max - min) + min)/255);
+						
+						tween = new TWEEN.Tween(BoxMaterial.diffuseColor).to(diffuse,1000).start();
+						tween.easing(TWEEN.Easing.Cubic.Out);
+						tween.yoyo(true);
+						
+						tween1 = new TWEEN.Tween(BoxMaterial.specularColor).to(specular,1000).start();
+						tween1.easing(TWEEN.Easing.Cubic.Out);
+						tween1.yoyo(true);	
+
+						tween2 = new TWEEN.Tween(BoxMaterial.ambientColor).to(ambient,1000).start();
+						tween2.easing(TWEEN.Easing.Cubic.Out);
+						tween2.yoyo(true);		
+						
+						tween3 = new TWEEN.Tween(BoxMaterial.emissiveColor).to(emissive,1000).start();
+						tween3.easing(TWEEN.Easing.Cubic.Out);
+						tween3.yoyo(true);	
+													
+						box.material = BoxMaterial;
+				
+					}
+					setInterval(colorich, 1500);
+					
+					var finish = BABYLON.Mesh.CreateBox("finish",1,scene);
+        finish.position.x = fin.position.x - 0.5;
+        finish.position.y = fin.position.y + 1.5;
+        finish.position.z = fin.position.z + 0.5;
+ 
+        var finish1 = BABYLON.Mesh.CreateBox("finish1",1,scene);
+        finish1.position.x = fin1.position.x - 0.5;
+        finish1.position.y = fin1.position.y + 1.5;
+        finish1.position.z = fin1.position.z + 0.5;
+       
+        var finish2 = BABYLON.Mesh.CreateBox("finish2",1,scene);
+        finish2.position.x = fin2.position.x - 0.5;
+        finish2.position.y = fin2.position.y + 1.5;
+        finish2.position.z = fin2.position.z + 0.5;
+       
+        var finish3 = BABYLON.Mesh.CreateBox("finish3",1,scene);
+        finish3.position.x = fin3.position.x - 0.5;
+        finish3.position.y = fin3.position.y + 1.5;
+        finish3.position.z = fin3.position.z + 0.5;
+       
+        var finish4 = BABYLON.Mesh.CreateBox("finish4",1,scene);
+        finish4.position.x = fin4.position.x - 0.5;
+        finish4.position.y = fin4.position.y + 1.5;
+        finish4.position.z = fin4.position.z + 0.5;
+       
+        var finish5 = BABYLON.Mesh.CreateBox("finish5",1,scene);
+        finish5.position.x = fin5.position.x - 0.5;
+        finish5.position.y = fin5.position.y + 1.5;
+        finish5.position.z = fin5.position.z + 0.5;
+       
+        var finish6 = BABYLON.Mesh.CreateBox("finish6",1,scene);
+        finish6.position.x = fin6.position.x - 0.5;
+        finish6.position.y = fin6.position.y + 1.5;
+        finish6.position.z = fin6.position.z + 0.5;
+       
+        var finish7 = BABYLON.Mesh.CreateBox("finish7",1,scene);
+        finish7.position.x = fin7.position.x - 0.5;
+        finish7.position.y = fin7.position.y + 1.5;
+        finish7.position.z = fin7.position.z + 0.5;
+       
+        var finish8 = BABYLON.Mesh.CreateBox("finish8",1,scene);
+        finish8.position.x = fin8.position.x - 0.5;
+        finish8.position.y = fin8.position.y + 1.5;
+        finish8.position.z = fin8.position.z + 0.5;
+			
+			var finishmaterial = new BABYLON.StandardMaterial("finishmateria",scene);
+        var finishmaterial2 = new BABYLON.StandardMaterial("finishmaterial2",scene);
+ 
+ var max1 = 100;
+ var min1 = 0;
+ 
+        function finish01(){
+                var diffuse01 = new BABYLON.Color3(Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255);
+                var specular01 = new BABYLON.Color3(Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255);
+                finishmaterial.specularPower = 32;
+                var ambient01 = new BABYLON.Color3(Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255);
+                var emissive01 = new BABYLON.Color3(Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255);
+               
+                tween = new TWEEN.Tween(finishmaterial.diffuseColor).to(diffuse01,500).start();
+                tween.easing(TWEEN.Easing.Cubic.Out);
+                tween.yoyo(true);
+               
+                tween1 = new TWEEN.Tween(finishmaterial.specularColor).to(specular01,500).start();
+                tween1.easing(TWEEN.Easing.Cubic.Out);
+                tween1.yoyo(true);     
+ 
+                tween2 = new TWEEN.Tween(finishmaterial.ambientColor).to(ambient01,500).start();
+                tween2.easing(TWEEN.Easing.Cubic.Out);
+                tween2.yoyo(true);             
+               
+                tween3 = new TWEEN.Tween(finishmaterial.emissiveColor).to(emissive01,500).start();
+                tween3.easing(TWEEN.Easing.Cubic.Out);
+                tween3.yoyo(true);     
+       
+                finish4.material = finishmaterial;
+           
+        }
+        setInterval(finish01, 1000);
+ 
+        function finish02(){
+                var diffuse01 = new BABYLON.Color3(Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255);
+                var specular01 = new BABYLON.Color3(Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255);
+                finishmaterial2.specularPower = 8;
+                var ambient01 = new BABYLON.Color3(Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255);
+                var emissive01 = new BABYLON.Color3(Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255,Math.floor(Math.random()*(max1 - min1) + min1)/255);
+               
+                tween = new TWEEN.Tween(finishmaterial2.diffuseColor).to(diffuse01,400).start();
+                tween.easing(TWEEN.Easing.Cubic.Out);
+                tween.yoyo(true);
+               
+                tween1 = new TWEEN.Tween(finishmaterial2.specularColor).to(specular01,400).start();
+                tween1.easing(TWEEN.Easing.Cubic.Out);
+                tween1.yoyo(true);     
+ 
+                tween2 = new TWEEN.Tween(finishmaterial2.ambientColor).to(ambient01,400).start();
+                tween2.easing(TWEEN.Easing.Cubic.Out);
+                tween2.yoyo(true);             
+               
+                tween3 = new TWEEN.Tween(finishmaterial2.emissiveColor).to(emissive01,400).start();
+                tween3.easing(TWEEN.Easing.Cubic.Out);
+                tween3.yoyo(true);     
+       
+                finish.material = finishmaterial2;
+                finish1.material = finishmaterial2;
+                finish2.material = finishmaterial2;
+                finish7.material = finishmaterial2;
+                finish3.material = finishmaterial2;
+                finish8.material = finishmaterial2;
+                finish5.material = finishmaterial2;
+                finish6.material = finishmaterial2;
+        }
+        setInterval(finish02, 500);
+			
+					// Указывает браузеру на то, что вы хотите произвести анимацию, и просит его запланировать перерисовку на следующем кадре анимации
+					requestAnimationFrame(animate);
+					function animate(time){
+						requestAnimationFrame(animate);
+						TWEEN.update(time);
+
+					}
+	
+
+					setInterval(bot4block, 2000);				
+					//setInterval(bot6block, 2000);		
+					setInterval(function(){
+						setTimeout(bot6block_v1, 0);
+						setTimeout(bot6block_v2, 3000);
+					}, 6000);
+					//setInterval(bot2block, 3000);	
+                    
+					
+                     //оффсет бекграунда
+                                            var el = $("#body"),
+                                                bgWidth = 20,
+                                                bgHeight = 20;
+                    
+                    
+                    
+                    var bot4inter=0;
+                    var bot6inter=0;
+                    //startpos
+                 //   box.position.x =  bot4_4.position.x + 0.5;
+                //    box.position.y =  bot4_4.position.y + 1+0.5;
+                //    box.position.z =  bot4_4.position.z + 0.5;
+                   repos()
+                    
+					// Регистрируем цикл отрисовки, который периодически обновляет сцену (FPS)
+					engine.runRenderLoop(function(){
+						scene.render();	
+						movedown();
+                        res();
+                        
+                        
+                        //оффсет бекграунда
+
+                        
+                        el.css({
+  "background-position": (el.width()-bgWidth+10) + "px " 
+});                     
+     bgWidth=bgWidth+0.3;                   
+                        
+                        
+                        scene.meshes.forEach(function(m){
+			if (m.name == "h"){
+				
+				if (box.intersectsMesh(bonus1,true)){
+					scene.getMeshByName("h").dispose();
+					scene.getMeshByName("hsh").dispose();
+					var bonus = new Audio('bonus.mp3'); 
+					bonus.play(); 
+					showtip("bonus");
+					particleSystem.start();
+					prizma++;
+					setTimeout(function(){particleSystem.stop();},500);	
+				}
+				
+			}
+		});
+		
+		scene.meshes.forEach(function(m){
+			if (m.name == "h2"){
+
+				if (box.intersectsMesh(bonus2,true)){
+					scene.getMeshByName("h2").dispose();
+					scene.getMeshByName("hsh2").dispose();
+					var bonus = new Audio('bonus.mp3'); 
+					bonus.play(); 
+					showtip("bonus");
+					particleSystem.start();
+					prizma++;
+					setTimeout(function(){particleSystem.stop();},500);	
+				}
+				
+			}
+		});
+		
+		scene.meshes.forEach(function(m){
+			if (m.name == "h3"){
+
+				if (box.intersectsMesh(bonus3,true)){
+					scene.getMeshByName("h3").dispose();
+					scene.getMeshByName("hsh3").dispose();
+					var bonus = new Audio('bonus.mp3'); 
+					bonus.play(); 
+					showtip("bonus");
+					particleSystem.start();
+					prizma++;
+					setTimeout(function(){particleSystem.stop();},500);	
+				}
+				
+			}
+		});
+		
+		scene.meshes.forEach(function(m){
+			if (m.name == "h4"){
+
+				if (box.intersectsMesh(bonus4,true)){
+					scene.getMeshByName("h4").dispose();
+					scene.getMeshByName("hsh4").dispose();
+					var bonus = new Audio('bonus.mp3'); 
+					bonus.play(); 
+					showtip("bonus");
+					particleSystem.start();
+					prizma++;
+					setTimeout(function(){particleSystem.stop();},500);	
+				}
+				
+			}
+		});
+		
+		scene.meshes.forEach(function(m){
+			if (m.name == "h5"){
+
+				if (box.intersectsMesh(bonus5,true)){
+					scene.getMeshByName("h5").dispose();
+					scene.getMeshByName("hsh5").dispose();
+					var bonus = new Audio('bonus.mp3'); 
+					bonus.play(); 
+					showtip("bonus");
+					particleSystem.start();
+					prizma++;
+					setTimeout(function(){particleSystem.stop();},500);	
+				}
+				
+			}
+		});
+               
+scene.meshes.forEach(function(m){
+			if (m.name == "h6"){
+
+				if (box.intersectsMesh(bonus6,true)){
+					scene.getMeshByName("h6").dispose();
+					scene.getMeshByName("hsh6").dispose();
+					var bonus = new Audio('bonus.mp3'); 
+					bonus.play(); 
+					showtip("bonus");
+					particleSystem.start();
+					prizma++;
+					setTimeout(function(){particleSystem.stop();},500);	
+				}
+				
+			}
+		});
+
+scene.meshes.forEach(function(m){
+			if (m.name == "h7"){
+
+				if (box.intersectsMesh(bonus7,true)){
+					scene.getMeshByName("h7").dispose();
+					scene.getMeshByName("hsh7").dispose();
+					var bonus = new Audio('bonus.mp3'); 
+					bonus.play(); 
+					showtip("bonus");
+					particleSystem.start();
+					prizma++;
+					setTimeout(function(){particleSystem.stop();},500);	
+				}
+				
+			}
+		});		
+		document.getElementById('prizm').innerHTML = prizma;
+				document.getElementById('dead').innerHTML = dead;
+				
+				
+				if(prizma == 7)
+		{
+			document.getElementById('rank').innerHTML = "S+";
+			var $five = $(".seven");
+			$five.css("background-color", "red");
+		}
+		if(prizma == 6)
+		{
+			document.getElementById('rank').innerHTML = "S";
+			var $four = $(".six");
+			$four.css("background-color", "red");
+		}
+		if(prizma == 5)
+		{
+			document.getElementById('rank').innerHTML = "A";
+			var $three = $(".five");
+			$three.css("background-color", "red");
+		}
+		if(prizma == 4)
+		{
+			document.getElementById('rank').innerHTML = "B";
+			var $two = $(".four");
+			$two.css("background-color", "red");
+		}
+		if(prizma == 3)
+		{
+			document.getElementById('rank').innerHTML = "C";
+			var $one = $(".three");
+			$one.css("background-color", "red");
+		}
+		if(prizma == 2)
+		{
+			document.getElementById('rank').innerHTML = "D";
+			var $one = $(".two");
+			$one.css("background-color", "red");
+		}
+		if(prizma == 1)
+		{
+			document.getElementById('rank').innerHTML = "E";
+			var $one = $(".one");
+			$one.css("background-color", "red");
+		}
+		if(prizma == 0)
+			document.getElementById('rank').innerHTML = "F";
+			
+		
+		 if (camidle==1){
+													if (bt.position.y <= -1){
+															camera.position.y = 3;
+													}
+													else
+															camera.position.y = box.position.y + 4;
+												   
+													if(bt.position.y > 2)
+															camera.position.y = box.position.y + 8;
+												   
+												  
+													camera.position.z = box.position.z-1;
+													camera.position.x = box.position.x + 2;
+													camera.position.y = box.position.y +7;
+												   
+													if (k % 2 == 1)
+													{
+															camera.position.y = box.position.y + 4;
+															camera.position.x = box.position.x - 4;
+													}
+												
+            }
+				
+						if(bot7_1.intersectsMesh(box, true))
+						{	
+							if(ggg == 0){
+							box.position.x = bot7_1.position.x + 1;
+							f1.position.x = box.position.x;
+							f2.position.x = box.position.x;
+							l1.position.x = box.position.x-0.5;
+							l2.position.x = box.position.x-0.5;
+							b1.position.x = box.position.x;
+							b2.position.x = box.position.x;
+							r1.position.x = box.position.x+0.5;
+							r2.position.x = box.position.x+0.5;
+							bt.position.x = box.position.x;	
+							}
+						}
+						
+						if(bot3_1.intersectsMesh(box, true))
+						{	
+							if(qqq == 1){
+								box.position.x = bot3_1.position.x + 1;
+								f1.position.x = box.position.x;
+								f2.position.x = box.position.x;
+								l1.position.x = box.position.x-0.5;
+								l2.position.x = box.position.x-0.5;
+								b1.position.x = box.position.x;
+								b2.position.x = box.position.x;
+								r1.position.x = box.position.x+0.5;
+								r2.position.x = box.position.x+0.5;
+								bt.position.x = box.position.x;	
+							}
+                            
+						}
+						
+						if(bot6.intersectsMesh(bt, true))
+						{					
+							box.position.z = bot6.position.z;
+							f1.position.z = box.position.z+0.5;
+							f2.position.z = box.position.z+0.5;
+							l1.position.z = box.position.z;
+							l2.position.z = box.position.z;
+							b1.position.z = box.position.z-0.5;
+							b2.position.z = box.position.z-0.5;
+							r1.position.z = box.position.z;
+							r2.position.z = box.position.z;
+							bt.position.z = box.position.z;	
+                            
+                             bot6inter=1;
+						}
+                        else{bot6inter=0;}
+                     
+						
+						
+						/*if ((bot4_2.intersectsMesh(box,true) || bot4_4.intersectsMesh(box,true))){ 
+						if(ppppppp != 1){
+								trig = 1;
+								box.position.x = bot4_2.position.x + 1;
+								f1.position.x = box.position.x;
+								f2.position.x = box.position.x;
+								l1.position.x = box.position.x-0.5;
+								l2.position.x = box.position.x-0.5;
+								b1.position.x = box.position.x;
+								b2.position.x = box.position.x;
+								r1.position.x = box.position.x+0.5;
+								r2.position.x = box.position.x+0.5;
+								bt.position.x = box.position.x;	
+}
+else
+{box.position.x = bot4_2.position.x;
+								f1.position.x = box.position.x;
+								f2.position.x = box.position.x;
+								l1.position.x = box.position.x-0.5;
+								l2.position.x = box.position.x-0.5;
+								b1.position.x = box.position.x;
+								b2.position.x = box.position.x;
+								r1.position.x = box.position.x+0.5;
+								r2.position.x = box.position.x+0.5;
+								bt.position.x = box.position.x;		}								
+						}
+						else{trig = 0;}*/
+
+						
+						if ((bot4_2.intersectsMesh(box,true) || bot4_4.intersectsMesh(box,true)))
+						{
+							box.position.x = bot4_2.position.x + 1;
+							f1.position.x = box.position.x;
+								f2.position.x = box.position.x;
+								l1.position.x = box.position.x-0.5;
+								l2.position.x = box.position.x-0.5;
+								b1.position.x = box.position.x;
+								b2.position.x = box.position.x;
+								r1.position.x = box.position.x+0.5;
+								r2.position.x = box.position.x+0.5;
+								bt.position.x = box.position.x;
+					bot4inter=1;
+						}
+					
+						
+					});
+					
+					function bot4block(){
+						tween100 = new TWEEN.Tween(bot4_1.position).to({x:4.5}, 1000).start();
+                        tween100.easing(TWEEN.Easing.Linear.None);
+                        tween100.yoyo(true);
+						tween100 = new TWEEN.Tween(bot4_2.position).to({x:5.5}, 1000).start();
+                        tween100.easing(TWEEN.Easing.Linear.None);
+                        tween100.yoyo(true);
+						tween100 = new TWEEN.Tween(bot4_3.position).to({x:4.5}, 1000).start();
+                        tween100.easing(TWEEN.Easing.Linear.None);
+                        tween100.yoyo(true);
+						tween100 = new TWEEN.Tween(bot4_4.position).to({x:5.5}, 1000).start();
+                        tween100.easing(TWEEN.Easing.Linear.None);
+                        tween100.yoyo(true);
+                        
+                        tween1011 = new TWEEN.Tween(scene.getMeshByName("Group#a").position).to({x:scene.getMeshByName("Group#a").position.x+2}, 1000).start();
+                        tween1011 = new TWEEN.Tween(scene.getMeshByName("Group#b").position).to({x:scene.getMeshByName("Group#b").position.x+2}, 1000).start();
+                        tween1011 = new TWEEN.Tween(scene.getMeshByName("Group#c").position).to({x:scene.getMeshByName("Group#c").position.x+2}, 1000).start();
+                        tween1011 = new TWEEN.Tween(scene.getMeshByName("Group#d").position).to({x:scene.getMeshByName("Group#d").position.x+2}, 1000).start();
+                       
+                        
+                        
+                        
+                        
+                        
+						tween100.onComplete(function(){
+							tween101 = new TWEEN.Tween(bot4_1.position).to({x:2.5}, 1000).start();
+							tween101.easing(TWEEN.Easing.Linear.None);
+							tween101.yoyo(true);
+							tween101 = new TWEEN.Tween(bot4_2.position).to({x:3.5}, 1000).start();
+							tween101.easing(TWEEN.Easing.Linear.None);
+							tween101.yoyo(true);
+							tween101 = new TWEEN.Tween(bot4_3.position).to({x:2.5}, 1000).start();
+							tween101.easing(TWEEN.Easing.Linear.None);
+							tween101.yoyo(true);
+							tween101 = new TWEEN.Tween(bot4_4.position).to({x:3.5}, 1000).start();
+							tween101.easing(TWEEN.Easing.Linear.None);
+							tween101.yoyo(true);
+                            
+                            
+                            
+                        tween1011 = new TWEEN.Tween(scene.getMeshByName("Group#a").position).to({x:scene.getMeshByName("Group#a").position.x-2}, 1000).start();
+                        tween1011 = new TWEEN.Tween(scene.getMeshByName("Group#b").position).to({x:scene.getMeshByName("Group#b").position.x-2}, 1000).start();
+                        tween1011 = new TWEEN.Tween(scene.getMeshByName("Group#c").position).to({x:scene.getMeshByName("Group#c").position.x-2}, 1000).start();
+                        tween1011 = new TWEEN.Tween(scene.getMeshByName("Group#d").position).to({x:scene.getMeshByName("Group#d").position.x-2}, 1000).start();
+                       
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            if(bot4inter==1){repos(); bot4inter=0;}
+                            
+                            tween101.onComplete(function(){
+                             if(bot4inter==1){repos(); bot4inter=0;}});
+                            
+						});
+					}
+					
+					
+					function bot6block_v1(){
+                        if(bot6inter==1){keydis2 =1;}
+                         scene.getMeshByName("b6d1").position.y=5;
+						tween200 = new TWEEN.Tween(bot6.position).to({z:20.5}, 1000).start();
+                        tween200.easing(TWEEN.Easing.Linear.None);
+                        tween200.yoyo(true);
+                        
+                        
+                        
+                     						tween200.onComplete(function(){
+                                                scene.getMeshByName("b6d2").position.y=6;
+                                                 keydis2 =0;
+						});
+                            
+                        
+                     
+                    
+					}
+					
+					function bot6block_v2(){
+                       if(bot6inter==1){keydis2 =1;}
+                        scene.getMeshByName("b6d2").position.y=5;
+						tween200 = new TWEEN.Tween(bot6.position).to({z:18.5}, 1000).start();
+						tween200.easing(TWEEN.Easing.Linear.None);
+						tween200.yoyo(true);
+                        
+                        					tween200.onComplete(function(){
+                                                keydis2 =0;
+                                                scene.getMeshByName("b6d1").position.y=6;
+						});
+					}
+					
+				/*	function bot2block(){
+						tween200 = new TWEEN.Tween(bot2_2.position).to({z:13.5}, 1500).start();
+						tween200.easing(TWEEN.Easing.Linear.None);
+						tween200.yoyo(true);
+						tween200 = new TWEEN.Tween(bot2_1.position).to({z:12.5}, 1500).start();
+						tween200.easing(TWEEN.Easing.Linear.None);
+						tween200.yoyo(true);
+						tween200.onComplete(function(){
+							tween200 = new TWEEN.Tween(bot2_2.position).to({z:10.5}, 1500).start();
+							tween200.easing(TWEEN.Easing.Linear.None);
+							tween200.yoyo(true);
+							tween200 = new TWEEN.Tween(bot2_1.position).to({z:9.5}, 1500).start();
+							tween200.easing(TWEEN.Easing.Linear.None);
+							tween200.yoyo(true);
+						});
+					}
+*/
+				});
+			});
+			
+			
+			
+			// Отслеживаем изменения размера окна браузера и (или) холста
+			window.addEventListener("resize",function(){
+					engine.resize();
+            
+			});
+            
+            step = new Audio('step2-0-0.2.mp3');
+			
+			var audio = new Audio('track4.mp3');
+                      
+            audio.currentTime = 0;
+           
+            audio.play();
+
+		</script>
+	</body>
+</html>

@@ -1345,8 +1345,229 @@ Exporter version: 5.2.0, Blender version: 2.79 (sub 0)
 		num uvs2           :  0
 		num colors         :  0
 		num indices        :  36
+	processing begun of mesh:  Group#a
+		processing begun of Standard material:  side2.002
+			Diffuse texture found "Texture.011"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  side1.002
+			Diffuse texture found "Texture.008"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  top1.001
+			Diffuse texture found "Texture.007"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  training.Multimaterial#13
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  64
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  Group#b
+		processing begun of Standard material:  side2.003
+			Diffuse texture found "Texture.014"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  side1.003
+			Diffuse texture found "Texture.013"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  top1.002
+			Diffuse texture found "Texture.012"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  training.Multimaterial#14
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  64
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  Group#d
+		processing begun of Standard material:  side2.005
+			Diffuse texture found "Texture.020"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  side1.005
+			Diffuse texture found "Texture.019"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  top1.004
+			Diffuse texture found "Texture.018"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  training.Multimaterial#15
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  64
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  Group#c
+		processing begun of Standard material:  side2.004
+			Diffuse texture found "Texture.017"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  side1.004
+			Diffuse texture found "Texture.016"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  top1.003
+			Diffuse texture found "Texture.015"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  training.Multimaterial#16
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  64
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  Group#e
+		processing begun of Standard material:  side2.006
+			Diffuse texture found "Texture.023"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  side1.006
+			Diffuse texture found "Texture.022"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  top1.005
+			Diffuse texture found "Texture.021"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  training.Multimaterial#17
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  64
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  Group#f
+		processing begun of Standard material:  side2.007
+			Diffuse texture found "Texture.026"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  side1.007
+			Diffuse texture found "Texture.025"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  top1.006
+			Diffuse texture found "Texture.024"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  training.Multimaterial#18
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  64
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  Group#g
+		processing begun of Standard material:  side2.008
+			Diffuse texture found "Texture.029"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  side1.008
+			Diffuse texture found "Texture.028"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  top1.007
+			Diffuse texture found "Texture.027"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  training.Multimaterial#19
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  64
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  Group#h
+		processing begun of Standard material:  side2.011
+			Diffuse texture found "Texture.038"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  side1.011
+			Diffuse texture found "Texture.037"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  top1.010
+			Diffuse texture found "Texture.036"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  training.Multimaterial#20
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  64
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  Group#i
+		processing begun of Standard material:  side2.010
+			Diffuse texture found "Texture.035"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  side1.010
+			Diffuse texture found "Texture.034"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  top1.009
+			Diffuse texture found "Texture.033"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  training.Multimaterial#21
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  64
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  Group#j
+		processing begun of Standard material:  side2.012
+			Diffuse texture found "Texture.041"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  side1.012
+			Diffuse texture found "Texture.040"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  top1.011
+			Diffuse texture found "Texture.039"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  training.Multimaterial#22
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  64
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  Group#k
+		processing begun of Standard material:  side2.013
+			Diffuse texture found "Texture.044"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  side1.013
+			Diffuse texture found "Texture.043"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  top1.012
+			Diffuse texture found "Texture.042"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  training.Multimaterial#23
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  64
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  b6d1
+		processing begun of Standard material:  side2.014
+			Diffuse texture found "Texture.047"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  side1.014
+			Diffuse texture found "Texture.046"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  top1.013
+			Diffuse texture found "Texture.045"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  training.Multimaterial#24
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  64
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  b6d2
+		processing begun of Standard material:  side2.015
+			Diffuse texture found "Texture.050"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  side1.015
+			Diffuse texture found "Texture.049"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  top1.014
+			Diffuse texture found "Texture.048"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  training.Multimaterial#25
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  64
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
 	WARNING: The following lamp not visible in scene thus ignored: 1Hemi
 ========= Writing of scene file started =========
 ========= Writing of scene file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 0.6159 secs
+elapsed time:  0 min, 1.193 secs
