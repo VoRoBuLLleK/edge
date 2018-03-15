@@ -229,7 +229,7 @@
                    
 					camera.speed = 1; // Скорость камеры
 					camera.maxZ = 1000; // Максимальный ZOOM камеры
-					//camera.attachControl(canvas,true); // Возможность контролировать камеру и передвигать её
+					camera.attachControl(canvas,true); // Возможность контролировать камеру и передвигать её
 					camera.rotation = new BABYLON.Vector3(Math.PI/4, 5.5, 0);
                  
                     
@@ -1251,7 +1251,20 @@ bt.position.x = box.position.x; // Позиция спутника в длину
                     
                   //  setInterval(function(){repos2()}, 10);
                     
-                    
+                    var pq = 0;
+					var pll = 0;
+					
+           /*         box.position.y = hero.position.y + 0.5;
+                    box.position.z = hero.position.z + 0.5;*/
+					
+					
+					
+					/*var ddd = 0;
+					if(ddd == 1)
+					{
+						
+					}*/
+					
 					// Функция для падения
 					 function  movedown(){  
                         mm = "0";
@@ -1259,59 +1272,78 @@ bt.position.x = box.position.x; // Позиция спутника в длину
                             if (m.name != "skyBox" && m.name != "1mesh" && m.name != "h"  && m.name != "hsh" && m.name != "h2"  && m.name != "hsh2" && m.name != "h3"  && m.name != "hsh3" && m.name != "h4"  && m.name != "hsh4" && m.name != "h5"  && m.name != "hsh5" && m.name != "h6"  && m.name != "hsh6" && m.name != "h7"  && m.name != "hsh7" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
                                 if (bt.intersectsMesh(m,true)){btScore=1; keydis=1;
 									if(m.name == "down1"){
+									if(pq == 0){	
+									pq = 1;					
 									var au = new Audio('bridge.mp3');
 									au.play();
-										setInterval(function(){
-											tween100 = new TWEEN.Tween(down1.position).to({y:-5.5}, 100).start();
+										setTimeout(function(){
+											tween100 = new TWEEN.Tween(down1.position).to({y:-50.5}, 0).start();
 											tween100.easing(TWEEN.Easing.Exponential.Out);
 											tween100.yoyo(true);
-											}, 750);
+											pq = 0;
+											}, 330);
+										}
 									}
 									if(m.name == "down2"){
+									if(pq == 0){
+									pq = 1;
 									var au = new Audio('bridge.mp3');
 									au.play();
-										setInterval(function(){
-											tween100 = new TWEEN.Tween(down2.position).to({y:-5.5}, 100).start();
+										setTimeout(function(){
+											tween100 = new TWEEN.Tween(down2.position).to({y:-50.5},0).start();
 											tween100.easing(TWEEN.Easing.Exponential.Out);
 											tween100.yoyo(true);
-											}, 750);
-									}
+											pq = 0;
+											}, 330);
+									}}
 									if(m.name == "down3"){
+									if(pq == 0){
+									pq = 1;
 									var au = new Audio('bridge.mp3');
 									au.play();
-										setInterval(function(){
-											tween100 = new TWEEN.Tween(down3.position).to({y:-5.5}, 100).start();
+										setTimeout(function(){
+											tween100 = new TWEEN.Tween(down3.position).to({y:-50.5}, 0).start();
 											tween100.easing(TWEEN.Easing.Exponential.Out);
 											tween100.yoyo(true);
-											}, 750);
-									}
+											pq = 0;
+											}, 330);
+									}}
 									if(m.name == "down4"){
+									if(pq == 0){
+									pq = 1;
 									var au = new Audio('bridge.mp3');
 									au.play();
-										setInterval(function(){
-											tween100 = new TWEEN.Tween(down4.position).to({y:-5.5}, 100).start();
+										setTimeout(function(){
+											tween100 = new TWEEN.Tween(down4.position).to({y:-50.5}, 0).start();
 											tween100.easing(TWEEN.Easing.Exponential.Out);
 											tween100.yoyo(true);
-											}, 750);
-									}
+											pq = 0;
+											}, 330);
+									}}
 									if(m.name == "down5"){
+									if(pq == 0){
+									pq = 1;
 									var au = new Audio('bridge.mp3');
 									au.play();
-										setInterval(function(){
-											tween100 = new TWEEN.Tween(down5.position).to({y:-5.5}, 100).start();
+										setTimeout(function(){
+											tween100 = new TWEEN.Tween(down5.position).to({y:-50.5}, 0).start();
 											tween100.easing(TWEEN.Easing.Exponential.Out);
 											tween100.yoyo(true);
-											}, 750);
-									}
+											pq = 0;
+											}, 330);
+									}}
 									if(m.name == "down6"){
+									if(pq == 0){
+									pq = 1;
 									var au = new Audio('bridge.mp3');
 									au.play();
-										setInterval(function(){
-											tween100 = new TWEEN.Tween(down6.position).to({y:-5.5}, 100).start();
+										setTimeout(function(){
+											tween100 = new TWEEN.Tween(down6.position).to({y:-50.5}, 0).start();
 											tween100.easing(TWEEN.Easing.Exponential.Out);
 											tween100.yoyo(true);
-											}, 750);
-									}
+											pq = 0;
+											}, 330);
+									}}
 									
 									if(m.name == "btt1")
 									{
@@ -1327,16 +1359,16 @@ bt.position.x = box.position.x; // Позиция спутника в длину
 										r2.position.z = 16.5;
 										//bt.position.z = box.position.z;	
 
-										tween500 = new TWEEN.Tween(box.position).to({z:16.5},400).start();
+										tween500 = new TWEEN.Tween(box.position).to({z:16.5},330).start();
 										tween500.easing(TWEEN.Easing.Linear.None);
 										tween500.yoyo(true);
-										tween500 = new TWEEN.Tween(box.rotation).to({z:0,y:0,x:box.rotation.z-4*Math.PI/2},400).start();
+										tween500 = new TWEEN.Tween(box.rotation).to({z:0,y:0,x:box.rotation.z-4*Math.PI/2},330).start();
 										tween500.easing(TWEEN.Easing.Linear.None);				 
 										tween500.yoyo(true);
-										tween500 = new TWEEN.Tween(bt.position).to({z:16.5},400).start();
+										tween500 = new TWEEN.Tween(bt.position).to({z:16.5},330).start();
 										tween500.easing(TWEEN.Easing.Linear.None);
 										tween500.yoyo(true);
-										tween500 = new TWEEN.Tween(bt.position).to({z:16.5},400).start();
+										tween500 = new TWEEN.Tween(bt.position).to({z:16.5},330).start();
 										tween500.easing(TWEEN.Easing.Linear.None);
 										tween500.yoyo(true);
 										tween500.onComplete(function(){
@@ -1486,12 +1518,18 @@ bt.position.x = box.position.x; // Позиция спутника в длину
                     function res(){
                 if (bt.position.y < -25)
                 {
-
                     var death = new Audio('death.mp3');
 					dead++;
                     death.play();
                     showtip("ouch!")
                     
+					down1.position.y = 0.5;
+					down2.position.y = 0.5;
+					down3.position.y = 0.5;
+					down4.position.y = 0.5;
+					down5.position.y = 0.5;
+					down6.position.y = 0.5;
+					
                     keydis=0;
                   //  setTimeout(function(){keydis=1;},400);
                     
@@ -1813,7 +1851,7 @@ bt.position.x = box.position.x; // Позиция спутника в длину
 						scene.render();	
 						movedown();
                         res();
-                        
+                        //console.log(box.position.y);
                         
                         //оффсет бекграунда
 
@@ -2241,7 +2279,7 @@ else
                       
             audio.currentTime = 0;
            
-            audio.play();
+           audio.play();
 
 		</script>
 	</body>
