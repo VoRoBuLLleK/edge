@@ -1280,9 +1280,9 @@ bt.position.x = box.position.x; // Позиция спутника в длину
 											tween100 = new TWEEN.Tween(down1.position).to({y:-50.5}, 0).start();
 											tween100.easing(TWEEN.Easing.Exponential.Out);
 											tween100.yoyo(true);
-											pq = 0;
 											}, 500);
 										}
+										setTimeout(function(){pq = 0;}, 330);
 									}
 									if(m.name == "down2"){
 									if(pq == 0){
@@ -1293,8 +1293,8 @@ bt.position.x = box.position.x; // Позиция спутника в длину
 											tween100 = new TWEEN.Tween(down2.position).to({y:-50.5},0).start();
 											tween100.easing(TWEEN.Easing.Exponential.Out);
 											tween100.yoyo(true);
-											pq = 0;
 											}, 500);
+											setTimeout(function(){pq = 0;}, 330);
 									}}
 									if(m.name == "down3"){
 									if(pq == 0){
@@ -1305,8 +1305,8 @@ bt.position.x = box.position.x; // Позиция спутника в длину
 											tween100 = new TWEEN.Tween(down3.position).to({y:-50.5}, 0).start();
 											tween100.easing(TWEEN.Easing.Exponential.Out);
 											tween100.yoyo(true);
-											pq = 0;
 											}, 500);
+											setTimeout(function(){pq = 0;}, 330);
 									}}
 									if(m.name == "down4"){
 									if(pq == 0){
@@ -1317,8 +1317,8 @@ bt.position.x = box.position.x; // Позиция спутника в длину
 											tween100 = new TWEEN.Tween(down4.position).to({y:-50.5}, 0).start();
 											tween100.easing(TWEEN.Easing.Exponential.Out);
 											tween100.yoyo(true);
-											pq = 0;
 											}, 500);
+											setTimeout(function(){pq = 0;}, 330);
 									}}
 									if(m.name == "down5"){
 									if(pq == 0){
@@ -1329,8 +1329,8 @@ bt.position.x = box.position.x; // Позиция спутника в длину
 											tween100 = new TWEEN.Tween(down5.position).to({y:-50.5}, 0).start();
 											tween100.easing(TWEEN.Easing.Exponential.Out);
 											tween100.yoyo(true);
-											pq = 0;
 											}, 500);
+											setTimeout(function(){pq = 0;}, 330);
 									}}
 									if(m.name == "down6"){
 									if(pq == 0){
@@ -1341,12 +1341,13 @@ bt.position.x = box.position.x; // Позиция спутника в длину
 											tween100 = new TWEEN.Tween(down6.position).to({y:-50.5}, 0).start();
 											tween100.easing(TWEEN.Easing.Exponential.Out);
 											tween100.yoyo(true);
-											pq = 0;
 											}, 500);
+											setTimeout(function(){pq = 0;}, 330);
 									}}
 									
 									if(m.name == "btt1")
 									{
+									trig = 1;
 										btt1.position.y = 0.76;
 										btt1.material = matBTT2; 
 										f1.position.z = 17;
@@ -1365,14 +1366,12 @@ bt.position.x = box.position.x; // Позиция спутника в длину
 										tween500 = new TWEEN.Tween(box.rotation).to({z:0,y:0,x:box.rotation.z-4*Math.PI/2},330).start();
 										tween500.easing(TWEEN.Easing.Linear.None);				 
 										tween500.yoyo(true);
-										tween500 = new TWEEN.Tween(bt.position).to({z:16.5},330).start();
-										tween500.easing(TWEEN.Easing.Linear.None);
-										tween500.yoyo(true);
-										tween500 = new TWEEN.Tween(bt.position).to({z:16.5},330).start();
+										tween500 = new TWEEN.Tween(bt.position).to({z:16.5},900).start();
 										tween500.easing(TWEEN.Easing.Linear.None);
 										tween500.yoyo(true);
 										tween500.onComplete(function(){
 											box.rotation = BABYLON.Vector3.Zero();
+											trig = 0;
 										});
 									
 									}
