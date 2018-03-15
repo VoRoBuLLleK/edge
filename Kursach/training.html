@@ -43,7 +43,9 @@
             #level-time{background:white;position:relative;font-size:15pt;padding:5px;height:50px;top:-73px;}
 			#level-rank{background:grey;position:relative;font-size:20pt;padding:5px;height:160px;top:-73px;}
 			.book{transform:rotate(-90deg);width:150px;position:relative;left:-5px;top:-49px;}
-			
+			.bt-lvl1{background-image:url("1.jpg");background-size:cover;cursor:pointer;font-family:'Giantypo',Arial,sans-serif;display:inline-block;color:black;font-weight:900;padding:.5em 2em;outline:none;border:5px solid;border-color: #ffffff;border-radius:1px;transition:0.2s;width:100px;height:100px;text-align:center;font-size:25pt;margin-top:10px;}
+			.bt-lvl2{background-image:url("2lvl.jpg");background-size:cover;cursor:pointer;font-family:'Giantypo',Arial,sans-serif;display:inline-block;color:black;font-weight:900;padding:.5em 2em;outline:none;border:5px solid;border-color: #ffffff;border-radius:1px;transition:0.2s;width:100px;height:100px;text-align:center;font-size:25pt;margin-top:10px;}
+		
 		</style>
 	</head>
 	
@@ -77,6 +79,9 @@
             <div id = "menu-bt">
                 <input type = "button" class = "bt" id = "bt-Resume" value = "resume" onclick = "resumeqw()">
                 <input type = "button" class = "bt" id = "bt-Retry" value = "retry">
+				<span style = "color:white;font-size:20pt;">select a level</span><br>
+				<input type = "button" id = "lvl1" value = "1" class = "bt-lvl1" onclick = "lvvvl1()">
+				<input type = "button" id = "lvl2" value = "2" class = "bt-lvl2" onclick = "lvvvl2()">
             </div>
         </div>
 		
@@ -124,6 +129,8 @@
 				
 			function nextlvl(){document.location.href = "";}
 			function reload(){document.location.href = "training.html";document.getElementById("timer").innerHTML = "00:00";}
+			function lvvvl1(){document.location.href = "index.html";}
+			function lvvvl2(){document.location.href = "training.html";}
 			function getRandomColor(){
                 var letters = '0123456789ABCDEF';
                 var color = '#';
@@ -142,6 +149,8 @@
 			var rtf;
 			var lead;
 			var mainm;
+			var lvl1;
+			var lvl2;
 
 			var $text = $("#text-lvl");
 			var $resume = $("#bt-Resume");
@@ -155,6 +164,8 @@
 			var $main = $("#bt-Menu-finish");
 			var $done = $("#done");
 			var $rankname = $("#rank-name");
+			var $lvl_1 = $("#lvl1");
+			var $lvl_2 = $("#lvl2");
        
 			$resume.hover(function(){res = 1;},function(){res = 0;});
 			$retry.hover(function(){ret = 1;},function(){ret = 0;});
@@ -164,6 +175,8 @@
 			$retfin.hover(function(){rtf = 1;},function(){rtf = 0;});
 			$leaderboard.hover(function(){lead = 1;},function(){lead = 0;});
 			$main.hover(function(){mainm = 1;},function(){mainm = 0;});
+			$lvl_1.hover(function(){lvl1 = 1;},function(){lvl1 = 0;});
+			$lvl_2.hover(function(){lvl2 = 1;},function(){lvl2 = 0;});
        
 			setInterval(function(){
 				$text.css("color", getRandomColor());
@@ -186,6 +199,10 @@
 				if(lead == 0){$leaderboard.css("background-color", "#FFFFFF");}
 				if(mainm == 1){$main.css("background-color", getRandomColor());}
 				if(mainm == 0){$main.css("background-color", "#FFFFFF");}
+				if(lvl1 == 1){$lvl_1.css("border-color", getRandomColor());}
+				if(lvl1 == 0){$lvl_1.css("border-color", "#FFFFFF");}
+				if(lvl2 == 1){$lvl_2.css("border-color", getRandomColor());}
+				if(lvl2 == 0){$lvl_2.css("border-color", "#FFFFFF");}
 			},250);
 	
 	</script>
@@ -212,7 +229,7 @@
                    
 					camera.speed = 1; // Скорость камеры
 					camera.maxZ = 1000; // Максимальный ZOOM камеры
-					camera.attachControl(canvas,true); // Возможность контролировать камеру и передвигать её
+					//camera.attachControl(canvas,true); // Возможность контролировать камеру и передвигать её
 					camera.rotation = new BABYLON.Vector3(Math.PI/4, 5.5, 0);
                  
                     
@@ -1242,6 +1259,8 @@ bt.position.x = box.position.x; // Позиция спутника в длину
                             if (m.name != "skyBox" && m.name != "1mesh" && m.name != "h"  && m.name != "hsh" && m.name != "h2"  && m.name != "hsh2" && m.name != "h3"  && m.name != "hsh3" && m.name != "h4"  && m.name != "hsh4" && m.name != "h5"  && m.name != "hsh5" && m.name != "h6"  && m.name != "hsh6" && m.name != "h7"  && m.name != "hsh7" && m.name != "f1" && m.name != "f2" && m.name != "r1" && m.name != "r2" && m.name != "l1" && m.name != "l2" && m.name != "b1" && m.name != "b2" && m.name != "hero" && m.name != "box" && m.name != "bt"){
                                 if (bt.intersectsMesh(m,true)){btScore=1; keydis=1;
 									if(m.name == "down1"){
+									var au = new Audio('bridge.mp3');
+									au.play();
 										setInterval(function(){
 											tween100 = new TWEEN.Tween(down1.position).to({y:-5.5}, 100).start();
 											tween100.easing(TWEEN.Easing.Exponential.Out);
@@ -1249,6 +1268,8 @@ bt.position.x = box.position.x; // Позиция спутника в длину
 											}, 750);
 									}
 									if(m.name == "down2"){
+									var au = new Audio('bridge.mp3');
+									au.play();
 										setInterval(function(){
 											tween100 = new TWEEN.Tween(down2.position).to({y:-5.5}, 100).start();
 											tween100.easing(TWEEN.Easing.Exponential.Out);
@@ -1256,6 +1277,8 @@ bt.position.x = box.position.x; // Позиция спутника в длину
 											}, 750);
 									}
 									if(m.name == "down3"){
+									var au = new Audio('bridge.mp3');
+									au.play();
 										setInterval(function(){
 											tween100 = new TWEEN.Tween(down3.position).to({y:-5.5}, 100).start();
 											tween100.easing(TWEEN.Easing.Exponential.Out);
@@ -1263,6 +1286,8 @@ bt.position.x = box.position.x; // Позиция спутника в длину
 											}, 750);
 									}
 									if(m.name == "down4"){
+									var au = new Audio('bridge.mp3');
+									au.play();
 										setInterval(function(){
 											tween100 = new TWEEN.Tween(down4.position).to({y:-5.5}, 100).start();
 											tween100.easing(TWEEN.Easing.Exponential.Out);
@@ -1270,6 +1295,8 @@ bt.position.x = box.position.x; // Позиция спутника в длину
 											}, 750);
 									}
 									if(m.name == "down5"){
+									var au = new Audio('bridge.mp3');
+									au.play();
 										setInterval(function(){
 											tween100 = new TWEEN.Tween(down5.position).to({y:-5.5}, 100).start();
 											tween100.easing(TWEEN.Easing.Exponential.Out);
@@ -1277,6 +1304,8 @@ bt.position.x = box.position.x; // Позиция спутника в длину
 											}, 750);
 									}
 									if(m.name == "down6"){
+									var au = new Audio('bridge.mp3');
+									au.play();
 										setInterval(function(){
 											tween100 = new TWEEN.Tween(down6.position).to({y:-5.5}, 100).start();
 											tween100.easing(TWEEN.Easing.Exponential.Out);
